@@ -133,6 +133,7 @@ I'm currently working with Castle to test the generalization of this model to da
 ### Other improvements
 
 Some next steps to enhance my current model include the following:
+
 - It would be interesting to see if creating a multidimensional joint PDF of the feature space can improve the performance of the model.
 - Develop more sophisticated engineered features that could be incorporated into the model to target specific types of fraudulent user behavior.
 - It would be fun to try out alternative outlier detection algorithms such as k-NN, clustering, and one-class SVM.
