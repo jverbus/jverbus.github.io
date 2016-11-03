@@ -24,7 +24,7 @@ You can read the technical details in two academic papers based upon my Ph.D. th
 - [Low-energy (0.7-74 keV) nuclear recoil calibration of the LUX dark matter experiment using D-D neutron scattering kinematics](https://arxiv.org/abs/1608.05381)
 - [Proposed low-energy absolute calibration of nuclear recoils in a dual-phase noble element TPC using D-D neutron scattering kinematics](https://arxiv.org/abs/1608.05309)
 
-## Links to news articles with some quotes from me about my Ph.D. thesis work 
+## Links to news articles about my Ph.D. thesis work 
 
 - [http://phys.org/news/2014-02-lux-dark-results.html](http://phys.org/news/2014-02-lux-dark-results.html)
 - [http://www.redorbit.com/news/space/1113077219/dark-matter-results-confirmed-no-evidence-of-wimps-yet-022114/](http://www.redorbit.com/news/space/1113077219/dark-matter-results-confirmed-no-evidence-of-wimps-yet-022114/)
