@@ -18,7 +18,7 @@ For my [Ph.D. thesis](https://repository.library.brown.edu/studio/item/bdr:67420
 My dissertation defense slides are available [here]({{ site.url }}/assets/files/20160510_jverbus_thesis_defense_v4_public.pdf).
 
 As a direct result of this calibration, the already unrivaled sensitivity of LUX improved by a factor of ×7 for low-mass WIMPs--a hotly contested type of dark matter within the physics community over the past several years.
-Due to the success of this calibration in the LUX detector, this technique is now a core component of the next-generation LZ dark matter experiment (10 tonne liquid xenon target) calibration program.
+Due to this success, the technique is now a core component of the next-generation LZ dark matter experiment (10 tonne liquid xenon target) calibration program.
 You can read the technical details in two academic papers based upon my Ph.D. thesis:
 
 - [Low-energy (0.7-74 keV) nuclear recoil calibration of the LUX dark matter experiment using D-D neutron scattering kinematics](https://arxiv.org/abs/1608.05381)
