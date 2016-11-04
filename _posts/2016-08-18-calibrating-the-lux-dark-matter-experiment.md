@@ -17,6 +17,9 @@ It is critical to understand and calibrate the response of the detector to demon
 For my [Ph.D. thesis](https://repository.library.brown.edu/studio/item/bdr:674209/PDF/), I led the experimental design, operation, and data analysis effort for a new, world-leading calibration of the response of liquid xenon to WIMP-like signals.
 My dissertation defense slides are available [here]({{ site.url }}/assets/files/20160510_jverbus_thesis_defense_v4_public.pdf).
 
+![Neutron generator outside of the LUX water tank]({{ site.url }}/assets/images/jverbus_neutron_generator_outside_lux.jpg) 
+*Here I am with the neutron source used for the calibration the LUX dark matter detector.*
+
 As a direct result of this calibration, the already unrivaled sensitivity of LUX improved by a factor of ×7 for low-mass WIMPs--a hotly contested type of dark matter within the physics community over the past several years.
 Due to this success, the technique is now a core component of the next-generation LZ dark matter experiment (10 tonne liquid xenon target) calibration program.
 You can read the technical details in two academic papers based upon my Ph.D. thesis:
