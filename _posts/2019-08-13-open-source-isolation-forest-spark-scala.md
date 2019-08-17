@@ -2,7 +2,7 @@
 layout: post
 title: "Open Source: Spark/Scala Isolation Forest Library"
 description: "An unsupervised outlier detection algorithm."
-category: Data Science Projects
+category: data science projects
 tags: [LinkedIn, isolation forest, outlier detection, unsupervised learning, machine learning, spark, scala]
 ---
 {% include JB/setup %}
