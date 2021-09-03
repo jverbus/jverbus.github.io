@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Using deep learning to detect abusive sequences of member activity"
-description: "An unsupervised outlier detection algorithm."
+description: "Using NLP techniques to classify sequences of user actions instead of sentences of words."
 category: data science projects
-tags: [LinkedIn, machine learning, ai, cybersecurity, nlp]
+tags: [LinkedIn, machine learning, AI, cybersecurity, NLP]
 ---
 {% include JB/setup %}
 
