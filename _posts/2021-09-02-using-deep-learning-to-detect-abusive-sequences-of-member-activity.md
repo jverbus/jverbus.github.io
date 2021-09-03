@@ -11,5 +11,5 @@ The Anti-Abuse AI Team at LinkedIn creates, deploys, and maintains models that d
 
 We have productionalized a deep learning model that operates directly on sequences of member requests in order to detect abusive automated activity.
 
-To learn more about our modeling approach and how it addresses some unique challenges in the anti-abuse space, see the [LinkedIn Engineering blog post](https://engineering.linkedin.com/blog/2021/using-deep-learning-to-detect-abusive-sequences-of-member-activi).
+To learn more about our modeling approach and how it addresses some unique challenges in the anti-abuse space, see this [LinkedIn Engineering blog post](https://engineering.linkedin.com/blog/2021/using-deep-learning-to-detect-abusive-sequences-of-member-activi).
 
