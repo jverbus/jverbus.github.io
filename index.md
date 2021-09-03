@@ -1,6 +1,6 @@
 ---
 layout: page
-title: James Verbus's Data Science Blog
+title: James Verbus 
 tagline: Supporting tagline
 ---
 {% include JB/setup %}
