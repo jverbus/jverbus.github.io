@@ -13,3 +13,7 @@ We have productionalized a deep learning model that operates directly on sequenc
 
 To learn more about our modeling approach and how it addresses some unique challenges in the anti-abuse space, see this [LinkedIn Engineering blog post](https://engineering.linkedin.com/blog/2021/using-deep-learning-to-detect-abusive-sequences-of-member-activi).
 
+## Resources
+
+- [Using Deep Learning to Detect Abusive Sequences of Member Activity on LinkedIn](https://exchange.scale.com/public/videos/using-deep-learning-to-detect-abusive-sequences-of-member-activity-on-linkedin)
+
