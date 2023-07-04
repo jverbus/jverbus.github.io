@@ -2,7 +2,7 @@
 layout: post
 title: "Detecting AI-Generated Profile Photos"
 description: "A novel technique for the effective detection of AI-generated profile photos."
-category: data science projects
+category: AI and Machine Learning
 tags: [LinkedIn, machine learning, AI, Generative AI]
 ---
 {% include JB/setup %}
@@ -18,7 +18,7 @@ Our approach is detailed in the full paper that was released at the [Workshop on
 ## Resources
 
 - [LinkedIn Engineering Blog: New Approaches For Detecting AI-Generated Profile Photos](https://engineering.linkedin.com/blog/2023/new-approaches-for-detecting-ai-generated-profile-photos?)
-- [Full paper: Exposing GAN-Generated Profile Photos from Compact Embeddings](https://farid.berkeley.edu/downloads/publications/cvpr23b.pdf)i
+- [Full paper: Exposing GAN-Generated Profile Photos from Compact Embeddings](https://farid.berkeley.edu/downloads/publications/cvpr23b.pdf)
 
 ## News coverage
 

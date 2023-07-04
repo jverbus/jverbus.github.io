@@ -2,7 +2,7 @@
 layout: post
 title: "Calibrating the LUX Dark Matter Experiment"
 description: "Consulting project at Insight Data Science"
-category: Ph.D. thesis work 
+category: Ph.D. Thesis 
 tags: [astrophysics, dark matter, D-D neutron generator, Brown University, LUX, LZ]
 ---
 {% include JB/setup %}
