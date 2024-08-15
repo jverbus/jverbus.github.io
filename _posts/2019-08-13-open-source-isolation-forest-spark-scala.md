@@ -15,6 +15,6 @@ The repository is available on [GitHub](https://github.com/linkedin/isolation-fo
 
 ## Resources
 
-- [Preventing Abuse Using Unsupervised Learning](https://www.youtube.com/watch?v=sFRrFWYNAUI)
-- [FIGHTING ABUSE @SCALE 2019: PREVENTING ABUSE USING UNSUPERVISED LEARNING](https://atscaleconference.com/videos/fighting-abuse-scale-2019-preventing-abuse-using-unsupervised-learning/)
+- Video: [Preventing Abuse Using Unsupervised Learning](https://www.youtube.com/watch?v=sFRrFWYNAUI)
+- Video: [FIGHTING ABUSE @SCALE 2019: PREVENTING ABUSE USING UNSUPERVISED LEARNING](https://atscaleconference.com/videos/fighting-abuse-scale-2019-preventing-abuse-using-unsupervised-learning/)
 
