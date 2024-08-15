@@ -3,7 +3,7 @@ layout: post
 title: "Finding AI-Generated Faces in the Wild"
 description: "A top-performing approach for detecting both GAN- and diffusion-generated faces in the wild."
 category: AI and Machine Learning
-tags: [LinkedIn, machine learning, AI, Generative AI]
+tags: [LinkedIn, machine learning, AI, Generative AI, deepfake]
 ---
 {% include JB/setup %}
 
@@ -18,4 +18,4 @@ Our approach is detailed in the full paper that was released at the [Workshop on
 
 - [LinkedIn Engineering Blog: Finding AI-generated (deepfake) faces in the wild](https://www.linkedin.com/blog/engineering/trust-and-safety/finding-ai-generated-deepfake-faces-in-the-wild)
 - [Full paper: Finding AI-Generated Faces in the Wild](https://openaccess.thecvf.com/content/CVPR2024W/WMF/papers/Porcile_Finding_AI-Generated_Faces_in_the_Wild_CVPRW_2024_paper.pdf) ([arXiv:2311.08577](https://arxiv.org/abs/2311.08577))
-- [Video of SXSW 2024 panel with DARPA: "Real or Not: Defending Authenticity in a Digital World"](https://www.youtube.com/watch?v=8zniAjqWI2A)u
+- [Video of SXSW 2024 panel with DARPA: "Real or Not: Defending Authenticity in a Digital World"](https://www.youtube.com/watch?v=8zniAjqWI2A)
