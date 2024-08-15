@@ -17,10 +17,15 @@ Our approach is detailed in the full paper that was released at the [Workshop on
 
 ## Resources
 
-- [LinkedIn Engineering Blog: New Approaches For Detecting AI-Generated Profile Photos](https://engineering.linkedin.com/blog/2023/new-approaches-for-detecting-ai-generated-profile-photos?)
-- [Full paper: Exposing GAN-Generated Profile Photos from Compact Embeddings](https://openaccess.thecvf.com/content/CVPR2023W/WMF/papers/Mundra_Exposing_GAN-Generated_Profile_Photos_From_Compact_Embeddings_CVPRW_2023_paper.pdf)(
+### Blogs
 
-## News coverage
+- [New Approaches For Detecting AI-Generated Profile Photos](https://engineering.linkedin.com/blog/2023/new-approaches-for-detecting-ai-generated-profile-photos?)
+
+### Papers
+
+- [Exposing GAN-Generated Profile Photos from Compact Embeddings](https://openaccess.thecvf.com/content/CVPR2023W/WMF/papers/Mundra_Exposing_GAN-Generated_Profile_Photos_From_Compact_Embeddings_CVPRW_2023_paper.pdf)(
+
+### News coverage
 
 - [Researchers From LinkedIn And UC Berkeley Propose A New Method To Detect AI-Generated Profile Photos](https://www.marktechpost.com/2023/06/24/researchers-from-linkedin-and-uc-berkeley-propose-a-new-method-to-detect-ai-generated-profile-photos/)
 - [LinkedIn Reveals AI Image Detection Research That Catches Fake Profiles](https://www.searchenginejournal.com/linkedin-ai-image-detector-fake-profiles/489936/)
