@@ -16,6 +16,6 @@ To learn more about our modeling approach and how it addresses some unique chall
 ## Resources
 
 - Video: [Using Deep Learning to Detect Abusive Sequences of Member Activity on LinkedIn](https://exchange.scale.com/public/videos/using-deep-learning-to-detect-abusive-sequences-of-member-activity-on-linkedin)
-- US Patent 11,936,682: (DEEP LEARNING TO DETECT ABUSIVE SEQUENCES OF USER ACTIVITY IN ONLINE NETWORK)({{ site.url }}/assets/files/11936682.pdf)
-- US Patent 11,991,197: (DEEP LEARNING USING ACTIVITY GRAPH TO DETECT ABUSIVE USER ACTIVITY IN ONLINE NETWORKS)({{ site.url }}/assets/files/11991197.pdf)
+- US Patent 11,936,682: [DEEP LEARNING TO DETECT ABUSIVE SEQUENCES OF USER ACTIVITY IN ONLINE NETWORK]({{ site.url }}/assets/files/11936682.pdf)
+- US Patent 11,991,197: [DEEP LEARNING USING ACTIVITY GRAPH TO DETECT ABUSIVE USER ACTIVITY IN ONLINE NETWORKS]({{ site.url }}/assets/files/11991197.pdf)
 
