@@ -25,7 +25,7 @@ You can learn more [here](https://www.linkedin.com/pulse/announcing-onnx-support
 
 - [Announcing ONNX Support in LinkedIn’s Open-Source Isolation Forest Library](https://www.linkedin.com/pulse/announcing-onnx-support-linkedins-open-source-isolation-james-verbus-paoqe/)
 - [Detecting and preventing abuse on LinkedIn using isolation forests](https://www.linkedin.com/blog/engineering/data-management/isolation-forest)
-- ([Open Source: Spark/Scala Isolation Forest Library]({{ site.baseurl }}{% link _posts/2018-08-13-open-source-isolation-forest-spark-scala.md %}))
+- ([Open Source: Spark/Scala Isolation Forest Library]({{ site.baseurl }}{% link _posts/2019-08-13-open-source-isolation-forest-spark-scala.md %}))
 
 ### GitHub
 
