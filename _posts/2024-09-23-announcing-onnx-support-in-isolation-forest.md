@@ -7,7 +7,7 @@ tags: [LinkedIn, machine learning, isolation forest, ONNX, open source]
 ---
 {% include JB/setup %}
 
-![Neutron generator outside of the LUX water tank]({{ site.url }}/assets/images/isolation_forest_onnx.png){: style="width:70%; display: block; margin-left: 0;" }
+![Neutron generator outside of the LUX water tank]({{ site.url }}/assets/images/isolation_forest_onnx.png){: style="width:80%; display: block; margin-left: 0;" }
 
 I'm excited to announce that we've added an ONNX converter to our open-source isolation forest library on GitHub!
 
