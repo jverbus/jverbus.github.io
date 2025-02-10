@@ -19,8 +19,8 @@ You can watch my full 2.5-hour workshop here:
 ## Jupyter Notebooks
 
 For a deeper look at the code and examples, check out these notebooks:  
-- [OpenAI-based LLM Setup]({{ site.url }}/assets/files/2025_01_15_James_Verbus_Brown_AI_Winter_School_Open_AI.ipynb)  
-- [LLaMA-based LLM Setup]({{ site.url }}/assets/files/2025_01_15_James_Verbus_Brown_AI_Winter_School_LLaMa.ipynb)  
+- [OpenAI-based LLM Setup](https://github.com/jverbus/jverbus.github.io/blob/master/assets/files/2025_01_15_James_Verbus_Brown_AI_Winter_School_Open_AI.ipynb)  
+- [LLaMA-based LLM Setup](https://github.com/jverbus/jverbus.github.io/blob/master/assets/files/2025_01_15_James_Verbus_Brown_AI_Winter_School_LLaMa.ipynb)  
 
 ## Slides
 
