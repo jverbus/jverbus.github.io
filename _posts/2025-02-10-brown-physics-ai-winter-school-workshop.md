@@ -3,7 +3,7 @@ layout: post
 title: "Exploring LLMs and RAG at the 2025 AI Winter School (Brown University)"
 description: ""
 category: AI and Machine Learning
-tags: [AI Winter School, Brown University, LLM, RAG, physics]
+tags: [Generative AI, Brown University, LLM, RAG, physics]
 ---
 {% include JB/setup %}
 
@@ -13,8 +13,8 @@ During the workshop, participants worked hands-on with both API-based and locall
 
 ## Workshop Recording
 
-You can watch the full 2.5-hour workshop and related sessions here:  
-[Workshop Recording](https://www.youtube.com/watch?v=3Ra9vuHEh7U&list=PL21yWP3gTVmo7gfqS1y0GSeB5ypla8kvi&index=5)
+You can watch my full 2.5-hour workshop here:  
+- [Workshop Recording](https://www.youtube.com/watch?v=3Ra9vuHEh7U&list=PL21yWP3gTVmo7gfqS1y0GSeB5ypla8kvi&index=5)
 
 ## Jupyter Notebooks
 
@@ -25,9 +25,9 @@ For a deeper look at the code and examples, check out these notebooks:
 ## Slides
 
 You can also review the presentation slides for additional context:  
-[Slides (PDF)]({{ site.url }}/assets/files/2025-01-15%20-%20James%20Verbus%20-%20Brown%20AI%20Winter%20School.pdf)
+- [Slides (PDF)]({{ site.url }}/assets/files/2025-01-15%20-%20James%20Verbus%20-%20Brown%20AI%20Winter%20School.pdf)
 
 ## Event Page
 
 For more details on the 2025 AI Winter School, including the full schedule and other workshop sessions, visit the official event page:  
-[2025 AI Winter School Event Page](https://indico.physics.brown.edu/event/34/)
+- [2025 AI Winter School Event Page](https://indico.physics.brown.edu/event/34/)
