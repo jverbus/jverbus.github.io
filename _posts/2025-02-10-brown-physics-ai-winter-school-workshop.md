@@ -3,7 +3,7 @@ layout: post
 title: "Exploring LLMs and RAG at the 2025 AI Winter School (Brown University)"
 description: ""
 category: AI and Machine Learning
-tags: [Generative AI, Brown University, LLM, RAG, physics]
+tags: [Generative AI, Brown University, AI, LLM, RAG, physics]
 ---
 {% include JB/setup %}
 
