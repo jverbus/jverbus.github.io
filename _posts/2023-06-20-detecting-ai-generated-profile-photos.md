@@ -23,7 +23,11 @@ Our approach is detailed in the full paper that was released at the [Workshop on
 
 ### Papers
 
-- [Exposing GAN-Generated Profile Photos from Compact Embeddings](https://openaccess.thecvf.com/content/CVPR2023W/WMF/papers/Mundra_Exposing_GAN-Generated_Profile_Photos_From_Compact_Embeddings_CVPRW_2023_paper.pdf)(
+- [Exposing GAN-Generated Profile Photos from Compact Embeddings](https://openaccess.thecvf.com/content/CVPR2023W/WMF/papers/Mundra_Exposing_GAN-Generated_Profile_Photos_From_Compact_Embeddings_CVPRW_2023_paper.pdf)
+
+### Posters
+
+- [Exposing GAN-Generated Profile Photos from Compact Embeddings]({{ site.url }}/assets/files/CVPRW_poster_2023.pdf)
 
 ### News coverage
 

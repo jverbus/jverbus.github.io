@@ -21,7 +21,12 @@ Our approach is detailed in the full paper that was released at the [Workshop on
 - [Finding AI-generated (deepfake) faces in the wild](https://www.linkedin.com/blog/engineering/trust-and-safety/finding-ai-generated-deepfake-faces-in-the-wild)
 
 ### Papers
+
 - [Finding AI-Generated Faces in the Wild](https://openaccess.thecvf.com/content/CVPR2024W/WMF/papers/Porcile_Finding_AI-Generated_Faces_in_the_Wild_CVPRW_2024_paper.pdf) ([arXiv:2311.08577](https://arxiv.org/abs/2311.08577))
+
+### Posters
+
+- [Finding AI-Generated Faces in the Wild]({{ site.url }}/assets/files/CVPRW_poster_2024.pdf)
 
 ### Videos
 
