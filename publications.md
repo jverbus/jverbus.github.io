@@ -42,15 +42,11 @@ For a complete list (>30 publications with >10k citations), see my [Google Schol
 
 ## LinkedIn Engineering Blog
 
-[Announcing ONNX Support in LinkedIn's Open Source Isolation Forest](https://www.linkedin.com/pulse/announcing-onnx-support-linkedins-open-source-isolation-james-verbus-paoqe/) (2024)
-
-[Finding AI-Generated (Deepfake) Faces in the Wild](https://www.linkedin.com/blog/engineering/trust-and-safety/finding-ai-generated-deepfake-faces-in-the-wild) (2024)
-
-[New Approaches for Detecting AI-Generated Profile Photos](https://www.linkedin.com/blog/engineering/trust-and-safety/new-approaches-for-detecting-ai-generated-profile-photos) (2023)
-
-[Using Deep Learning to Detect Abusive Sequences of Member Activity](https://www.linkedin.com/blog/engineering/trust-and-safety/using-deep-learning-to-detect-abusive-sequences-of-member-activi) (2021)
-
-[Open Sourcing Isolation Forest](https://www.linkedin.com/blog/engineering/data-management/isolation-forest) (2019)
+- [Announcing ONNX Support in LinkedIn's Open Source Isolation Forest](https://www.linkedin.com/pulse/announcing-onnx-support-linkedins-open-source-isolation-james-verbus-paoqe/) (2024)
+- [Finding AI-Generated (Deepfake) Faces in the Wild](https://www.linkedin.com/blog/engineering/trust-and-safety/finding-ai-generated-deepfake-faces-in-the-wild) (2024)
+- [New Approaches for Detecting AI-Generated Profile Photos](https://www.linkedin.com/blog/engineering/trust-and-safety/new-approaches-for-detecting-ai-generated-profile-photos) (2023)
+- [Using Deep Learning to Detect Abusive Sequences of Member Activity](https://www.linkedin.com/blog/engineering/trust-and-safety/using-deep-learning-to-detect-abusive-sequences-of-member-activi) (2021)
+- [Open Sourcing Isolation Forest](https://www.linkedin.com/blog/engineering/data-management/isolation-forest) (2019)
 
 ## Physics — Selected Papers
 
