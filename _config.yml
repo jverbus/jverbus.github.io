@@ -1,6 +1,6 @@
 # This is the default format. 
 # For more see: http://jekyllrb.com/docs/permalinks/
-permalink: /:categories/:year/:month/:day/:title 
+permalink: /:year/:month/:day/:title/
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 highlighter: rouge
@@ -8,8 +8,9 @@ highlighter: rouge
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : James Verbus 
-tagline: 
+title : James Verbus
+tagline:
+default_og_image: /assets/images/jverbus_neutron_generator_outside_lux.jpg
 author :
   name : James Verbus 
   email : james.verbus@gmail.com 

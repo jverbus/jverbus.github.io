@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Publications
+description: "Publications by James Verbus including AI/ML research papers on deepfake detection, anomaly detection, and physics research on dark matter experiments."
 ---
 {% include JB/setup %}
 

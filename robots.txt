@@ -1,0 +1,6 @@
+# robots.txt for jverbus.github.io
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://jverbus.github.io/sitemap.xml

@@ -1,6 +1,7 @@
 ---
 layout: page
-title: James Verbus 
+title: James Verbus
+description: "Personal website of James Verbus - Senior Staff Software Engineer at LinkedIn working on AI for Trust. Writing about machine learning, anomaly detection, and AI safety."
 ---
 {% include JB/setup %}
 
