@@ -54,7 +54,7 @@
 		"author": {
 			"@type": "Person",
 			"name": "{{ site.author.name }}",
-			"url": "{{ site.production_url }}/about.html"
+			"url": "{{ site.production_url }}/about/"
 		},
 		"publisher": {
 			"@type": "Person",
@@ -74,13 +74,13 @@
 		{% endif %}
 	}
 	</script>
-	{% elsif page.url == '/about.html' %}
+	{% elsif page.url == '/about/' or page.url == '/about.html' %}
 	<script type="application/ld+json">
 	{
 		"@context": "https://schema.org",
 		"@type": "Person",
 		"name": "{{ site.author.name }}",
-		"url": "{{ site.production_url }}/about.html",
+		"url": "{{ site.production_url }}/about/",
 		"jobTitle": "Senior Staff Software Engineer",
 		"worksFor": {
 			"@type": "Organization",
@@ -128,9 +128,9 @@
 				<nav class="nav-global">
 					<ul>
 						<li class="logo"><a href="/">{{ site.title }}</a></li>
-						<li class="about"><a href="/about.html">about</a></li>
-						<li class="publications"><a href="/publications.html">publications</a></li>
-						<li class="archive"><a href="/archive.html">archive</a></li>
+						<li class="about"><a href="/about/">about</a></li>
+						<li class="publications"><a href="/publications/">publications</a></li>
+						<li class="archive"><a href="/archive/">archive</a></li>
 					</ul>
 				</nav>
 			</div><!-- unit-inner -->
