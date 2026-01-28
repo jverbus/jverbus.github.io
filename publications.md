@@ -20,7 +20,7 @@ For a complete list (>30 publications with >10k citations), see my [Google Schol
   [Paper](https://openaccess.thecvf.com/content/CVPR2023W/WMF/papers/Mundra_Exposing_GAN-Generated_Profile_Photos_From_Compact_Embeddings_CVPRW_2023_paper.pdf)
 
 - **Integrity 2023: Integrity in Social Networks and Media** (2023)  
-  L. Garcia-Pueyo, P. Tsaparas, P. Senthil Kumar, T. Sellis, P. Papotti, S. Adali, J.R. Verbus, et al.  
+  L. Garcia-Pueyo, P. Tsaparas, P. Senthil Kumar, T. Sellis, P. Papotti, S. Adali, G. Manco, T. Trufinescu, G. Ranade, J.R. Verbus, M.N. Tek, A. McCosker  
   *ACM International Conference on Web Search and Data Mining (WSDM)*  
   [Paper](https://dl.acm.org/doi/abs/10.1145/3539597.3572704)
 
