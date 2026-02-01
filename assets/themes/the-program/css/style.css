@@ -599,6 +599,10 @@ pre {
 .the-header .nav-global {
   text-transform: uppercase;
 }
+.the-header .nav-global li.active a {
+  background-color: #fff04a;
+  color: #474747;
+}
 .the-header .nav-global .logo {
   text-transform: none;
 }
