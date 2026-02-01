@@ -89,6 +89,25 @@ a:hover,
 a:active {
   outline: 0;
 }
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 12px;
+  padding: 8px 12px;
+  background: #073642;
+  color: #fff;
+  z-index: 1000;
+  display: inline-block;
+}
 /*
 Typography from [HTML5 Boilerplate](http://j.mp/rP0wmY)
 
