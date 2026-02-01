@@ -27,6 +27,8 @@ author :
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
 production_url : https://jverbus.github.io
+url: https://jverbus.github.io
+baseurl: ""
 
 plugins: ["jekyll-sitemap"]
 

@@ -9,17 +9,17 @@
 	<meta name="description" content="{{ page_description }}">
 	
 	<!-- Canonical URL -->
-	<link rel="canonical" href="{{ site.production_url }}{{ page.url }}">
+	<link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
 	
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
-	<meta property="og:url" content="{{ site.production_url }}{{ page.url }}">
+	<meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
 	<meta property="og:title" content="{{ page.title }}">
 	<meta property="og:description" content="{{ page_description }}">
 	<meta property="og:site_name" content="{{ site.title }}">
 	{% assign og_image = page.og_image | default: page.image | default: site.default_og_image %}
 	{% if og_image %}
-	<meta property="og:image" content="{{ site.production_url }}{{ og_image }}">
+	<meta property="og:image" content="{{ site.url }}{{ site.baseurl }}{{ og_image }}">
 	<meta property="og:image:alt" content="{{ page.title }}">
 	{% endif %}
 	{% if page.layout == 'post' %}
@@ -34,7 +34,7 @@
 	<meta name="twitter:title" content="{{ page.title }}">
 	<meta name="twitter:description" content="{{ page_description }}">
 	{% if og_image %}
-	<meta name="twitter:image" content="{{ site.production_url }}{{ og_image }}">
+	<meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}{{ og_image }}">
 	{% endif %}
 	
 	<!-- Additional SEO -->
@@ -54,20 +54,20 @@
 		"author": {
 			"@type": "Person",
 			"name": "{{ site.author.name }}",
-			"url": "{{ site.production_url }}/about/"
+			"url": "{{ site.url }}{{ site.baseurl }}/about/"
 		},
 		"publisher": {
 			"@type": "Person",
 			"name": "{{ site.author.name }}",
-			"url": "{{ site.production_url }}"
+			"url": "{{ site.url }}{{ site.baseurl }}"
 		},
 		"mainEntityOfPage": {
 			"@type": "WebPage",
-			"@id": "{{ site.production_url }}{{ page.url }}"
+			"@id": "{{ site.url }}{{ site.baseurl }}{{ page.url }}"
 		},
-		"url": "{{ site.production_url }}{{ page.url }}"
+		"url": "{{ site.url }}{{ site.baseurl }}{{ page.url }}"
 		{% if og_image %},
-		"image": "{{ site.production_url }}{{ og_image }}"
+		"image": "{{ site.url }}{{ site.baseurl }}{{ og_image }}"
 		{% endif %}
 		{% if page.tags %},
 		"keywords": "{{ page.tags | join: ', ' }}"
@@ -80,7 +80,7 @@
 		"@context": "https://schema.org",
 		"@type": "Person",
 		"name": "{{ site.author.name }}",
-		"url": "{{ site.production_url }}/about/",
+		"url": "{{ site.url }}{{ site.baseurl }}/about/",
 		"jobTitle": "Senior Staff Software Engineer",
 		"worksFor": {
 			"@type": "Organization",
@@ -105,7 +105,7 @@
 		"@context": "https://schema.org",
 		"@type": "WebSite",
 		"name": "{{ site.title }}",
-		"url": "{{ site.production_url }}",
+		"url": "{{ site.url }}{{ site.baseurl }}",
 		"author": {
 			"@type": "Person",
 			"name": "{{ site.author.name }}"
