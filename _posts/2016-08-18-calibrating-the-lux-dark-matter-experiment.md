@@ -10,7 +10,7 @@ tags: [physics, astrophysics, dark matter, D-D neutron generator, Brown Universi
 ## My Ph.D. work on the LUX Dark Matter Experiment
 
 Dark matter comprises five-sixths of the mass of the universe, but--despite significant effort by the global physics community over the past 30 years--it has yet to be directly observed.
-The [Large Underground Xenon (LUX)](http://lux.brown.edu/LUX_dark_matter/Home.html) dark matter experiment is a particle detector with a 1/3 tonne liquid xenon target located one mile underground at the Sanford Underground Research Facility in Lead, SD.
+The [Large Underground Xenon (LUX)](https://lux.brown.edu/LUX_dark_matter/Home.html) dark matter experiment is a particle detector with a 1/3 tonne liquid xenon target located one mile underground at the Sanford Underground Research Facility in Lead, SD.
 The LUX experiment is currently the world's most sensitive experiment searching for a theoretically favored form of dark matter called Weakly Interacting Massive Particles (WIMPs).
 It is critical to understand and calibrate the response of the detector to demonstrate that WIMP signals would be visible in the data.
 
@@ -29,8 +29,8 @@ You can read the technical details in two academic papers based upon my Ph.D. th
 
 ## Links to news articles about my Ph.D. thesis work 
 
-- [http://phys.org/news/2014-02-lux-dark-results.html](http://phys.org/news/2014-02-lux-dark-results.html)
-- [http://www.redorbit.com/news/space/1113077219/dark-matter-results-confirmed-no-evidence-of-wimps-yet-022114/](http://www.redorbit.com/news/space/1113077219/dark-matter-results-confirmed-no-evidence-of-wimps-yet-022114/)
-- [http://www.browndailyherald.com/2014/03/05/research-moves-toward-detection-dark-matter-particles/](http://www.browndailyherald.com/2014/03/05/research-moves-toward-detection-dark-matter-particles/)
-- [http://www.adelphitech.com/search-for-dark-matter.html](http://www.adelphitech.com/search-for-dark-matter.html)
-- [http://www.mitchellrepublic.com/content/dark-matter-lab-moves-underground-south-dakota](http://www.mitchellrepublic.com/content/dark-matter-lab-moves-underground-south-dakota)
+- [https://phys.org/news/2014-02-lux-dark-results.html](https://phys.org/news/2014-02-lux-dark-results.html)
+- [https://www.redorbit.com/news/space/1113077219/dark-matter-results-confirmed-no-evidence-of-wimps-yet-022114/](https://www.redorbit.com/news/space/1113077219/dark-matter-results-confirmed-no-evidence-of-wimps-yet-022114/)
+- [https://www.browndailyherald.com/2014/03/05/research-moves-toward-detection-dark-matter-particles/](https://www.browndailyherald.com/2014/03/05/research-moves-toward-detection-dark-matter-particles/)
+- [https://www.adelphitech.com/search-for-dark-matter.html](https://www.adelphitech.com/search-for-dark-matter.html)
+- [https://www.mitchellrepublic.com/content/dark-matter-lab-moves-underground-south-dakota](https://www.mitchellrepublic.com/content/dark-matter-lab-moves-underground-south-dakota)

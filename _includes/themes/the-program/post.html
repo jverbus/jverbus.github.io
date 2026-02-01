@@ -15,11 +15,11 @@
 					<div class="meta">
 						<p class="date-publish">
 							Published: 
-							<date class="date-pub" title="{{ page.date | date_to_xmlschema }}" datetime="{{ page.date | date_to_xmlschema }}" pubdate>
+							<time class="date-pub" title="{{ page.date | date_to_xmlschema }}" datetime="{{ page.date | date_to_xmlschema }}">
 							<span class="month"><abbr>{{ page.date | date: '%B' }}</abbr></span>
 							<span class="day">{{ page.date | date: '%d' }}</span>
 							<span class="year">{{ page.date | date: '%Y' }}</span>
-							</date>
+							</time>
 						</p>
 						<ul class="list-category list-linear">
 							<li class="list-head">category: </li>

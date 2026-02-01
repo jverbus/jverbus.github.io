@@ -5,7 +5,14 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>{% if page.title == site.title %}{{ site.title }}{% else %}{{ page.title }} | {{ site.title }}{% endif %}</title>
 	<meta name="author" content="{{ site.author.name }}">
-	{% assign page_description = page.description | default: site.tagline | default: "Personal website of James Verbus - Senior Staff Software Engineer at LinkedIn, working on AI for Trust." %}
+	{% assign page_description = page.description %}
+	{% if page_description == nil or page_description == "" %}
+		{% if page.layout == 'post' and page.excerpt %}
+			{% assign page_description = page.excerpt | strip_html | normalize_whitespace | truncate: 160 %}
+		{% else %}
+			{% assign page_description = site.tagline | default: "Personal website of James Verbus - Senior Staff Software Engineer at LinkedIn, working on AI for Trust." %}
+		{% endif %}
+	{% endif %}
 	<meta name="description" content="{{ page_description }}">
 	
 	<!-- Canonical URL -->
