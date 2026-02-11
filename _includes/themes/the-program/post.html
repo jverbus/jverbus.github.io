@@ -8,6 +8,9 @@
 						<p class="post-date">
 							<time title="{{ page.date | date_to_xmlschema }}" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
 						</p>
+						{% if page.description %}
+						<p class="post-summary">{{ page.description }}</p>
+						{% endif %}
 					</div><!-- unit-inner -->
 				</div><!-- unit-head -->
 			</header>

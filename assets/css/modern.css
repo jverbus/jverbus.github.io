@@ -444,13 +444,86 @@ video {
 }
 
 .post-header {
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-3);
 }
 
 .post-date {
   margin: var(--space-2) 0 0;
   color: var(--text-muted);
   font-size: 0.9rem;
+}
+
+.post-summary {
+  margin: var(--space-3) 0 0;
+  color: var(--text-muted);
+  font-size: 1.03rem;
+  line-height: 1.65;
+  max-width: 64ch;
+}
+
+.layout-post .entry-content p,
+.layout-post .entry-content ul,
+.layout-post .entry-content ol,
+.layout-post .entry-content blockquote,
+.layout-post .entry-content pre,
+.layout-post .entry-content table {
+  max-width: 68ch;
+}
+
+.layout-post .entry-content > h2,
+.layout-post .entry-content > h3,
+.layout-post .entry-content > h4 {
+  margin-top: var(--space-10);
+}
+
+.layout-post .entry-content hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: var(--space-10) 0;
+}
+
+.layout-post .entry-content blockquote {
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-left: 3px solid #8aa4cf;
+  border-radius: 8px;
+  padding: 0.65rem 0.9rem;
+}
+
+.layout-post .entry-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.layout-post .entry-content ul,
+.layout-post .entry-content ol {
+  padding-left: 1.25rem;
+}
+
+.layout-post .entry-content li::marker {
+  color: #94a3b8;
+}
+
+.layout-post .pagination ul {
+  margin-top: var(--space-10);
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-4);
+}
+
+.layout-post .pagination a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.34rem 0.62rem;
+  text-decoration: none;
+  color: var(--text-muted);
+}
+
+.layout-post .pagination a:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+  background: var(--surface-muted);
 }
 
 .layout-page .unit-article header {
