@@ -66,7 +66,7 @@ For a complete publication list (>30 papers, >10k citations), see [Google Schola
 
 ### Ph.D. thesis
 
-- **Calibration of the LUX Dark Matter Experiment** (2016)  
+- **An Absolute Calibration of Sub-1 keV Nuclear Recoils in Liquid Xenon Using D-D Neutron Scattering Kinematics in the LUX Detector** (2016)  
   J.R. Verbus  
   *Ph.D. Thesis, Brown University*  
   [Brown Digital Repository](https://repository.library.brown.edu/studio/item/bdr:674209/)
