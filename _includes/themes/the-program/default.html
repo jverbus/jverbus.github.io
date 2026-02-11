@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="color-scheme" content="light dark">
 	<title>{% if page.title == site.title %}{{ site.title }}{% else %}{{ page.title }} | {{ site.title }}{% endif %}</title>
 	<meta name="author" content="{{ site.author.name }}">
 	{% assign page_description = page.description %}
@@ -123,7 +124,7 @@
 	
 	<meta name="theme-color" content="#0f172a">
 	<link rel="icon" type="image/x-icon" href="/favicon.ico">
-	<link href="{{ site.baseurl }}/assets/css/modern.css?v=loop4" rel="stylesheet" media="all">
+	<link href="{{ site.baseurl }}/assets/css/modern.css?v=loop5" rel="stylesheet" media="all">
 	<link href="https://feeds.feedburner.com/{{ site.author.feedburner }}" rel="alternate" title="{{ site.title }}" type="application/atom+xml">
 </head>
 <body class="layout-{{ page.layout | default: 'page' }}">

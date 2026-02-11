@@ -4,6 +4,8 @@
  */
 
 :root {
+  color-scheme: light dark;
+
   --bg: #fbfcfe;
   --surface: #ffffff;
   --surface-muted: #f5f7fb;
@@ -50,6 +52,8 @@ body {
   font-family: var(--font-sans);
   line-height: 1.72;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
@@ -487,6 +491,49 @@ video {
 
   .post-list-title {
     font-size: 1.05rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media print {
+  :root {
+    --bg: #fff;
+    --text: #000;
+    --text-muted: #111;
+    --border: #ddd;
+  }
+
+  .the-header,
+  .the-footer,
+  .gotop,
+  .skip-link {
+    display: none !important;
+  }
+
+  .body {
+    padding: 0;
+    min-height: auto;
+  }
+
+  .entry-content {
+    max-width: 100%;
+  }
+
+  a {
+    color: #000;
+    text-decoration: underline;
   }
 }
 
