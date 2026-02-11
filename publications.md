@@ -5,9 +5,11 @@ description: "Publications by James Verbus including AI/ML research papers on de
 ---
 {% include JB/setup %}
 
-For a complete list (>30 publications with >10k citations), see my [Google Scholar](https://scholar.google.com/citations?user=_ksEziAAAAAJ&sortby=pubdate).
+For a complete publication list (>30 papers, >10k citations), see [Google Scholar](https://scholar.google.com/citations?user=_ksEziAAAAAJ&sortby=pubdate).
 
-## AI & Machine Learning — Selected Papers
+## AI & Machine Learning
+
+### Selected papers
 
 - **Finding AI-Generated Faces in the Wild** (2024)  
   G.J. Aniano Porcile, J. Gindi, S. Mundra, J.R. Verbus, H. Farid  
@@ -41,7 +43,7 @@ For a complete list (>30 publications with >10k citations), see my [Google Schol
   US Patent 11,936,682  
   [Patent](https://patents.google.com/patent/US11936682B2)
 
-## LinkedIn Engineering Blog
+## LinkedIn Engineering
 
 - [Announcing ONNX Support in LinkedIn's Open Source Isolation Forest](https://www.linkedin.com/pulse/announcing-onnx-support-linkedins-open-source-isolation-james-verbus-paoqe/) (2024)
 - [Finding AI-Generated (Deepfake) Faces in the Wild](https://www.linkedin.com/blog/engineering/trust-and-safety/finding-ai-generated-deepfake-faces-in-the-wild) (2024)
@@ -49,7 +51,7 @@ For a complete list (>30 publications with >10k citations), see my [Google Schol
 - [Using Deep Learning to Detect Abusive Sequences of Member Activity](https://www.linkedin.com/blog/engineering/trust-and-safety/using-deep-learning-to-detect-abusive-sequences-of-member-activi) (2021)
 - [Open Sourcing Isolation Forest](https://www.linkedin.com/blog/engineering/data-management/isolation-forest) (2019)
 
-## Physics — Selected Papers
+## Physics
 
 - **Proposed low-energy absolute calibration of nuclear recoils in a dual-phase noble element TPC using D-D neutron scattering kinematics** (2017)  
   J.R. Verbus, C.A. Rhyne, D.C. Malling, et al.  
@@ -60,7 +62,7 @@ For a complete list (>30 publications with >10k citations), see my [Google Schol
   LUX Collaboration (Corresponding Author: J.R. Verbus)  
   [arXiv:1608.05381](https://arxiv.org/abs/1608.05381)
 
-## Ph.D. Thesis
+## Ph.D. thesis
 
 - **Calibration of the LUX Dark Matter Experiment** (2016)  
   J.R. Verbus  
