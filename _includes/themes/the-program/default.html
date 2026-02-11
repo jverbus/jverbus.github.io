@@ -121,11 +121,12 @@
 	</script>
 	{% endif %}
 	
+	<meta name="theme-color" content="#0f172a">
 	<link rel="icon" type="image/x-icon" href="/favicon.ico">
-	<link href="{{ site.baseurl }}/assets/css/modern.css?v=loop1" rel="stylesheet" media="all">
-	<link href="https://feeds.feedburner.com/{{ site.author.feedburner }}" rel="alternate" title="{{ page.title }}" type="application/atom+xml">
+	<link href="{{ site.baseurl }}/assets/css/modern.css?v=loop2" rel="stylesheet" media="all">
+	<link href="https://feeds.feedburner.com/{{ site.author.feedburner }}" rel="alternate" title="{{ site.title }}" type="application/atom+xml">
 </head>
-<body>
+<body class="layout-{{ page.layout | default: 'page' }}">
 
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <div id="page" class="hentry">
@@ -135,9 +136,9 @@
 				<nav class="nav-global" aria-label="Primary">
 					<ul>
 						<li class="logo"><a href="/">{{ site.title }}</a></li>
-						<li class="posts{% if page.url == '/' or page.url == '/index.html' or page.layout == 'post' %} active{% endif %}"><a href="/">posts</a></li>
-						<li class="publications{% if page.url == '/publications/' or page.url == '/publications.html' %} active{% endif %}"><a href="/publications/">publications</a></li>
-						<li class="about{% if page.url == '/about/' or page.url == '/about.html' %} active{% endif %}"><a href="/about/">about</a></li>
+						<li class="posts{% if page.url == '/' or page.url == '/index.html' or page.layout == 'post' %} active{% endif %}"><a href="/"{% if page.url == '/' or page.url == '/index.html' or page.layout == 'post' %} aria-current="page"{% endif %}>Posts</a></li>
+						<li class="publications{% if page.url == '/publications/' or page.url == '/publications.html' %} active{% endif %}"><a href="/publications/"{% if page.url == '/publications/' or page.url == '/publications.html' %} aria-current="page"{% endif %}>Publications</a></li>
+						<li class="about{% if page.url == '/about/' or page.url == '/about.html' %} active{% endif %}"><a href="/about/"{% if page.url == '/about/' or page.url == '/about.html' %} aria-current="page"{% endif %}>About</a></li>
 					</ul>
 				</nav>
 			</div><!-- unit-inner -->
@@ -152,8 +153,13 @@
 			</div><!-- unit-inner -->
 		</div><!-- unit-body -->
 	</main><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-inner unit-foot-inner">
+			<p class="footer-meta">© {{ site.time | date: "%Y" }} {{ site.author.name }} · <a href="https://github.com/{{ site.author.github }}">GitHub</a> · <a href="/atom.xml">Atom</a></p>
+		</div>
+	</footer>
 </div><!-- page -->
-  
-  {% include JB/analytics %}
+
+{% include JB/analytics %}
 </body>
 </html>
