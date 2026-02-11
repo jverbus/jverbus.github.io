@@ -21,4 +21,4 @@ description: "Personal website of James Verbus - Senior Staff Software Engineer 
   {% endfor %}
 </div>
 
-<p class="home-archive-link"><a href="/archive.html">View all posts</a></p>
+<p class="home-archive-link"><a href="/archive/">View all posts</a></p>
