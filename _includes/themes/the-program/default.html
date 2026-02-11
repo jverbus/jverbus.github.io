@@ -124,10 +124,10 @@
 	
 	<meta name="theme-color" content="#0f172a">
 	<link rel="icon" type="image/x-icon" href="/favicon.ico">
-	<link href="{{ site.baseurl }}/assets/css/modern.css?v=loop12" rel="stylesheet" media="all">
+	<link href="{{ site.baseurl }}/assets/css/modern.css?v=loop13" rel="stylesheet" media="all">
 	<link href="https://feeds.feedburner.com/{{ site.author.feedburner }}" rel="alternate" title="{{ site.title }}" type="application/atom+xml">
 </head>
-<body class="layout-{{ page.layout | default: 'page' }}">
+<body class="layout-{{ page.layout | default: 'page' }} page-{{ page.title | default: 'site' | slugify }}{% if page.url == '/' or page.url == '/index.html' %} page-home{% endif %}">
 
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <div id="page" class="hentry">

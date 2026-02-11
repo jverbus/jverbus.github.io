@@ -552,6 +552,38 @@ video {
   margin-bottom: 0.55rem;
 }
 
+.page-publications .entry-content > ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: var(--space-8);
+  display: grid;
+  gap: var(--space-3);
+}
+
+.page-publications .entry-content > ul > li {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+  padding: 0.85rem 0.95rem;
+  margin-bottom: 0;
+}
+
+.page-publications .entry-content > ul > li strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--heading);
+}
+
+.page-publications .entry-content > h2 {
+  margin-top: var(--space-12);
+}
+
+.page-publications .entry-content > h3 {
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-3);
+}
+
 @media (max-width: 760px) {
   html {
     font-size: 15.8px;
