@@ -106,6 +106,7 @@ button:focus-visible {
   backdrop-filter: saturate(180%) blur(12px);
   background: rgba(251, 252, 254, 0.88);
   border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04);
 }
 
 .unit-head-inner,
@@ -137,30 +138,42 @@ button:focus-visible {
 }
 
 .nav-global li:not(.logo) a {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-size: 0.92rem;
-  font-weight: 500;
+  font-weight: 550;
   color: var(--text-muted);
   border: 1px solid transparent;
   border-radius: 999px;
   padding: 0.34rem 0.72rem;
-  transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease;
+  transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease, transform 120ms ease;
   text-decoration: none;
 }
 
 .nav-global li:not(.logo) a:hover {
   color: var(--text);
   border-color: var(--border);
-  background: rgba(17, 24, 39, 0.03);
+  background: rgba(17, 24, 39, 0.04);
   text-decoration: none;
+  transform: translateY(-0.5px);
 }
 
 .nav-global li.active a {
   color: var(--text);
-  border-color: var(--border-strong);
-  background: #fff;
+  border-color: #b8cae9;
+  background: #f7fbff;
+}
+
+.nav-global li.active a::before {
+  content: "";
+  width: 0.34rem;
+  height: 0.34rem;
+  border-radius: 999px;
+  background: var(--accent);
+  margin-right: 0.42rem;
+  opacity: 0.9;
 }
 
 .body {
@@ -674,10 +687,20 @@ video {
 
   .the-header {
     background: rgba(11, 15, 25, 0.9);
+    box-shadow: 0 1px 0 rgba(148, 163, 184, 0.08);
+  }
+
+  .nav-global li:not(.logo) a:hover {
+    background: rgba(148, 163, 184, 0.08);
   }
 
   .nav-global li.active a {
-    background: #0f172a;
+    background: rgba(96, 165, 250, 0.12);
+    border-color: #3b82f6;
+  }
+
+  .nav-global li.active a::before {
+    background: #93c5fd;
   }
 
   p code,
