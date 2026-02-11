@@ -53,6 +53,8 @@ For a complete publication list (>30 papers, >10k citations), see [Google Schola
 
 ## Physics
 
+### Selected publications
+
 - **Proposed low-energy absolute calibration of nuclear recoils in a dual-phase noble element TPC using D-D neutron scattering kinematics** (2017)  
   J.R. Verbus, C.A. Rhyne, D.C. Malling, et al.  
   *Nuclear Instruments and Methods A*  
@@ -62,7 +64,7 @@ For a complete publication list (>30 papers, >10k citations), see [Google Schola
   LUX Collaboration (Corresponding Author: J.R. Verbus)  
   [arXiv:1608.05381](https://arxiv.org/abs/1608.05381)
 
-## Ph.D. thesis
+### Ph.D. thesis
 
 - **Calibration of the LUX Dark Matter Experiment** (2016)  
   J.R. Verbus  
