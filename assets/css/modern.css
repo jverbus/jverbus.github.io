@@ -545,7 +545,7 @@ video {
     --surface-muted: #111c32;
     --text: #e5e7eb;
     --text-muted: #a9b2c3;
-    --heading: #f8fafc;
+    --heading: #dbe3f0;
     --border: #233046;
     --border-strong: #31415f;
     --accent: #60a5fa;
@@ -576,6 +576,6 @@ video {
 
   .layout-page .entry-content > p:first-of-type,
   .layout-page .entry-content > h3 {
-    color: #cbd5e1;
+    color: #b9c5d8;
   }
 }
