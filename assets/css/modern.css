@@ -459,10 +459,21 @@ video {
   transition: transform 160ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
+.post-list-item.card-clickable,
+.page-publications .entry-content > ul > li.card-clickable {
+  cursor: pointer;
+}
+
 .post-list-item:hover {
   transform: translateY(-1.5px);
   border-color: #dce5f0;
   box-shadow: 0 9px 20px rgba(15, 23, 42, 0.08);
+}
+
+.post-list-item.card-clickable:focus-within,
+.page-publications .entry-content > ul > li.card-clickable:focus-within {
+  border-color: #cedcef;
+  box-shadow: 0 0 0 3px rgba(21, 93, 185, 0.18), 0 9px 20px rgba(15, 23, 42, 0.08);
 }
 
 .post-list-date {
@@ -824,6 +835,12 @@ video {
   .post-list-item:hover {
     border-color: #3a4f71;
     box-shadow: 0 8px 18px rgba(2, 6, 23, 0.45);
+  }
+
+  .post-list-item.card-clickable:focus-within,
+  .page-publications .entry-content > ul > li.card-clickable:focus-within {
+    border-color: #4f6b95;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.26), 0 8px 18px rgba(2, 6, 23, 0.45);
   }
 
   .page-publications .entry-content > ul > li {

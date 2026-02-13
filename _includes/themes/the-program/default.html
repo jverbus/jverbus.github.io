@@ -124,7 +124,7 @@
 	
 	<meta name="theme-color" content="#0f172a">
 	<link rel="icon" type="image/x-icon" href="/favicon.ico">
-	<link href="{{ site.baseurl }}/assets/css/modern.css?v=loop16" rel="stylesheet" media="all">
+	<link href="{{ site.baseurl }}/assets/css/modern.css?v=loop17" rel="stylesheet" media="all">
 	<link href="https://feeds.feedburner.com/{{ site.author.feedburner }}" rel="alternate" title="{{ site.title }}" type="application/atom+xml">
 </head>
 <body class="layout-{{ page.layout | default: 'page' }} page-{{ page.title | default: 'site' | slugify }}{% if page.url == '/' or page.url == '/index.html' %} page-home{% endif %}">
@@ -161,6 +161,74 @@
 	</footer>
 </div><!-- page -->
 
+<script>
+(function () {
+	var cardSelector = ".post-list-item, .page-publications .entry-content > ul > li";
+	var interactiveSelector = "a, button, input, select, textarea, summary, [role='button'], [role='link']";
+	var cards = document.querySelectorAll(cardSelector);
+
+	function hasSelectedText() {
+		var selection = window.getSelection && window.getSelection();
+		return selection && selection.toString().trim().length > 0;
+	}
+
+	function openPrimaryLink(link, event) {
+		var href = link.href;
+		if (!href || event.altKey) {
+			return;
+		}
+
+		if (event.metaKey || event.ctrlKey || event.button === 1) {
+			window.open(href, "_blank", "noopener");
+			return;
+		}
+
+		if (event.shiftKey || link.target === "_blank") {
+			window.open(href, "_blank", "noopener");
+			return;
+		}
+
+		window.location.href = href;
+	}
+
+	cards.forEach(function (card) {
+		var primaryLink = card.querySelector("a[href]");
+		if (!primaryLink) {
+			return;
+		}
+
+		card.classList.add("card-clickable");
+
+		function handleCardClick(event) {
+			var target = event.target;
+			if (event.defaultPrevented || hasSelectedText()) {
+				return;
+			}
+
+			if (target && target.nodeType !== 1) {
+				target = target.parentElement;
+			}
+
+			if (target && target.closest(interactiveSelector)) {
+				return;
+			}
+
+			if (event.type === "click" && event.button !== 0) {
+				return;
+			}
+
+			if (event.type === "auxclick" && event.button !== 1) {
+				return;
+			}
+
+			openPrimaryLink(primaryLink, event);
+		}
+
+		card.addEventListener("click", handleCardClick);
+		card.addEventListener("auxclick", handleCardClick);
+	});
+})();
+</script>
 {% include JB/analytics %}
 </body>
 </html>
