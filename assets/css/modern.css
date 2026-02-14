@@ -659,6 +659,22 @@ video {
   color: var(--text-muted);
 }
 
+.post-list-item a,
+.page-publications .entry-content > ul > li a {
+  color: inherit;
+}
+
+.post-list-item a:hover,
+.post-list-item a:visited,
+.post-list-item a:focus,
+.post-list-item a:active,
+.page-publications .entry-content > ul > li a:hover,
+.page-publications .entry-content > ul > li a:visited,
+.page-publications .entry-content > ul > li a:focus,
+.page-publications .entry-content > ul > li a:active {
+  color: inherit;
+}
+
 .page-publications .entry-content > h2 {
   margin-top: var(--space-12);
 }
