@@ -5,11 +5,7 @@ description: "Publications by James Verbus including AI/ML research papers on de
 ---
 {% include JB/setup %}
 
-For a complete publication list (>30 papers, >10k citations), see [Google Scholar](https://scholar.google.com/citations?user=_ksEziAAAAAJ&sortby=pubdate).
-
-## AI & Machine Learning
-
-### Selected papers
+For a complete publication list (>30 papers, >10k citations), see [Google Scholar](https://scholar.google.com/citations?user=_ksEziAAAAAJ&sortby=pubdate). Selected publications below.
 
 - **Finding AI-Generated Faces in the Wild** (2024)  
   G.J. Aniano Porcile, J. Gindi, S. Mundra, J.R. Verbus, H. Farid  
@@ -25,6 +21,22 @@ For a complete publication list (>30 papers, >10k citations), see [Google Schola
   L. Garcia-Pueyo, P. Tsaparas, P. Senthil Kumar, T. Sellis, P. Papotti, S. Adali, G. Manco, T. Trufinescu, G. Ranade, J.R. Verbus, M.N. Tek, A. McCosker  
   *ACM International Conference on Web Search and Data Mining (WSDM)*  
   [Paper](https://dl.acm.org/doi/abs/10.1145/3539597.3572704)
+
+- **Proposed low-energy absolute calibration of nuclear recoils in a dual-phase noble element TPC using D-D neutron scattering kinematics** (2017)  
+  J.R. Verbus, C.A. Rhyne, D.C. Malling, et al.  
+  *Nuclear Instruments and Methods A*  
+  [arXiv:1608.05309](https://arxiv.org/abs/1608.05309)
+
+- **Low-energy (0.7-74 keV) nuclear recoil calibration of the LUX dark matter experiment using D-D neutron scattering kinematics** (2016)  
+  LUX Collaboration (Corresponding Author: J.R. Verbus)  
+  [arXiv:1608.05381](https://arxiv.org/abs/1608.05381)
+
+### Ph.D. thesis
+
+- **An Absolute Calibration of Sub-1 keV Nuclear Recoils in Liquid Xenon Using D-D Neutron Scattering Kinematics in the LUX Detector** (2016)  
+  J.R. Verbus  
+  *Ph.D. Thesis, Brown University*  
+  [Brown Digital Repository](https://repository.library.brown.edu/studio/item/bdr:674209/)
 
 ## Patents
 
@@ -50,23 +62,3 @@ For a complete publication list (>30 papers, >10k citations), see [Google Schola
 - [New Approaches for Detecting AI-Generated Profile Photos](https://www.linkedin.com/blog/engineering/trust-and-safety/new-approaches-for-detecting-ai-generated-profile-photos) (2023)
 - [Using Deep Learning to Detect Abusive Sequences of Member Activity](https://www.linkedin.com/blog/engineering/trust-and-safety/using-deep-learning-to-detect-abusive-sequences-of-member-activi) (2021)
 - [Open Sourcing Isolation Forest](https://www.linkedin.com/blog/engineering/data-management/isolation-forest) (2019)
-
-## Physics
-
-### Selected publications
-
-- **Proposed low-energy absolute calibration of nuclear recoils in a dual-phase noble element TPC using D-D neutron scattering kinematics** (2017)  
-  J.R. Verbus, C.A. Rhyne, D.C. Malling, et al.  
-  *Nuclear Instruments and Methods A*  
-  [arXiv:1608.05309](https://arxiv.org/abs/1608.05309)
-
-- **Low-energy (0.7-74 keV) nuclear recoil calibration of the LUX dark matter experiment using D-D neutron scattering kinematics** (2016)  
-  LUX Collaboration (Corresponding Author: J.R. Verbus)  
-  [arXiv:1608.05381](https://arxiv.org/abs/1608.05381)
-
-### Ph.D. thesis
-
-- **An Absolute Calibration of Sub-1 keV Nuclear Recoils in Liquid Xenon Using D-D Neutron Scattering Kinematics in the LUX Detector** (2016)  
-  J.R. Verbus  
-  *Ph.D. Thesis, Brown University*  
-  [Brown Digital Repository](https://repository.library.brown.edu/studio/item/bdr:674209/)
