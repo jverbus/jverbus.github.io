@@ -2,7 +2,7 @@
 layout: post
 title: "Announcing ONNX Support in Isolation Forest"
 description: "LinkedIn's open-source isolation forest library now supports ONNX export, enabling deployment beyond Spark for streaming and edge inference applications."
-category: AI and Machine Learning
+categories: ["AI and Machine Learning"]
 tags: [LinkedIn, machine learning, isolation forest, ONNX, open source]
 ---
 {% include JB/setup %}

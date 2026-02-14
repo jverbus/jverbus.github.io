@@ -2,7 +2,7 @@
 layout: post
 title: "Finding AI-Generated Faces in the Wild"
 description: "A top-performing approach for detecting both GAN- and diffusion-generated faces in the wild."
-category: AI and Machine Learning
+categories: ["AI and Machine Learning"]
 tags: [LinkedIn, machine learning, AI, Generative AI, deepfake]
 ---
 {% include JB/setup %}

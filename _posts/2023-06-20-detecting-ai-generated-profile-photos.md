@@ -2,7 +2,7 @@
 layout: post
 title: "Detecting AI-Generated Profile Photos"
 description: "A novel technique for the effective detection of AI-generated profile photos."
-category: AI and Machine Learning
+categories: ["AI and Machine Learning"]
 tags: [LinkedIn, machine learning, AI, Generative AI, deepfake]
 ---
 {% include JB/setup %}

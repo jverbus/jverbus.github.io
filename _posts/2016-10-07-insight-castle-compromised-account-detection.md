@@ -2,7 +2,7 @@
 layout: post
 title: "Detection of unusual travel patterns to prevent user account compromise"
 description: "Consulting project at Insight Data Science"
-category: Data Science Projects 
+categories: ["Data Science Projects"]
 tags: [Insight Data Science, Castle.io, consulting, fraud, account compromise, anomaly detection, outlier detection, unsupervised learning, likelihood]
 ---
 {% include JB/setup %}

@@ -46,7 +46,7 @@
 	{% endif %}
 	
 	<!-- Additional SEO -->
-	<meta name="robots" content="index, follow">
+	<meta name="robots" content="{{ page.robots | default: 'index, follow' }}">
 	{% if page.tags %}<meta name="keywords" content="{{ page.tags | join: ', ' }}">{% endif %}
 	
 	<!-- JSON-LD Structured Data -->

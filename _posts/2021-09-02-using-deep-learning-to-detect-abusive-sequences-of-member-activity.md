@@ -2,7 +2,7 @@
 layout: post
 title: "Using deep learning to detect abusive sequences of member activity"
 description: "Using NLP techniques to classify sequences of user actions instead of sentences of words."
-category: AI and Machine Learning 
+categories: ["AI and Machine Learning"]
 tags: [LinkedIn, machine learning, AI, cybersecurity, NLP]
 ---
 {% include JB/setup %}
