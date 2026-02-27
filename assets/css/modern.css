@@ -626,6 +626,31 @@ video {
   display: block;
 }
 
+.project-hero {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 0.9rem;
+  align-items: center;
+  margin-bottom: var(--space-6);
+}
+
+.project-logo {
+  width: 120px;
+  max-width: 100%;
+  justify-self: start;
+}
+
+.project-hero-content .project-name {
+  margin: 0 0 0.35rem;
+  font-size: 1.08rem;
+  font-weight: 650;
+  color: var(--heading);
+}
+
+.project-hero-content .project-metrics {
+  margin-bottom: 0;
+}
+
 .page-publications .entry-content > ul {
   list-style: none;
   padding: 0;
@@ -697,13 +722,13 @@ video {
 
 .video-list-item {
   display: grid;
-  grid-template-columns: 116px minmax(0, 1fr);
-  gap: 0.95rem;
+  grid-template-columns: 152px minmax(0, 1fr);
+  gap: 1rem;
   align-items: start;
 }
 
 .video-list-thumb {
-  width: 116px;
+  width: 152px;
   aspect-ratio: 16 / 9;
   object-fit: cover;
   border-radius: 8px;
@@ -773,12 +798,12 @@ video {
   }
 
   .video-list-item {
-    grid-template-columns: 88px minmax(0, 1fr);
-    gap: 0.7rem;
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 0.75rem;
   }
 
   .video-list-thumb {
-    width: 88px;
+    width: 112px;
     border-radius: 7px;
   }
 
@@ -789,6 +814,19 @@ video {
   .video-list-content .post-list-description {
     font-size: 0.9rem;
     line-height: 1.45;
+  }
+
+  .project-hero {
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 0.7rem;
+  }
+
+  .project-logo {
+    width: 92px;
+  }
+
+  .project-hero-content .project-name {
+    font-size: 1rem;
   }
 }
 

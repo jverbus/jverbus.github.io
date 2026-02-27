@@ -9,12 +9,16 @@ Highlights from my open source work, centered on `linkedin/isolation-forest`, a 
 
 ## isolation-forest
 
-<p class="project-metrics">
-  <a href="https://github.com/linkedin/isolation-forest"><img src="https://img.shields.io/github/stars/linkedin/isolation-forest?style=flat-square&label=GitHub%20Stars" alt="GitHub stars for linkedin/isolation-forest"></a>
-  <a href="https://github.com/linkedin/isolation-forest/network/members"><img src="https://img.shields.io/github/forks/linkedin/isolation-forest?style=flat-square&label=Forks" alt="GitHub forks for linkedin/isolation-forest"></a>
-</p>
-
-![Isolation forest project diagram]({{ site.baseurl }}/assets/images/isolation_forest.svg)
+<div class="project-hero">
+  <img class="project-logo" src="{{ site.baseurl }}/assets/images/isolation_forest.svg" alt="Isolation forest project diagram">
+  <div class="project-hero-content">
+    <p class="project-name">isolation-forest</p>
+    <p class="project-metrics">
+      <a href="https://github.com/linkedin/isolation-forest"><img src="https://img.shields.io/github/stars/linkedin/isolation-forest?style=flat-square&label=GitHub%20Stars" alt="GitHub stars for linkedin/isolation-forest"></a>
+      <a href="https://github.com/linkedin/isolation-forest/network/members"><img src="https://img.shields.io/github/forks/linkedin/isolation-forest?style=flat-square&label=Forks" alt="GitHub forks for linkedin/isolation-forest"></a>
+    </p>
+  </div>
+</div>
 
 <div class="post-list" role="list">
   <article class="post-list-item" role="listitem">
@@ -64,12 +68,12 @@ Highlights from my open source work, centered on `linkedin/isolation-forest`, a 
 <div class="post-list" role="list">
   <article class="post-list-item" role="listitem">
     <p class="post-list-date">2020</p>
-    <h3 class="post-list-title"><a href="https://www.youtube.com/watch?v=sFRrFWYNAUI">Spark+AI Summit 2020: Preventing Abuse Using Unsupervised Learning</a></h3>
-    <p class="post-list-description">Detection of abusive activity on a large social network is an adversarial challenge with quickly evolving behavior patterns and imperfect ground truth labels. These characteristics limit the use of supervised learning techniques, but they can be overcome using unsupervised methods. To address these challenges, we created a Scala/Spark implementation of the isolation forest unsupervised outlier detection algorithm and recently open sourced this library (<a href="https://github.com/linkedin/isolation-forest">github.com/linkedin/isolation-forest</a>).</p>
+    <h3 class="post-list-title"><a href="https://www.youtube.com/watch?v=sFRrFWYNAUI">Spark+AI Summit: Preventing Abuse Using Unsupervised Learning</a></h3>
+    <p class="post-list-description">Detection of abusive activity on a large social network is an adversarial challenge with quickly evolving behavior patterns and imperfect ground truth labels. These characteristics limit the use of supervised learning techniques, but they can be overcome using unsupervised methods. To address these challenges, we created a Scala/Spark implementation of the isolation forest unsupervised outlier detection algorithm; we recently open sourced this library (<a href="https://github.com/linkedin/isolation-forest">github.com/linkedin/isolation-forest</a>).</p>
   </article>
   <article class="post-list-item" role="listitem">
     <p class="post-list-date">2019</p>
-    <h3 class="post-list-title"><a href="https://atscaleconference.com/videos/fighting-abuse-scale-2019-preventing-abuse-using-unsupervised-learning/">Fighting Abuse at Scale 2019 Session Page</a></h3>
-    <p class="post-list-description">Event session page for the related @Scale presentation on preventing abuse with unsupervised learning.</p>
+    <h3 class="post-list-title"><a href="https://atscaleconference.com/videos/fighting-abuse-scale-2019-preventing-abuse-using-unsupervised-learning/">Fighting Abuse @Scale: Preventing Abuse Using Unsupervised Learning</a></h3>
+    <p class="post-list-description">Detection of abusive activity on a large social network is an adversarial challenge with quickly evolving behavior patterns and imperfect ground truth labels. These characteristics limit the use of supervised learning techniques, but they can be overcome using unsupervised methods. To address these challenges, we created a Scala/Spark implementation of the isolation forest unsupervised outlier detection algorithm; we recently open sourced this library (<a href="https://github.com/linkedin/isolation-forest">github.com/linkedin/isolation-forest</a>).</p>
   </article>
 </div>
