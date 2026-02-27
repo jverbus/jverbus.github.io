@@ -659,6 +659,11 @@ video {
   gap: var(--space-3);
 }
 
+.page-publications .entry-content > .post-list {
+  max-width: 68ch;
+  margin-bottom: var(--space-8);
+}
+
 .page-publications .entry-content > ul > li {
   border: 1px solid #e8edf4;
   border-radius: 12px;
