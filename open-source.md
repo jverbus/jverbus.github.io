@@ -5,22 +5,22 @@ description: "Open source projects and related writing by James Verbus, includin
 ---
 {% include JB/setup %}
 
-Highlights from my open source work, centered on `linkedin/isolation-forest`.
+Highlights from my open source work, centered on `linkedin/isolation-forest`, a library I created.
 
 ## isolation-forest
 
 <p class="project-metrics">
   <a href="https://github.com/linkedin/isolation-forest"><img src="https://img.shields.io/github/stars/linkedin/isolation-forest?style=flat-square&label=GitHub%20Stars" alt="GitHub stars for linkedin/isolation-forest"></a>
   <a href="https://github.com/linkedin/isolation-forest/network/members"><img src="https://img.shields.io/github/forks/linkedin/isolation-forest?style=flat-square&label=Forks" alt="GitHub forks for linkedin/isolation-forest"></a>
-  <a href="https://github.com/linkedin/isolation-forest/releases"><img src="https://img.shields.io/github/v/release/linkedin/isolation-forest?style=flat-square&label=Latest%20Release" alt="Latest release for linkedin/isolation-forest"></a>
-  <a href="https://github.com/linkedin/isolation-forest/blob/master/LICENSE"><img src="https://img.shields.io/github/license/linkedin/isolation-forest?style=flat-square&label=License" alt="License for linkedin/isolation-forest"></a>
 </p>
+
+![Isolation forest project diagram]({{ site.baseurl }}/assets/images/isolation_forest.svg)
 
 <div class="post-list" role="list">
   <article class="post-list-item" role="listitem">
     <p class="post-list-date">Core Project</p>
     <h3 class="post-list-title"><a href="https://github.com/linkedin/isolation-forest">GitHub: linkedin/isolation-forest</a></h3>
-    <p class="post-list-description">Distributed Scala/Spark implementation of isolation forest for large-scale unsupervised anomaly detection.</p>
+    <p class="post-list-description">I created this distributed Scala/Spark isolation forest library for large-scale unsupervised anomaly detection.</p>
   </article>
   <article class="post-list-item" role="listitem">
     <p class="post-list-date">Artifacts</p>
@@ -63,13 +63,13 @@ Highlights from my open source work, centered on `linkedin/isolation-forest`.
 
 <div class="post-list" role="list">
   <article class="post-list-item" role="listitem">
-    <p class="post-list-date">Aug 13, 2019</p>
-    <h3 class="post-list-title"><a href="https://www.youtube.com/watch?v=sFRrFWYNAUI">Preventing Abuse Using Unsupervised Learning</a></h3>
-    <p class="post-list-description">Conference presentation on isolation forest and unsupervised abuse detection at scale.</p>
+    <p class="post-list-date">2020</p>
+    <h3 class="post-list-title"><a href="https://www.youtube.com/watch?v=sFRrFWYNAUI">Spark+AI Summit 2020: Preventing Abuse Using Unsupervised Learning</a></h3>
+    <p class="post-list-description">Detection of abusive activity on a large social network is an adversarial challenge with quickly evolving behavior patterns and imperfect ground truth labels. These characteristics limit the use of supervised learning techniques, but they can be overcome using unsupervised methods. To address these challenges, we created a Scala/Spark implementation of the isolation forest unsupervised outlier detection algorithm and recently open sourced this library (<a href="https://github.com/linkedin/isolation-forest">github.com/linkedin/isolation-forest</a>).</p>
   </article>
   <article class="post-list-item" role="listitem">
-    <p class="post-list-date">@Scale Conference 2019</p>
+    <p class="post-list-date">2019</p>
     <h3 class="post-list-title"><a href="https://atscaleconference.com/videos/fighting-abuse-scale-2019-preventing-abuse-using-unsupervised-learning/">Fighting Abuse at Scale 2019 Session Page</a></h3>
-    <p class="post-list-description">Event session listing for the same presentation.</p>
+    <p class="post-list-description">Event session page for the related @Scale presentation on preventing abuse with unsupervised learning.</p>
   </article>
 </div>
