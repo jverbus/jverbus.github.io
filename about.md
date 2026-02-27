@@ -5,6 +5,8 @@ description: "James Verbus - Senior Staff Software Engineer at LinkedIn working 
 ---
 {% include JB/setup %}
 
+![Thermosyphon assembly]({{ site.baseurl }}/assets/images/jverbus_thermosyphon_assembly.png)
+
 ## About Me
 
 I'm a Senior Staff Software Engineer at LinkedIn, working on AI for Trust (e.g., detecting fake accounts, automated bots, GenAI content). My work has led to multiple patents, research collaborations, and publications.
