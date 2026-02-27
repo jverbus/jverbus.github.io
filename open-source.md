@@ -5,7 +5,7 @@ description: "Open source projects and related writing by James Verbus, includin
 ---
 {% include JB/setup %}
 
-Highlights from my open source work, centered on `linkedin/isolation-forest`, a library I created.
+Highlights from my open source work, centered on `linkedin/isolation-forest`, the Spark/Scala implementation I built at LinkedIn and open sourced.
 
 ## isolation-forest
 
@@ -24,7 +24,7 @@ Highlights from my open source work, centered on `linkedin/isolation-forest`, a 
   <article class="post-list-item" role="listitem">
     <p class="post-list-date">Core Project</p>
     <h3 class="post-list-title"><a href="https://github.com/linkedin/isolation-forest">GitHub: linkedin/isolation-forest</a></h3>
-    <p class="post-list-description">I created this distributed Scala/Spark isolation forest library for large-scale unsupervised anomaly detection.</p>
+    <p class="post-list-description">I built and open sourced this distributed Scala/Spark isolation-forest implementation for large-scale unsupervised anomaly detection at LinkedIn.</p>
   </article>
   <article class="post-list-item" role="listitem">
     <p class="post-list-date">Artifacts</p>

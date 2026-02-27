@@ -38,6 +38,16 @@ For a complete publication list (>30 papers, >10k citations), see [Google Schola
   *Ph.D. Thesis, Brown University*  
   [Brown Digital Repository](https://repository.library.brown.edu/studio/item/bdr:674209/)
 
+## Posters
+
+- **Finding AI-Generated Faces in the Wild (Poster)** (2024)  
+  *CVPR Workshop on Media Forensics*  
+  [PDF]({{ site.baseurl }}/assets/files/CVPRW_poster_2024.pdf)
+
+- **Exposing GAN-Generated Profile Photos from Compact Embeddings (Poster)** (2023)  
+  *CVPR Workshop on Media Forensics*  
+  [PDF]({{ site.baseurl }}/assets/files/CVPRW_poster_2023.pdf)
+
 ## Patents
 
 - **Identifying Coordinated Malicious Activities Using Sequences of Requests** (2025)  

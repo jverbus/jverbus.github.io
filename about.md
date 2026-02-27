@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-description: "James Verbus - Senior Staff Software Engineer at LinkedIn working on AI for Trust. Creator of isolation-forest. Former experimental particle physicist (Brown University PhD)."
+description: "James Verbus - Senior Staff Software Engineer at LinkedIn leading large-scale AI/ML for Trust and Safety. Built and open sourced LinkedIn's Spark/Scala isolation-forest implementation."
 ---
 {% include JB/setup %}
 
@@ -9,9 +9,11 @@ description: "James Verbus - Senior Staff Software Engineer at LinkedIn working 
 
 ## About Me
 
-I'm a Senior Staff Software Engineer at LinkedIn, working on AI for Trust (e.g., detecting fake accounts, automated bots, GenAI content). My work has led to multiple patents, research collaborations, and publications.
+I'm a Senior Staff Software Engineer at LinkedIn, specializing in large-scale AI/ML for Trust and Safety. I lead initiatives that improve platform trust and security, and build AI systems that improve developer productivity.
 
-I created and maintain [isolation-forest](https://github.com/linkedin/isolation-forest), an open-source anomaly detection library used across LinkedIn’s anti-abuse systems.
+I focus on ambiguous, high-impact problems such as fake accounts, automated abuse, scraping, and GenAI content. I also mentor engineers and help grow new technical leaders across teams.
+
+I built and open sourced [isolation-forest](https://github.com/linkedin/isolation-forest), LinkedIn's Spark/Scala implementation used across LinkedIn's anti-abuse systems. My work includes multiple patents, open-source contributions, publications, and conference talks, often in collaboration with academic researchers.
 
 Before tech, I was an experimental particle physicist. I earned my PhD at Brown University on the LUX dark matter experiment, where I helped build and operate a leading-generation detector located a mile underground in the former Homestake gold mine in South Dakota.
 

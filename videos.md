@@ -13,7 +13,7 @@ Video presentations, conference presentations, panels, and workshop recordings. 
     <div class="video-list-content">
       <p class="post-list-date">2026</p>
       <h3 class="post-list-title"><a href="https://www.youtube.com/watch?v=BdPzEhGc7Cw" target="_blank" rel="noopener">Brown AI Winter School 2026: Reinforcement Learning for Orbital Transfers</a></h3>
-      <p class="post-list-description">A 2.5-hour interactive, hands-on workshop at the 2026 AI Winter School, hosted by the Center for the Fundamental Physics of the Universe at Brown University.<br><br>An exploration of how to frame a classic orbital mechanics problem as an RL control task: using Hohmann transfer as an analytic benchmark, defining the state / action / reward / termination for a simplified 2D two-body environment, and training PPO agents with discrete and continuous thrust control. The session walks through practical RL workflow - training, debugging, and diagnosing failure modes (e.g., chatter, overcorrection, fuel inefficiency) - and compares learned trajectories against the analytic baseline using delta-v efficiency and stability diagnostics.</p>
+      <p class="post-list-description">A 2.5-hour interactive, hands-on workshop at the 2026 AI Winter School, hosted by the Center for the Fundamental Physics of the Universe at Brown University.<br><br>An exploration of how to frame a classic orbital mechanics problem as an RL control task: using Hohmann transfer as an analytic benchmark, defining the state / action / reward / termination for a simplified 2D two-body environment, and training PPO agents with discrete and continuous thrust control. The session walks through practical RL workflow - training, debugging, and diagnosing failure modes (e.g., chatter, overcorrection, fuel inefficiency) - and compares learned trajectories against the analytic baseline using delta-v efficiency and stability diagnostics.<br><strong>Venue/Host:</strong> AI Winter School 2026, Center for the Fundamental Physics of the Universe at Brown University.</p>
     </div>
   </article>
   <article class="post-list-item video-list-item" role="listitem">
@@ -21,7 +21,7 @@ Video presentations, conference presentations, panels, and workshop recordings. 
     <div class="video-list-content">
       <p class="post-list-date">2025</p>
       <h3 class="post-list-title"><a href="https://www.youtube.com/watch?v=3Ra9vuHEh7U&list=PL21yWP3gTVmo7gfqS1y0GSeB5ypla8kvi&index=5" target="_blank" rel="noopener">Brown AI Winter School 2025: Exploring LLMs and RAG</a></h3>
-      <p class="post-list-description">Overview of Large Language Models (LLMs) and Retrieval Augmented Generation (RAG)<br><br>A 2.5 hour interactive workshop at the 2025 AI Winter School, hosted by the Center for the Fundamental Physics of the Universe at Brown University.<br><br>An exploration of LLM tools and techniques, including using OpenAI API, an open LLaMA model, and retrieval-augmented generation (RAG) for improving AI system performance with external data. We set up an LLM using both OpenAI's API and a locally installed LLaMa model, and build a basic RAG system to demonstrate how external data can be leveraged to enhance AI outputs</p>
+      <p class="post-list-description">A 2.5 hour interactive workshop at the 2025 AI Winter School, hosted by the Center for the Fundamental Physics of the Universe at Brown University.<br><br>An exploration of LLM tools and techniques, including using OpenAI API, an open LLaMA model, and retrieval-augmented generation (RAG) for improving AI system performance with external data. We set up an LLM using both OpenAI's API and a locally installed LLaMa model, and build a basic RAG system to demonstrate how external data can be leveraged to enhance AI outputs.<br><strong>Venue/Host:</strong> AI Winter School 2025, Center for the Fundamental Physics of the Universe at Brown University.</p>
     </div>
   </article>
   <article class="post-list-item video-list-item" role="listitem">
@@ -45,7 +45,7 @@ Video presentations, conference presentations, panels, and workshop recordings. 
     <div class="video-list-content">
       <p class="post-list-date">2020</p>
       <h3 class="post-list-title"><a href="https://www.youtube.com/watch?v=sFRrFWYNAUI" target="_blank" rel="noopener">Preventing Abuse Using Unsupervised Learning</a></h3>
-      <p class="post-list-description">A presentation on applying isolation forests and unsupervised ML to prevent abuse at production scale.<br><strong>Venue/Host:</strong> @Scale Conference (recording hosted on YouTube).</p>
+      <p class="post-list-description">A presentation on applying isolation forests and unsupervised ML to prevent abuse at production scale.<br><strong>Venue/Host:</strong> Spark+AI Summit 2020 (recording hosted on YouTube).</p>
     </div>
   </article>
   <article class="post-list-item video-list-item" role="listitem">
@@ -53,7 +53,7 @@ Video presentations, conference presentations, panels, and workshop recordings. 
     <div class="video-list-content">
       <p class="post-list-date">2019</p>
       <h3 class="post-list-title"><a href="https://atscaleconference.com/videos/fighting-abuse-scale-2019-preventing-abuse-using-unsupervised-learning/" target="_blank" rel="noopener">Fighting Abuse @Scale: Preventing Abuse Using Unsupervised Learning</a></h3>
-      <p class="post-list-description">Detection of abusive activity on a large social network is an adversarial challenge with quickly evolving behavior patterns and imperfect ground truth labels. These characteristics limit the use of supervised learning techniques, but they can be overcome using unsupervised methods. To address these challenges, we created a Scala/Spark implementation of the isolation forest unsupervised outlier detection algorithm; we recently open sourced this library (<a href="https://github.com/linkedin/isolation-forest">github.com/linkedin/isolation-forest</a>).<br><strong>Venue/Host:</strong> @Scale Conference (LinkedIn Engineering).</p>
+      <p class="post-list-description">Detection of abusive activity on a large social network is an adversarial challenge with quickly evolving behavior patterns and imperfect ground truth labels. These characteristics limit the use of supervised learning techniques, but they can be overcome using unsupervised methods. To address these challenges, we created a Scala/Spark implementation of the isolation forest unsupervised outlier detection algorithm; we recently open sourced this library (<a href="https://github.com/linkedin/isolation-forest">github.com/linkedin/isolation-forest</a>).<br><strong>Venue/Host:</strong> @Scale Conference.</p>
     </div>
   </article>
 </div>
