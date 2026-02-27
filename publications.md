@@ -67,8 +67,30 @@ For a complete publication list (>30 papers, >10k citations), see [Google Schola
 
 ## LinkedIn Engineering
 
-- [Announcing ONNX Support in LinkedIn's Open Source Isolation Forest](https://www.linkedin.com/pulse/announcing-onnx-support-linkedins-open-source-isolation-james-verbus-paoqe/) (2024)
-- [Finding AI-Generated (Deepfake) Faces in the Wild](https://www.linkedin.com/blog/engineering/trust-and-safety/finding-ai-generated-deepfake-faces-in-the-wild) (2024)
-- [New Approaches for Detecting AI-Generated Profile Photos](https://www.linkedin.com/blog/engineering/trust-and-safety/new-approaches-for-detecting-ai-generated-profile-photos) (2023)
-- [Using Deep Learning to Detect Abusive Sequences of Member Activity](https://www.linkedin.com/blog/engineering/trust-and-safety/using-deep-learning-to-detect-abusive-sequences-of-member-activi) (2021)
-- [Open Sourcing Isolation Forest](https://www.linkedin.com/blog/engineering/data-management/isolation-forest) (2019)
+<div class="post-list" role="list">
+  <article class="post-list-item" role="listitem">
+    <p class="post-list-date">LinkedIn Pulse · 2024</p>
+    <h3 class="post-list-title"><a href="https://www.linkedin.com/pulse/announcing-onnx-support-linkedins-open-source-isolation-james-verbus-paoqe/">Announcing ONNX Support in LinkedIn's Open Source Isolation Forest</a></h3>
+    <p class="post-list-description">Overview of ONNX export support and expanded deployment options for isolation-forest.</p>
+  </article>
+  <article class="post-list-item" role="listitem">
+    <p class="post-list-date">LinkedIn Engineering · 2024</p>
+    <h3 class="post-list-title"><a href="https://www.linkedin.com/blog/engineering/trust-and-safety/finding-ai-generated-deepfake-faces-in-the-wild">Finding AI-Generated (Deepfake) Faces in the Wild</a></h3>
+    <p class="post-list-description">Engineering write-up on detecting AI-generated profile images, including key research findings.</p>
+  </article>
+  <article class="post-list-item" role="listitem">
+    <p class="post-list-date">LinkedIn Engineering · 2023</p>
+    <h3 class="post-list-title"><a href="https://www.linkedin.com/blog/engineering/trust-and-safety/new-approaches-for-detecting-ai-generated-profile-photos">New Approaches for Detecting AI-Generated Profile Photos</a></h3>
+    <p class="post-list-description">Approaches for identifying synthetic profile photos at production scale.</p>
+  </article>
+  <article class="post-list-item" role="listitem">
+    <p class="post-list-date">LinkedIn Engineering · 2021</p>
+    <h3 class="post-list-title"><a href="https://www.linkedin.com/blog/engineering/trust-and-safety/using-deep-learning-to-detect-abusive-sequences-of-member-activi">Using Deep Learning to Detect Abusive Sequences of Member Activity</a></h3>
+    <p class="post-list-description">Sequence-modeling approach for detecting abusive activity patterns on the platform.</p>
+  </article>
+  <article class="post-list-item" role="listitem">
+    <p class="post-list-date">LinkedIn Engineering · 2019</p>
+    <h3 class="post-list-title"><a href="https://www.linkedin.com/blog/engineering/data-management/isolation-forest">Open Sourcing Isolation Forest</a></h3>
+    <p class="post-list-description">Motivation and architecture for LinkedIn's open-source Spark/Scala isolation-forest implementation.</p>
+  </article>
+</div>

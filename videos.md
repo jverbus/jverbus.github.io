@@ -36,7 +36,7 @@ Video presentations, conference presentations, panels, and workshop recordings. 
     <img class="video-list-thumb" src="https://embed-ssl.wistia.com/deliveries/9f7ad2c1739c4fc6293fb323cc0c0268fd7184e6.jpg?image_play_button_size=2x&amp;image_crop_resized=960x540&amp;image_play_button_rounded=1&amp;image_play_button_color=8475d5e0" alt="Scale Exchange talk thumbnail" loading="lazy">
     <div class="video-list-content">
       <p class="post-list-date">2021</p>
-      <h3 class="post-list-title"><a href="https://exchange.scale.com/public/videos/using-deep-learning-to-detect-abusive-sequences-of-member-activity-on-linkedin?wvideo=2ebwra0szn" target="_blank" rel="noopener">Using Deep Learning to Detect Abusive Sequences of Member Activity on LinkedIn (On-Demand)</a></h3>
+      <h3 class="post-list-title"><a href="https://exchange.scale.com/public/videos/using-deep-learning-to-detect-abusive-sequences-of-member-activity-on-linkedin?wvideo=2ebwra0szn" target="_blank" rel="noopener">Using Deep Learning to Detect Abusive Sequences of Member Activity on LinkedIn</a></h3>
       <p class="post-list-description">LinkedIn's Anti-Abuse AI Team presents a production deep learning model that operates directly on raw sequences of member activity to better detect and prevent adversarial abuse at scale across heterogeneous attack surfaces. The talk covers early results, including detection of logged-in accounts scraping member profile data.<br><strong>Venue/Host:</strong> Scale Exchange.</p>
     </div>
   </article>
