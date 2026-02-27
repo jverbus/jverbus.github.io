@@ -34,6 +34,7 @@
   --space-12: 3rem;
 
   --max-content: 720px;
+  --max-readable: 68ch;
 }
 
 * {
@@ -271,7 +272,7 @@ table {
 .entry-content > blockquote,
 .entry-content > pre,
 .entry-content > table {
-  max-width: 68ch;
+  max-width: var(--max-readable);
 }
 
 ul,
@@ -424,6 +425,8 @@ video {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-4);
+  width: 100%;
+  max-width: var(--max-readable);
 }
 
 .home-archive-link {
@@ -530,7 +533,7 @@ video {
 .layout-post .entry-content blockquote,
 .layout-post .entry-content pre,
 .layout-post .entry-content table {
-  max-width: 68ch;
+  max-width: var(--max-readable);
 }
 
 .layout-post .entry-content > h2,
@@ -654,7 +657,7 @@ video {
 .page-publications .entry-content > ul,
 .page-publications .entry-content > .post-list {
   width: 100%;
-  max-width: 68ch;
+  max-width: var(--max-readable);
   margin-bottom: var(--space-8);
 }
 
