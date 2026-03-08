@@ -2,9 +2,9 @@
 layout: post
 title: "From Demos to Deployment: Insights from Berkeley’s Agentic AI Summit 2025"
 description: "Agentic AI is graduating from cool demos to real‑world deployment. Hardware gains, open standards, rigorous evals, and secure governance are paving the way for billions of reliable, low‑cost digital assistants."
-og_image: "/assets/images/jverbus_abuse_at_scale.jpeg"
-og_image_width: 800
-og_image_height: 448
+og_image: "/assets/images/social/2025-08-07-berkeley-agentic-ai-summit-2025-1200x630.jpg"
+og_image_width: 1200
+og_image_height: 630
 categories: ["AI and Machine Learning"]
 tags: [Generative AI, UC Berkeley, AI, Agents]
 ---
