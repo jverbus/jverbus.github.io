@@ -2,6 +2,9 @@
 layout: post
 title: "Detecting AI-Generated Profile Photos"
 description: "A novel technique for the effective detection of AI-generated profile photos."
+og_image: "/assets/images/jverbus_abuse_at_scale.jpeg"
+og_image_width: 800
+og_image_height: 448
 categories: ["AI and Machine Learning"]
 tags: [LinkedIn, machine learning, AI, Generative AI, deepfake]
 ---
