@@ -2,6 +2,9 @@
 layout: post
 title: "Exploring LLMs and RAG at the 2025 AI Winter School (Brown University)"
 description: "Hands-on workshop on Large Language Models and Retrieval-Augmented Generation (RAG) for physics researchers. Using OpenAI API and LLaMA for domain-specific applications."
+og_image: "/assets/images/jverbus_thermosyphon_assembly.png"
+og_image_width: 1970
+og_image_height: 1703
 categories: ["AI and Machine Learning"]
 tags: [Generative AI, Brown University, AI, LLM, RAG, physics]
 ---

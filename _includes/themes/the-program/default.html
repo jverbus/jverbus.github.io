@@ -26,9 +26,17 @@
 	<meta property="og:description" content="{{ page_description }}">
 	<meta property="og:site_name" content="{{ site.title }}">
 	{% assign og_image = page.og_image | default: page.image | default: site.default_og_image %}
+	{% assign og_image_url = nil %}
 	{% if og_image %}
-	<meta property="og:image" content="{{ site.url }}{{ site.baseurl }}{{ og_image }}">
-	<meta property="og:image:alt" content="{{ page.title }}">
+		{% if og_image contains '://' %}
+			{% assign og_image_url = og_image %}
+		{% else %}
+			{% assign og_image_url = site.url | append: site.baseurl | append: og_image %}
+		{% endif %}
+	<meta property="og:image" content="{{ og_image_url }}">
+	<meta property="og:image:alt" content="{{ page.og_image_alt | default: page.title }}">
+	{% if page.og_image_width %}<meta property="og:image:width" content="{{ page.og_image_width }}">{% endif %}
+	{% if page.og_image_height %}<meta property="og:image:height" content="{{ page.og_image_height }}">{% endif %}
 	{% endif %}
 	{% if page.layout == 'post' %}
 	<meta property="article:author" content="{{ site.author.name }}">
@@ -36,13 +44,13 @@
 	{% endif %}
 	
 	<!-- Twitter Card -->
-	<meta name="twitter:card" content="summary">
+	<meta name="twitter:card" content="{% if og_image_url %}summary_large_image{% else %}summary{% endif %}">
 	<meta name="twitter:site" content="@{{ site.author.twitter }}">
 	<meta name="twitter:creator" content="@{{ site.author.twitter }}">
 	<meta name="twitter:title" content="{{ page.title }}">
 	<meta name="twitter:description" content="{{ page_description }}">
-	{% if og_image %}
-	<meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}{{ og_image }}">
+	{% if og_image_url %}
+	<meta name="twitter:image" content="{{ og_image_url }}">
 	{% endif %}
 	
 	<!-- Additional SEO -->
@@ -74,8 +82,8 @@
 			"@id": "{{ site.url }}{{ site.baseurl }}{{ page.url }}"
 		},
 		"url": "{{ site.url }}{{ site.baseurl }}{{ page.url }}"
-		{% if og_image %},
-		"image": "{{ site.url }}{{ site.baseurl }}{{ og_image }}"
+		{% if og_image_url %},
+		"image": "{{ og_image_url }}"
 		{% endif %}
 		{% if page.tags %},
 		"keywords": "{{ page.tags | join: ', ' }}"
