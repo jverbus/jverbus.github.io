@@ -1,0 +1,9 @@
+<article class="post-list-item" role="listitem">
+  <p class="post-list-date">
+    <time title="{{ include.post.date | date_to_xmlschema }}" datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%b %-d, %Y" }}</time>
+  </p>
+  <h3 class="post-list-title"><a href="{{ BASE_PATH }}{{ include.post.url }}">{{ include.post.title }}</a></h3>
+  {% if include.post.description %}
+  <p class="post-list-description">{{ include.post.description }}</p>
+  {% endif %}
+</article>

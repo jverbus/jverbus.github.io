@@ -35,6 +35,80 @@
 						</ul>
 						{% endif %}
 					</div><!-- meta -->
+
+					{% assign related_limit = 4 %}
+					{% assign related_count = 0 %}
+					{% assign related_tokens = "|" %}
+					{% if site.posts and site.posts.size > 1 %}
+					<section class="related-posts" aria-labelledby="related-posts-heading">
+						<h2 id="related-posts-heading" class="h3">Related posts</h2>
+						<div class="post-list related-post-list" role="list">
+							{% assign page_tags = page.tags | default: empty %}
+							{% assign page_categories = page.categories | default: empty %}
+
+							{% if page_tags and page_tags != empty %}
+								{% for candidate in site.posts %}
+									{% if candidate.url != page.url and related_count < related_limit %}
+										{% assign shared_tag = false %}
+										{% if candidate.tags and candidate.tags != empty %}
+											{% for candidate_tag in candidate.tags %}
+												{% if page_tags contains candidate_tag %}
+													{% assign shared_tag = true %}
+													{% break %}
+												{% endif %}
+											{% endfor %}
+										{% endif %}
+										{% capture candidate_token %}|{{ candidate.url }}|{% endcapture %}
+										{% if shared_tag %}
+											{% unless related_tokens contains candidate_token %}
+												{% include themes/the-program/related-post-card.html post=candidate %}
+												{% capture related_tokens %}{{ related_tokens }}{{ candidate_token }}{% endcapture %}
+												{% assign related_count = related_count | plus: 1 %}
+											{% endunless %}
+										{% endif %}
+									{% endif %}
+								{% endfor %}
+							{% endif %}
+
+							{% if related_count < related_limit and page_categories and page_categories != empty %}
+								{% for candidate in site.posts %}
+									{% if candidate.url != page.url and related_count < related_limit %}
+										{% assign shared_category = false %}
+										{% if candidate.categories and candidate.categories != empty %}
+											{% for candidate_category in candidate.categories %}
+												{% if page_categories contains candidate_category %}
+													{% assign shared_category = true %}
+													{% break %}
+												{% endif %}
+											{% endfor %}
+										{% endif %}
+										{% capture candidate_token %}|{{ candidate.url }}|{% endcapture %}
+										{% if shared_category %}
+											{% unless related_tokens contains candidate_token %}
+												{% include themes/the-program/related-post-card.html post=candidate %}
+												{% capture related_tokens %}{{ related_tokens }}{{ candidate_token }}{% endcapture %}
+												{% assign related_count = related_count | plus: 1 %}
+											{% endunless %}
+										{% endif %}
+									{% endif %}
+								{% endfor %}
+							{% endif %}
+
+							{% if related_count < related_limit %}
+								{% for candidate in site.posts %}
+									{% if candidate.url != page.url and related_count < related_limit %}
+										{% capture candidate_token %}|{{ candidate.url }}|{% endcapture %}
+										{% unless related_tokens contains candidate_token %}
+											{% include themes/the-program/related-post-card.html post=candidate %}
+											{% capture related_tokens %}{{ related_tokens }}{{ candidate_token }}{% endcapture %}
+											{% assign related_count = related_count | plus: 1 %}
+										{% endunless %}
+									{% endif %}
+								{% endfor %}
+							{% endif %}
+						</div>
+					</section>
+					{% endif %}
 				</div><!-- entry-content -->
 				<div class="misc-content">
 					<div class="comment">
