@@ -1,6 +1,6 @@
 # Lychee configuration for blog link checking.
 
-verbose = true
+verbose = "info"
 no_progress = true
 include_mail = false
 max_concurrency = 8
