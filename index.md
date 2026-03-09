@@ -1,11 +1,11 @@
 ---
 layout: page
 title: Home
-description: "Home page for James Verbus: Senior Staff Software Engineer at LinkedIn, writing about AI for Trust, machine learning, and anomaly detection."
+description: "Home page for James Verbus, with writing and projects on AI for Trust, machine learning, and anomaly detection."
 ---
 {% include JB/setup %}
 
-<p class="home-intro">Senior Staff Software Engineer at LinkedIn working on AI for Trust, anomaly detection, and applied machine learning.</p>
+<p class="home-intro">Writing and projects on AI for Trust, anomaly detection, and applied machine learning.</p>
 
 ## Explore
 
@@ -32,18 +32,3 @@ description: "Home page for James Verbus: Senior Staff Software Engineer at Link
   </article>
 </div>
 
-## Latest Posts
-
-<div class="post-list" role="list">
-  {% for post in site.posts limit:5 %}
-    <article class="post-list-item" role="listitem">
-      <p class="post-list-date">{{ post.date | date: "%b %-d, %Y" }}</p>
-      <h3 class="post-list-title"><a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></h3>
-      {% if post.description %}
-      <p class="post-list-description">{{ post.description }}</p>
-      {% endif %}
-    </article>
-  {% endfor %}
-</div>
-
-<p class="home-archive-link"><a href="/posts/">Browse all posts</a></p>
