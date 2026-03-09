@@ -29,8 +29,13 @@ description: "Personal website of James Verbus - Senior Staff Software Engineer 
 
 ## Latest Writing
 
+{% assign featured_post_url = "/2024/08/15/finding-ai-generated-faces-in-the-wild/" %}
+{% assign latest_posts_limit = 8 %}
+{% assign latest_posts_rendered = 0 %}
+
 <div class="post-list" role="list">
-  {% for post in site.posts limit:8 %}
+  {% for post in site.posts %}
+    {% if post.url != featured_post_url and latest_posts_rendered < latest_posts_limit %}
     <article class="post-list-item" role="listitem">
       <p class="post-list-date">{{ post.date | date: "%b %-d, %Y" }}</p>
       <h3 class="post-list-title"><a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></h3>
@@ -38,6 +43,8 @@ description: "Personal website of James Verbus - Senior Staff Software Engineer 
       <p class="post-list-description">{{ post.description }}</p>
       {% endif %}
     </article>
+    {% assign latest_posts_rendered = latest_posts_rendered | plus: 1 %}
+    {% endif %}
   {% endfor %}
 </div>
 
