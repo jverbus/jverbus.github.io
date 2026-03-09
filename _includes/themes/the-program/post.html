@@ -4,6 +4,13 @@
 			<header class="post-header">
 				<div class="unit-head">
 					<div class="unit-inner unit-head-inner">
+						<nav class="breadcrumbs" aria-label="Breadcrumb">
+							<ol>
+								<li><a href="{{ HOME_PATH }}">Home</a></li>
+								<li><a href="{{ BASE_PATH }}/posts/">Posts</a></li>
+								<li aria-current="page">{{ page.title }}</li>
+							</ol>
+						</nav>
 						<h1 class="h2 entry-title">{{ page.title }}</h1>
 						<p class="post-date">
 							<time title="{{ page.date | date_to_xmlschema }}" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
