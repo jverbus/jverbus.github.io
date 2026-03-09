@@ -22,7 +22,7 @@ jobs:
           bundler-cache: true
 
       - name: Build site
-        run: bundle exec jekyll build
+        run: bundle exec jekyll build --config _config.yml,_config.ci.yml
 
       - name: Link check generated site
         uses: lycheeverse/lychee-action@v2

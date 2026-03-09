@@ -1,0 +1,5 @@
+# CI-only Jekyll overrides for link checking.
+# Keep canonical/open-graph URLs relative in generated test output so
+# PR-only paths (for example /posts/) are validated against local build output.
+url: ""
+baseurl: ""

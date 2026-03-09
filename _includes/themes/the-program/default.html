@@ -145,7 +145,8 @@
 				<nav class="nav-global" aria-label="Primary">
 					<ul>
 						<li class="logo"><a href="/">{{ site.title }}</a></li>
-						<li class="posts{% if page.url == '/' or page.url == '/index.html' or page.layout == 'post' %} active{% endif %}"><a href="/"{% if page.url == '/' or page.url == '/index.html' or page.layout == 'post' %} aria-current="page"{% endif %}>Posts</a></li>
+						<li class="home{% if page.url == '/' or page.url == '/index.html' %} active{% endif %}"><a href="/"{% if page.url == '/' or page.url == '/index.html' %} aria-current="page"{% endif %}>Home</a></li>
+						<li class="posts{% if page.url == '/posts/' or page.url == '/posts.html' or page.layout == 'post' %} active{% endif %}"><a href="/posts/"{% if page.url == '/posts/' or page.url == '/posts.html' or page.layout == 'post' %} aria-current="page"{% endif %}>Posts</a></li>
 						<li class="publications{% if page.url == '/publications/' or page.url == '/publications.html' %} active{% endif %}"><a href="/publications/"{% if page.url == '/publications/' or page.url == '/publications.html' %} aria-current="page"{% endif %}>Publications</a></li>
 						<li class="open-source{% if page.url == '/open-source/' or page.url == '/open-source.html' %} active{% endif %}"><a href="/open-source/"{% if page.url == '/open-source/' or page.url == '/open-source.html' %} aria-current="page"{% endif %}>Open Source</a></li>
 						<li class="videos{% if page.url == '/videos/' or page.url == '/videos.html' %} active{% endif %}"><a href="/videos/"{% if page.url == '/videos/' or page.url == '/videos.html' %} aria-current="page"{% endif %}>Videos</a></li>
