@@ -2,9 +2,9 @@
 layout: post
 title: "Calibrating the LUX Dark Matter Experiment"
 description: "Consulting project at Insight Data Science"
-og_image: "/assets/images/jverbus_neutron_generator_outside_lux.jpg"
-og_image_width: 504
-og_image_height: 672
+og_image: "/assets/images/social/2016-08-18-calibrating-the-lux-dark-matter-experiment-1200x630.jpg"
+og_image_width: 1200
+og_image_height: 630
 categories: ["Ph.D. Thesis"]
 tags: [physics, astrophysics, dark matter, D-D neutron generator, Brown University, LUX, LZ]
 ---
