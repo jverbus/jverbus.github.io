@@ -8,6 +8,7 @@ timeout = 20
 max_retries = 2
 retry_wait_time = 2
 accept = [200, 206, 301, 302, 307, 308, 429]
+root_dir = "_site"
 extensions = ["html"]
 user_agent = "Mozilla/5.0 (compatible; jverbus-link-check/1.0)"
 
@@ -15,5 +16,9 @@ user_agent = "Mozilla/5.0 (compatible; jverbus-link-check/1.0)"
 exclude = [
   '^https://(www\.)?linkedin\.com/.*',
   '^https://engineering\.linkedin\.com/.*',
-  '^https://x\.com/.*'
+  '^https://x\.com/.*',
+  '^https://dl\.acm\.org/doi/abs/10\.1145/3539597\.3572704$',
+  '^https://lux\.brown\.edu/LUX_dark_matter/Home\.html$',
+  '^https://www\.mitchellrepublic\.com/content/dark-matter-lab-moves-underground-south-dakota$',
+  '^https://www\.redorbit\.com/news/space/1113077219/dark-matter-results-confirmed-no-evidence-of-wimps-yet-022114/$'
 ]
