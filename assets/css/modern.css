@@ -592,35 +592,6 @@ video {
   margin: var(--space-10) 0;
 }
 
-.related-posts {
-  margin-top: var(--space-10);
-  padding-top: var(--space-5);
-  border-top: 1px solid var(--border);
-}
-
-.related-posts .h3 {
-  margin: 0 0 var(--space-4);
-  font-size: 1.1rem;
-}
-
-.related-post-list {
-  max-width: var(--max-readable);
-  gap: var(--space-3);
-}
-
-.related-post-list .post-list-item {
-  padding: 0.9rem 1rem;
-}
-
-.related-post-list .post-list-title {
-  font-size: 1.02rem;
-  margin-bottom: 0.25rem;
-}
-
-.related-post-list .post-list-description {
-  font-size: 0.92rem;
-}
-
 .layout-post .entry-content blockquote {
   background: var(--surface-muted);
   border: 1px solid var(--border);
