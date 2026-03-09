@@ -5,7 +5,9 @@ description: "Video presentations, panels, and workshop recordings by James Verb
 ---
 {% include JB/setup %}
 
-Video presentations, conference presentations, panels, and workshop recordings. Newest first.
+Talks, panels, and workshop recordings. Newest first.
+
+## Selected Talks
 
 <div class="post-list" role="list">
   <article class="post-list-item video-list-item" role="listitem">
