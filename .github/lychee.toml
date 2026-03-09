@@ -8,6 +8,7 @@ timeout = 20
 max_retries = 2
 retry_wait_time = 2
 accept = [200, 206, 301, 302, 307, 308, 429]
+extensions = ["html"]
 user_agent = "Mozilla/5.0 (compatible; jverbus-link-check/1.0)"
 
 # Some social platforms block automated crawlers (e.g., LinkedIn returns 999).
