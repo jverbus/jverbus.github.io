@@ -90,6 +90,32 @@
 		{% endif %}
 	}
 	</script>
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "BreadcrumbList",
+		"itemListElement": [
+			{
+				"@type": "ListItem",
+				"position": 1,
+				"name": "Home",
+				"item": "{{ site.url }}{{ site.baseurl }}/"
+			},
+			{
+				"@type": "ListItem",
+				"position": 2,
+				"name": "Posts",
+				"item": "{{ site.url }}{{ site.baseurl }}/posts/"
+			},
+			{
+				"@type": "ListItem",
+				"position": 3,
+				"name": "{{ page.title | escape }}",
+				"item": "{{ site.url }}{{ site.baseurl }}{{ page.url }}"
+			}
+		]
+	}
+	</script>
 	{% elsif page.url == '/about/' or page.url == '/about.html' %}
 	<script type="application/ld+json">
 	{
