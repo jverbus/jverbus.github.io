@@ -525,8 +525,9 @@ video {
   padding: 0;
   display: inline-flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.28rem;
+  flex-wrap: nowrap;
+  gap: 0;
+  white-space: nowrap;
 }
 
 .breadcrumbs li {
@@ -535,12 +536,23 @@ video {
   color: var(--text-muted);
   font-size: 0.79rem;
   line-height: 1.25;
+  white-space: nowrap;
+}
+
+.breadcrumbs li + li {
+  position: relative;
+  margin-left: 0.82rem;
+  padding-left: 0.82rem;
 }
 
 .breadcrumbs li + li::before {
   content: "›";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
   color: #a3afbf;
-  margin: 0 0.32rem 0 0.1rem;
+  line-height: 1;
 }
 
 .breadcrumbs a {
