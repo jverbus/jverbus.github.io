@@ -31,6 +31,11 @@ Highlights from my open source work, centered on `linkedin/isolation-forest`, th
     <h3 class="post-list-title"><a href="https://repo.maven.apache.org/maven2/com/linkedin/isolation-forest/">Maven Central: com.linkedin:isolation-forest</a></h3>
     <p class="post-list-description">Published artifacts for integrating the library into JVM-based data pipelines.</p>
   </article>
+  <article class="post-list-item" role="listitem">
+    <p class="post-list-date">Artifacts</p>
+    <h3 class="post-list-title"><a href="https://pypi.org/project/isolation-forest-onnx/">PyPI: isolation-forest-onnx</a></h3>
+    <p class="post-list-description">Python package for converting LinkedIn's isolation-forest model format into ONNX for portable inference.</p>
+  </article>
 </div>
 
 ## Related Posts
