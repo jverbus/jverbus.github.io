@@ -30,7 +30,6 @@ jobs:
           fail: true
           args: >-
             --config .github/lychee.toml
-            --glob
-            '_site/**/*.html'
+            _site
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
