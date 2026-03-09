@@ -6,9 +6,9 @@ description: "Writing by James Verbus on machine learning, anomaly detection, AI
 ---
 {% include JB/setup %}
 
-## Latest Writing
-
 <p class="home-intro">Notes on machine learning, trust and safety, anomaly detection, and applied AI research.</p>
+
+## Latest Writing
 
 <div class="post-list" role="list">
   {% for post in site.posts limit:8 %}
