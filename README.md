@@ -12,3 +12,11 @@ og_image_alt: "Optional accessible description"
 ```
 
 If omitted, the site-level `default_og_image` fallback in `_config.yml` is used.
+
+## CI checks
+
+GitHub Actions runs:
+- `Jekyll Build` on pull requests and pushes to `master`
+- `Link Check` (Lychee) against generated `_site/**/*.html` pages
+
+Lychee is configured via `.github/lychee.toml`.
