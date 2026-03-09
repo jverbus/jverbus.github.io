@@ -20,5 +20,7 @@ exclude = [
   '^https://dl\.acm\.org/doi/abs/10\.1145/3539597\.3572704$',
   '^https://lux\.brown\.edu/LUX_dark_matter/Home\.html$',
   '^https://www\.mitchellrepublic\.com/content/dark-matter-lab-moves-underground-south-dakota$',
-  '^https://www\.redorbit\.com/news/space/1113077219/dark-matter-results-confirmed-no-evidence-of-wimps-yet-022114/$'
+  '^https://www\.redorbit\.com/news/space/1113077219/dark-matter-results-confirmed-no-evidence-of-wimps-yet-022114/$',
+  '^https://scholar\.google\.com/citations\?user=_ksEziAAAAAJ$',
+  '^https://scholar\.google\.com/citations\?user=_ksEziAAAAAJ&sortby=pubdate$'
 ]
