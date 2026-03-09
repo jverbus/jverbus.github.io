@@ -526,7 +526,7 @@ video {
   display: inline-flex;
   align-items: center;
   flex-wrap: nowrap;
-  gap: 0;
+  gap: 0.42rem;
   white-space: nowrap;
 }
 
@@ -535,24 +535,16 @@ video {
   align-items: center;
   color: var(--text-muted);
   font-size: 0.79rem;
-  line-height: 1.25;
+  line-height: 1.2;
   white-space: nowrap;
 }
 
-.breadcrumbs li + li {
-  position: relative;
-  margin-left: 0.82rem;
-  padding-left: 0.82rem;
-}
-
-.breadcrumbs li + li::before {
-  content: "›";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+.breadcrumbs .breadcrumbs-sep {
   color: #a3afbf;
+  font-size: 0.78rem;
   line-height: 1;
+  transform: translateY(-0.01em);
+  user-select: none;
 }
 
 .breadcrumbs a {
