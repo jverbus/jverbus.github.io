@@ -1,0 +1,18 @@
+# Lychee configuration for blog link checking.
+
+verbose = true
+no_progress = true
+exclude_mail = true
+max_concurrency = 8
+timeout = 20
+max_retries = 2
+retry_wait_time = 2
+accept = [200, 206, 301, 302, 307, 308, 429]
+user_agent = "Mozilla/5.0 (compatible; jverbus-link-check/1.0)"
+
+# Some social platforms block automated crawlers (e.g., LinkedIn returns 999).
+exclude = [
+  '^https://(www\.)?linkedin\.com/.*',
+  '^https://engineering\.linkedin\.com/.*',
+  '^https://x\.com/.*'
+]

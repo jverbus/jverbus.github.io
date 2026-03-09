@@ -1,0 +1,36 @@
+name: Link Check
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+  schedule:
+    # Weekly check to catch stale external links.
+    - cron: "0 13 * * 1"
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.1"
+          bundler-cache: true
+
+      - name: Build site
+        run: bundle exec jekyll build
+
+      - name: Link check generated site
+        uses: lycheeverse/lychee-action@v2
+        with:
+          fail: true
+          args: >-
+            --config .github/lychee.toml
+            --glob
+            '_site/**/*.html'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
