@@ -17,6 +17,7 @@ If omitted, the site-level `default_og_image` fallback in `_config.yml` is used.
 
 GitHub Actions runs:
 - `Jekyll Build` on pull requests and pushes to `master`
+  - includes a guardrail check: every post in `_posts` must define `og_image`, `og_image_width`, and `og_image_height`, and local `og_image` files must exist
 - `Link Check` (Lychee) against generated `_site/**/*.html` pages
 
 Lychee is configured via `.github/lychee.toml`.

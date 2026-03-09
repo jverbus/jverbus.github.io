@@ -18,5 +18,8 @@ jobs:
           ruby-version: "3.1"
           bundler-cache: true
 
+      - name: Validate post social image metadata
+        run: python3 scripts/check_post_og.py
+
       - name: Build site
         run: bundle exec jekyll build
