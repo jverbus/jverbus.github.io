@@ -59,3 +59,24 @@ Talks, panels, and workshop recordings. Newest first.
     </div>
   </article>
 </div>
+
+## Podcasts & Interviews
+
+<div class="post-list" role="list">
+  <article class="post-list-item video-list-item" role="listitem">
+    <img class="video-list-thumb" src="https://i.ytimg.com/vi/A2csYeOnV98/hqdefault.jpg" alt="Podcast interview thumbnail for The Data Scientist Show" loading="lazy">
+    <div class="video-list-content">
+      <p class="post-list-date">Podcast</p>
+      <h3 class="post-list-title"><a href="https://youtu.be/A2csYeOnV98" target="_blank" rel="noopener">The Data Scientist Show #035: Detect Online Abuse with AI</a></h3>
+      <p class="post-list-description">Conversation about online abuse detection, machine learning in production, and the path from physics research to staff-level ML engineering.</p>
+    </div>
+  </article>
+  <article class="post-list-item video-list-item" role="listitem">
+    <img class="video-list-thumb" src="https://i.ytimg.com/vi/xlSmLXQFtto/hqdefault.jpg" alt="Interview thumbnail for AI Innovators episode" loading="lazy">
+    <div class="video-list-content">
+      <p class="post-list-date">Interview</p>
+      <h3 class="post-list-title"><a href="https://youtu.be/xlSmLXQFtto" target="_blank" rel="noopener">AI Innovators Ep. 10</a></h3>
+      <p class="post-list-description">Interview on applied AI engineering, trust and safety, and building practical ML systems at scale.</p>
+    </div>
+  </article>
+</div>
