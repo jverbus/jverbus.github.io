@@ -27,14 +27,6 @@ Talks, panels, and workshop recordings. Newest first.
     </div>
   </article>
   <article class="post-list-item video-list-item" role="listitem">
-    <img class="video-list-thumb" src="https://i.ytimg.com/vi/8zniAjqWI2A/hqdefault.jpg" alt="SXSW panel video thumbnail" loading="lazy">
-    <div class="video-list-content">
-      <p class="post-list-date">2024</p>
-      <h3 class="post-list-title"><a href="https://www.youtube.com/watch?v=8zniAjqWI2A" target="_blank" rel="noopener">SXSW 2024 Panel with DARPA: Real or Not - Defending Authenticity in a Digital World</a></h3>
-      <p class="post-list-description">A panel discussion on authenticity, trust, and detecting synthetic media in an AI-native information ecosystem.<br><strong>Venue/Host:</strong> SXSW and DARPA.</p>
-    </div>
-  </article>
-  <article class="post-list-item video-list-item" role="listitem">
     <img class="video-list-thumb" src="https://embed-ssl.wistia.com/deliveries/9f7ad2c1739c4fc6293fb323cc0c0268fd7184e6.jpg?image_play_button_size=2x&amp;image_crop_resized=960x540&amp;image_play_button_rounded=1&amp;image_play_button_color=8475d5e0" alt="Scale Exchange talk thumbnail" loading="lazy">
     <div class="video-list-content">
       <p class="post-list-date">2021</p>
@@ -60,23 +52,36 @@ Talks, panels, and workshop recordings. Newest first.
   </article>
 </div>
 
+## Panels
+
+<div class="post-list" role="list">
+  <article class="post-list-item video-list-item" role="listitem">
+    <img class="video-list-thumb" src="https://i.ytimg.com/vi/8zniAjqWI2A/hqdefault.jpg" alt="SXSW panel video thumbnail" loading="lazy">
+    <div class="video-list-content">
+      <p class="post-list-date">2024</p>
+      <h3 class="post-list-title"><a href="https://www.youtube.com/watch?v=8zniAjqWI2A" target="_blank" rel="noopener">SXSW 2024 Panel with DARPA: Real or Not - Defending Authenticity in a Digital World</a></h3>
+      <p class="post-list-description">A panel discussion on authenticity, trust, and detecting synthetic media in an AI-native information ecosystem.<br><strong>Venue/Host:</strong> SXSW and DARPA.</p>
+    </div>
+  </article>
+</div>
+
 ## Podcasts & Interviews
 
 <div class="post-list" role="list">
   <article class="post-list-item video-list-item" role="listitem">
-    <img class="video-list-thumb" src="https://i.ytimg.com/vi/A2csYeOnV98/hqdefault.jpg" alt="Podcast interview thumbnail for The Data Scientist Show" loading="lazy">
+    <img class="video-list-thumb" src="https://i.ytimg.com/vi/xlSmLXQFtto/hqdefault.jpg" alt="Interview thumbnail for AI Innovators episode" loading="lazy">
     <div class="video-list-content">
-      <p class="post-list-date">Podcast</p>
-      <h3 class="post-list-title"><a href="https://youtu.be/A2csYeOnV98" target="_blank" rel="noopener">The Data Scientist Show #035: Detect Online Abuse with AI</a></h3>
-      <p class="post-list-description">Conversation about online abuse detection, machine learning in production, and the path from physics research to staff-level ML engineering.</p>
+      <p class="post-list-date">2025</p>
+      <h3 class="post-list-title"><a href="https://youtu.be/xlSmLXQFtto" target="_blank" rel="noopener">AI Innovators Ep. 10</a></h3>
+      <p class="post-list-description">Interview on applied AI engineering, trust and safety, and building practical ML systems at scale.</p>
     </div>
   </article>
   <article class="post-list-item video-list-item" role="listitem">
-    <img class="video-list-thumb" src="https://i.ytimg.com/vi/xlSmLXQFtto/hqdefault.jpg" alt="Interview thumbnail for AI Innovators episode" loading="lazy">
+    <img class="video-list-thumb" src="https://i.ytimg.com/vi/A2csYeOnV98/hqdefault.jpg" alt="Podcast interview thumbnail for The Data Scientist Show" loading="lazy">
     <div class="video-list-content">
-      <p class="post-list-date">Interview</p>
-      <h3 class="post-list-title"><a href="https://youtu.be/xlSmLXQFtto" target="_blank" rel="noopener">AI Innovators Ep. 10</a></h3>
-      <p class="post-list-description">Interview on applied AI engineering, trust and safety, and building practical ML systems at scale.</p>
+      <p class="post-list-date">2022</p>
+      <h3 class="post-list-title"><a href="https://youtu.be/A2csYeOnV98" target="_blank" rel="noopener">The Data Scientist Show #035: Detect Online Abuse with AI</a></h3>
+      <p class="post-list-description">Conversation about online abuse detection, machine learning in production, and the path from physics research to staff-level ML engineering.</p>
     </div>
   </article>
 </div>
