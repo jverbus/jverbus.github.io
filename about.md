@@ -5,7 +5,7 @@ description: "James Verbus - Senior Staff Software Engineer at LinkedIn leading 
 ---
 {% include JB/setup %}
 
-![Thermosyphon assembly]({{ site.baseurl }}/assets/images/jverbus_thermosyphon_assembly.png)
+![James Verbus working on the LUX dark matter detector]({{ site.baseurl }}/assets/images/jverbus_lux_detector.jpg)
 
 ## About Me
 
