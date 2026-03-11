@@ -17,3 +17,12 @@ url: https://jverbus.github.io
 baseurl: ""
 
 plugins: ["jekyll-sitemap"]
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      og_image_width: 1200
+      og_image_height: 630

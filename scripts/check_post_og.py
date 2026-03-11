@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Validate OG image metadata for Jekyll posts.
+"""Validate required social metadata for Jekyll posts.
 
 Rules enforced for each file in `_posts/*.md`:
-- Front matter must include `og_image`, `og_image_width`, `og_image_height`
-- `og_image_width` and `og_image_height` must be positive integers
-- If `og_image` is a local path (not http/https), referenced file must exist
+- Front matter must include `description` and non-empty `og_image`
+- Optional `og_image_width` / `og_image_height` values must be positive integers
+- If `og_image` is a local path (not http/https), the referenced file must exist
 """
 
 from __future__ import annotations
@@ -16,7 +16,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 POSTS_DIR = ROOT / "_posts"
 
-REQUIRED_FIELDS = ("og_image", "og_image_width", "og_image_height")
+REQUIRED_FIELDS = ("description", "og_image")
+OPTIONAL_NUMERIC_FIELDS = ("og_image_width", "og_image_height")
 
 
 def parse_front_matter(text: str) -> str | None:
@@ -63,18 +64,21 @@ def validate_post(post_path: Path) -> list[str]:
 
     for field in REQUIRED_FIELDS:
         value = get_field(front_matter, field)
-        if not value:
+        if value is None:
             errors.append(f"{rel}: missing `{field}`")
         else:
             values[field] = value
 
-    # If core fields are missing, skip dependent validation for clarity.
     if errors:
         return errors
 
-    # Numeric validation
-    for field in ("og_image_width", "og_image_height"):
-        raw = values[field]
+    if not values["og_image"]:
+        errors.append(f"{rel}: `og_image` cannot be blank")
+
+    for field in OPTIONAL_NUMERIC_FIELDS:
+        raw = get_field(front_matter, field)
+        if raw is None:
+            continue
         if not re.fullmatch(r"\d+", raw):
             errors.append(f"{rel}: `{field}` must be a positive integer (got: {raw})")
             continue
@@ -86,9 +90,7 @@ def validate_post(post_path: Path) -> list[str]:
     if not (og_image.startswith("http://") or og_image.startswith("https://")):
         local_path = ROOT / og_image.lstrip("/")
         if not local_path.exists():
-            errors.append(
-                f"{rel}: `og_image` references missing file: {og_image}"
-            )
+            errors.append(f"{rel}: `og_image` references missing file: {og_image}")
 
     return errors
 

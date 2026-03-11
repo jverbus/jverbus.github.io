@@ -6,8 +6,6 @@ SOURCE = "."
 POSTS_DIR = File.join(SOURCE, "_posts")
 POST_EXT = "md"
 DEFAULT_OG_IMAGE = "/assets/images/jverbus_neutron_generator_outside_lux.jpg"
-DEFAULT_OG_IMAGE_WIDTH = 504
-DEFAULT_OG_IMAGE_HEIGHT = 672
 
 def prompt(message, valid_options = nil)
   if valid_options
@@ -24,7 +22,7 @@ def prompt(message, valid_options = nil)
 end
 
 # Usage: rake post title="A Title" [date="2012-02-09"] [tags=[tag1,tag2]] [categories=[cat1,cat2]]
-#                  [og_image="/assets/images/social/example-1200x630.jpg"] [og_image_width=1200] [og_image_height=630]
+#                  [og_image="/assets/images/social/example-1200x630.jpg"]
 desc "Begin a new post in #{POSTS_DIR}"
 task :post do
   abort("rake aborted: '#{POSTS_DIR}' directory not found.") unless FileTest.directory?(POSTS_DIR)
@@ -33,8 +31,6 @@ task :post do
   tags = ENV["tags"] || "[]"
   categories = ENV["categories"] || "[]"
   og_image = ENV["og_image"] || DEFAULT_OG_IMAGE
-  og_image_width = ENV["og_image_width"] || DEFAULT_OG_IMAGE_WIDTH
-  og_image_height = ENV["og_image_height"] || DEFAULT_OG_IMAGE_HEIGHT
 
   slug = title.downcase.strip.gsub(" ", "-").gsub(/[^\w-]/, "")
 
@@ -47,11 +43,6 @@ task :post do
 
   if og_image.to_s.strip.empty?
     abort("rake aborted: og_image cannot be blank")
-  end
-
-  ["og_image_width", "og_image_height"].each do |field|
-    raw = binding.local_variable_get(field.to_sym).to_s
-    abort("rake aborted: #{field} must be a positive integer") unless raw.match?(/^\d+$/) && raw.to_i.positive?
   end
 
   unless og_image.start_with?("http://", "https://")
@@ -68,12 +59,9 @@ task :post do
   puts "Creating new post: #{filename}"
   File.open(filename, "w") do |post|
     post.puts "---"
-    post.puts "layout: post"
     post.puts "title: \"#{title.gsub(/-/, ' ')}\""
     post.puts "description: \"\""
     post.puts "og_image: \"#{og_image}\""
-    post.puts "og_image_width: #{og_image_width}"
-    post.puts "og_image_height: #{og_image_height}"
     post.puts "categories: #{categories}"
     post.puts "tags: #{tags}"
     post.puts "---"
