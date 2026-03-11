@@ -2,7 +2,7 @@
 """Validate required social metadata for Jekyll posts.
 
 Rules enforced for each file in `_posts/*.md`:
-- Front matter must include `description` and non-empty `og_image`
+- Front matter must include non-empty `description`, `og_image`, and `og_image_alt`
 - Optional `og_image_width` / `og_image_height` values must be positive integers
 - If `og_image` is a local path (not http/https), the referenced file must exist
 """
@@ -16,7 +16,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 POSTS_DIR = ROOT / "_posts"
 
-REQUIRED_FIELDS = ("description", "og_image")
+REQUIRED_NONEMPTY_FIELDS = ("description", "og_image", "og_image_alt")
 OPTIONAL_NUMERIC_FIELDS = ("og_image_width", "og_image_height")
 
 
@@ -62,18 +62,18 @@ def validate_post(post_path: Path) -> list[str]:
     errors: list[str] = []
     values: dict[str, str] = {}
 
-    for field in REQUIRED_FIELDS:
+    for field in REQUIRED_NONEMPTY_FIELDS:
         value = get_field(front_matter, field)
         if value is None:
             errors.append(f"{rel}: missing `{field}`")
-        else:
-            values[field] = value
+            continue
+        if not value:
+            errors.append(f"{rel}: `{field}` cannot be blank")
+            continue
+        values[field] = value
 
     if errors:
         return errors
-
-    if not values["og_image"]:
-        errors.append(f"{rel}: `og_image` cannot be blank")
 
     for field in OPTIONAL_NUMERIC_FIELDS:
         raw = get_field(front_matter, field)

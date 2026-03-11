@@ -2,7 +2,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <title>{% if page.title == site.title %}{{ site.title }}{% else %}{{ page.title }} | {{ site.title }}{% endif %}</title>
+  {% assign page_title = page.title | default: site.title %}
+  {% if page.url == '/' or page.url == '/index.html' %}
+    {% assign page_title = site.title %}
+  {% endif %}
+  <title>{% if page_title == site.title %}{{ site.title }}{% else %}{{ page_title }} | {{ site.title }}{% endif %}</title>
   <meta name="author" content="{{ site.author.name }}">
   {% assign page_description = page.description %}
   {% if page_description == nil or page_description == "" %}
@@ -20,7 +24,7 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
-  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:title" content="{{ page_title }}">
   <meta property="og:description" content="{{ page_description }}">
   <meta property="og:site_name" content="{{ site.title }}">
   {% assign og_image = page.og_image | default: page.image | default: site.default_og_image %}
@@ -32,7 +36,7 @@
       {% assign og_image_url = og_image | absolute_url %}
     {% endif %}
   <meta property="og:image" content="{{ og_image_url }}">
-  <meta property="og:image:alt" content="{{ page.og_image_alt | default: page.title }}">
+  <meta property="og:image:alt" content="{{ page.og_image_alt | default: page_title }}">
   {% if page.og_image_width %}<meta property="og:image:width" content="{{ page.og_image_width }}">{% endif %}
   {% if page.og_image_height %}<meta property="og:image:height" content="{{ page.og_image_height }}">{% endif %}
   {% endif %}
@@ -45,7 +49,7 @@
   <meta name="twitter:card" content="{% if og_image_url %}summary_large_image{% else %}summary{% endif %}">
   <meta name="twitter:site" content="@{{ site.author.twitter }}">
   <meta name="twitter:creator" content="@{{ site.author.twitter }}">
-  <meta name="twitter:title" content="{{ page.title }}">
+  <meta name="twitter:title" content="{{ page_title }}">
   <meta name="twitter:description" content="{{ page_description }}">
   {% if og_image_url %}
   <meta name="twitter:image" content="{{ og_image_url }}">

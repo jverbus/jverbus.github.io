@@ -22,15 +22,19 @@ def prompt(message, valid_options = nil)
 end
 
 # Usage: rake post title="A Title" [date="2012-02-09"] [tags=[tag1,tag2]] [categories=[cat1,cat2]]
-#                  [og_image="/assets/images/social/example-1200x630.jpg"]
+#                  [description="Short summary for feeds/social"]
+#                  [og_image="/assets/images/social/example-1200x630.jpg"] [og_image_alt="Image alt text"]
 desc "Begin a new post in #{POSTS_DIR}"
 task :post do
   abort("rake aborted: '#{POSTS_DIR}' directory not found.") unless FileTest.directory?(POSTS_DIR)
 
   title = ENV["title"] || "new-post"
+  clean_title = title.gsub(/-/, " ")
   tags = ENV["tags"] || "[]"
   categories = ENV["categories"] || "[]"
+  description = ENV["description"] || clean_title
   og_image = ENV["og_image"] || DEFAULT_OG_IMAGE
+  og_image_alt = ENV["og_image_alt"] || clean_title
 
   slug = title.downcase.strip.gsub(" ", "-").gsub(/[^\w-]/, "")
 
@@ -41,8 +45,16 @@ task :post do
     exit(-1)
   end
 
+  if description.to_s.strip.empty?
+    abort("rake aborted: description cannot be blank")
+  end
+
   if og_image.to_s.strip.empty?
     abort("rake aborted: og_image cannot be blank")
+  end
+
+  if og_image_alt.to_s.strip.empty?
+    abort("rake aborted: og_image_alt cannot be blank")
   end
 
   unless og_image.start_with?("http://", "https://")
@@ -59,9 +71,10 @@ task :post do
   puts "Creating new post: #{filename}"
   File.open(filename, "w") do |post|
     post.puts "---"
-    post.puts "title: \"#{title.gsub(/-/, ' ')}\""
-    post.puts "description: \"\""
+    post.puts "title: \"#{clean_title}\""
+    post.puts "description: \"#{description}\""
     post.puts "og_image: \"#{og_image}\""
+    post.puts "og_image_alt: \"#{og_image_alt}\""
     post.puts "categories: #{categories}"
     post.puts "tags: #{tags}"
     post.puts "---"

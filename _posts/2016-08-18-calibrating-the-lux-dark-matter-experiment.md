@@ -3,6 +3,7 @@ layout: post
 title: "Calibrating the LUX Dark Matter Experiment"
 description: "Consulting project at Insight Data Science"
 og_image: "/assets/images/social/2016-08-18-calibrating-the-lux-dark-matter-experiment-1200x630.jpg"
+og_image_alt: "Calibrating the LUX Dark Matter Experiment"
 og_image_width: 1200
 og_image_height: 630
 categories: ["Ph.D. Thesis"]

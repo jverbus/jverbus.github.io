@@ -21,7 +21,7 @@ title: Atom Feed
    <link href="{{ post.url | absolute_url }}"/>
    <updated>{{ post.date | date_to_xmlschema }}</updated>
    <id>{{ post.url | absolute_url }}</id>
-   <content type="html">{{ post.content | xml_escape }}</content>
+   <summary type="text">{{ post.excerpt | strip_html | normalize_whitespace | xml_escape }}</summary>
  </entry>
  {% endfor %}
 

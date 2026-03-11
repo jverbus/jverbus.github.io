@@ -3,6 +3,7 @@ layout: post
 title: "Reinforcement Learning for Orbital Transfers at the 2026 AI Winter School (Brown University)"
 description: "Hands-on workshop using reinforcement learning (PPO) to solve orbital transfer problems. Environment design, reward shaping, and training RL agents for space mechanics."
 og_image: "/assets/images/social/2026-01-09-brown-physics-ai-winter-school-workshop-1200x630.jpg"
+og_image_alt: "Reinforcement Learning for Orbital Transfers at the 2026 AI Winter School (Brown University)"
 og_image_width: 1200
 og_image_height: 630
 categories: ["AI and Machine Learning"]
