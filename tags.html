@@ -1,23 +1,35 @@
 ---
 layout: page
 title: Tags
-header: Posts By Tag
-group: navigation
+permalink: /tags/
 robots: noindex, follow
 sitemap: false
 ---
-{% include JB/setup %}
 
-<ul class="tag_box inline">
-  {% assign tags_list = site.tags %}  
-  {% include JB/tags_list %}
+{% assign tags_sorted = site.tags | sort %}
+
+<ul class="list-tag list-linear">
+  <li class="list-head">Tags</li>
+  {% for tag in tags_sorted %}
+  {% assign tag_name = tag[0] %}
+  <li>
+    <a href="#{{ tag_name | slugify }}-ref">
+      {{ tag_name }} <span>{{ tag[1].size }}</span>
+    </a>
+  </li>
+  {% endfor %}
 </ul>
 
-
-{% for tag in site.tags %} 
-  <h2 id="{{ tag[0] }}-ref">{{ tag[0] }}</h2>
-  <ul>
-    {% assign pages_list = tag[1] %}  
-    {% include JB/pages_list %}
-  </ul>
+{% for tag in tags_sorted %}
+{% assign tag_name = tag[0] %}
+{% assign tag_posts = tag[1] | sort: "date" | reverse %}
+<h2 id="{{ tag_name | slugify }}-ref">{{ tag_name }}</h2>
+<ul>
+  {% for post in tag_posts %}
+  <li>
+    <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+    <span class="post-list-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+  </li>
+  {% endfor %}
+</ul>
 {% endfor %}

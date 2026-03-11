@@ -8,7 +8,6 @@ og_image_height: 630
 categories: ["AI and Machine Learning"]
 tags: [Generative AI, Brown University, AI, LLM, RAG, physics]
 ---
-{% include JB/setup %}
 
 I recently gave a 2.5-hour hands-on workshop on Large Language Models (LLMs) at the 2025 AI Winter School, hosted by the Center for the Fundamental Physics of the Universe at Brown University. This session focused on setting up an LLM with both the OpenAI API and an open LLaMA model, as well as building a basic retrieval-augmented generation (RAG) system to demonstrate how researchers can leverage specialized, domain-specific information about their research when using LLMs.
 

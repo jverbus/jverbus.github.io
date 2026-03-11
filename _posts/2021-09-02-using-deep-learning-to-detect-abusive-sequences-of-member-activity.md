@@ -8,7 +8,6 @@ og_image_height: 630
 categories: ["AI and Machine Learning"]
 tags: [LinkedIn, machine learning, AI, cybersecurity, NLP]
 ---
-{% include JB/setup %}
 
 The Anti-Abuse AI Team at LinkedIn creates, deploys, and maintains models that detect and prevent many types of abuse, including the creation of fake accounts, member profile scraping, automated spam, and account takeovers.
 

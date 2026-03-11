@@ -8,7 +8,6 @@ og_image_height: 630
 categories: ["AI and Machine Learning"]
 tags: [LinkedIn, isolation forest, outlier detection, unsupervised learning, machine learning, spark, scala]
 ---
-{% include JB/setup %}
 
 I'm happy to announce that my implementation of the isolation forest unsupervised outlier detection algorithm was open sourced today.
 It is used by the LinkedIn Anti-Abuse AI team to detect and prevent abusive activity on the world's largest professional network.

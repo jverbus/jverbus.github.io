@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include site/head.html %}
+<body class="layout-{{ page.layout | default: 'page' }} page-{{ page.title | default: 'site' | slugify }}{% if page.url == '/' or page.url == '/index.html' %} page-home{% endif %}">
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div id="page" class="hentry">
+  <header class="the-header">
+    {% include site/nav.html %}
+  </header>
+
+  <main class="body" id="main-content">
+    <div class="unit-body">
+      <div class="unit-inner unit-body-inner">
+        <div class="entry-content">
+          {{ content }}
+        </div>
+      </div><!-- unit-inner -->
+    </div><!-- unit-body -->
+  </main><!-- body -->
+
+  {% include site/footer.html %}
+</div><!-- page -->
+
+{% include site/card-links-script.html %}
+</body>
+</html>

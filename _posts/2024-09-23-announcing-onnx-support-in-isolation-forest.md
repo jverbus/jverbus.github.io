@@ -8,7 +8,6 @@ og_image_height: 630
 categories: ["AI and Machine Learning"]
 tags: [LinkedIn, machine learning, isolation forest, ONNX, open source]
 ---
-{% include JB/setup %}
 
 ![Neutron generator outside of the LUX water tank]({{ site.url }}/assets/images/isolation_forest_onnx.png){: style="width:90%; display: block; margin-left: 0;" }
 

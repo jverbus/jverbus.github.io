@@ -8,7 +8,6 @@ og_image_height: 630
 categories: ["Ph.D. Thesis"]
 tags: [physics, astrophysics, dark matter, D-D neutron generator, Brown University, LUX, LZ]
 ---
-{% include JB/setup %}
 
 ## My Ph.D. work on the LUX Dark Matter Experiment
 

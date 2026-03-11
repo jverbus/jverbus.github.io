@@ -8,7 +8,6 @@ og_image_height: 630
 categories: ["AI and Machine Learning"]
 tags: [Reinforcement Learning, PPO, Brown University, AI, physics, orbital mechanics, astrodynamics]
 ---
-{% include JB/setup %}
 
 I recently gave a 2.5-hour, hands-on workshop on using reinforcement learning (RL) to solve a simplified orbital transfer problem at the 2026 AI Winter School, hosted by the Center for the Fundamental Physics of the Universe at Brown University.
 
