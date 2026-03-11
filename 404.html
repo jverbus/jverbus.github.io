@@ -1,1 +1,25 @@
-Sorry this page does not exist =(
+---
+layout: page
+title: Page not found
+permalink: /404.html
+description: "The requested page could not be found."
+robots: noindex, follow
+sitemap: false
+---
+
+<p class="home-intro">Sorry, that page doesn’t exist (or moved). Try one of these instead:</p>
+
+<div class="post-list" role="list">
+  <article class="post-list-item" role="listitem">
+    <h3 class="post-list-title"><a href="{{ '/' | relative_url }}">Home</a></h3>
+    <p class="post-list-description">Go back to the site homepage.</p>
+  </article>
+  <article class="post-list-item" role="listitem">
+    <h3 class="post-list-title"><a href="{{ '/posts/' | relative_url }}">Posts</a></h3>
+    <p class="post-list-description">Browse recent writing and technical notes.</p>
+  </article>
+  <article class="post-list-item" role="listitem">
+    <h3 class="post-list-title"><a href="{{ '/about/' | relative_url }}">About</a></h3>
+    <p class="post-list-description">Background, current work, and contact links.</p>
+  </article>
+</div>

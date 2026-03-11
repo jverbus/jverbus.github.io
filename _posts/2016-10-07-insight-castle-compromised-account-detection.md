@@ -62,7 +62,7 @@ The counts between 0-5000 km are due to travel between two locations within the 
 The counts between 5000-12000 km are primarily due to travel between two adjacent continents.
 The counts representing distances of >12000 km are due to subsequent logins on two different continents separated by an ocean.
 
-![Geographic distance between subsequent actions by each user]({{ '/assets/images/castle_distance_between_events.png' | relative_url }})
+![Geographic distance between subsequent actions by each user]({{ '/assets/images/castle_distance_between_events.png' | relative_url }}){: width="763" height="554" }
 
 The time between subsequent user events can also provide information on their legitimacy.
 The figure below shows the time (in days) between subsequent events for each user for the month of data used for my analysis.
@@ -71,7 +71,7 @@ A user action originating from an account that has been idle for several weeks i
 There are ~30 periodic oscillations in the histogram that correspond to the change in user activity due to the day/night cycle.
 As one would expect, users are more likely to be online during the day.
 
-![Time (in days) between subsequent actions by each user]({{ '/assets/images/castle_time_since_last_action_days.png' | relative_url }})
+![Time (in days) between subsequent actions by each user]({{ '/assets/images/castle_time_since_last_action_days.png' | relative_url }}){: width="763" height="548" }
 
 The figure below shows the same quantity, the time between subsequent events for each user, on a much shorter timescale.
 I've zoomed in to show the distribution between 0-30 seconds.
@@ -79,7 +79,7 @@ The spike in the data on the far left side of the plot is due to events with a t
 These events are likely due to automated (non-human) actions and should be considered more suspicious.
 One way to include this information in the final model is to fit and subtract the automated user actions (events between 0-1 seconds) before using this feature as described in the "Detecting outliers" section later in this post. 
 
-![Time (in seconds) between subsequent actions by each user]({{ '/assets/images/castle_time_since_last_action_seconds.png' | relative_url }})
+![Time (in seconds) between subsequent actions by each user]({{ '/assets/images/castle_time_since_last_action_seconds.png' | relative_url }}){: width="763" height="560" }
 
 ### Feature engineering
 
@@ -103,7 +103,7 @@ The final figure-of-merit is a single number that quantifies how “outlier-like
 A threshold is applied to the figure-of-merit to classify a small fraction of the data as outliers (and potential malicious behavior) that is worthy of further scrutiny.
 The figure below shows the distribution of this figure-of-merit for all events; less “outlier-like” events are on the left side of the distribution, while more “outlier-like” events are on the right side of the distribution.
 
-![Figure-of-merit used to identify compromised user accounts]({{ '/assets/images/castle_neg_log_likelihood.png' | relative_url }})
+![Figure-of-merit used to identify compromised user accounts]({{ '/assets/images/castle_neg_log_likelihood.png' | relative_url }}){: width="720" height="523" }
 
 This model has a number of advantages.
 The model exploits the information provided by both continuous and categorical features, and it is very simple to extend the model to include new features.
@@ -120,7 +120,7 @@ Castle's current target is a false positive rate of 5%.
 My model has a recall of 79% with a false positive rate of 5%, which represents an improvement in recall of 2x over the baseline model with the same false positive rate.
 Given this significant improvement in performance, I'm working with Castle convert my model into an implementation that can be tested on live production data.
 
-![ROC curve]({{ '/assets/images/castle_roc_curve.png' | relative_url }})
+![ROC curve]({{ '/assets/images/castle_roc_curve.png' | relative_url }}){: width="764" height="748" }
 
 ## Future work
 

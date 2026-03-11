@@ -9,7 +9,7 @@ Highlights from my open source work, centered on `linkedin/isolation-forest`, th
 ## isolation-forest
 
 <div class="project-hero">
-  <img class="project-logo" src="{{ '/assets/images/isolation_forest.svg' | relative_url }}" alt="Isolation forest project diagram">
+  <img class="project-logo" src="{{ '/assets/images/isolation_forest.svg' | relative_url }}" alt="Isolation forest project diagram" width="331" height="326" loading="lazy" decoding="async">
   <div class="project-hero-content">
     <p class="project-name">isolation-forest</p>
     <p class="project-metrics">

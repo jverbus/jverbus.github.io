@@ -752,20 +752,26 @@ video {
   color: var(--text-muted);
 }
 
-.post-list-item a,
-.page-publications .entry-content > ul > li a {
-  color: inherit;
+.post-list-description a,
+.page-publications .entry-content > ul > li p a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+  text-decoration-thickness: 1px;
 }
 
-.post-list-item a:hover,
-.post-list-item a:visited,
-.post-list-item a:focus,
-.post-list-item a:active,
-.page-publications .entry-content > ul > li a:hover,
-.page-publications .entry-content > ul > li a:visited,
-.page-publications .entry-content > ul > li a:focus,
-.page-publications .entry-content > ul > li a:active {
-  color: inherit;
+.post-list-description a:visited,
+.page-publications .entry-content > ul > li p a:visited {
+  color: var(--accent);
+}
+
+.post-list-description a:hover,
+.post-list-description a:focus,
+.post-list-description a:active,
+.page-publications .entry-content > ul > li p a:hover,
+.page-publications .entry-content > ul > li p a:focus,
+.page-publications .entry-content > ul > li p a:active {
+  color: var(--accent-hover);
 }
 
 .page-publications .entry-content > h2 {

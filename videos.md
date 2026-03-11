@@ -15,6 +15,8 @@ Talks, panels, and workshop recordings. Newest first.
       card_class=section.card_class
       image=item.image
       image_alt=item.image_alt
+      image_width=item.image_width
+      image_height=item.image_height
       image_class=section.image_class
       content_class=section.content_class
       date=item.date

@@ -10,7 +10,7 @@ categories: ["AI and Machine Learning"]
 tags: [LinkedIn, machine learning, isolation forest, ONNX, open source]
 ---
 
-![Neutron generator outside of the LUX water tank]({{ '/assets/images/isolation_forest_onnx.png' | relative_url }}){: style="width:90%; display: block; margin-left: 0;" }
+![ONNX support architecture for LinkedIn isolation forest]({{ '/assets/images/isolation_forest_onnx.png' | relative_url }}){: width="1280" height="720" style="width:90%; display: block; margin-left: 0;" }
 
 I'm excited to announce that we've added an ONNX converter to our open-source isolation forest library on GitHub!
 

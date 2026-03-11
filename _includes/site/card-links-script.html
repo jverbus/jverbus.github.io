@@ -1,12 +1,43 @@
 <script>
 (function () {
-  var cardSelector = ".post-list-item, .page-publications .entry-content > ul > li";
+  var cardSelector = ".post-list-item";
   var interactiveSelector = "a, button, input, select, textarea, summary, [role='button'], [role='link']";
   var cards = document.querySelectorAll(cardSelector);
 
   function hasSelectedText() {
     var selection = window.getSelection && window.getSelection();
     return selection && selection.toString().trim().length > 0;
+  }
+
+  function getActionLinks(card) {
+    return Array.prototype.slice.call(card.querySelectorAll("a[href]"))
+      .filter(function (link) {
+        var href = link.getAttribute("href") || "";
+        return href.trim().length > 0 && href.trim().charAt(0) !== "#";
+      });
+  }
+
+  function resolvePrimaryLink(card) {
+    var mode = (card.getAttribute("data-card-clickable") || "auto").toLowerCase();
+    if (mode === "off") {
+      return null;
+    }
+
+    var links = getActionLinks(card);
+    if (!links.length) {
+      return null;
+    }
+
+    if (mode === "on") {
+      return links[0];
+    }
+
+    // auto mode: only make the whole card clickable when there is exactly one action link
+    if (links.length !== 1) {
+      return null;
+    }
+
+    return links[0];
   }
 
   function openPrimaryLink(link, event) {
@@ -29,8 +60,9 @@
   }
 
   cards.forEach(function (card) {
-    var primaryLink = card.querySelector("a[href]");
+    var primaryLink = resolvePrimaryLink(card);
     if (!primaryLink) {
+      card.classList.remove("card-clickable");
       return;
     }
 

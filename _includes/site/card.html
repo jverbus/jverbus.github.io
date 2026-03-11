@@ -3,6 +3,8 @@
   {% assign card_classes = card_classes | append: " " | append: include.card_class %}
 {% endif %}
 
+{% assign card_clickable = include.card_clickable | default: "auto" %}
+
 {% assign card_image = include.image %}
 {% if card_image %}
   {% assign image_is_external = false %}
@@ -25,9 +27,16 @@
   {% endunless %}
 {% endif %}
 
-<article class="{{ card_classes }}" role="listitem">
+{% assign image_width = include.image_width %}
+{% assign image_height = include.image_height %}
+{% if card_image and (image_width == nil or image_height == nil) and include.image_class == 'video-list-thumb' %}
+  {% assign image_width = 160 %}
+  {% assign image_height = 90 %}
+{% endif %}
+
+<article class="{{ card_classes }}" role="listitem" data-card-clickable="{{ card_clickable }}">
   {% if card_image %}
-    <img class="{{ include.image_class | default: 'video-list-thumb' }}" src="{{ card_image }}" alt="{{ include.image_alt | default: '' }}" loading="{{ include.image_loading | default: 'lazy' }}">
+    <img class="{{ include.image_class | default: 'video-list-thumb' }}" src="{{ card_image }}" alt="{{ include.image_alt | default: '' }}" loading="{{ include.image_loading | default: 'lazy' }}" decoding="async"{% if image_width and image_height %} width="{{ image_width }}" height="{{ image_height }}"{% endif %}>
     <div class="{{ include.content_class | default: 'video-list-content' }}">
   {% endif %}
 
