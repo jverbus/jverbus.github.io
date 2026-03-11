@@ -39,6 +39,13 @@ sections:
         description: >-
           J.R. Verbus<br><em>Ph.D. Thesis, Brown University</em><br><a href="https://repository.library.brown.edu/studio/item/bdr:674209/">Brown Digital Repository</a>
 
+  - title: Slides
+    items:
+      - date: "2016"
+        title: "Ph.D. Thesis Defense Slides"
+        url: "/assets/files/20160510_jverbus_thesis_defense_v4_public.pdf"
+        description: "<em>Brown University Physics Ph.D. defense presentation</em>"
+
   - title: Patents
     items:
       - date: "2025"
