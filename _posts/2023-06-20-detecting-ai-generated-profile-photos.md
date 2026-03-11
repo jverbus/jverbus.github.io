@@ -8,7 +8,6 @@ og_image_height: 630
 categories: ["AI and Machine Learning"]
 tags: [LinkedIn, machine learning, AI, Generative AI, deepfake]
 ---
-{% include JB/setup %}
 
 The LinkedIn Scholars program enables academics to contribute directly to LinkedIn’s vision of creating economic opportunity for every member of the global workforce.
 

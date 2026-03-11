@@ -3,7 +3,6 @@ layout: page
 title: About
 description: "James Verbus - Senior Staff Software Engineer at LinkedIn leading large-scale AI/ML for Trust and Safety. Built and open sourced LinkedIn's Spark/Scala isolation-forest implementation."
 ---
-{% include JB/setup %}
 
 ![James Verbus working on the LUX dark matter detector]({{ site.baseurl }}/assets/images/jverbus_lux_detector.jpg)
 

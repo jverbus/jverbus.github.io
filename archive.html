@@ -1,11 +1,15 @@
 ---
 layout: page
-title : Archive
+title: Archive
+permalink: /archive/
 description: "Archive of blog posts by James Verbus on machine learning, AI for Trust, anomaly detection, and physics."
-header : Post Archive
-group: navigation
 ---
-{% include JB/setup %}
 
-{% assign posts_collate = site.posts %}
-{% include JB/posts_collate %}
+<ul>
+  {% for post in site.posts %}
+  <li>
+    <span class="post-list-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+    <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+  </li>
+  {% endfor %}
+</ul>

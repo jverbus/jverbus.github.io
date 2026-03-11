@@ -3,7 +3,6 @@ layout: page
 title: Publications
 description: "Publications by James Verbus including AI/ML research papers on deepfake detection, anomaly detection, and physics research on dark matter experiments."
 ---
-{% include JB/setup %}
 
 For a complete publication list (>30 papers, >10k citations), see [Google Scholar](https://scholar.google.com/citations?user=_ksEziAAAAAJ&sortby=pubdate). Selected publications below.
 

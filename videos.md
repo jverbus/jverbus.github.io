@@ -3,7 +3,6 @@ layout: page
 title: Videos
 description: "Video presentations, panels, and workshop recordings by James Verbus."
 ---
-{% include JB/setup %}
 
 Talks, panels, and workshop recordings. Newest first.
 

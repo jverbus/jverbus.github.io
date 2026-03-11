@@ -8,7 +8,6 @@ og_image_height: 630
 categories: ["AI and Machine Learning"]
 tags: [Generative AI, UC Berkeley, AI, Agents]
 ---
-{% include JB/setup %}
 
 > **Author’s Note:** This is a repost of my original post [here](https://www.linkedin.com/pulse/from-demos-deployment-insights-berkeleys-agentic-ai-summit-verbus-k1aie/?trackingId=lZ36KGNFSCu5V6BVTVbr2w%3D%3D).
 > The summit website with the full agenda and sessions are available [here](https://rdi.berkeley.edu/events/agentic-ai-summit).

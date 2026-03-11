@@ -3,7 +3,6 @@ layout: page
 title: Open Source
 description: "Open source projects and related writing by James Verbus, including LinkedIn's isolation-forest library."
 ---
-{% include JB/setup %}
 
 Highlights from my open source work, centered on `linkedin/isolation-forest`, the Spark/Scala implementation I built at LinkedIn and open sourced.
 

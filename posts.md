@@ -4,7 +4,6 @@ title: Posts
 permalink: /posts/
 description: "Writing by James Verbus on machine learning, anomaly detection, AI safety, and trust & safety engineering."
 ---
-{% include JB/setup %}
 
 <p class="home-intro">Notes on machine learning, trust and safety, anomaly detection, and applied AI research.</p>
 
@@ -14,7 +13,7 @@ description: "Writing by James Verbus on machine learning, anomaly detection, AI
   {% for post in site.posts limit:8 %}
     <article class="post-list-item" role="listitem">
       <p class="post-list-date">{{ post.date | date: "%b %-d, %Y" }}</p>
-      <h3 class="post-list-title"><a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></h3>
+      <h3 class="post-list-title"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
       {% if post.description %}
       <p class="post-list-description">{{ post.description }}</p>
       {% endif %}

@@ -1,0 +1,76 @@
+<article class="unit-article layout-post">
+  <div class="unit-inner unit-article-inner">
+    <div class="content">
+      <header class="post-header">
+        <div class="unit-head">
+          <div class="unit-inner unit-head-inner">
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+              <ol>
+                <li><a href="{{ site.baseurl }}/">Home</a></li>
+                <li class="breadcrumbs-sep" aria-hidden="true">›</li>
+                <li><a href="{{ site.baseurl }}/posts/">Posts</a></li>
+              </ol>
+            </nav>
+            <h1 class="h2 entry-title">{{ page.title }}</h1>
+            <p class="post-date">
+              <time title="{{ page.date | date_to_xmlschema }}" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+            </p>
+            {% if page.description %}
+            <p class="post-summary">{{ page.description }}</p>
+            {% endif %}
+          </div><!-- unit-inner -->
+        </div><!-- unit-head -->
+      </header>
+
+      <div class="bd">
+        <div class="entry-content">
+          {{ content }}
+
+          <div class="meta">
+            {% if page.categories and page.categories != empty %}
+            <ul class="list-category list-linear">
+              <li class="list-head">Category</li>
+              {% for category in page.categories %}
+              <li>
+                <a href="{{ site.baseurl }}/categories/#{{ category | slugify }}-ref">
+                  {{ category }} <span>{{ site.categories[category].size }}</span>
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+
+            {% if page.tags and page.tags != empty %}
+            <ul class="list-tag list-linear">
+              <li class="list-head">Tags</li>
+              {% for tag in page.tags %}
+              <li>
+                <a href="{{ site.baseurl }}/tags/#{{ tag | slugify }}-ref">
+                  {{ tag }} <span>{{ site.tags[tag].size }}</span>
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div><!-- meta -->
+        </div><!-- entry-content -->
+      </div><!-- bd -->
+
+      <footer class="unit-foot">
+        <div class="unit-inner unit-foot-inner">
+          <nav class="pagination" aria-label="Post navigation">
+            <ul>
+              {% if page.previous %}
+              <li class="prev"><a class="internal" rel="prev" href="{{ site.baseurl }}{{ page.previous.url }}" title="View {{ page.previous.title }}">&larr; {{ page.previous.title }}</a></li>
+              {% endif %}
+              {% if page.next %}
+              <li class="next"><a class="internal" rel="next" href="{{ site.baseurl }}{{ page.next.url }}" title="View {{ page.next.title }}">{{ page.next.title }} &rarr;</a></li>
+              {% endif %}
+            </ul>
+          </nav>
+          <!-- back-to-top link is grouped in the global footer -->
+        </div>
+      </footer>
+    </div><!-- content -->
+  </div><!-- unit-inner -->
+</article>

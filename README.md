@@ -1,4 +1,4 @@
-This repository contains my personal blog, built on [Jekyll-Bootstrap](https://github.com/plusjade/jekyll-bootstrap) and licensed under the [MIT License](LICENSE).
+This repository contains my personal website and blog, built with plain Jekyll layouts/includes and licensed under the [MIT License](LICENSE).
 
 ## Social card images (Open Graph / Twitter)
 
