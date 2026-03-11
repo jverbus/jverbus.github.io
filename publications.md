@@ -12,6 +12,7 @@ For a complete publication list (>30 papers, >10k citations), see [Google Schola
 <div class="post-list" role="list">
   {% for item in section.items %}
     {% include site/card.html
+      card_clickable='on'
       date=item.date
       title=item.title
       url=item.url
