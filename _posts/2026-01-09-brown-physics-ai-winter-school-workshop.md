@@ -19,11 +19,11 @@ We used the classic **Hohmann transfer** as an analytic baseline, then built a s
 
 ## Slides
 
-- [Slides (PDF)]({{ site.url }}/assets/files/2026-01-09%20-%20James%20Verbus%20-%20Brown%20AI%20Winter%20School%20-%20Reinforcement%20Learning%20for%20Orbital%20Transfers.pdf)
+- [Slides (PDF)]({{ '/assets/files/2026-01-09%20-%20James%20Verbus%20-%20Brown%20AI%20Winter%20School%20-%20Reinforcement%20Learning%20for%20Orbital%20Transfers.pdf' | relative_url }})
 
 ## Code (Jupyter Notebook)
 
-- [RL for Orbital Transfers Notebook]({{ site.url }}/assets/files/2026_01_09_James_Verbus_Brown_AI_Winter_School_RL_Orbital_Transfers.ipynb)
+- [RL for Orbital Transfers Notebook]({{ '/assets/files/2026_01_09_James_Verbus_Brown_AI_Winter_School_RL_Orbital_Transfers.ipynb' | relative_url }})
 
 ## Event Page
 

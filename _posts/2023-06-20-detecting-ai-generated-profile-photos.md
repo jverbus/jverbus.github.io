@@ -29,7 +29,7 @@ Our approach is detailed in the full paper that was released at the [Workshop on
 
 ### Posters
 
-- [Exposing GAN-Generated Profile Photos from Compact Embeddings]({{ site.url }}/assets/files/CVPRW_poster_2023.pdf)
+- [Exposing GAN-Generated Profile Photos from Compact Embeddings]({{ '/assets/files/CVPRW_poster_2023.pdf' | relative_url }})
 
 ### News coverage
 

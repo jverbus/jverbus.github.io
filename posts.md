@@ -13,7 +13,7 @@ description: "Writing by James Verbus on machine learning, anomaly detection, AI
   {% for post in site.posts limit:8 %}
     <article class="post-list-item" role="listitem">
       <p class="post-list-date">{{ post.date | date: "%b %-d, %Y" }}</p>
-      <h3 class="post-list-title"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+      <h3 class="post-list-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
       {% if post.description %}
       <p class="post-list-description">{{ post.description }}</p>
       {% endif %}
@@ -21,4 +21,4 @@ description: "Writing by James Verbus on machine learning, anomaly detection, AI
   {% endfor %}
 </div>
 
-<p class="home-archive-link"><a href="/archive/">View all posts</a></p>
+<p class="home-archive-link"><a href="{{ '/archive/' | relative_url }}">View all posts</a></p>

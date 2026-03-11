@@ -9,7 +9,7 @@ categories: ["AI and Machine Learning"]
 tags: [LinkedIn, machine learning, isolation forest, ONNX, open source]
 ---
 
-![Neutron generator outside of the LUX water tank]({{ site.url }}/assets/images/isolation_forest_onnx.png){: style="width:90%; display: block; margin-left: 0;" }
+![Neutron generator outside of the LUX water tank]({{ '/assets/images/isolation_forest_onnx.png' | relative_url }}){: style="width:90%; display: block; margin-left: 0;" }
 
 I'm excited to announce that we've added an ONNX converter to our open-source isolation forest library on GitHub!
 
@@ -27,7 +27,7 @@ You can learn more [here](https://www.linkedin.com/pulse/announcing-onnx-support
 
 - [Announcing ONNX Support in LinkedIn’s Open-Source Isolation Forest Library](https://www.linkedin.com/pulse/announcing-onnx-support-linkedins-open-source-isolation-james-verbus-paoqe/)
 - [Detecting and preventing abuse on LinkedIn using isolation forests](https://www.linkedin.com/blog/engineering/data-management/isolation-forest)
-- [Open Source: Spark/Scala Isolation Forest Library]({{ site.baseurl }}{% link _posts/2019-08-13-open-source-isolation-forest-spark-scala.md %})
+- [Open Source: Spark/Scala Isolation Forest Library]({{ '/2019/08/13/open-source-isolation-forest-spark-scala/' | relative_url }})
 
 ### GitHub
 

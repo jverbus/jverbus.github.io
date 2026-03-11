@@ -9,7 +9,7 @@ description: "Archive of blog posts by James Verbus on machine learning, AI for 
   {% for post in site.posts %}
   <li>
     <span class="post-list-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-    <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
   </li>
   {% endfor %}
 </ul>

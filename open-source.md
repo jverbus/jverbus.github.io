@@ -9,7 +9,7 @@ Highlights from my open source work, centered on `linkedin/isolation-forest`, th
 ## isolation-forest
 
 <div class="project-hero">
-  <img class="project-logo" src="{{ site.baseurl }}/assets/images/isolation_forest.svg" alt="Isolation forest project diagram">
+  <img class="project-logo" src="{{ '/assets/images/isolation_forest.svg' | relative_url }}" alt="Isolation forest project diagram">
   <div class="project-hero-content">
     <p class="project-name">isolation-forest</p>
     <p class="project-metrics">
@@ -42,12 +42,12 @@ Highlights from my open source work, centered on `linkedin/isolation-forest`, th
 <div class="post-list" role="list">
   <article class="post-list-item" role="listitem">
     <p class="post-list-date">Sep 23, 2024</p>
-    <h3 class="post-list-title"><a href="{{ site.baseurl }}{% link _posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md %}">Announcing ONNX Support in Isolation Forest</a></h3>
+    <h3 class="post-list-title"><a href="{{ '/2024/09/23/announcing-onnx-support-in-isolation-forest/' | relative_url }}">Announcing ONNX Support in Isolation Forest</a></h3>
     <p class="post-list-description">Details on ONNX export support and deployment options beyond Spark batch inference.</p>
   </article>
   <article class="post-list-item" role="listitem">
     <p class="post-list-date">Aug 13, 2019</p>
-    <h3 class="post-list-title"><a href="{{ site.baseurl }}{% link _posts/2019-08-13-open-source-isolation-forest-spark-scala.md %}">Open Source: Spark/Scala Isolation Forest Library</a></h3>
+    <h3 class="post-list-title"><a href="{{ '/2019/08/13/open-source-isolation-forest-spark-scala/' | relative_url }}">Open Source: Spark/Scala Isolation Forest Library</a></h3>
     <p class="post-list-description">Original project announcement and context on anti-abuse production use cases.</p>
   </article>
 </div>

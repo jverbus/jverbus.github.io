@@ -71,13 +71,13 @@ For a complete publication list (>30 papers, >10k citations), see [Google Schola
 <div class="post-list" role="list">
   <article class="post-list-item" role="listitem">
     <p class="post-list-date">2024</p>
-    <h3 class="post-list-title"><a href="{{ site.baseurl }}/assets/files/CVPRW_poster_2024.pdf">Finding AI-Generated Faces in the Wild (Poster)</a></h3>
-    <p class="post-list-description"><em>CVPR Workshop on Media Forensics</em><br><a href="{{ site.baseurl }}/assets/files/CVPRW_poster_2024.pdf">PDF</a></p>
+    <h3 class="post-list-title"><a href="{{ '/assets/files/CVPRW_poster_2024.pdf' | relative_url }}">Finding AI-Generated Faces in the Wild (Poster)</a></h3>
+    <p class="post-list-description"><em>CVPR Workshop on Media Forensics</em><br><a href="{{ '/assets/files/CVPRW_poster_2024.pdf' | relative_url }}">PDF</a></p>
   </article>
   <article class="post-list-item" role="listitem">
     <p class="post-list-date">2023</p>
-    <h3 class="post-list-title"><a href="{{ site.baseurl }}/assets/files/CVPRW_poster_2023.pdf">Exposing GAN-Generated Profile Photos from Compact Embeddings (Poster)</a></h3>
-    <p class="post-list-description"><em>CVPR Workshop on Media Forensics</em><br><a href="{{ site.baseurl }}/assets/files/CVPRW_poster_2023.pdf">PDF</a></p>
+    <h3 class="post-list-title"><a href="{{ '/assets/files/CVPRW_poster_2023.pdf' | relative_url }}">Exposing GAN-Generated Profile Photos from Compact Embeddings (Poster)</a></h3>
+    <p class="post-list-description"><em>CVPR Workshop on Media Forensics</em><br><a href="{{ '/assets/files/CVPRW_poster_2023.pdf' | relative_url }}">PDF</a></p>
   </article>
 </div>
 

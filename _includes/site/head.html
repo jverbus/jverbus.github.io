@@ -15,11 +15,11 @@
   <meta name="description" content="{{ page_description }}">
 
   <!-- Canonical URL -->
-  <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
-  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
   <meta property="og:title" content="{{ page.title }}">
   <meta property="og:description" content="{{ page_description }}">
   <meta property="og:site_name" content="{{ site.title }}">
@@ -29,7 +29,7 @@
     {% if og_image contains '://' %}
       {% assign og_image_url = og_image %}
     {% else %}
-      {% assign og_image_url = site.url | append: site.baseurl | append: og_image %}
+      {% assign og_image_url = og_image | absolute_url %}
     {% endif %}
   <meta property="og:image" content="{{ og_image_url }}">
   <meta property="og:image:alt" content="{{ page.og_image_alt | default: page.title }}">
@@ -68,18 +68,18 @@
     "author": {
       "@type": "Person",
       "name": "{{ site.author.name }}",
-      "url": "{{ site.url }}{{ site.baseurl }}/about/"
+      "url": "{{ '/about/' | absolute_url }}"
     },
     "publisher": {
       "@type": "Person",
       "name": "{{ site.author.name }}",
-      "url": "{{ site.url }}{{ site.baseurl }}"
+      "url": "{{ '/' | absolute_url }}"
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "{{ site.url }}{{ site.baseurl }}{{ page.url }}"
+      "@id": "{{ page.url | absolute_url }}"
     },
-    "url": "{{ site.url }}{{ site.baseurl }}{{ page.url }}"
+    "url": "{{ page.url | absolute_url }}"
     {% if og_image_url %},
     "image": "{{ og_image_url }}"
     {% endif %}
@@ -97,19 +97,19 @@
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "{{ site.url }}{{ site.baseurl }}/"
+        "item": "{{ '/' | absolute_url }}"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Posts",
-        "item": "{{ site.url }}{{ site.baseurl }}/posts/"
+        "item": "{{ '/posts/' | absolute_url }}"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": "{{ page.title | escape }}",
-        "item": "{{ site.url }}{{ site.baseurl }}{{ page.url }}"
+        "item": "{{ page.url | absolute_url }}"
       }
     ]
   }
@@ -120,7 +120,7 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "{{ site.author.name }}",
-    "url": "{{ site.url }}{{ site.baseurl }}/about/",
+    "url": "{{ '/about/' | absolute_url }}",
     "jobTitle": "Senior Staff Software Engineer",
     "worksFor": {
       "@type": "Organization",
@@ -145,7 +145,7 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "{{ site.title }}",
-    "url": "{{ site.url }}{{ site.baseurl }}",
+    "url": "{{ '/' | absolute_url }}",
     "author": {
       "@type": "Person",
       "name": "{{ site.author.name }}"
@@ -155,7 +155,7 @@
   {% endif %}
 
   <meta name="theme-color" content="#0f172a">
-  <link rel="icon" type="image/x-icon" href="{{ site.baseurl }}/favicon.ico">
-  <link href="{{ site.baseurl }}/assets/css/modern.css?v=loop17" rel="stylesheet" media="all">
-  <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ site.url }}{{ site.baseurl }}/atom.xml">
+  <link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}">
+  <link href="{{ '/assets/css/modern.css' | relative_url }}?v=loop17" rel="stylesheet" media="all">
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/atom.xml' | absolute_url }}">
 </head>

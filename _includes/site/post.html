@@ -6,9 +6,9 @@
           <div class="unit-inner unit-head-inner">
             <nav class="breadcrumbs" aria-label="Breadcrumb">
               <ol>
-                <li><a href="{{ site.baseurl }}/">Home</a></li>
+                <li><a href="{{ '/' | relative_url }}">Home</a></li>
                 <li class="breadcrumbs-sep" aria-hidden="true">›</li>
-                <li><a href="{{ site.baseurl }}/posts/">Posts</a></li>
+                <li><a href="{{ '/posts/' | relative_url }}">Posts</a></li>
               </ol>
             </nav>
             <h1 class="h2 entry-title">{{ page.title }}</h1>
@@ -32,7 +32,7 @@
               <li class="list-head">Category</li>
               {% for category in page.categories %}
               <li>
-                <a href="{{ site.baseurl }}/categories/#{{ category | slugify }}-ref">
+                <a href="{{ '/categories/' | relative_url }}#{{ category | slugify }}-ref">
                   {{ category }} <span>{{ site.categories[category].size }}</span>
                 </a>
               </li>
@@ -45,7 +45,7 @@
               <li class="list-head">Tags</li>
               {% for tag in page.tags %}
               <li>
-                <a href="{{ site.baseurl }}/tags/#{{ tag | slugify }}-ref">
+                <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}-ref">
                   {{ tag }} <span>{{ site.tags[tag].size }}</span>
                 </a>
               </li>
@@ -61,10 +61,10 @@
           <nav class="pagination" aria-label="Post navigation">
             <ul>
               {% if page.previous %}
-              <li class="prev"><a class="internal" rel="prev" href="{{ site.baseurl }}{{ page.previous.url }}" title="View {{ page.previous.title }}">&larr; {{ page.previous.title }}</a></li>
+              <li class="prev"><a class="internal" rel="prev" href="{{ page.previous.url | relative_url }}" title="View {{ page.previous.title }}">&larr; {{ page.previous.title }}</a></li>
               {% endif %}
               {% if page.next %}
-              <li class="next"><a class="internal" rel="next" href="{{ site.baseurl }}{{ page.next.url }}" title="View {{ page.next.title }}">{{ page.next.title }} &rarr;</a></li>
+              <li class="next"><a class="internal" rel="next" href="{{ page.next.url | relative_url }}" title="View {{ page.next.title }}">{{ page.next.title }} &rarr;</a></li>
               {% endif %}
             </ul>
           </nav>

@@ -42,7 +42,7 @@ Talks, panels, and workshop recordings. Newest first.
     </div>
   </article>
   <article class="post-list-item video-list-item" role="listitem">
-    <img class="video-list-thumb" src="{{ site.baseurl }}/assets/images/jverbus_abuse_at_scale.jpeg" alt="James Verbus presenting at @Scale" loading="lazy">
+    <img class="video-list-thumb" src="{{ '/assets/images/jverbus_abuse_at_scale.jpeg' | relative_url }}" alt="James Verbus presenting at @Scale" loading="lazy">
     <div class="video-list-content">
       <p class="post-list-date">2019</p>
       <h3 class="post-list-title"><a href="https://atscaleconference.com/videos/fighting-abuse-scale-2019-preventing-abuse-using-unsupervised-learning/" target="_blank" rel="noopener">Fighting Abuse @Scale: Preventing Abuse Using Unsupervised Learning</a></h3>
