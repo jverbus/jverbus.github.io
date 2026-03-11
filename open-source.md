@@ -20,64 +20,51 @@ Highlights from my open source work, centered on `linkedin/isolation-forest`, th
 </div>
 
 <div class="post-list" role="list">
-  <article class="post-list-item" role="listitem">
-    <p class="post-list-date">Core Project</p>
-    <h3 class="post-list-title"><a href="https://github.com/linkedin/isolation-forest">GitHub: linkedin/isolation-forest</a></h3>
-    <p class="post-list-description">I built and open sourced this distributed Scala/Spark isolation-forest implementation for large-scale unsupervised anomaly detection at LinkedIn.</p>
-  </article>
-  <article class="post-list-item" role="listitem">
-    <p class="post-list-date">Artifacts</p>
-    <h3 class="post-list-title"><a href="https://repo.maven.apache.org/maven2/com/linkedin/isolation-forest/">Maven Central: com.linkedin:isolation-forest</a></h3>
-    <p class="post-list-description">Published artifacts for integrating the library into JVM-based data pipelines.</p>
-  </article>
-  <article class="post-list-item" role="listitem">
-    <p class="post-list-date">Artifacts</p>
-    <h3 class="post-list-title"><a href="https://pypi.org/project/isolation-forest-onnx/">PyPI: isolation-forest-onnx</a></h3>
-    <p class="post-list-description">Python package for converting LinkedIn's isolation-forest model format into ONNX for portable inference.</p>
-  </article>
+  {% for item in site.data.open_source.core_items %}
+    {% include site/card.html
+      date=item.date
+      title=item.title
+      url=item.url
+      description=item.description
+    %}
+  {% endfor %}
 </div>
 
 ## Related Posts
 
 <div class="post-list" role="list">
-  <article class="post-list-item" role="listitem">
-    <p class="post-list-date">Sep 23, 2024</p>
-    <h3 class="post-list-title"><a href="{{ '/2024/09/23/announcing-onnx-support-in-isolation-forest/' | relative_url }}">Announcing ONNX Support in Isolation Forest</a></h3>
-    <p class="post-list-description">Details on ONNX export support and deployment options beyond Spark batch inference.</p>
-  </article>
-  <article class="post-list-item" role="listitem">
-    <p class="post-list-date">Aug 13, 2019</p>
-    <h3 class="post-list-title"><a href="{{ '/2019/08/13/open-source-isolation-forest-spark-scala/' | relative_url }}">Open Source: Spark/Scala Isolation Forest Library</a></h3>
-    <p class="post-list-description">Original project announcement and context on anti-abuse production use cases.</p>
-  </article>
+  {% for item in site.data.open_source.related_posts %}
+    {% include site/card.html
+      date=item.date
+      title=item.title
+      url=item.url
+      description=item.description
+    %}
+  {% endfor %}
 </div>
 
 ## External Writing
 
 <div class="post-list" role="list">
-  <article class="post-list-item" role="listitem">
-    <p class="post-list-date">LinkedIn Engineering</p>
-    <h3 class="post-list-title"><a href="https://engineering.linkedin.com/blog/2019/isolation-forest">Open Sourcing Isolation Forest</a></h3>
-    <p class="post-list-description">Engineering write-up on motivations, architecture, and applications.</p>
-  </article>
-  <article class="post-list-item" role="listitem">
-    <p class="post-list-date">LinkedIn Pulse</p>
-    <h3 class="post-list-title"><a href="https://www.linkedin.com/pulse/announcing-onnx-support-linkedins-open-source-isolation-james-verbus-paoqe/">Announcing ONNX Support in LinkedIn's Open-Source Isolation Forest Library</a></h3>
-    <p class="post-list-description">Overview of ONNX model export and expanded serving patterns.</p>
-  </article>
+  {% for item in site.data.open_source.external_writing %}
+    {% include site/card.html
+      date=item.date
+      title=item.title
+      url=item.url
+      description=item.description
+    %}
+  {% endfor %}
 </div>
 
 ## Videos
 
 <div class="post-list" role="list">
-  <article class="post-list-item" role="listitem">
-    <p class="post-list-date">2020</p>
-    <h3 class="post-list-title"><a href="https://www.youtube.com/watch?v=sFRrFWYNAUI">Spark+AI Summit: Preventing Abuse Using Unsupervised Learning</a></h3>
-    <p class="post-list-description">Detection of abusive activity on a large social network is an adversarial challenge with quickly evolving behavior patterns and imperfect ground truth labels. These characteristics limit the use of supervised learning techniques, but they can be overcome using unsupervised methods. To address these challenges, we created a Scala/Spark implementation of the isolation forest unsupervised outlier detection algorithm; we recently open sourced this library (<a href="https://github.com/linkedin/isolation-forest">github.com/linkedin/isolation-forest</a>).</p>
-  </article>
-  <article class="post-list-item" role="listitem">
-    <p class="post-list-date">2019</p>
-    <h3 class="post-list-title"><a href="https://atscaleconference.com/videos/fighting-abuse-scale-2019-preventing-abuse-using-unsupervised-learning/">Fighting Abuse @Scale: Preventing Abuse Using Unsupervised Learning</a></h3>
-    <p class="post-list-description">Detection of abusive activity on a large social network is an adversarial challenge with quickly evolving behavior patterns and imperfect ground truth labels. These characteristics limit the use of supervised learning techniques, but they can be overcome using unsupervised methods. To address these challenges, we created a Scala/Spark implementation of the isolation forest unsupervised outlier detection algorithm; we recently open sourced this library (<a href="https://github.com/linkedin/isolation-forest">github.com/linkedin/isolation-forest</a>).</p>
-  </article>
+  {% for item in site.data.open_source.video_links %}
+    {% include site/card.html
+      date=item.date
+      title=item.title
+      url=item.url
+      description=item.description
+    %}
+  {% endfor %}
 </div>

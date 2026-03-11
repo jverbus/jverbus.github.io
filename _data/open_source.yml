@@ -1,0 +1,50 @@
+core_items:
+  - date: "Core Project"
+    title: "GitHub: linkedin/isolation-forest"
+    url: "https://github.com/linkedin/isolation-forest"
+    description: "I built and open sourced this distributed Scala/Spark isolation-forest implementation for large-scale unsupervised anomaly detection at LinkedIn."
+
+  - date: "Artifacts"
+    title: "Maven Central: com.linkedin:isolation-forest"
+    url: "https://repo.maven.apache.org/maven2/com/linkedin/isolation-forest/"
+    description: "Published artifacts for integrating the library into JVM-based data pipelines."
+
+  - date: "Artifacts"
+    title: "PyPI: isolation-forest-onnx"
+    url: "https://pypi.org/project/isolation-forest-onnx/"
+    description: "Python package for converting LinkedIn's isolation-forest model format into ONNX for portable inference."
+
+related_posts:
+  - date: "Sep 23, 2024"
+    title: "Announcing ONNX Support in Isolation Forest"
+    url: "/2024/09/23/announcing-onnx-support-in-isolation-forest/"
+    description: "Details on ONNX export support and deployment options beyond Spark batch inference."
+
+  - date: "Aug 13, 2019"
+    title: "Open Source: Spark/Scala Isolation Forest Library"
+    url: "/2019/08/13/open-source-isolation-forest-spark-scala/"
+    description: "Original project announcement and context on anti-abuse production use cases."
+
+external_writing:
+  - date: "LinkedIn Engineering"
+    title: "Open Sourcing Isolation Forest"
+    url: "https://engineering.linkedin.com/blog/2019/isolation-forest"
+    description: "Engineering write-up on motivations, architecture, and applications."
+
+  - date: "LinkedIn Pulse"
+    title: "Announcing ONNX Support in LinkedIn's Open-Source Isolation Forest Library"
+    url: "https://www.linkedin.com/pulse/announcing-onnx-support-linkedins-open-source-isolation-james-verbus-paoqe/"
+    description: "Overview of ONNX model export and expanded serving patterns."
+
+video_links:
+  - date: "2020"
+    title: "Spark+AI Summit: Preventing Abuse Using Unsupervised Learning"
+    url: "https://www.youtube.com/watch?v=sFRrFWYNAUI"
+    description: >-
+      Detection of abusive activity on a large social network is an adversarial challenge with quickly evolving behavior patterns and imperfect ground truth labels. These characteristics limit the use of supervised learning techniques, but they can be overcome using unsupervised methods. To address these challenges, we created a Scala/Spark implementation of the isolation forest unsupervised outlier detection algorithm; we recently open sourced this library (<a href="https://github.com/linkedin/isolation-forest">github.com/linkedin/isolation-forest</a>).
+
+  - date: "2019"
+    title: "Fighting Abuse @Scale: Preventing Abuse Using Unsupervised Learning"
+    url: "https://atscaleconference.com/videos/fighting-abuse-scale-2019-preventing-abuse-using-unsupervised-learning/"
+    description: >-
+      Detection of abusive activity on a large social network is an adversarial challenge with quickly evolving behavior patterns and imperfect ground truth labels. These characteristics limit the use of supervised learning techniques, but they can be overcome using unsupervised methods. To address these challenges, we created a Scala/Spark implementation of the isolation forest unsupervised outlier detection algorithm; we recently open sourced this library (<a href="https://github.com/linkedin/isolation-forest">github.com/linkedin/isolation-forest</a>).

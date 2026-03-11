@@ -1,0 +1,55 @@
+{% assign card_classes = "post-list-item" %}
+{% if include.card_class %}
+  {% assign card_classes = card_classes | append: " " | append: include.card_class %}
+{% endif %}
+
+{% assign card_image = include.image %}
+{% if card_image %}
+  {% assign image_is_external = false %}
+  {% if card_image contains '://' or card_image contains 'mailto:' or card_image contains 'tel:' %}
+    {% assign image_is_external = true %}
+  {% endif %}
+  {% unless image_is_external %}
+    {% assign card_image = card_image | relative_url %}
+  {% endunless %}
+{% endif %}
+
+{% assign card_url = include.url %}
+{% if card_url %}
+  {% assign url_is_external = false %}
+  {% if card_url contains '://' or card_url contains 'mailto:' or card_url contains 'tel:' %}
+    {% assign url_is_external = true %}
+  {% endif %}
+  {% unless url_is_external %}
+    {% assign card_url = card_url | relative_url %}
+  {% endunless %}
+{% endif %}
+
+<article class="{{ card_classes }}" role="listitem">
+  {% if card_image %}
+    <img class="{{ include.image_class | default: 'video-list-thumb' }}" src="{{ card_image }}" alt="{{ include.image_alt | default: '' }}" loading="{{ include.image_loading | default: 'lazy' }}">
+    <div class="{{ include.content_class | default: 'video-list-content' }}">
+  {% endif %}
+
+  {% if include.date %}
+    <p class="post-list-date">{{ include.date }}</p>
+  {% endif %}
+
+  {% if include.title %}
+    <h3 class="post-list-title">
+      {% if card_url %}
+        <a href="{{ card_url }}"{% if include.link_target %} target="{{ include.link_target }}"{% endif %}{% if include.link_rel %} rel="{{ include.link_rel }}"{% endif %}>{{ include.title }}</a>
+      {% else %}
+        {{ include.title }}
+      {% endif %}
+    </h3>
+  {% endif %}
+
+  {% if include.description %}
+    <p class="post-list-description">{{ include.description }}</p>
+  {% endif %}
+
+  {% if card_image %}
+    </div>
+  {% endif %}
+</article>

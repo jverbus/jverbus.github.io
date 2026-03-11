@@ -1,0 +1,46 @@
+logo_url: /
+
+items:
+  - id: home
+    label: Home
+    url: /
+    active_urls:
+      - /
+      - /index.html
+
+  - id: posts
+    label: Posts
+    url: /posts/
+    active_urls:
+      - /posts/
+      - /posts.html
+    active_layouts:
+      - post
+
+  - id: publications
+    label: Publications
+    url: /publications/
+    active_urls:
+      - /publications/
+      - /publications.html
+
+  - id: open-source
+    label: Open Source
+    url: /open-source/
+    active_urls:
+      - /open-source/
+      - /open-source.html
+
+  - id: videos
+    label: Videos
+    url: /videos/
+    active_urls:
+      - /videos/
+      - /videos.html
+
+  - id: about
+    label: About
+    url: /about/
+    active_urls:
+      - /about/
+      - /about.html
