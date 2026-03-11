@@ -33,3 +33,6 @@ jobs:
             _site/**/*.html
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify LinkedIn links (browser-like user agent)
+        run: python3 scripts/check_linkedin_urls.py _site

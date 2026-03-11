@@ -13,6 +13,8 @@ extensions = ["html"]
 user_agent = "Mozilla/5.0 (compatible; jverbus-link-check/1.0)"
 
 # Some social platforms block automated crawlers (e.g., LinkedIn returns 999).
+# LinkedIn URLs are excluded here but validated separately by
+# scripts/check_linkedin_urls.py using a browser-like user-agent.
 exclude = [
   '^https://(www\.)?linkedin\.com/.*',
   '^https://engineering\.linkedin\.com/.*',
