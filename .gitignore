@@ -9,7 +9,7 @@ Thumbs.db
 .rvmrc
 
 .bundle/
-vendor/bundle/
+vendor/
 .jekyll-cache/
 .jekyll-metadata
 .sass-cache/
