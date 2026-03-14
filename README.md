@@ -21,3 +21,18 @@ GitHub Actions runs:
 - `Link Check` (Lychee) against generated `_site/**/*.html` pages
 
 Lychee is configured via `.github/lychee.toml`.
+
+## Legacy URL redirects
+
+When an old external permalink breaks (for example, historical paths with spaces), preserve SEO by adding a static redirect page at the legacy path.
+
+Recommended legacy redirect page pattern:
+- `rel="canonical"` pointing at the current canonical URL
+- `meta name="robots" content="noindex,follow"`
+- immediate redirect (`meta refresh` + `location.replace(...)`)
+
+Example we added:
+- legacy path: `/data science projects/2016/10/07/insight-castle-compromised-account-detection/`
+- canonical path: `/2016/10/07/insight-castle-compromised-account-detection/`
+
+This is the minimal-risk GitHub Pages approach when server-side 301 rules are not available.
