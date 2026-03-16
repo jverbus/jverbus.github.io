@@ -158,6 +158,21 @@ button:focus-visible {
   white-space: nowrap;
 }
 
+.nav-global li:not(.logo) a::before {
+  content: "";
+  position: absolute;
+  left: 0.18rem;
+  top: 50%;
+  width: 0.34rem;
+  height: 0.34rem;
+  border-radius: 999px;
+  background: var(--accent);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: opacity 140ms ease, background-color 140ms ease;
+}
+
 .nav-global li:not(.logo) a:hover {
   color: var(--text);
   border-color: var(--border);
@@ -173,12 +188,6 @@ button:focus-visible {
 }
 
 .nav-global li.active a::before {
-  content: "";
-  width: 0.34rem;
-  height: 0.34rem;
-  border-radius: 999px;
-  background: var(--accent);
-  margin-right: 0.42rem;
   opacity: 0.9;
 }
 
