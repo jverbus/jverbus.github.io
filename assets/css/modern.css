@@ -45,6 +45,14 @@ html {
   font-size: clamp(16px, 1.1vw, 18px);
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-y: scroll;
+}
+
+@supports (scrollbar-gutter: stable) {
+  html {
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+  }
 }
 
 body {
