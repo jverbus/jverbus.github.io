@@ -169,7 +169,7 @@ button:focus-visible {
 .nav-global li:not(.logo) a::before {
   content: "";
   position: absolute;
-  left: 0.08rem;
+  left: -0.04rem;
   top: 50%;
   width: 0.34rem;
   height: 0.34rem;
