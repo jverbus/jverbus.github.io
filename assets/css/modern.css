@@ -931,10 +931,6 @@ video {
     border-color: #3b82f6;
   }
 
-  .nav-global li.active a::before {
-    background: #93c5fd;
-  }
-
   p code,
   li code {
     background: #1e293b;
