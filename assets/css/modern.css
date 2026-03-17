@@ -160,25 +160,10 @@ button:focus-visible {
   color: var(--text-muted);
   border: 1px solid transparent;
   border-radius: 999px;
-  padding: 0.34rem 0.72rem 0.34rem 1rem;
+  padding: 0.34rem 0.72rem;
   transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease, transform 120ms ease;
   text-decoration: none;
   white-space: nowrap;
-}
-
-.nav-global li:not(.logo) a::before {
-  content: "";
-  position: absolute;
-  left: 0.18rem;
-  top: 50%;
-  width: 0.34rem;
-  height: 0.34rem;
-  border-radius: 999px;
-  background: var(--accent);
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-50%);
-  transition: opacity 140ms ease, background-color 140ms ease;
 }
 
 .nav-global li:not(.logo) a:hover {
@@ -193,10 +178,6 @@ button:focus-visible {
   color: var(--text);
   border-color: #b8cae9;
   background: #f7fbff;
-}
-
-.nav-global li.active a::before {
-  opacity: 0.9;
 }
 
 .body {
