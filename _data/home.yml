@@ -24,11 +24,10 @@ hero:
     - label: "Open source"
       value: "Isolation Forest"
   image:
-    src: "/assets/images/jverbus_lux_detector.jpg"
-    alt: "James Verbus working on the LUX dark matter detector"
-    width: 800
-    height: 800
-    caption: "From Brown physics to production AI systems."
+    src: "/assets/images/jverbus_thermosyphon_assembly.png"
+    alt: "James Verbus working on the LUX thermosyphon assembly"
+    width: 1970
+    height: 1703
 
 featured_work:
   - eyebrow: "Open source"
