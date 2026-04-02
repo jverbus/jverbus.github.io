@@ -1,0 +1,81 @@
+hero:
+  eyebrow: "Applied AI · Trust & Safety · Anomaly Detection"
+  title: "James Verbus builds practical AI systems for trust, safety, and large-scale machine learning."
+  intro: "I’m a Senior Staff Software Engineer focused on applied AI, anomaly detection, and abuse prevention. My work spans research, production systems, open source, and technical leadership — with an emphasis on building systems that hold up in the real world."
+  primary_ctas:
+    - label: "Read Posts"
+      url: "/posts/"
+    - label: "View Publications"
+      url: "/publications/"
+    - label: "Watch Talks"
+      url: "/videos/"
+  secondary_links:
+    - label: "GitHub"
+      url: "https://github.com/jverbus"
+    - label: "LinkedIn"
+      url: "https://www.linkedin.com/in/jamesverbus"
+    - label: "Google Scholar"
+      url: "https://scholar.google.com/citations?user=_ksEziAAAAAJ"
+  image:
+    src: "/assets/images/jverbus_lux_detector.jpg"
+    alt: "James Verbus working on the LUX dark matter detector"
+    width: 800
+    height: 800
+
+featured_work:
+  - eyebrow: "Open Source"
+    title: "Isolation Forest for large-scale anomaly detection"
+    description: "Built and open sourced LinkedIn’s Spark/Scala isolation-forest library for unsupervised anomaly detection in production anti-abuse systems."
+    url: "/open-source/"
+
+  - eyebrow: "Research"
+    title: "Detecting AI-generated faces in the wild"
+    description: "Research and engineering work on identifying synthetic profile images and other signals of inauthentic behavior at scale."
+    url: "/2024/08/15/finding-ai-generated-faces-in-the-wild/"
+
+  - eyebrow: "Trust & Safety"
+    title: "Deep learning for abusive behavior and platform defense"
+    description: "Production-facing work on abuse detection, adversarial behavior, and sequence-based models for protecting real platforms at scale."
+    url: "/2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/"
+
+focus_areas:
+  - title: "Trust & Safety AI"
+    description: "Production systems for detecting abuse, inauthentic behavior, and adversarial activity."
+  - title: "Anomaly Detection"
+    description: "Methods and infrastructure for surfacing rare, high-impact patterns in large systems."
+  - title: "Applied GenAI"
+    description: "Practical AI systems, evaluation, and deployment discipline beyond demos."
+  - title: "Research to Production"
+    description: "Connecting technical depth with systems that are usable, reliable, and worth shipping."
+
+destinations:
+  - title: "Writing"
+    description: "Long-form posts on applied machine learning, trust and safety, anomaly detection, and AI systems."
+    url: "/posts/"
+    link_label: "Browse posts"
+  - title: "Publications"
+    description: "Papers, patents, and technical writing across academia and industry."
+    url: "/publications/"
+    link_label: "View publications"
+  - title: "Talks"
+    description: "Workshops, talks, and recorded presentations on practical AI and ML."
+    url: "/videos/"
+    link_label: "Watch talks"
+
+background:
+  title: "Background"
+  body: "Before industry, I was an experimental particle physicist and earned a PhD at Brown University on the LUX dark matter experiment. That background still shapes how I work: careful with evidence, skeptical of hype, and focused on systems that perform under real-world constraints."
+  url: "/about/"
+  link_label: "More about me"
+
+links:
+  - label: "GitHub"
+    url: "https://github.com/jverbus"
+  - label: "Google Scholar"
+    url: "https://scholar.google.com/citations?user=_ksEziAAAAAJ"
+  - label: "LinkedIn"
+    url: "https://www.linkedin.com/in/jamesverbus"
+  - label: "X"
+    url: "https://x.com/JamesVerbus"
+  - label: "Email"
+    url: "mailto:james.verbus@gmail.com"

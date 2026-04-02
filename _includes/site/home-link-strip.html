@@ -1,0 +1,22 @@
+{% assign items = site.data.home.links %}
+<section class="home-section home-link-strip" aria-labelledby="link-strip-title">
+  <div class="home-link-strip-inner">
+    <div>
+      <p class="home-section-kicker">Find me</p>
+      <h2 class="home-section-title" id="link-strip-title">Posts are the long version. These are the fast paths.</h2>
+    </div>
+
+    <ul class="home-links-inline home-links-inline-strong" aria-label="Direct profile and contact links">
+      {% for item in items %}
+        {% assign item_url = item.url %}
+        {% assign item_external = false %}
+        {% if item_url contains '://' or item_url contains 'mailto:' or item_url contains 'tel:' %}
+          {% assign item_external = true %}
+        {% endif %}
+        <li>
+          <a href="{% if item_external %}{{ item_url }}{% else %}{{ item_url | relative_url }}{% endif %}">{{ item.label }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

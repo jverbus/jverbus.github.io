@@ -1,0 +1,24 @@
+{% assign items = site.data.home.destinations %}
+<section class="home-section" aria-labelledby="destinations-title">
+  <div class="home-section-header">
+    <p class="home-section-kicker">Explore</p>
+    <h2 class="home-section-title" id="destinations-title">Writing, research, and talks</h2>
+  </div>
+
+  <div class="home-grid home-destination-grid" role="list">
+    {% for item in items %}
+      {% assign item_url = item.url %}
+      {% assign item_external = false %}
+      {% if item_url contains '://' or item_url contains 'mailto:' or item_url contains 'tel:' %}
+        {% assign item_external = true %}
+      {% endif %}
+      <article class="home-card home-destination-card post-list-item" role="listitem" data-card-clickable="on">
+        <h3 class="home-card-title">
+          <a href="{% if item_external %}{{ item_url }}{% else %}{{ item_url | relative_url }}{% endif %}">{{ item.title }}</a>
+        </h3>
+        <p class="home-card-description">{{ item.description }}</p>
+        <p class="home-card-hint">{{ item.link_label }} <span aria-hidden="true">→</span></p>
+      </article>
+    {% endfor %}
+  </div>
+</section>

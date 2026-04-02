@@ -1,0 +1,13 @@
+{% assign background = site.data.home.background %}
+<section class="home-section home-background" aria-labelledby="background-title">
+  <div class="home-background-card">
+    <p class="home-section-kicker">{{ background.title }}</p>
+    <h2 class="home-section-title" id="background-title">Physics, production, and a bias toward evidence</h2>
+    <p class="home-background-copy">{{ background.body }}</p>
+    {% if background.url and background.link_label %}
+      <p class="home-background-link">
+        <a href="{{ background.url | relative_url }}">{{ background.link_label }}</a>
+      </p>
+    {% endif %}
+  </div>
+</section>
