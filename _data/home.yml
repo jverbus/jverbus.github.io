@@ -1,5 +1,5 @@
 hero:
-  eyebrow: "Applied AI · Trust and safety"
+  eyebrow: "AI · Trust and safety"
   title: "James Verbus works on AI for trust and safety."
   intro: "I’m a Senior Staff Software Engineer working on AI, abuse prevention, and useful systems. This site collects my writing, publications, talks, and open source work."
   primary_ctas:
@@ -52,7 +52,7 @@ focus_areas:
   - title: "Abuse prevention"
     description: "Models and systems for detecting abusive behavior and inauthentic accounts."
   - title: "AI systems"
-    description: "Applied AI work, from model ideas to production systems."
+    description: "AI work, from model ideas to production systems."
   - title: "Open source and research"
     description: "Libraries, papers, and technical projects."
   - title: "Writing and talks"
