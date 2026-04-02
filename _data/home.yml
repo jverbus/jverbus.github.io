@@ -16,11 +16,21 @@ hero:
       url: "https://www.linkedin.com/in/jamesverbus"
     - label: "Google Scholar"
       url: "https://scholar.google.com/citations?user=_ksEziAAAAAJ"
+  facts:
+    - label: "Role"
+      value: "Senior Staff Software Engineer"
+    - label: "Focus"
+      value: "Trust & Safety AI"
+    - label: "Background"
+      value: "PhD, Brown Physics"
+    - label: "Built"
+      value: "linkedin/isolation-forest"
   image:
     src: "/assets/images/jverbus_lux_detector.jpg"
     alt: "James Verbus working on the LUX dark matter detector"
     width: 800
     height: 800
+    caption: "From dark matter experiments to production AI systems."
 
 featured_work:
   - eyebrow: "Open Source"

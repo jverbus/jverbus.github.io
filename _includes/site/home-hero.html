@@ -35,6 +35,17 @@
         {% endfor %}
       </ul>
     {% endif %}
+
+    {% if hero.facts %}
+      <div class="home-fact-grid" role="list" aria-label="Key facts">
+        {% for item in hero.facts %}
+          <article class="home-fact-card" role="listitem">
+            <p class="home-fact-label">{{ item.label }}</p>
+            <p class="home-fact-value">{{ item.value }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
   </div>
 
   {% if hero.image and hero.image.src %}
@@ -44,6 +55,9 @@
     {% endunless %}
     <div class="home-hero-media">
       <img src="{{ hero_image }}" alt="{{ hero.image.alt | default: hero.title }}" width="{{ hero.image.width | default: 800 }}" height="{{ hero.image.height | default: 800 }}" loading="eager" decoding="async" fetchpriority="high">
+      {% if hero.image.caption %}
+        <p class="home-hero-media-caption">{{ hero.image.caption }}</p>
+      {% endif %}
     </div>
   {% endif %}
 </section>
