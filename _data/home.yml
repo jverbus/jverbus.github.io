@@ -1,7 +1,7 @@
 hero:
   eyebrow: "Applied AI · Trust & Safety · Anomaly Detection"
-  title: "James Verbus builds practical AI systems for trust, safety, and large-scale machine learning."
-  intro: "I’m a Senior Staff Software Engineer focused on applied AI, anomaly detection, and abuse prevention. My work spans research, production systems, open source, and technical leadership — with an emphasis on building systems that hold up in the real world."
+  title: "James Verbus works on applied AI for trust, safety, anomaly detection, and machine learning."
+  intro: "I’m a Senior Staff Software Engineer working on applied AI, anomaly detection, and abuse prevention. This site collects my writing, publications, talks, and open source work."
   primary_ctas:
     - label: "Read Posts"
       url: "/posts/"
@@ -30,7 +30,7 @@ hero:
     alt: "James Verbus working on the LUX dark matter detector"
     width: 800
     height: 800
-    caption: "From dark matter experiments to production AI systems."
+    caption: "From Brown physics to production AI systems."
 
 featured_work:
   - eyebrow: "Open Source"
@@ -50,13 +50,13 @@ featured_work:
 
 focus_areas:
   - title: "Trust & Safety AI"
-    description: "Production systems for detecting abuse, inauthentic behavior, and adversarial activity."
+    description: "Models and systems for abuse detection, inauthentic behavior, and platform defense."
   - title: "Anomaly Detection"
-    description: "Methods and infrastructure for surfacing rare, high-impact patterns in large systems."
-  - title: "Applied GenAI"
-    description: "Practical AI systems, evaluation, and deployment discipline beyond demos."
-  - title: "Research to Production"
-    description: "Connecting technical depth with systems that are usable, reliable, and worth shipping."
+    description: "Unsupervised methods and infrastructure for finding rare, important patterns."
+  - title: "Applied AI"
+    description: "Using modern models where they help, with attention to evaluation, reliability, and cost."
+  - title: "Research in Production"
+    description: "Taking ideas from papers and experiments into systems people can actually use."
 
 destinations:
   - title: "Writing"
@@ -74,7 +74,7 @@ destinations:
 
 background:
   title: "Background"
-  body: "Before industry, I was an experimental particle physicist and earned a PhD at Brown University on the LUX dark matter experiment. That background still shapes how I work: careful with evidence, skeptical of hype, and focused on systems that perform under real-world constraints."
+  body: "Before industry, I earned a PhD in experimental physics at Brown and worked on the LUX dark matter experiment. This site is mostly about what came after: machine learning, trust and safety, and building useful systems."
   url: "/about/"
   link_label: "More about me"
 
