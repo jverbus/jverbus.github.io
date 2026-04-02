@@ -1,6 +1,6 @@
 hero:
-  eyebrow: "Applied AI · Trust & Safety · Anomaly Detection"
-  title: "James Verbus works on applied AI for trust, safety, anomaly detection, and machine learning."
+  eyebrow: "Machine learning, trust and safety, and anomaly detection"
+  title: "James Verbus works on machine learning for trust, safety, and anomaly detection."
   intro: "I’m a Senior Staff Software Engineer working on applied AI, anomaly detection, and abuse prevention. This site collects my writing, publications, talks, and open source work."
   primary_ctas:
     - label: "Read Posts"
@@ -20,11 +20,11 @@ hero:
     - label: "Role"
       value: "Senior Staff Software Engineer"
     - label: "Focus"
-      value: "Trust & Safety AI"
+      value: "Trust and safety"
     - label: "Background"
-      value: "PhD, Brown Physics"
+      value: "Brown physics PhD"
     - label: "Built"
-      value: "linkedin/isolation-forest"
+      value: "Isolation Forest"
   image:
     src: "/assets/images/jverbus_lux_detector.jpg"
     alt: "James Verbus working on the LUX dark matter detector"
@@ -33,30 +33,30 @@ hero:
     caption: "From Brown physics to production AI systems."
 
 featured_work:
-  - eyebrow: "Open Source"
-    title: "Isolation Forest for large-scale anomaly detection"
-    description: "Built and open sourced LinkedIn’s Spark/Scala isolation-forest library for unsupervised anomaly detection in production anti-abuse systems."
+  - eyebrow: "Open source"
+    title: "Isolation Forest"
+    description: "An open source Spark and Scala library for large scale anomaly detection."
     url: "/open-source/"
 
-  - eyebrow: "Research"
+  - eyebrow: "Paper"
     title: "Detecting AI-generated faces in the wild"
-    description: "Research and engineering work on identifying synthetic profile images and other signals of inauthentic behavior at scale."
+    description: "Work on identifying synthetic profile images and related signals of inauthentic behavior."
     url: "/2024/08/15/finding-ai-generated-faces-in-the-wild/"
 
-  - eyebrow: "Trust & Safety"
-    title: "Deep learning for abusive behavior and platform defense"
-    description: "Production-facing work on abuse detection, adversarial behavior, and sequence-based models for protecting real platforms at scale."
+  - eyebrow: "Talk"
+    title: "Deep learning for abuse detection"
+    description: "Sequence-based models and production systems for detecting abusive behavior at scale."
     url: "/2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/"
 
 focus_areas:
-  - title: "Trust & Safety AI"
-    description: "Models and systems for abuse detection, inauthentic behavior, and platform defense."
-  - title: "Anomaly Detection"
-    description: "Unsupervised methods and infrastructure for finding rare, important patterns."
-  - title: "Applied AI"
-    description: "Using modern models where they help, with attention to evaluation, reliability, and cost."
-  - title: "Research in Production"
-    description: "Taking ideas from papers and experiments into systems people can actually use."
+  - title: "Abuse prevention"
+    description: "Models and systems for detecting abusive behavior and inauthentic accounts."
+  - title: "Anomaly detection"
+    description: "Methods for finding unusual patterns in large systems."
+  - title: "Machine learning systems"
+    description: "Building and shipping models that are actually useful."
+  - title: "Writing and talks"
+    description: "Posts, papers, and workshops on machine learning and trust and safety."
 
 destinations:
   - title: "Writing"
