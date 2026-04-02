@@ -1,7 +1,7 @@
 hero:
   eyebrow: "AI · Trust and safety"
-  title: "James Verbus works on AI for trust and safety at LinkedIn."
-  intro: "Senior Staff Software Engineer focused on large-scale AI systems that improve platform trust, security, and developer productivity. This site collects writing, publications, talks, patents, and open source work."
+  title: "James Verbus works on AI for trust and safety."
+  intro: "Senior Staff Software Engineer focused on large-scale AI systems that improve trust, security, and developer productivity. This site collects writing, publications, talks, patents, and open source work."
   primary_ctas:
     - label: "Read Posts"
       url: "/posts/"
@@ -12,17 +12,15 @@ hero:
   secondary_links:
     - label: "GitHub"
       url: "https://github.com/jverbus"
-    - label: "LinkedIn"
-      url: "https://www.linkedin.com/in/jamesverbus"
     - label: "Google Scholar"
       url: "https://scholar.google.com/citations?user=_ksEziAAAAAJ"
   facts:
     - label: "Role"
       value: "Senior Staff Software Engineer"
-    - label: "Company"
-      value: "LinkedIn"
     - label: "Focus"
       value: "Trust and safety"
+    - label: "Background"
+      value: "Brown physics PhD"
     - label: "Open source"
       value: "Isolation Forest"
   image:
@@ -35,7 +33,7 @@ hero:
 featured_work:
   - eyebrow: "Open source"
     title: "Isolation Forest"
-    description: "An open source Spark and Scala library built for large scale production use at LinkedIn."
+    description: "An open source Spark and Scala library built for large scale production use."
     url: "/open-source/"
 
   - eyebrow: "Paper"
@@ -83,8 +81,6 @@ links:
     url: "https://github.com/jverbus"
   - label: "Google Scholar"
     url: "https://scholar.google.com/citations?user=_ksEziAAAAAJ"
-  - label: "LinkedIn"
-    url: "https://www.linkedin.com/in/jamesverbus"
   - label: "X"
     url: "https://x.com/JamesVerbus"
   - label: "Email"
