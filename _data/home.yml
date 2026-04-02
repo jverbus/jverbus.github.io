@@ -1,7 +1,7 @@
 hero:
   eyebrow: "AI · Trust and safety"
-  title: "James Verbus works on AI for trust and safety."
-  intro: "I’m a Senior Staff Software Engineer working on AI, abuse prevention, and useful systems. This site collects my writing, publications, talks, and open source work."
+  title: "James Verbus works on AI for trust and safety at LinkedIn."
+  intro: "Senior Staff Software Engineer focused on large-scale AI systems that improve platform trust, security, and developer productivity. This site collects writing, publications, talks, patents, and open source work."
   primary_ctas:
     - label: "Read Posts"
       url: "/posts/"
@@ -19,11 +19,11 @@ hero:
   facts:
     - label: "Role"
       value: "Senior Staff Software Engineer"
+    - label: "Company"
+      value: "LinkedIn"
     - label: "Focus"
-      value: "AI and trust and safety"
-    - label: "Background"
-      value: "Brown physics PhD"
-    - label: "Built"
+      value: "Trust and safety"
+    - label: "Open source"
       value: "Isolation Forest"
   image:
     src: "/assets/images/jverbus_lux_detector.jpg"
@@ -49,14 +49,14 @@ featured_work:
     url: "/2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/"
 
 focus_areas:
-  - title: "Abuse prevention"
-    description: "Models and systems for detecting abusive behavior and inauthentic accounts."
-  - title: "AI systems"
-    description: "AI work, from model ideas to production systems."
-  - title: "Open source and research"
-    description: "Libraries, papers, and technical projects."
-  - title: "Writing and talks"
-    description: "Posts, papers, and workshops on AI and trust and safety."
+  - title: "Trust and safety"
+    description: "AI systems for abuse prevention, platform integrity, and security."
+  - title: "AI at scale"
+    description: "Large-scale AI work in production, including developer productivity."
+  - title: "Research and open source"
+    description: "Papers, patents, talks, and public technical work."
+  - title: "Leadership"
+    description: "Mentoring engineers and helping grow strong technical teams."
 
 destinations:
   - title: "Writing"
@@ -74,7 +74,7 @@ destinations:
 
 background:
   title: "Background"
-  body: "Before industry, I earned a PhD in experimental physics at Brown and worked on the LUX dark matter experiment. This site is mostly about what came after: AI, trust and safety, and building useful systems."
+  body: "Before industry, I earned a PhD in experimental physics at Brown and worked on the LUX dark matter experiment. Since then, my work has focused on AI, trust and safety, and large-scale systems."
   url: "/about/"
   link_label: "More about me"
 
