@@ -9,11 +9,6 @@ hero:
       url: "/publications/"
     - label: "Watch Talks"
       url: "/videos/"
-  secondary_links:
-    - label: "GitHub"
-      url: "https://github.com/jverbus"
-    - label: "Google Scholar"
-      url: "https://scholar.google.com/citations?user=_ksEziAAAAAJ"
   facts:
     - label: "Role"
       value: "Senior Staff Software Engineer"

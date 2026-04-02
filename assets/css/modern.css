@@ -858,7 +858,7 @@ body.layout-home .unit-article .entry-content {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
-  margin-bottom: var(--space-5);
+  margin-bottom: 0;
 }
 
 .button {
@@ -913,6 +913,10 @@ body.layout-home .unit-article .entry-content {
   padding: 0;
 }
 
+.home-hero-copy > .home-links-inline {
+  margin-top: var(--space-5);
+}
+
 .home-links-inline li {
   margin: 0;
 }
@@ -938,7 +942,7 @@ body.layout-home .unit-article .entry-content {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-3);
-  margin-top: var(--space-6);
+  margin-top: var(--space-5);
   max-width: 36rem;
 }
 
