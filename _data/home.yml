@@ -1,7 +1,7 @@
 hero:
-  eyebrow: "Machine learning, trust and safety, and anomaly detection"
-  title: "James Verbus works on machine learning for trust, safety, and anomaly detection."
-  intro: "I’m a Senior Staff Software Engineer working on applied AI, anomaly detection, and abuse prevention. This site collects my writing, publications, talks, and open source work."
+  eyebrow: "Applied AI · Trust and safety"
+  title: "James Verbus works on AI for trust and safety."
+  intro: "I’m a Senior Staff Software Engineer working on AI, abuse prevention, and useful systems. This site collects my writing, publications, talks, and open source work."
   primary_ctas:
     - label: "Read Posts"
       url: "/posts/"
@@ -20,7 +20,7 @@ hero:
     - label: "Role"
       value: "Senior Staff Software Engineer"
     - label: "Focus"
-      value: "Trust and safety"
+      value: "AI and trust and safety"
     - label: "Background"
       value: "Brown physics PhD"
     - label: "Built"
@@ -35,7 +35,7 @@ hero:
 featured_work:
   - eyebrow: "Open source"
     title: "Isolation Forest"
-    description: "An open source Spark and Scala library for large scale anomaly detection."
+    description: "An open source Spark and Scala library built for large scale production use at LinkedIn."
     url: "/open-source/"
 
   - eyebrow: "Paper"
@@ -51,16 +51,16 @@ featured_work:
 focus_areas:
   - title: "Abuse prevention"
     description: "Models and systems for detecting abusive behavior and inauthentic accounts."
-  - title: "Anomaly detection"
-    description: "Methods for finding unusual patterns in large systems."
-  - title: "Machine learning systems"
-    description: "Building and shipping models that are actually useful."
+  - title: "AI systems"
+    description: "Applied AI work, from model ideas to production systems."
+  - title: "Open source and research"
+    description: "Libraries, papers, and technical projects."
   - title: "Writing and talks"
-    description: "Posts, papers, and workshops on machine learning and trust and safety."
+    description: "Posts, papers, and workshops on AI and trust and safety."
 
 destinations:
   - title: "Writing"
-    description: "Long-form posts on applied machine learning, trust and safety, anomaly detection, and AI systems."
+    description: "Posts on AI, trust and safety, and building useful systems."
     url: "/posts/"
     link_label: "Browse posts"
   - title: "Publications"
@@ -68,13 +68,13 @@ destinations:
     url: "/publications/"
     link_label: "View publications"
   - title: "Talks"
-    description: "Workshops, talks, and recorded presentations on practical AI and ML."
+    description: "Talks and workshops on AI, trust and safety, and related systems work."
     url: "/videos/"
     link_label: "Watch talks"
 
 background:
   title: "Background"
-  body: "Before industry, I earned a PhD in experimental physics at Brown and worked on the LUX dark matter experiment. This site is mostly about what came after: machine learning, trust and safety, and building useful systems."
+  body: "Before industry, I earned a PhD in experimental physics at Brown and worked on the LUX dark matter experiment. This site is mostly about what came after: AI, trust and safety, and building useful systems."
   url: "/about/"
   link_label: "More about me"
 
