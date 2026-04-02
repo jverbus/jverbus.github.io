@@ -1,7 +1,7 @@
 hero:
-  eyebrow: "AI · Trust and safety"
-  title: "James Verbus works on AI for trust and safety."
-  intro: "Senior Staff Software Engineer focused on large-scale AI systems that improve trust, security, and developer productivity. This site collects writing, publications, talks, patents, and open source work."
+  eyebrow: "AI · Trust and safety · Large-scale systems"
+  title: "James Verbus works on AI, trust and safety, and large-scale systems."
+  intro: "Senior Staff Software Engineer focused on large-scale AI systems, trust and safety, and developer productivity. This site collects writing, publications, talks, patents, and open source work."
   primary_ctas:
     - label: "Read Posts"
       url: "/posts/"
@@ -13,7 +13,7 @@ hero:
     - label: "Role"
       value: "Senior Staff Software Engineer"
     - label: "Focus"
-      value: "Trust and safety"
+      value: "AI systems"
     - label: "Background"
       value: "Brown physics PhD"
     - label: "Open source"
@@ -41,10 +41,10 @@ featured_work:
     url: "/2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/"
 
 focus_areas:
-  - title: "Trust and safety"
-    description: "AI systems for abuse prevention, platform integrity, and security."
-  - title: "AI at scale"
+  - title: "AI systems"
     description: "Large-scale AI work in production, including developer productivity."
+  - title: "Trust and safety"
+    description: "Systems for abuse prevention, platform integrity, and security."
   - title: "Research and open source"
     description: "Papers, patents, talks, and public technical work."
   - title: "Leadership"
@@ -66,7 +66,7 @@ destinations:
 
 background:
   title: "Background"
-  body: "Before industry, I earned a PhD in experimental physics at Brown and worked on the LUX dark matter experiment. Since then, my work has focused on AI, trust and safety, and large-scale systems."
+  body: "Before industry, I earned a PhD in experimental physics at Brown and worked on the LUX dark matter experiment. Since then, my work has focused on AI, large-scale systems, and trust and safety."
   url: "/about/"
   link_label: "More about me"
 
