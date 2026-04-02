@@ -1,7 +1,7 @@
 hero:
-  eyebrow: "AI · Trust and safety · Large-scale systems"
-  title: "James Verbus works on AI, trust and safety, and large-scale systems."
-  intro: "Senior Staff Software Engineer focused on large-scale AI systems, trust and safety, and developer productivity. This site collects writing, publications, talks, patents, and open source work."
+  eyebrow: "AI · Trust · Large-scale systems"
+  title: "James Verbus works on AI, trust, and large-scale systems."
+  intro: "Senior Staff Software Engineer focused on large-scale AI systems, trust, and developer productivity. This site collects writing, publications, talks, patents, and open source work."
   primary_ctas:
     - label: "Read Posts"
       url: "/posts/"
@@ -36,15 +36,15 @@ featured_work:
     url: "/2024/08/15/finding-ai-generated-faces-in-the-wild/"
 
   - eyebrow: "Talk"
-    title: "Deep learning for abuse detection"
+    title: "Deep learning for platform integrity"
     description: "Sequence-based models and production systems for detecting abusive behavior at scale."
     url: "/2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/"
 
 focus_areas:
   - title: "AI systems"
     description: "Large-scale AI work in production, including developer productivity."
-  - title: "Trust and safety"
-    description: "Systems for abuse prevention, platform integrity, and security."
+  - title: "Trust"
+    description: "Systems for platform integrity, abuse prevention, and security."
   - title: "Research and open source"
     description: "Papers, patents, talks, and public technical work."
   - title: "Leadership"
@@ -52,7 +52,7 @@ focus_areas:
 
 destinations:
   - title: "Writing"
-    description: "Posts on AI, trust and safety, and building useful systems."
+    description: "Posts on AI, trust, and building useful systems."
     url: "/posts/"
     link_label: "Browse posts"
   - title: "Publications"
@@ -60,13 +60,13 @@ destinations:
     url: "/publications/"
     link_label: "View publications"
   - title: "Talks"
-    description: "Talks and workshops on AI, trust and safety, and related systems work."
+    description: "Talks and workshops on AI, trust, and related systems work."
     url: "/videos/"
     link_label: "Watch talks"
 
 background:
   title: "Background"
-  body: "Before industry, I earned a PhD in experimental physics at Brown and worked on the LUX dark matter experiment. Since then, my work has focused on AI, large-scale systems, and trust and safety."
+  body: "Before industry, I earned a PhD in experimental physics at Brown and worked on the LUX dark matter experiment. Since then, my work has focused on AI, large-scale systems, and trust."
   url: "/about/"
   link_label: "More about me"
 
