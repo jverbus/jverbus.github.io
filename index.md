@@ -1,10 +1,10 @@
 ---
 layout: page
 title: Home
-description: "Home page for James Verbus, with writing and projects on AI for Trust, machine learning, and anomaly detection."
+description: "Writing and projects on AI, machine learning, and Trust."
 ---
 
-<p class="home-intro">Writing and projects on AI for Trust, anomaly detection, and applied machine learning.</p>
+<p class="home-intro">Writing and projects on AI, machine learning, and Trust.</p>
 
 ## Explore
 
