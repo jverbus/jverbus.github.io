@@ -1,5 +1,5 @@
 {% assign hero = site.data.home.hero %}
-<section class="home-hero home-section">
+<section class="home-hero home-section {% unless hero.image and hero.image.src %}home-hero-text-only{% endunless %}">
   <div class="home-hero-copy">
     {% if hero.eyebrow %}
       <p class="home-eyebrow">{{ hero.eyebrow }}</p>

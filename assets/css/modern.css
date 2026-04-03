@@ -834,8 +834,17 @@ body.layout-home .unit-article .entry-content {
   border-bottom: 1px solid var(--border);
 }
 
+.home-hero-text-only {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
 .home-hero-copy {
   max-width: 40rem;
+}
+
+.home-hero-text-only .home-hero-copy {
+  max-width: 48rem;
 }
 
 .home-hero-title {
@@ -1209,6 +1218,10 @@ body.layout-home .unit-article .entry-content {
     grid-template-columns: 1fr;
     gap: var(--space-6);
     padding-bottom: var(--space-10);
+  }
+
+  .home-hero-text-only {
+    gap: 0;
   }
 
   .home-hero-title {

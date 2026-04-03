@@ -1,6 +1,6 @@
 hero:
-  title: "James Verbus works on AI and trust."
-  intro: "Senior Staff Software Engineer focused on AI, trust, and developer productivity. This site collects writing, publications, talks, patents, and open source work."
+  title: "James Verbus is a software engineer working on AI, trust, and developer productivity."
+  intro: "This site collects writing, publications, talks, patents, and open source work."
   primary_ctas:
     - label: "Read Posts"
       url: "/posts/"
@@ -17,12 +17,6 @@ hero:
       value: "Brown physics PhD"
     - label: "Open source"
       value: "Isolation Forest"
-  image:
-    src: "/assets/images/jverbus_thermosyphon_assembly.png"
-    alt: "James Verbus working on the LUX thermosyphon assembly"
-    width: 1970
-    height: 1703
-
 featured_work:
   - eyebrow: "Open source"
     title: "Isolation Forest"
