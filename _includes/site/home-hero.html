@@ -6,6 +6,9 @@
     {% endif %}
 
     <h1 class="home-hero-title">{{ hero.title }}</h1>
+    {% if hero.subtitle %}
+      <p class="home-hero-subtitle">{{ hero.subtitle }}</p>
+    {% endif %}
     <p class="home-hero-intro">{{ hero.intro }}</p>
 
     {% if hero.primary_ctas %}
@@ -36,16 +39,6 @@
       </ul>
     {% endif %}
 
-    {% if hero.facts %}
-      <div class="home-fact-grid" role="list" aria-label="Key facts">
-        {% for item in hero.facts %}
-          <article class="home-fact-card" role="listitem">
-            <p class="home-fact-label">{{ item.label }}</p>
-            <p class="home-fact-value">{{ item.value }}</p>
-          </article>
-        {% endfor %}
-      </div>
-    {% endif %}
   </div>
 
   {% if hero.image and hero.image.src %}

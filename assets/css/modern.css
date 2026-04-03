@@ -848,26 +848,36 @@ body.layout-home .unit-article .entry-content {
 }
 
 .home-hero-title {
-  margin: 0 0 var(--space-4);
-  font-size: clamp(2.5rem, 5vw, 4.25rem);
-  line-height: 1.04;
-  letter-spacing: -0.03em;
+  margin: 0;
+  font-size: clamp(2.7rem, 5vw, 4.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.home-hero-subtitle {
+  margin: var(--space-3) 0 var(--space-4);
+  max-width: 34rem;
+  color: var(--heading);
+  font-size: clamp(1.2rem, 2.1vw, 1.55rem);
+  font-weight: 600;
+  line-height: 1.35;
   text-wrap: balance;
 }
 
 .home-hero-intro {
   margin: 0 0 var(--space-6);
-  max-width: 38rem;
+  max-width: 36rem;
   color: var(--text-muted);
-  font-size: 1.08rem;
-  line-height: 1.75;
+  font-size: 1.02rem;
+  line-height: 1.72;
 }
 
 .home-actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
-  margin-bottom: var(--space-7);
+  margin-bottom: 0;
 }
 
 .button {
@@ -1228,8 +1238,14 @@ body.layout-home .unit-article .entry-content {
     font-size: clamp(2.15rem, 9vw, 3rem);
   }
 
+  .home-hero-subtitle {
+    font-size: 1.08rem;
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+
   .home-hero-intro {
-    font-size: 1rem;
+    font-size: 0.98rem;
   }
 
   .home-hero-media {
@@ -1242,11 +1258,7 @@ body.layout-home .unit-article .entry-content {
 
   .home-actions {
     gap: var(--space-2);
-    margin-bottom: var(--space-8);
-  }
-
-  .home-fact-grid {
-    margin-top: 0;
+    margin-bottom: 0;
   }
 
   .button {

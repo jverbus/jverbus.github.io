@@ -1,5 +1,6 @@
 hero:
-  title: "James Verbus is a software engineer working on AI, trust, and productivity."
+  title: "James Verbus"
+  subtitle: "Software engineer working on AI, trust, and productivity."
   intro: "This site collects writing, publications, talks, patents, and open source work."
   primary_ctas:
     - label: "Read Posts"
@@ -8,15 +9,6 @@ hero:
       url: "/publications/"
     - label: "Watch Talks"
       url: "/videos/"
-  facts:
-    - label: "Role"
-      value: "Senior Staff Software Engineer"
-    - label: "Focus"
-      value: "AI systems"
-    - label: "Background"
-      value: "Brown physics PhD"
-    - label: "Open source"
-      value: "Isolation Forest"
 featured_work:
   - eyebrow: "Open source"
     title: "Isolation Forest"
