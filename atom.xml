@@ -16,12 +16,16 @@ title: Atom Feed
  </author>
 
  {% for post in site.posts limit:20 %}
+ {% assign post_summary = post.description %}
+ {% if post_summary == nil or post_summary == "" %}
+   {% assign post_summary = post.excerpt %}
+ {% endif %}
  <entry>
    <title>{{ post.title | xml_escape }}</title>
    <link href="{{ post.url | absolute_url }}"/>
    <updated>{{ post.date | date_to_xmlschema }}</updated>
    <id>{{ post.url | absolute_url }}</id>
-   <summary type="text">{{ post.excerpt | strip_html | normalize_whitespace | xml_escape }}</summary>
+   <summary type="text">{{ post_summary | strip_html | normalize_whitespace | xml_escape }}</summary>
  </entry>
  {% endfor %}
 

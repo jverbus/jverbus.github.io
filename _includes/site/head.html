@@ -6,8 +6,8 @@
   {% if page.url == '/' or page.url == '/index.html' %}
     {% assign page_title = site.title %}
   {% endif %}
-  <title>{% if page_title == site.title %}{{ site.title }}{% else %}{{ page_title }} | {{ site.title }}{% endif %}</title>
-  <meta name="author" content="{{ site.author.name }}">
+  <title>{% if page_title == site.title %}{{ site.title | escape }}{% else %}{{ page_title | escape }} | {{ site.title | escape }}{% endif %}</title>
+  <meta name="author" content="{{ site.author.name | escape }}">
   {% assign page_description = page.description %}
   {% if page_description == nil or page_description == "" %}
     {% if page.layout == 'post' and page.excerpt %}
@@ -16,17 +16,17 @@
       {% assign page_description = site.tagline | default: "Personal website of James Verbus - Senior Staff Software Engineer at LinkedIn, working on AI for Trust." %}
     {% endif %}
   {% endif %}
-  <meta name="description" content="{{ page_description }}">
+  <meta name="description" content="{{ page_description | escape }}">
 
   <!-- Canonical URL -->
-  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <link rel="canonical" href="{{ page.url | absolute_url | escape }}">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
-  <meta property="og:url" content="{{ page.url | absolute_url }}">
-  <meta property="og:title" content="{{ page_title }}">
-  <meta property="og:description" content="{{ page_description }}">
-  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:url" content="{{ page.url | absolute_url | escape }}">
+  <meta property="og:title" content="{{ page_title | escape }}">
+  <meta property="og:description" content="{{ page_description | escape }}">
+  <meta property="og:site_name" content="{{ site.title | escape }}">
   {% assign og_image = page.og_image | default: page.image | default: site.default_og_image %}
   {% assign og_image_url = nil %}
   {% if og_image %}
@@ -35,29 +35,32 @@
     {% else %}
       {% assign og_image_url = og_image | absolute_url %}
     {% endif %}
-  <meta property="og:image" content="{{ og_image_url }}">
-  <meta property="og:image:alt" content="{{ page.og_image_alt | default: page_title }}">
-  {% if page.og_image_width %}<meta property="og:image:width" content="{{ page.og_image_width }}">{% endif %}
-  {% if page.og_image_height %}<meta property="og:image:height" content="{{ page.og_image_height }}">{% endif %}
+  {% assign og_image_alt = page.og_image_alt | default: page_title %}
+  {% assign og_image_width = page.og_image_width | default: site.default_og_image_width %}
+  {% assign og_image_height = page.og_image_height | default: site.default_og_image_height %}
+  <meta property="og:image" content="{{ og_image_url | escape }}">
+  <meta property="og:image:alt" content="{{ og_image_alt | escape }}">
+  {% if og_image_width %}<meta property="og:image:width" content="{{ og_image_width | escape }}">{% endif %}
+  {% if og_image_height %}<meta property="og:image:height" content="{{ og_image_height | escape }}">{% endif %}
   {% endif %}
   {% if page.layout == 'post' %}
-  <meta property="article:author" content="{{ site.author.name }}">
-  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+  <meta property="article:author" content="{{ site.author.name | escape }}">
+  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema | escape }}">
   {% endif %}
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="{% if og_image_url %}summary_large_image{% else %}summary{% endif %}">
-  <meta name="twitter:site" content="@{{ site.author.twitter }}">
-  <meta name="twitter:creator" content="@{{ site.author.twitter }}">
-  <meta name="twitter:title" content="{{ page_title }}">
-  <meta name="twitter:description" content="{{ page_description }}">
+  <meta name="twitter:site" content="@{{ site.author.twitter | escape }}">
+  <meta name="twitter:creator" content="@{{ site.author.twitter | escape }}">
+  <meta name="twitter:title" content="{{ page_title | escape }}">
+  <meta name="twitter:description" content="{{ page_description | escape }}">
   {% if og_image_url %}
-  <meta name="twitter:image" content="{{ og_image_url }}">
+  <meta name="twitter:image" content="{{ og_image_url | escape }}">
   {% endif %}
 
   <!-- Additional SEO -->
-  <meta name="robots" content="{{ page.robots | default: 'index, follow' }}">
-  {% if page.tags %}<meta name="keywords" content="{{ page.tags | join: ', ' }}">{% endif %}
+  <meta name="robots" content="{{ page.robots | default: 'index, follow' | escape }}">
+  {% if page.tags %}<meta name="keywords" content="{{ page.tags | join: ', ' | escape }}">{% endif %}
 
   <!-- JSON-LD Structured Data -->
   {% if page.layout == 'post' %}
@@ -65,30 +68,30 @@
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": "{{ page.title | escape }}",
-    "description": "{{ page_description | escape }}",
-    "datePublished": "{{ page.date | date_to_xmlschema }}",
-    "dateModified": "{{ page.date | date_to_xmlschema }}",
+    "headline": {{ page.title | jsonify }},
+    "description": {{ page_description | jsonify }},
+    "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
+    "dateModified": {{ page.date | date_to_xmlschema | jsonify }},
     "author": {
       "@type": "Person",
-      "name": "{{ site.author.name }}",
-      "url": "{{ '/about/' | absolute_url }}"
+      "name": {{ site.author.name | jsonify }},
+      "url": {{ '/about/' | absolute_url | jsonify }}
     },
     "publisher": {
       "@type": "Person",
-      "name": "{{ site.author.name }}",
-      "url": "{{ '/' | absolute_url }}"
+      "name": {{ site.author.name | jsonify }},
+      "url": {{ '/' | absolute_url | jsonify }}
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "{{ page.url | absolute_url }}"
+      "@id": {{ page.url | absolute_url | jsonify }}
     },
-    "url": "{{ page.url | absolute_url }}"
+    "url": {{ page.url | absolute_url | jsonify }}
     {% if og_image_url %},
-    "image": "{{ og_image_url }}"
+    "image": {{ og_image_url | jsonify }}
     {% endif %}
     {% if page.tags %},
-    "keywords": "{{ page.tags | join: ', ' }}"
+    "keywords": {{ page.tags | join: ', ' | jsonify }}
     {% endif %}
   }
   </script>
@@ -101,19 +104,19 @@
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "{{ '/' | absolute_url }}"
+        "item": {{ '/' | absolute_url | jsonify }}
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Posts",
-        "item": "{{ '/posts/' | absolute_url }}"
+        "item": {{ '/posts/' | absolute_url | jsonify }}
       },
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "{{ page.title | escape }}",
-        "item": "{{ page.url | absolute_url }}"
+        "name": {{ page.title | jsonify }},
+        "item": {{ page.url | absolute_url | jsonify }}
       }
     ]
   }
@@ -123,8 +126,8 @@
   {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "{{ site.author.name }}",
-    "url": "{{ '/about/' | absolute_url }}",
+    "name": {{ site.author.name | jsonify }},
+    "url": {{ '/about/' | absolute_url | jsonify }},
     "jobTitle": "Senior Staff Software Engineer",
     "worksFor": {
       "@type": "Organization",
@@ -135,9 +138,9 @@
       "name": "Brown University"
     },
     "sameAs": [
-      "https://github.com/{{ site.author.github }}",
+      {{ site.author.github | prepend: 'https://github.com/' | jsonify }},
       "https://www.linkedin.com/in/jamesverbus",
-      "https://x.com/{{ site.author.twitter }}",
+      {{ site.author.twitter | prepend: 'https://x.com/' | jsonify }},
       "https://scholar.google.com/citations?user=_ksEziAAAAAJ"
     ],
     "knowsAbout": ["Machine Learning", "AI", "Anomaly Detection", "Trust & Safety", "Physics"]
@@ -148,11 +151,11 @@
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "{{ site.title }}",
-    "url": "{{ '/' | absolute_url }}",
+    "name": {{ site.title | jsonify }},
+    "url": {{ '/' | absolute_url | jsonify }},
     "author": {
       "@type": "Person",
-      "name": "{{ site.author.name }}"
+      "name": {{ site.author.name | jsonify }}
     }
   }
   </script>
@@ -160,6 +163,6 @@
 
   <meta name="theme-color" content="#0f172a">
   <link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}">
-  <link href="{{ '/assets/css/modern.css' | relative_url }}?v=loop18" rel="stylesheet" media="all">
-  <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/atom.xml' | absolute_url }}">
+  <link href="{{ '/assets/css/modern.css' | relative_url | escape }}?v=loop18" rel="stylesheet" media="all">
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title | escape }}" href="{{ '/atom.xml' | absolute_url | escape }}">
 </head>

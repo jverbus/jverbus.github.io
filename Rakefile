@@ -5,7 +5,9 @@ require "fileutils"
 SOURCE = "."
 POSTS_DIR = File.join(SOURCE, "_posts")
 POST_EXT = "md"
-DEFAULT_OG_IMAGE = "/assets/images/jverbus_neutron_generator_outside_lux.jpg"
+DEFAULT_OG_IMAGE = "/assets/images/social/2016-08-18-calibrating-the-lux-dark-matter-experiment-1200x630.jpg"
+DEFAULT_OG_IMAGE_WIDTH = 1200
+DEFAULT_OG_IMAGE_HEIGHT = 630
 
 def prompt(message, valid_options = nil)
   if valid_options
@@ -24,6 +26,7 @@ end
 # Usage: rake post title="A Title" [date="2012-02-09"] [tags=[tag1,tag2]] [categories=[cat1,cat2]]
 #                  [description="Short summary for feeds/social"]
 #                  [og_image="/assets/images/social/example-1200x630.jpg"] [og_image_alt="Image alt text"]
+#                  [og_image_width=1200] [og_image_height=630]
 desc "Begin a new post in #{POSTS_DIR}"
 task :post do
   abort("rake aborted: '#{POSTS_DIR}' directory not found.") unless FileTest.directory?(POSTS_DIR)
@@ -35,6 +38,8 @@ task :post do
   description = ENV["description"] || clean_title
   og_image = ENV["og_image"] || DEFAULT_OG_IMAGE
   og_image_alt = ENV["og_image_alt"] || clean_title
+  og_image_width = ENV["og_image_width"] || DEFAULT_OG_IMAGE_WIDTH
+  og_image_height = ENV["og_image_height"] || DEFAULT_OG_IMAGE_HEIGHT
 
   slug = title.downcase.strip.gsub(" ", "-").gsub(/[^\w-]/, "")
 
@@ -57,6 +62,14 @@ task :post do
     abort("rake aborted: og_image_alt cannot be blank")
   end
 
+  unless og_image_width.to_s.match?(/\A[1-9]\d*\z/)
+    abort("rake aborted: og_image_width must be a positive integer")
+  end
+
+  unless og_image_height.to_s.match?(/\A[1-9]\d*\z/)
+    abort("rake aborted: og_image_height must be a positive integer")
+  end
+
   unless og_image.start_with?("http://", "https://")
     og_image_local = File.join(SOURCE, og_image.sub(%r{\A/}, ""))
     abort("rake aborted: og_image file not found: #{og_image}") unless File.exist?(og_image_local)
@@ -75,6 +88,8 @@ task :post do
     post.puts "description: \"#{description}\""
     post.puts "og_image: \"#{og_image}\""
     post.puts "og_image_alt: \"#{og_image_alt}\""
+    post.puts "og_image_width: #{og_image_width}"
+    post.puts "og_image_height: #{og_image_height}"
     post.puts "categories: #{categories}"
     post.puts "tags: #{tags}"
     post.puts "---"

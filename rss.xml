@@ -15,9 +15,13 @@ title: RSS Feed
         <ttl>60</ttl>
 
 {% for post in site.posts limit:20 %}
+{% assign post_summary = post.description %}
+{% if post_summary == nil or post_summary == "" %}
+{% assign post_summary = post.excerpt %}
+{% endif %}
         <item>
                 <title>{{ post.title | xml_escape }}</title>
-                <description>{{ post.excerpt | strip_html | normalize_whitespace | xml_escape }}</description>
+                <description>{{ post_summary | strip_html | normalize_whitespace | xml_escape }}</description>
                 <link>{{ post.url | absolute_url }}</link>
                 <guid>{{ post.url | absolute_url }}</guid>
                 <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>

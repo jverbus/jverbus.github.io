@@ -1,12 +1,23 @@
 permalink: /:year/:month/:day/:title/
 
-exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", ".bundle", "vendor"]
+exclude:
+  - ".rvmrc"
+  - ".rbenv-version"
+  - "README.md"
+  - "Rakefile"
+  - "Gemfile"
+  - "Gemfile.lock"
+  - ".bundle"
+  - "vendor"
+  - "scripts"
 highlighter: rouge
 
 # Site metadata
 title: James Verbus
 tagline:
-default_og_image: /assets/images/jverbus_neutron_generator_outside_lux.jpg
+default_og_image: /assets/images/social/2016-08-18-calibrating-the-lux-dark-matter-experiment-1200x630.jpg
+default_og_image_width: 1200
+default_og_image_height: 630
 author:
   name: James Verbus
   email: james.verbus@gmail.com
