@@ -13,15 +13,12 @@ extensions = ["html"]
 user_agent = "Mozilla/5.0 (compatible; jverbus-link-check/1.0)"
 
 # Some social platforms block automated crawlers (e.g., LinkedIn returns 999).
-# CVF OpenAccess is browser-accessible, but often times out from GitHub Actions.
 # LinkedIn URLs are excluded here but validated separately by
 # scripts/check_linkedin_urls.py using a browser-like user-agent.
 exclude = [
   '^https://(www\.)?linkedin\.com/.*',
   '^https://engineering\.linkedin\.com/.*',
   '^https://x\.com/.*',
-  '^https://openaccess\.thecvf\.com/content/CVPR2023W/WMF/html/Mundra_Exposing_GAN-Generated_Profile_Photos_From_Compact_Embeddings_CVPRW_2023_paper\.html$',
-  '^https://openaccess\.thecvf\.com/content/CVPR2024W/WMF/html/Porcile_Finding_AI-Generated_Faces_in_the_Wild_CVPRW_2024_paper\.html$',
   '^https://dl\.acm\.org/doi/abs/10\.1145/3539597\.3572704$',
   '^https://lux\.brown\.edu/LUX_dark_matter/Home\.html$',
   '^https://www\.mitchellrepublic\.com/content/dark-matter-lab-moves-underground-south-dakota$',
