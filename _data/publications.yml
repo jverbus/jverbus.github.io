@@ -3,7 +3,7 @@ sections:
     items:
       - date: "2024"
         title: "Finding AI-Generated Faces in the Wild"
-        url: "https://farid.berkeley.edu/downloads/publications/cvprw24a.pdf"
+        url: "/assets/files/porcile2024-finding-ai-generated-faces-in-the-wild.pdf"
         authors:
           - "G.J. Aniano Porcile"
           - "J. Gindi"
@@ -13,13 +13,13 @@ sections:
         venue: "CVPR Workshop on Media Forensics"
         links:
           - label: "Paper"
-            url: "https://farid.berkeley.edu/downloads/publications/cvprw24a.pdf"
+            url: "/assets/files/porcile2024-finding-ai-generated-faces-in-the-wild.pdf"
           - label: "arXiv:2311.08577"
             url: "https://arxiv.org/abs/2311.08577"
 
       - date: "2023"
         title: "Exposing GAN-Generated Profile Photos from Compact Embeddings"
-        url: "https://farid.berkeley.edu/downloads/publications/cvpr23b.pdf"
+        url: "/assets/files/mundra2023-exposing-gan-generated-profile-photos-from-compact-embeddings.pdf"
         authors:
           - "S. Mundra"
           - "G.J. Aniano Porcile"
@@ -29,7 +29,7 @@ sections:
         venue: "CVPR Workshop on Media Forensics"
         links:
           - label: "Paper"
-            url: "https://farid.berkeley.edu/downloads/publications/cvpr23b.pdf"
+            url: "/assets/files/mundra2023-exposing-gan-generated-profile-photos-from-compact-embeddings.pdf"
 
       - date: "2023"
         title: "Integrity 2023: Integrity in Social Networks and Media"
