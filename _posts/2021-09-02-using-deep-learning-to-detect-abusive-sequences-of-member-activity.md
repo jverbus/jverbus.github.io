@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Using deep learning to detect abusive sequences of member activity"
-description: "Using NLP techniques to classify sequences of user actions instead of sentences of words."
+description: "Production deep learning approach for detecting abusive sequences of member activity at LinkedIn using request-level behavior streams."
+last_modified_at: 2026-04-28
 og_image: "/assets/images/social/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity-1200x630.jpg"
 og_image_alt: "Using deep learning to detect abusive sequences of member activity"
 og_image_width: 1200
@@ -26,4 +27,3 @@ To learn more about our modeling approach and how it addresses some unique chall
 
 - US Patent 11,936,682: [DEEP LEARNING TO DETECT ABUSIVE SEQUENCES OF USER ACTIVITY IN ONLINE NETWORK]({{ '/assets/files/11936682.pdf' | relative_url }})
 - US Patent 11,991,197: [DEEP LEARNING USING ACTIVITY GRAPH TO DETECT ABUSIVE USER ACTIVITY IN ONLINE NETWORKS]({{ '/assets/files/11991197.pdf' | relative_url }})
-

@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Detection of unusual travel patterns to prevent user account compromise"
-description: "Consulting project at Insight Data Science"
+description: "Insight Data Science consulting project using unsupervised anomaly detection to flag unusual travel patterns and possible account compromise."
+last_modified_at: 2026-04-28
 og_image: "/assets/images/social/2016-10-07-insight-castle-compromised-account-detection-1200x630.jpg"
 og_image_alt: "Detection of unusual travel patterns to prevent user account compromise"
 og_image_width: 1200

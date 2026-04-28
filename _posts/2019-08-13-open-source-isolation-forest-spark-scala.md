@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Open Source: Spark/Scala Isolation Forest Library"
-description: "An unsupervised outlier detection algorithm."
+description: "Announcement and resources for LinkedIn's open-source Scala/Spark isolation-forest library for large-scale unsupervised anomaly detection."
+last_modified_at: 2026-04-28
 og_image: "/assets/images/social/2019-08-13-open-source-isolation-forest-spark-scala-1200x630.jpg"
 og_image_alt: "Open Source: Spark/Scala Isolation Forest Library"
 og_image_width: 1200
@@ -22,4 +23,3 @@ The repository is available on [GitHub](https://github.com/linkedin/isolation-fo
 
 - [Preventing Abuse Using Unsupervised Learning](https://www.youtube.com/watch?v=sFRrFWYNAUI)
 - [FIGHTING ABUSE @SCALE 2019: PREVENTING ABUSE USING UNSUPERVISED LEARNING](https://atscaleconference.com/videos/fighting-abuse-scale-2019-preventing-abuse-using-unsupervised-learning/)
-

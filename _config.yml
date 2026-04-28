@@ -37,3 +37,7 @@ defaults:
       layout: post
       og_image_width: 1200
       og_image_height: 630
+  - scope:
+      path: "assets/files"
+    values:
+      sitemap: false

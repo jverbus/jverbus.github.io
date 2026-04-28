@@ -3,6 +3,11 @@ layout: page
 title: Posts
 permalink: /posts/
 description: "Writing by James Verbus on machine learning, anomaly detection, AI safety, and trust & safety engineering."
+og_image: "/assets/images/social/2025-08-07-berkeley-agentic-ai-summit-2025-1200x630.jpg"
+og_image_alt: "Agentic AI Summit 2025 social preview image"
+og_image_width: 1200
+og_image_height: 630
+last_modified_at: 2026-04-28
 ---
 
 <p class="home-intro">Notes on machine learning, trust and safety, anomaly detection, and applied AI research.</p>

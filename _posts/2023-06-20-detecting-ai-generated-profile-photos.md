@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Detecting AI-Generated Profile Photos"
-description: "A novel technique for the effective detection of AI-generated profile photos."
+description: "CVPR Workshop research with LinkedIn and UC Berkeley on detecting GAN-generated profile photos from compact embeddings."
+last_modified_at: 2026-04-28
 og_image: "/assets/images/social/2023-06-20-detecting-ai-generated-profile-photos-1200x630.jpg"
 og_image_alt: "Detecting AI-Generated Profile Photos"
 og_image_width: 1200

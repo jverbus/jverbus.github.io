@@ -2,6 +2,11 @@
 layout: page
 title: Home
 description: "Writing and projects on AI, machine learning, and Trust."
+og_image: "/assets/images/social/2025-08-07-berkeley-agentic-ai-summit-2025-1200x630.jpg"
+og_image_alt: "Agentic AI Summit 2025 social preview image"
+og_image_width: 1200
+og_image_height: 630
+last_modified_at: 2026-04-28
 ---
 
 <p class="home-intro">Writing and projects on AI, machine learning, and Trust.</p>
@@ -30,4 +35,3 @@ description: "Writing and projects on AI, machine learning, and Trust."
     <p class="post-list-description">Background, current work, and ways to connect.</p>
   </article>
 </div>
-

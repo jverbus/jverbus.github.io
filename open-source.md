@@ -2,6 +2,11 @@
 layout: page
 title: Open Source
 description: "Open source projects and related writing by James Verbus, including LinkedIn's isolation-forest library."
+og_image: "/assets/images/social/2019-08-13-open-source-isolation-forest-spark-scala-1200x630.jpg"
+og_image_alt: "Isolation forest open source project social preview image"
+og_image_width: 1200
+og_image_height: 630
+last_modified_at: 2026-04-28
 ---
 
 Highlights from my open source work, centered on `linkedin/isolation-forest`, the Spark/Scala implementation I built at LinkedIn and open sourced.

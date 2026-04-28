@@ -2,6 +2,11 @@
 layout: page
 title: Videos
 description: "Video presentations, panels, and workshop recordings by James Verbus."
+og_image: "/assets/images/social/2026-01-09-brown-physics-ai-winter-school-workshop-1200x630.jpg"
+og_image_alt: "Brown AI Winter School reinforcement learning workshop social preview image"
+og_image_width: 1200
+og_image_height: 630
+last_modified_at: 2026-04-28
 ---
 
 Talks, panels, and workshop recordings. Newest first.

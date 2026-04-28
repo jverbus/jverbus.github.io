@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Calibrating the LUX Dark Matter Experiment"
-description: "Consulting project at Insight Data Science"
+description: "Ph.D. thesis work calibrating low-energy nuclear recoil response in the LUX dark matter experiment using D-D neutron scattering."
+last_modified_at: 2026-04-28
 og_image: "/assets/images/social/2016-08-18-calibrating-the-lux-dark-matter-experiment-1200x630.jpg"
 og_image_alt: "Calibrating the LUX Dark Matter Experiment"
 og_image_width: 1200
