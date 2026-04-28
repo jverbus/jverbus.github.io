@@ -24,6 +24,9 @@ jobs:
       - name: Build site
         run: bundle exec jekyll build --config _config.yml,_config.ci.yml
 
+      - name: Validate generated site output
+        run: python3 scripts/check_generated_site.py _site
+
       - name: Link check generated site
         uses: lycheeverse/lychee-action@v2
         with:

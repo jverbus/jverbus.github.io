@@ -23,3 +23,6 @@ jobs:
 
       - name: Build site
         run: bundle exec jekyll build
+
+      - name: Validate generated site output
+        run: python3 scripts/check_generated_site.py _site
