@@ -54,7 +54,66 @@
     </h3>
   {% endif %}
 
-  {% if include.description %}
+  {% assign has_structured_description = false %}
+  {% if include.summary or include.details or include.authors or include.venue or include.meta or include.links %}
+    {% assign has_structured_description = true %}
+  {% endif %}
+
+  {% if has_structured_description %}
+    <p class="post-list-description">
+      {% assign has_description_line = false %}
+
+      {% if include.summary %}
+        {{ include.summary | escape }}
+        {% assign has_description_line = true %}
+      {% endif %}
+
+      {% if include.details %}
+        {% if has_description_line %}<br><br>{% endif %}
+        {{ include.details | escape }}
+        {% assign has_description_line = true %}
+      {% endif %}
+
+      {% if include.authors and include.authors != empty %}
+        {% if has_description_line %}<br>{% endif %}
+        {{ include.authors | join: ", " | escape }}
+        {% assign has_description_line = true %}
+      {% endif %}
+
+      {% if include.venue %}
+        {% if has_description_line %}<br>{% endif %}
+        {% if include.venue_label %}
+          <strong>{{ include.venue_label | escape }}</strong> {{ include.venue | escape }}
+        {% else %}
+          <em>{{ include.venue | escape }}</em>
+        {% endif %}
+        {% assign has_description_line = true %}
+      {% endif %}
+
+      {% if include.meta %}
+        {% if has_description_line %}<br>{% endif %}
+        {{ include.meta | escape }}
+        {% assign has_description_line = true %}
+      {% endif %}
+
+      {% if include.links and include.links != empty %}
+        {% if has_description_line %}<br>{% endif %}
+        {% for item_link in include.links %}
+          {% assign item_link_url = item_link.url %}
+          {% if item_link_url %}
+            {% assign item_link_is_external = false %}
+            {% if item_link_url contains '://' or item_link_url contains 'mailto:' or item_link_url contains 'tel:' %}
+              {% assign item_link_is_external = true %}
+            {% endif %}
+            {% unless item_link_is_external %}
+              {% assign item_link_url = item_link_url | relative_url %}
+            {% endunless %}
+            <a href="{{ item_link_url | escape }}"{% if item_link.target %} target="{{ item_link.target | escape }}"{% endif %}{% if item_link.rel %} rel="{{ item_link.rel | escape }}"{% endif %}>{{ item_link.label | default: item_link.url | escape }}</a>{% unless forloop.last %} · {% endunless %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </p>
+  {% elsif include.description %}
     <p class="post-list-description">{{ include.description }}</p>
   {% endif %}
 

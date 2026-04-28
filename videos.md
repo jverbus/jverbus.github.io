@@ -30,6 +30,11 @@ Talks, panels, and workshop recordings. Newest first.
       link_target=section.link_target
       link_rel=section.link_rel
       description=item.description
+      summary=item.summary
+      details=item.details
+      venue=item.venue
+      venue_label='Venue/Host:'
+      links=item.links
     %}
   {% endfor %}
 </div>

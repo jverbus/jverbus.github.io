@@ -3,104 +3,171 @@ sections:
     items:
       - date: "2024"
         title: "Finding AI-Generated Faces in the Wild"
-        url: "https://openaccess.thecvf.com/content/CVPR2024W/WMF/papers/Porcile_Finding_AI-Generated_Faces_in_the_Wild_CVPRW_2024_paper.pdf"
-        description: >-
-          G.J. Aniano Porcile, J. Gindi, S. Mundra, J.R. Verbus, H. Farid<br><em>CVPR Workshop on Media Forensics</em><br><a href="https://openaccess.thecvf.com/content/CVPR2024W/WMF/papers/Porcile_Finding_AI-Generated_Faces_in_the_Wild_CVPRW_2024_paper.pdf">Paper</a> · <a href="https://arxiv.org/abs/2311.08577">arXiv:2311.08577</a>
+        url: "https://openaccess.thecvf.com/content/CVPR2024W/WMF/html/Porcile_Finding_AI-Generated_Faces_in_the_Wild_CVPRW_2024_paper.html"
+        authors:
+          - "G.J. Aniano Porcile"
+          - "J. Gindi"
+          - "S. Mundra"
+          - "J.R. Verbus"
+          - "H. Farid"
+        venue: "CVPR Workshop on Media Forensics"
+        links:
+          - label: "Paper"
+            url: "https://openaccess.thecvf.com/content/CVPR2024W/WMF/html/Porcile_Finding_AI-Generated_Faces_in_the_Wild_CVPRW_2024_paper.html"
+          - label: "arXiv:2311.08577"
+            url: "https://arxiv.org/abs/2311.08577"
 
       - date: "2023"
         title: "Exposing GAN-Generated Profile Photos from Compact Embeddings"
-        url: "https://openaccess.thecvf.com/content/CVPR2023W/WMF/papers/Mundra_Exposing_GAN-Generated_Profile_Photos_From_Compact_Embeddings_CVPRW_2023_paper.pdf"
-        description: >-
-          S. Mundra, G.J. Aniano Porcile, S. Marvaniya, J.R. Verbus, H. Farid<br><em>CVPR Workshop on Media Forensics</em><br><a href="https://openaccess.thecvf.com/content/CVPR2023W/WMF/papers/Mundra_Exposing_GAN-Generated_Profile_Photos_From_Compact_Embeddings_CVPRW_2023_paper.pdf">Paper</a>
+        url: "https://openaccess.thecvf.com/content/CVPR2023W/WMF/html/Mundra_Exposing_GAN-Generated_Profile_Photos_From_Compact_Embeddings_CVPRW_2023_paper.html"
+        authors:
+          - "S. Mundra"
+          - "G.J. Aniano Porcile"
+          - "S. Marvaniya"
+          - "J.R. Verbus"
+          - "H. Farid"
+        venue: "CVPR Workshop on Media Forensics"
+        links:
+          - label: "Paper"
+            url: "https://openaccess.thecvf.com/content/CVPR2023W/WMF/html/Mundra_Exposing_GAN-Generated_Profile_Photos_From_Compact_Embeddings_CVPRW_2023_paper.html"
 
       - date: "2023"
         title: "Integrity 2023: Integrity in Social Networks and Media"
         url: "https://dl.acm.org/doi/abs/10.1145/3539597.3572704"
-        description: >-
-          L. Garcia-Pueyo, P. Tsaparas, P. Senthil Kumar, T. Sellis, P. Papotti, S. Adali, G. Manco, T. Trufinescu, G. Ranade, J.R. Verbus, M.N. Tek, A. McCosker<br><em>ACM International Conference on Web Search and Data Mining (WSDM)</em><br><a href="https://dl.acm.org/doi/abs/10.1145/3539597.3572704">Paper</a>
+        authors:
+          - "L. Garcia-Pueyo"
+          - "P. Tsaparas"
+          - "P. Senthil Kumar"
+          - "T. Sellis"
+          - "P. Papotti"
+          - "S. Adali"
+          - "G. Manco"
+          - "T. Trufinescu"
+          - "G. Ranade"
+          - "J.R. Verbus"
+          - "M.N. Tek"
+          - "A. McCosker"
+        venue: "ACM International Conference on Web Search and Data Mining (WSDM)"
+        links:
+          - label: "Paper"
+            url: "https://dl.acm.org/doi/abs/10.1145/3539597.3572704"
 
       - date: "2017"
         title: "Proposed low-energy absolute calibration of nuclear recoils in a dual-phase noble element TPC using D-D neutron scattering kinematics"
         url: "https://arxiv.org/abs/1608.05309"
-        description: >-
-          J.R. Verbus, C.A. Rhyne, D.C. Malling, et al.<br><em>Nuclear Instruments and Methods A</em><br><a href="https://arxiv.org/abs/1608.05309">arXiv:1608.05309</a>
+        authors:
+          - "J.R. Verbus"
+          - "C.A. Rhyne"
+          - "D.C. Malling"
+          - "et al."
+        venue: "Nuclear Instruments and Methods A"
+        links:
+          - label: "arXiv:1608.05309"
+            url: "https://arxiv.org/abs/1608.05309"
 
       - date: "2016"
         title: "Low-energy (0.7-74 keV) nuclear recoil calibration of the LUX dark matter experiment using D-D neutron scattering kinematics"
         url: "https://arxiv.org/abs/1608.05381"
-        description: >-
-          LUX Collaboration (Corresponding Author: J.R. Verbus)<br><a href="https://arxiv.org/abs/1608.05381">arXiv:1608.05381</a>
+        authors:
+          - "LUX Collaboration (Corresponding Author: J.R. Verbus)"
+        links:
+          - label: "arXiv:1608.05381"
+            url: "https://arxiv.org/abs/1608.05381"
 
   - title: Ph.D. Thesis
     items:
       - date: "2016"
         title: "An Absolute Calibration of Sub-1 keV Nuclear Recoils in Liquid Xenon Using D-D Neutron Scattering Kinematics in the LUX Detector"
         url: "https://repository.library.brown.edu/studio/item/bdr:674209/"
-        description: >-
-          J.R. Verbus<br><em>Ph.D. Thesis, Brown University</em><br><a href="https://repository.library.brown.edu/studio/item/bdr:674209/">Brown Digital Repository</a>
+        authors:
+          - "J.R. Verbus"
+        venue: "Ph.D. Thesis, Brown University"
+        links:
+          - label: "Brown Digital Repository"
+            url: "https://repository.library.brown.edu/studio/item/bdr:674209/"
 
   - title: Slides
     items:
       - date: "2016"
         title: "Ph.D. Thesis Defense Slides"
         url: "/assets/files/20160510_jverbus_thesis_defense_v4_public.pdf"
-        description: "<em>Brown University Physics Ph.D. defense presentation</em>"
+        venue: "Brown University Physics Ph.D. defense presentation"
 
   - title: Patents
     items:
       - date: "2025"
         title: "Identifying Coordinated Malicious Activities Using Sequences of Requests"
         url: "https://patents.google.com/patent/US12500923B2"
-        description: >-
-          E. Shaabani, J.R. Verbus, T. Chen<br>US Patent 12,500,923<br><a href="https://patents.google.com/patent/US12500923B2">Patent</a>
+        authors:
+          - "E. Shaabani"
+          - "J.R. Verbus"
+          - "T. Chen"
+        meta: "US Patent 12,500,923"
+        links:
+          - label: "Patent"
+            url: "https://patents.google.com/patent/US12500923B2"
 
       - date: "2024"
         title: "Deep Learning Using Activity Graph to Detect Abusive User Activity in Online Networks"
         url: "https://patents.google.com/patent/US11991197B2"
-        description: >-
-          Y. Wu, M. Boujelbene, J.R. Verbus, J.P. Chang, B. Wang, T. Chen<br>US Patent 11,991,197<br><a href="https://patents.google.com/patent/US11991197B2">Patent</a>
+        authors:
+          - "Y. Wu"
+          - "M. Boujelbene"
+          - "J.R. Verbus"
+          - "J.P. Chang"
+          - "B. Wang"
+          - "T. Chen"
+        meta: "US Patent 11,991,197"
+        links:
+          - label: "Patent"
+            url: "https://patents.google.com/patent/US11991197B2"
 
       - date: "2024"
         title: "Deep Learning to Detect Abusive Sequences of User Activity in Online Network"
         url: "https://patents.google.com/patent/US11936682B2"
-        description: >-
-          J.R. Verbus, B. Wang<br>US Patent 11,936,682<br><a href="https://patents.google.com/patent/US11936682B2">Patent</a>
+        authors:
+          - "J.R. Verbus"
+          - "B. Wang"
+        meta: "US Patent 11,936,682"
+        links:
+          - label: "Patent"
+            url: "https://patents.google.com/patent/US11936682B2"
 
   - title: Posters
     items:
       - date: "2024"
         title: "Finding AI-Generated Faces in the Wild (Poster)"
         url: "/assets/files/CVPRW_poster_2024.pdf"
-        description: "<em>CVPR Workshop on Media Forensics</em>"
+        venue: "CVPR Workshop on Media Forensics"
 
       - date: "2023"
         title: "Exposing GAN-Generated Profile Photos from Compact Embeddings (Poster)"
         url: "/assets/files/CVPRW_poster_2023.pdf"
-        description: "<em>CVPR Workshop on Media Forensics</em>"
+        venue: "CVPR Workshop on Media Forensics"
 
   - title: LinkedIn Engineering
     items:
       - date: "LinkedIn Pulse · 2024"
         title: "Announcing ONNX Support in LinkedIn's Open Source Isolation Forest"
         url: "https://www.linkedin.com/pulse/announcing-onnx-support-linkedins-open-source-isolation-james-verbus-paoqe/"
-        description: "Overview of ONNX export support and expanded deployment options for isolation-forest."
+        summary: "Overview of ONNX export support and expanded deployment options for isolation-forest."
 
       - date: "LinkedIn Engineering · 2024"
         title: "Finding AI-Generated (Deepfake) Faces in the Wild"
         url: "https://www.linkedin.com/blog/engineering/trust-and-safety/finding-ai-generated-deepfake-faces-in-the-wild"
-        description: "Engineering write-up on detecting AI-generated profile images, including key research findings."
+        summary: "Engineering write-up on detecting AI-generated profile images, including key research findings."
 
       - date: "LinkedIn Engineering · 2023"
         title: "New Approaches for Detecting AI-Generated Profile Photos"
         url: "https://www.linkedin.com/blog/engineering/trust-and-safety/new-approaches-for-detecting-ai-generated-profile-photos"
-        description: "Approaches for identifying synthetic profile photos at production scale."
+        summary: "Approaches for identifying synthetic profile photos at production scale."
 
       - date: "LinkedIn Engineering · 2021"
         title: "Using Deep Learning to Detect Abusive Sequences of Member Activity"
         url: "https://www.linkedin.com/blog/engineering/trust-and-safety/using-deep-learning-to-detect-abusive-sequences-of-member-activi"
-        description: "Sequence-modeling approach for detecting abusive activity patterns on the platform."
+        summary: "Sequence-modeling approach for detecting abusive activity patterns on the platform."
 
       - date: "LinkedIn Engineering · 2019"
         title: "Open Sourcing Isolation Forest"
         url: "https://www.linkedin.com/blog/engineering/data-management/isolation-forest"
-        description: "Motivation and architecture for LinkedIn's open-source Spark/Scala isolation-forest implementation."
+        summary: "Motivation and architecture for LinkedIn's open-source Spark/Scala isolation-forest implementation."

@@ -19,8 +19,6 @@ exclude = [
   '^https://(www\.)?linkedin\.com/.*',
   '^https://engineering\.linkedin\.com/.*',
   '^https://x\.com/.*',
-  '^https://openaccess\.thecvf\.com/content/CVPR2023W/WMF/papers/Mundra_Exposing_GAN-Generated_Profile_Photos_From_Compact_Embeddings_CVPRW_2023_paper\.pdf$',
-  '^https://openaccess\.thecvf\.com/content/CVPR2024W/WMF/papers/Porcile_Finding_AI-Generated_Faces_in_the_Wild_CVPRW_2024_paper\.pdf$',
   '^https://dl\.acm\.org/doi/abs/10\.1145/3539597\.3572704$',
   '^https://lux\.brown\.edu/LUX_dark_matter/Home\.html$',
   '^https://www\.mitchellrepublic\.com/content/dark-matter-lab-moves-underground-south-dakota$',

@@ -11,40 +11,45 @@ sections:
         url: "https://www.youtube.com/watch?v=BdPzEhGc7Cw"
         image: "https://i.ytimg.com/vi/BdPzEhGc7Cw/hqdefault.jpg"
         image_alt: "Workshop video thumbnail for reinforcement learning orbital transfer presentation"
-        description: >-
-          A 2.5-hour interactive, hands-on workshop at the 2026 AI Winter School, hosted by the Center for the Fundamental Physics of the Universe at Brown University.<br><br>An exploration of how to frame a classic orbital mechanics problem as an RL control task: using Hohmann transfer as an analytic benchmark, defining the state / action / reward / termination for a simplified 2D two-body environment, and training PPO agents with discrete and continuous thrust control. The session walks through practical RL workflow - training, debugging, and diagnosing failure modes (e.g., chatter, overcorrection, fuel inefficiency) - and compares learned trajectories against the analytic baseline using delta-v efficiency and stability diagnostics.<br><strong>Venue/Host:</strong> AI Winter School 2026, Center for the Fundamental Physics of the Universe at Brown University.
+        summary: "A 2.5-hour interactive, hands-on workshop at the 2026 AI Winter School, hosted by the Center for the Fundamental Physics of the Universe at Brown University."
+        details: "An exploration of how to frame a classic orbital mechanics problem as an RL control task: using Hohmann transfer as an analytic benchmark, defining the state / action / reward / termination for a simplified 2D two-body environment, and training PPO agents with discrete and continuous thrust control. The session walks through practical RL workflow - training, debugging, and diagnosing failure modes (e.g., chatter, overcorrection, fuel inefficiency) - and compares learned trajectories against the analytic baseline using delta-v efficiency and stability diagnostics."
+        venue: "AI Winter School 2026, Center for the Fundamental Physics of the Universe at Brown University."
 
       - date: "2025"
         title: "Brown AI Winter School 2025: Exploring LLMs and RAG"
         url: "https://www.youtube.com/watch?v=3Ra9vuHEh7U&list=PL21yWP3gTVmo7gfqS1y0GSeB5ypla8kvi&index=5"
         image: "https://i.ytimg.com/vi/3Ra9vuHEh7U/hqdefault.jpg"
         image_alt: "Workshop video thumbnail for LLM and RAG workshop"
-        description: >-
-          A 2.5 hour interactive workshop at the 2025 AI Winter School, hosted by the Center for the Fundamental Physics of the Universe at Brown University.<br><br>An exploration of LLM tools and techniques, including using OpenAI API, an open LLaMA model, and retrieval-augmented generation (RAG) for improving AI system performance with external data. We set up an LLM using both OpenAI's API and a locally installed LLaMa model, and build a basic RAG system to demonstrate how external data can be leveraged to enhance AI outputs.<br><strong>Venue/Host:</strong> AI Winter School 2025, Center for the Fundamental Physics of the Universe at Brown University.
+        summary: "A 2.5 hour interactive workshop at the 2025 AI Winter School, hosted by the Center for the Fundamental Physics of the Universe at Brown University."
+        details: "An exploration of LLM tools and techniques, including using OpenAI API, an open LLaMA model, and retrieval-augmented generation (RAG) for improving AI system performance with external data. We set up an LLM using both OpenAI's API and a locally installed LLaMa model, and build a basic RAG system to demonstrate how external data can be leveraged to enhance AI outputs."
+        venue: "AI Winter School 2025, Center for the Fundamental Physics of the Universe at Brown University."
 
       - date: "2021"
         title: "Using Deep Learning to Detect Abusive Sequences of Member Activity on LinkedIn"
         url: "https://exchange.scale.com/public/videos/using-deep-learning-to-detect-abusive-sequences-of-member-activity-on-linkedin?wvideo=2ebwra0szn"
         image: "https://embed-ssl.wistia.com/deliveries/9f7ad2c1739c4fc6293fb323cc0c0268fd7184e6.jpg?image_play_button_size=2x&image_crop_resized=960x540&image_play_button_rounded=1&image_play_button_color=8475d5e0"
         image_alt: "Scale Exchange talk thumbnail"
-        description: >-
-          LinkedIn's Anti-Abuse AI Team presents a production deep learning model that operates directly on raw sequences of member activity to better detect and prevent adversarial abuse at scale across heterogeneous attack surfaces. The talk covers early results, including detection of logged-in accounts scraping member profile data.<br><strong>Venue/Host:</strong> Scale Exchange.
+        summary: "LinkedIn's Anti-Abuse AI Team presents a production deep learning model that operates directly on raw sequences of member activity to better detect and prevent adversarial abuse at scale across heterogeneous attack surfaces. The talk covers early results, including detection of logged-in accounts scraping member profile data."
+        venue: "Scale Exchange."
 
       - date: "2020"
         title: "Preventing Abuse Using Unsupervised Learning"
         url: "https://www.youtube.com/watch?v=sFRrFWYNAUI"
         image: "https://i.ytimg.com/vi/sFRrFWYNAUI/hqdefault.jpg"
         image_alt: "YouTube video thumbnail for unsupervised abuse detection"
-        description: >-
-          A presentation on applying isolation forests and unsupervised ML to prevent abuse at production scale.<br><strong>Venue/Host:</strong> Spark+AI Summit 2020 (recording hosted on YouTube).
+        summary: "A presentation on applying isolation forests and unsupervised ML to prevent abuse at production scale."
+        venue: "Spark+AI Summit 2020 (recording hosted on YouTube)."
 
       - date: "2019"
         title: "Fighting Abuse @Scale: Preventing Abuse Using Unsupervised Learning"
         url: "https://atscaleconference.com/videos/fighting-abuse-scale-2019-preventing-abuse-using-unsupervised-learning/"
         image: "/assets/images/jverbus_abuse_at_scale.jpeg"
         image_alt: "James Verbus presenting at @Scale"
-        description: >-
-          Detection of abusive activity on a large social network is an adversarial challenge with quickly evolving behavior patterns and imperfect ground truth labels. These characteristics limit the use of supervised learning techniques, but they can be overcome using unsupervised methods. To address these challenges, we created a Scala/Spark implementation of the isolation forest unsupervised outlier detection algorithm; we recently open sourced this library (<a href="https://github.com/linkedin/isolation-forest">github.com/linkedin/isolation-forest</a>).<br><strong>Venue/Host:</strong> @Scale Conference.
+        summary: "Detection of abusive activity on a large social network is an adversarial challenge with quickly evolving behavior patterns and imperfect ground truth labels. These characteristics limit the use of supervised learning techniques, but they can be overcome using unsupervised methods. To address these challenges, we created a Scala/Spark implementation of the isolation forest unsupervised outlier detection algorithm."
+        links:
+          - label: "github.com/linkedin/isolation-forest"
+            url: "https://github.com/linkedin/isolation-forest"
+        venue: "@Scale Conference."
 
   - title: Panels
     card_class: video-list-item
@@ -58,8 +63,8 @@ sections:
         url: "https://www.youtube.com/watch?v=8zniAjqWI2A"
         image: "https://i.ytimg.com/vi/8zniAjqWI2A/hqdefault.jpg"
         image_alt: "SXSW panel video thumbnail"
-        description: >-
-          A panel discussion on authenticity, trust, and detecting synthetic media in an AI-native information ecosystem.<br><strong>Venue/Host:</strong> SXSW and DARPA.
+        summary: "A panel discussion on authenticity, trust, and detecting synthetic media in an AI-native information ecosystem."
+        venue: "SXSW and DARPA."
 
   - title: Podcasts & Interviews
     card_class: video-list-item
@@ -73,11 +78,11 @@ sections:
         url: "https://youtu.be/xlSmLXQFtto"
         image: "https://i.ytimg.com/vi/xlSmLXQFtto/hqdefault.jpg"
         image_alt: "Interview thumbnail for AI Innovators episode"
-        description: "Interview on applied AI engineering, trust and safety, and building practical ML systems at scale."
+        summary: "Interview on applied AI engineering, trust and safety, and building practical ML systems at scale."
 
       - date: "2022"
         title: "The Data Scientist Show #035: Detect Online Abuse with AI"
         url: "https://youtu.be/A2csYeOnV98"
         image: "https://i.ytimg.com/vi/A2csYeOnV98/hqdefault.jpg"
         image_alt: "Podcast interview thumbnail for The Data Scientist Show"
-        description: "Conversation about online abuse detection, machine learning in production, and the path from physics research to staff-level ML engineering."
+        summary: "Conversation about online abuse detection, machine learning in production, and the path from physics research to staff-level ML engineering."

@@ -22,6 +22,11 @@ For a complete publication list (>30 papers, >10k citations), see [Google Schola
       title=item.title
       url=item.url
       description=item.description
+      summary=item.summary
+      authors=item.authors
+      venue=item.venue
+      meta=item.meta
+      links=item.links
     %}
   {% endfor %}
 </div>
