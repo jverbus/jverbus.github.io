@@ -462,7 +462,7 @@ video {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
-  margin-bottom: var(--space-8);
+  margin-bottom: 0;
 }
 
 .button {
@@ -499,43 +499,6 @@ video {
   background: var(--accent-hover);
 }
 
-.home-proof-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-4);
-}
-
-.proof-link {
-  display: block;
-  min-width: 0;
-  border-top: 2px solid var(--border-strong);
-  padding-top: var(--space-3);
-  color: var(--text);
-  text-decoration: none;
-}
-
-.proof-link span {
-  display: block;
-  margin-bottom: 0.25rem;
-  color: var(--accent-warm);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.proof-link strong {
-  display: block;
-  font-size: 0.96rem;
-  line-height: 1.45;
-}
-
-.proof-link:hover {
-  border-top-color: var(--accent);
-  color: var(--accent-hover);
-  text-decoration: none;
-}
-
 .home-section {
   padding-top: var(--space-10);
 }
@@ -546,44 +509,6 @@ video {
 
 .section-heading h2 {
   margin: 0;
-}
-
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-4);
-}
-
-.feature-card {
-  min-width: 0;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--surface-elevated);
-  padding: var(--space-4);
-  box-shadow: var(--shadow-soft);
-}
-
-.feature-card h3 {
-  margin: 0 0 var(--space-2);
-  font-size: 1rem;
-  line-height: 1.35;
-}
-
-.feature-card h3 a {
-  color: var(--heading);
-  text-decoration: none;
-}
-
-.feature-card h3 a:hover {
-  color: var(--accent-hover);
-  text-decoration: none;
-}
-
-.feature-card p {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: 0.92rem;
-  line-height: 1.55;
 }
 
 .post-list {
@@ -615,6 +540,35 @@ video {
 
 .home-archive-link a:hover {
   color: var(--text);
+  border-bottom-color: var(--border-strong);
+  text-decoration: none;
+}
+
+.home-secondary-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.75rem;
+  align-items: baseline;
+  margin: var(--space-6) 0 0;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.home-secondary-links span {
+  font-weight: 650;
+  color: var(--text);
+}
+
+.home-secondary-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.home-secondary-links a:hover {
+  color: var(--accent-hover);
   border-bottom-color: var(--border-strong);
   text-decoration: none;
 }
@@ -1076,14 +1030,8 @@ video {
     max-width: 100%;
   }
 
-  .home-proof-grid,
-  .feature-grid,
   .about-hero {
     grid-template-columns: 1fr;
-  }
-
-  .home-actions {
-    margin-bottom: var(--space-6);
   }
 
   .post-list-item {
@@ -1287,10 +1235,6 @@ video {
     color: #06101f;
     background: #bfdbfe;
     border-color: #bfdbfe;
-  }
-
-  .feature-card {
-    border-color: #29384f;
   }
 
   .editorial-list .post-list-item {
