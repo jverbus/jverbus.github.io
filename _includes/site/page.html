@@ -1,6 +1,7 @@
 <article class="unit-article layout-page">
   <div class="unit-inner unit-article-inner">
     <div class="content">
+      {% unless page.hide_title %}
       <header>
         <div class="unit-head">
           <div class="unit-inner unit-head-inner">
@@ -8,6 +9,7 @@
           </div><!-- unit-inner -->
         </div><!-- unit-head -->
       </header>
+      {% endunless %}
 
       <div class="bd">
         <div class="entry-content">

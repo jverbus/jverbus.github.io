@@ -12,8 +12,12 @@
               </ol>
             </nav>
             <h1 class="h2 entry-title">{{ page.title }}</h1>
+            {% assign word_count = content | strip_html | number_of_words %}
+            {% assign reading_minutes = word_count | plus: 199 | divided_by: 200 %}
             <p class="post-date">
               <time title="{{ page.date | date_to_xmlschema }}" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+              <span aria-hidden="true">·</span>
+              <span>{{ reading_minutes }} min read</span>
             </p>
             {% if page.description %}
             <p class="post-summary">{{ page.description }}</p>

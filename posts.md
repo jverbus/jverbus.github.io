@@ -14,7 +14,7 @@ last_modified_at: 2026-04-28
 
 ## Latest Writing
 
-<div class="post-list" role="list">
+<div class="post-list editorial-list" role="list">
   {% for post in site.posts limit:8 %}
     <article class="post-list-item" role="listitem">
       <p class="post-list-date">{{ post.date | date: "%b %-d, %Y" }}</p>

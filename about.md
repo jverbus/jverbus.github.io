@@ -9,11 +9,25 @@ og_image_height: 630
 last_modified_at: 2026-04-28
 ---
 
-![James Verbus working on the LUX dark matter detector]({{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }}){: width="800" height="800" }
+<section class="about-hero">
+  <div class="about-intro">
+    <p class="eyebrow">Current work</p>
+    <p class="about-lede">I'm a Senior Staff Software Engineer at LinkedIn, specializing in large-scale AI/ML for Trust and Safety.</p>
+    <div class="about-highlights" role="list">
+      <p role="listitem"><strong>Platform trust:</strong> fake accounts, automated abuse, scraping, and GenAI content.</p>
+      <p role="listitem"><strong>Open source:</strong> built and open sourced LinkedIn's Spark/Scala isolation-forest implementation.</p>
+      <p role="listitem"><strong>Research:</strong> publications, patents, talks, and academic collaborations across AI and physics.</p>
+    </div>
+  </div>
+  <figure class="about-photo">
+    <img src="{{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }}" alt="James Verbus working on the LUX dark matter detector" width="800" height="800" loading="eager" decoding="async">
+    <figcaption>Experimental physics roots on the LUX dark matter experiment.</figcaption>
+  </figure>
+</section>
 
 ## About Me
 
-I'm a Senior Staff Software Engineer at LinkedIn, specializing in large-scale AI/ML for Trust and Safety. I lead initiatives that improve platform trust and security, and build AI systems that improve developer productivity.
+I lead initiatives that improve platform trust and security, and build AI systems that improve developer productivity.
 
 I focus on ambiguous, high-impact problems such as fake accounts, automated abuse, scraping, and GenAI content. I also mentor engineers and help grow new technical leaders across teams.
 
