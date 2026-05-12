@@ -11,13 +11,8 @@ hide_title: true
 ---
 
 <section class="home-hero" aria-labelledby="home-title">
-  <p class="eyebrow">James Verbus</p>
   <h1 id="home-title">AI/ML engineering for trust, safety, and applied research.</h1>
   <p class="home-lede">Senior Staff Software Engineer at LinkedIn working on large-scale AI systems for platform integrity, developer productivity, anomaly detection, and applied machine learning.</p>
-  <div class="home-actions" role="group" aria-label="Primary links">
-    <a class="button button-primary" href="{{ '/posts/' | relative_url }}">Read writing</a>
-    <a class="button" href="{{ '/about/' | relative_url }}">About</a>
-  </div>
 </section>
 
 <section class="home-section" aria-labelledby="latest-writing">
@@ -37,10 +32,4 @@ hide_title: true
     {% endfor %}
   </div>
   <p class="home-archive-link"><a href="{{ '/posts/' | relative_url }}">All writing</a></p>
-  <p class="home-secondary-links">
-    <span>Explore more:</span>
-    <a href="{{ '/publications/' | relative_url }}">Publications</a>
-    <a href="{{ '/open-source/' | relative_url }}">Open Source</a>
-    <a href="{{ '/videos/' | relative_url }}">Videos</a>
-  </p>
 </section>

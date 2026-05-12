@@ -211,9 +211,20 @@ button:focus-visible {
 }
 
 .footer-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  align-items: baseline;
+  justify-content: space-between;
   margin: 0;
   color: var(--text-muted);
   font-size: 0.88rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.8rem;
 }
 
 .footer-meta a {
@@ -458,47 +469,6 @@ video {
   line-height: 1.65;
 }
 
-.home-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  margin-bottom: 0;
-}
-
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 2.35rem;
-  border: 1px solid var(--border-strong);
-  border-radius: 999px;
-  padding: 0.38rem 0.8rem;
-  color: var(--text);
-  background: var(--surface);
-  font-size: 0.9rem;
-  font-weight: 620;
-  line-height: 1.2;
-  text-decoration: none;
-}
-
-.button:hover {
-  border-color: var(--accent);
-  color: var(--accent-hover);
-  text-decoration: none;
-}
-
-.button-primary {
-  border-color: var(--accent);
-  color: #fff;
-  background: var(--accent);
-}
-
-.button-primary:hover {
-  border-color: var(--accent-hover);
-  color: #fff;
-  background: var(--accent-hover);
-}
-
 .home-section {
   padding-top: var(--space-10);
 }
@@ -540,35 +510,6 @@ video {
 
 .home-archive-link a:hover {
   color: var(--text);
-  border-bottom-color: var(--border-strong);
-  text-decoration: none;
-}
-
-.home-secondary-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem 0.75rem;
-  align-items: baseline;
-  margin: var(--space-6) 0 0;
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--border);
-  color: var(--text-muted);
-  font-size: 0.92rem;
-}
-
-.home-secondary-links span {
-  font-weight: 650;
-  color: var(--text);
-}
-
-.home-secondary-links a {
-  color: var(--text-muted);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-}
-
-.home-secondary-links a:hover {
-  color: var(--accent-hover);
   border-bottom-color: var(--border-strong);
   text-decoration: none;
 }
@@ -1054,6 +995,10 @@ video {
     font-size: 0.84rem;
   }
 
+  .footer-author {
+    display: none;
+  }
+
   .video-list-item {
     grid-template-columns: 1fr;
     gap: 0.75rem;
@@ -1219,22 +1164,6 @@ video {
   .post-list-item {
     border-color: #2a3953;
     box-shadow: none;
-  }
-
-  .button {
-    background: var(--surface-elevated);
-  }
-
-  .button-primary {
-    color: #06101f;
-    background: var(--accent-hover);
-    border-color: var(--accent-hover);
-  }
-
-  .button-primary:hover {
-    color: #06101f;
-    background: #bfdbfe;
-    border-color: #bfdbfe;
   }
 
   .editorial-list .post-list-item {
