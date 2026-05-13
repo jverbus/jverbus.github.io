@@ -42,7 +42,7 @@ TL;DR: Agentic AI is moving beyond demos toward the infrastructure, standards, a
 
 ## Session 3: Foundations of Agents
 
-- **Dawn Song – “Towards Building Safe and Secure Agentic AI”:** Security and safety evaluation must precede deployment; defense‑in‑depth, least privilege, and open red‑team platforms are top research priorities.
+- **Dawn Song – “Towards Building Safe and Secure Agentic AI”:** Security and deployment-risk evaluation must precede deployment; defense‑in‑depth, least privilege, and open red‑team platforms are top research priorities.
 - **Ed Chi – “Google Gemini Era: Bringing AI to Universal Assistant and the Real World”:** A single multimodal agent that fuses pattern recognition with tool‑based reasoning is within reach but requires robust workflows, personalization, and search‑grade retrieval.
 - **Jakub Pachocki – “Automating Discovery”:** Frontier models match experts on structured tasks yet still lack the creative “last insight”; enabling genuine discovery is OpenAI’s next frontier.
 - **Sergey Levine – “Multi-Turn Reinforcement Learning for LLM Agents”:** Offline RL on human dialogs, paired with the LLM’s latent world model, enables goal‑conditioned planning without simulators.

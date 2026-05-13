@@ -78,7 +78,7 @@ sections:
         url: "https://youtu.be/xlSmLXQFtto"
         image: "https://i.ytimg.com/vi/xlSmLXQFtto/hqdefault.jpg"
         image_alt: "Interview thumbnail for AI Innovators episode"
-        summary: "Interview on applied AI engineering, trust and safety, and building practical ML systems at scale."
+        summary: "Interview on applied AI engineering, platform trust, and building practical ML systems at scale."
 
       - date: "2022"
         title: "The Data Scientist Show #035: Detect Online Abuse with AI"

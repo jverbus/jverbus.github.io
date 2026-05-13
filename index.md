@@ -11,8 +11,8 @@ hide_title: true
 ---
 
 <section class="home-hero" aria-labelledby="home-title">
-  <h1 id="home-title">AI/ML engineering for trust, safety, and applied research.</h1>
-  <p class="home-lede">Senior Staff Software Engineer at LinkedIn working on large-scale AI systems for platform integrity, developer productivity, anomaly detection, and applied machine learning.</p>
+  <h1 id="home-title">AI/ML engineering for platform trust, security, and developer productivity.</h1>
+  <p class="home-lede">Senior Staff Software Engineer applying AI and machine learning at scale to complex platform integrity, trust, security, and developer productivity problems.</p>
 </section>
 
 <section class="home-section" aria-labelledby="latest-writing">

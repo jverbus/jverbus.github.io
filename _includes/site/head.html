@@ -13,7 +13,7 @@
     {% if page.layout == 'post' and page.excerpt %}
       {% assign page_description = page.excerpt | strip_html | normalize_whitespace | truncate: 160 %}
     {% else %}
-      {% assign page_description = site.tagline | default: "Personal website of James Verbus - Senior Staff Software Engineer at LinkedIn, working on AI for Trust." %}
+      {% assign page_description = site.tagline | default: "Personal website of James Verbus - Senior Staff Software Engineer working on AI for trust." %}
     {% endif %}
   {% endif %}
   <meta name="description" content="{{ page_description | escape }}">
@@ -131,21 +131,16 @@
     "name": {{ site.author.name | jsonify }},
     "url": {{ '/about/' | absolute_url | jsonify }},
     "jobTitle": "Senior Staff Software Engineer",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "LinkedIn"
-    },
     "alumniOf": {
       "@type": "CollegeOrUniversity",
       "name": "Brown University"
     },
     "sameAs": [
       {{ site.author.github | prepend: 'https://github.com/' | jsonify }},
-      "https://www.linkedin.com/in/jamesverbus",
       {{ site.author.twitter | prepend: 'https://x.com/' | jsonify }},
       "https://scholar.google.com/citations?user=_ksEziAAAAAJ"
     ],
-    "knowsAbout": ["Machine Learning", "AI", "Anomaly Detection", "Trust & Safety", "Physics"]
+    "knowsAbout": ["Machine Learning", "AI", "Anomaly Detection", "Platform Trust", "Security", "Physics"]
   }
   </script>
   {% else %}
