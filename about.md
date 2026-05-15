@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-description: "James Verbus - Senior Staff Software Engineer applying AI/ML at scale to platform trust, security, and developer productivity. Patents, open source, publications, and conference talks across trust and AI."
+description: "James Verbus writes about AI, Agents, Trust, anomaly detection, platform integrity, and applied AI systems. His work includes patents, open-source software, publications, and conference talks."
 og_image: "/assets/images/social/2016-08-18-calibrating-the-lux-dark-matter-experiment-1200x630.jpg"
 og_image_alt: "James Verbus with the LUX dark matter experiment"
 og_image_width: 1200
@@ -11,12 +11,12 @@ last_modified_at: 2026-04-28
 
 <section class="about-hero">
   <div class="about-intro">
-    <p class="eyebrow">Current work</p>
-    <p class="about-lede">I'm a Senior Staff Software Engineer specializing in large-scale AI/ML for platform trust, security, and developer productivity.</p>
+    <p class="eyebrow">Focus</p>
+    <p class="about-lede">Applied AI work across platform integrity, agents, anomaly detection, and developer productivity, with an emphasis on production systems.</p>
     <div class="about-highlights" role="list">
-      <p role="listitem"><strong>Platform trust:</strong> fake accounts, automated abuse, scraping, GenAI content, and other adversarial platform problems.</p>
-      <p role="listitem"><strong>Open source:</strong> built and open sourced a Spark/Scala isolation-forest implementation.</p>
-      <p role="listitem"><strong>Research:</strong> patents, publications, talks, and academic collaborations at the intersection of trust and AI.</p>
+      <p role="listitem"><strong>Trust:</strong> platform integrity, fake accounts, automated abuse, scraping, and GenAI content.</p>
+      <p role="listitem"><strong>Agents:</strong> AI workflows, model deployment, and developer productivity tooling.</p>
+      <p role="listitem"><strong>Research:</strong> patents, publications, talks, academic collaborations, and open-source software.</p>
     </div>
   </div>
   <figure class="about-photo">
@@ -25,15 +25,15 @@ last_modified_at: 2026-04-28
   </figure>
 </section>
 
-## About Me
+## Background
 
-I drive AI strategies that improve platform trust and security, and build systems that improve developer productivity.
+The work centers on production AI systems operating under noisy signals, adversarial behavior, operational constraints, and measurable product requirements.
 
-I focus on ambiguous, high-impact problems such as fake accounts, automated abuse, scraping, GenAI content, and other complex business problems. I also mentor engineers and help grow new technical leaders across teams.
+Technical leadership includes system architecture, engineering mentorship, and execution across ambiguous problem areas.
 
-I built and open sourced isolation-forest, a Spark/Scala implementation used across anti-abuse systems. My work includes multiple patents, open-source contributions, publications, and conference talks, often in collaboration with academic researchers.
+Notable work includes isolation-forest, a Spark/Scala implementation for large-scale unsupervised anomaly detection, along with patents, publications, and conference talks produced in collaboration with academic researchers.
 
-Before tech, I was an experimental particle physicist. I earned my PhD at Brown University on the LUX dark matter experiment, where I helped build and operate a leading-generation detector located a mile underground in the former Homestake gold mine in South Dakota.
+Earlier work was in experimental particle physics: a PhD at Brown University on the LUX dark matter experiment, including detector construction and operation a mile underground in the former Homestake gold mine in South Dakota.
 
 ## Contact
 

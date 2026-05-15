@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Home
-description: "Writing and projects on AI, machine learning, and Trust."
+description: "Writing on AI, Agents, Trust, anomaly detection, platform integrity, and applied AI systems."
 og_image: "/assets/images/social/2025-08-07-berkeley-agentic-ai-summit-2025-1200x630.jpg"
 og_image_alt: "Agentic AI Summit 2025 social preview image"
 og_image_width: 1200
@@ -11,8 +11,8 @@ hide_title: true
 ---
 
 <section class="home-hero" aria-labelledby="home-title">
-  <h1 id="home-title">AI/ML engineering for platform trust, security, and developer productivity.</h1>
-  <p class="home-lede">Senior Staff Software Engineer applying AI and machine learning at scale to complex platform integrity, trust, security, and developer productivity problems.</p>
+  <h1 id="home-title">AI, Agents, Trust, and applied systems at scale.</h1>
+  <p class="home-lede">Technical writing on platform integrity, anomaly detection, GenAI, developer productivity, and production AI systems.</p>
 </section>
 
 <section class="home-section" aria-labelledby="latest-writing">
