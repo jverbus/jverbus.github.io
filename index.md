@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Home
-description: "Writing on AI, Agents, Trust, anomaly detection, platform integrity, and applied AI systems."
+description: "Writing on AI systems under uncertainty: agents, anomaly detection, behavior modeling, evaluation, and reliable AI."
 og_image: "/assets/images/social/2025-08-07-berkeley-agentic-ai-summit-2025-1200x630.jpg"
 og_image_alt: "Agentic AI Summit 2025 social preview image"
 og_image_width: 1200
@@ -11,8 +11,9 @@ hide_title: true
 ---
 
 <section class="home-hero" aria-labelledby="home-title">
-  <h1 id="home-title">AI, Agents, Trust, and applied systems at scale.</h1>
-  <p class="home-lede">Technical writing on platform integrity, anomaly detection, GenAI, developer productivity, and production AI systems.</p>
+  <h1 id="home-title">AI systems under uncertainty.</h1>
+  <p class="home-lede">Technical writing on AI systems that operate in noisy, large-scale environments: separating signal from noise, modeling behavior, adapting to feedback, and making reliable decisions.</p>
+  <p class="home-lede">My work spans experimental physics and AI, from searching for possible dark matter interactions in a particle detector to building AI systems for detecting fake accounts, hacked accounts, bots, automation, scraping, spam, and other abusive behavior in large-scale online environments.</p>
 </section>
 
 <section class="home-section" aria-labelledby="latest-writing">

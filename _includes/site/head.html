@@ -13,7 +13,7 @@
     {% if page.layout == 'post' and page.excerpt %}
       {% assign page_description = page.excerpt | strip_html | normalize_whitespace | truncate: 160 %}
     {% else %}
-      {% assign page_description = site.tagline | default: "Personal website of James Verbus, writing on AI, Agents, Trust, anomaly detection, and applied AI systems." %}
+      {% assign page_description = site.tagline | default: "Personal website of James Verbus, writing on AI systems under uncertainty: agents, anomaly detection, behavior modeling, evaluation, and reliable AI." %}
     {% endif %}
   {% endif %}
   <meta name="description" content="{{ page_description | escape }}">
