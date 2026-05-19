@@ -745,7 +745,6 @@ video {
   gap: var(--space-8);
   align-items: start;
   padding-bottom: var(--space-8);
-  border-bottom: 1px solid var(--border);
 }
 
 .about-lede {
