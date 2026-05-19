@@ -25,8 +25,6 @@ My background is in experimental particle physics and AI. On the LUX dark matter
 
 In AI, I have built systems for detecting fake accounts, hacked accounts, bots, automation, scraping, spam, and other abusive behavior while distinguishing it from normal product activity.
 
-Those areas share some practical concerns: noisy data, incomplete feedback, shifting behavior, and the need for careful evaluation.
-
 Additional work includes `isolation-forest`, a Spark/Scala implementation for large-scale unsupervised anomaly detection, along with patents, publications, talks, and academic collaborations.
 
 ## Contact
