@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-description: "Writing on AI/ML systems, agents, behavior modeling, evaluation, and product."
+description: "Writing on AI/ML systems, agents, behavior modeling, and production systems in adversarial and uncertain environments."
 og_image: "/assets/images/social/2016-08-18-calibrating-the-lux-dark-matter-experiment-1200x630.jpg"
 og_image_alt: "James Verbus with the LUX dark matter experiment"
 og_image_width: 1200
@@ -12,11 +12,11 @@ last_modified_at: 2026-05-19
 <section class="about-hero">
   <div class="about-intro">
     <p class="eyebrow">Focus</p>
-    <p class="about-lede">AI/ML systems, agents, behavior modeling, evaluation, and product work in noisy production settings.</p>
+    <p class="about-lede">AI/ML systems, agents, behavior modeling, and production systems in adversarial and uncertain environments.</p>
     <div class="about-highlights" role="list">
       <p role="listitem"><strong>Behavior modeling:</strong> large-scale product activity, abuse signals, and changing user behavior.</p>
       <p role="listitem"><strong>Agents:</strong> tool use, workflow design, and feedback loops.</p>
-      <p role="listitem"><strong>Evaluation:</strong> practical ways to measure system behavior when data and requirements change.</p>
+      <p role="listitem"><strong>Production systems:</strong> noisy data, incomplete feedback, adversarial behavior, and operational constraints.</p>
     </div>
   </div>
   <figure class="about-photo">
@@ -33,7 +33,7 @@ In AI, I have built systems for detecting fake accounts, hacked accounts, bots, 
 
 Those areas share some practical concerns: noisy data, incomplete feedback, shifting behavior, and the need for careful evaluation.
 
-More broadly, I'm interested in AI/ML systems that are useful, measurable, and practical in production settings.
+More broadly, I'm interested in AI/ML systems that are useful, measurable, and practical in adversarial and uncertain production settings.
 
 Additional work includes `isolation-forest`, a Spark/Scala implementation for large-scale unsupervised anomaly detection, along with patents, publications, talks, and academic collaborations.
 
