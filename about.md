@@ -11,13 +11,7 @@ last_modified_at: 2026-05-19
 
 <section class="about-hero">
   <div class="about-intro">
-    <p class="eyebrow">Focus</p>
     <p class="about-lede">AI/ML systems, agents, behavior modeling, and production systems in adversarial and uncertain environments.</p>
-    <div class="about-highlights" role="list">
-      <p role="listitem"><strong>Behavior modeling:</strong> large-scale product activity, abuse signals, and changing user behavior.</p>
-      <p role="listitem"><strong>Agents:</strong> tool use, workflow design, and feedback loops.</p>
-      <p role="listitem"><strong>Production systems:</strong> noisy data, incomplete feedback, adversarial behavior, and operational constraints.</p>
-    </div>
   </div>
   <figure class="about-photo">
     <img src="{{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }}" alt="James Verbus working on the LUX dark matter detector" width="800" height="800" loading="eager" decoding="async">
@@ -32,8 +26,6 @@ My background is in experimental particle physics and AI. On the LUX dark matter
 In AI, I have built systems for detecting fake accounts, hacked accounts, bots, automation, scraping, spam, and other abusive behavior while distinguishing it from normal product activity.
 
 Those areas share some practical concerns: noisy data, incomplete feedback, shifting behavior, and the need for careful evaluation.
-
-More broadly, I'm interested in AI/ML systems that are useful, measurable, and practical in adversarial and uncertain production settings.
 
 Additional work includes `isolation-forest`, a Spark/Scala implementation for large-scale unsupervised anomaly detection, along with patents, publications, talks, and academic collaborations.
 
