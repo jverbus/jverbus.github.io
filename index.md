@@ -20,15 +20,16 @@ hide_title: true
     <p class="eyebrow">Latest</p>
     <h2 id="latest-writing">Writing</h2>
   </div>
-  <div class="post-list editorial-list" role="list">
+  <div class="post-list" role="list">
     {% for post in site.posts limit:3 %}
-      <article class="post-list-item" role="listitem">
-        <p class="post-list-date">{{ post.date | date: "%b %-d, %Y" }}</p>
-        <h3 class="post-list-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-        {% if post.description %}
-        <p class="post-list-description">{{ post.description }}</p>
-        {% endif %}
-      </article>
+      {% assign post_card_date = post.date | date: "%b %-d, %Y" %}
+      {% include site/card.html
+        card_clickable='on'
+        date=post_card_date
+        title=post.title
+        url=post.url
+        description=post.description
+      %}
     {% endfor %}
   </div>
   <p class="home-archive-link"><a href="{{ '/posts/' | relative_url }}">All writing</a></p>
