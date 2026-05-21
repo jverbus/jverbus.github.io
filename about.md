@@ -6,7 +6,7 @@ og_image: "/assets/images/social/2016-08-18-calibrating-the-lux-dark-matter-expe
 og_image_alt: "James Verbus with the LUX dark matter experiment"
 og_image_width: 1200
 og_image_height: 630
-last_modified_at: 2026-05-19
+last_modified_at: 2026-05-20
 ---
 
 <section class="about-hero">

@@ -33,4 +33,4 @@ Our approach is detailed in the full paper that was released at the [Workshop on
 ### Videos
 
 - [SXSW 2024 panel with DARPA: "Real or Not: Defending Authenticity in a Digital World"](https://www.youtube.com/watch?v=8zniAjqWI2A)
-
+- [DARPA recap: "SXSW Panel Replay: Real or Not, Defending Authenticity in a Digital World"](https://www.darpa.mil/news/2024/sxsw-panel-replay)

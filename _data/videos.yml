@@ -64,6 +64,9 @@ sections:
         image: "https://i.ytimg.com/vi/8zniAjqWI2A/hqdefault.jpg"
         image_alt: "SXSW panel video thumbnail"
         summary: "A panel discussion on authenticity, trust, and detecting synthetic media in an AI-native information ecosystem."
+        links:
+          - label: "DARPA recap"
+            url: "https://www.darpa.mil/news/2024/sxsw-panel-replay"
         venue: "SXSW and DARPA."
 
   - title: Podcasts & Interviews
