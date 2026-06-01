@@ -27,10 +27,9 @@ EIF is additive: existing standard Isolation Forest APIs, typical Spark ML pipel
 
 Standard Isolation Forest, introduced by [Liu, Ting, and Zhou in 2008](https://doi.org/10.1109/ICDM.2008.17), builds an ensemble of random binary trees. At each node, the algorithm selects one feature and a random split value to partition the data. Because every split is aligned with a single feature axis, the algorithm has a directional bias.
 
-In practice, that bias shows up in two main ways:
+In practice, that bias shows up as score-map artifacts: axis-aligned splits can create rectangular bands and ghost-like regions where areas that are similarly far from the training data receive inconsistent anomaly scores.
 
-1. **Score artifacts and ghost regions:** axis-aligned splits can create rectangular bands and ghost-like regions in the anomaly-score map, so areas that are similarly far from the training data can receive inconsistent scores.
-2. **Missed anomalies:** unusual points in empty or off-axis regions can receive anomalously low scores, especially in multi-cluster or curved data, causing true anomalies to be scored or labeled as nominal.
+The practical failure mode is missed anomalies. Unusual points in empty or off-axis regions can receive anomalously low scores, especially in multi-cluster or curved data, causing true anomalies to be scored or labeled as nominal.
 
 This matters most when features are correlated or when the geometry of the data does not line up neatly with individual coordinate axes, which is common in real-world datasets.
 
@@ -50,7 +49,7 @@ Concretely, on a 10-feature dataset, `extensionLevel = 3` means each split uses 
 
 In the implementation, the valid range is based on the resolved feature subspace for each tree. If `maxFeatures` restricts each tree to a subset of features, `extensionLevel` is interpreted relative to that subspace rather than the original input dimensionality.
 
-One detail is worth making explicit: `extensionLevel = 0` is intentionally close to standard Isolation Forest, but it is not bit-for-bit identical. Standard IF retries when it samples a constant feature; EIF follows the reference EIF split semantics, which matters for parity with the original Python and C++ implementations.
+One detail is worth making explicit: `extensionLevel = 0` is intentionally close to standard Isolation Forest, but it is not identical. Standard IF retries when it samples a constant feature; EIF follows the reference EIF split semantics, which matters for parity with the original Python and C++ implementations.
 
 ## Seeing the difference
 
@@ -58,15 +57,15 @@ The effect is especially easy to see in two dimensions. The following heatmaps, 
 
 In each case, Standard Isolation Forest on the left shows cross-shaped artifacts along the feature axes, while Extended Isolation Forest on the right produces smoother, less axis-biased contours.
 
-![Single blob heatmap: Standard Isolation Forest vs Extended Isolation Forest]({{ '/assets/images/eif_single_blob_heatmap.png' | relative_url }}){: width="2013" height="889" style="width:100%; display:block; margin-left:0;" }
+![Single blob heatmap: Standard Isolation Forest vs Extended Isolation Forest]({{ '/assets/images/single_blob_heatmap.svg' | relative_url }}){: style="width:100%; display:block; margin-left:0;" }
 
 *Single blob: EIF restores nearly radial score contours where standard IF shows axis-aligned artifacts.*
 
-![Two blobs heatmap: Standard Isolation Forest vs Extended Isolation Forest]({{ '/assets/images/eif_two_blobs_heatmap.png' | relative_url }}){: width="2027" height="889" style="width:100%; display:block; margin-left:0;" }
+![Two blobs heatmap: Standard Isolation Forest vs Extended Isolation Forest]({{ '/assets/images/two_blobs_heatmap.svg' | relative_url }}){: style="width:100%; display:block; margin-left:0;" }
 
 *Two blobs: EIF reduces ghost-like score artifacts between and around the clusters.*
 
-![Sinusoid heatmap: Standard Isolation Forest vs Extended Isolation Forest]({{ '/assets/images/eif_sinusoid_heatmap.png' | relative_url }}){: width="2108" height="889" style="width:100%; display:block; margin-left:0;" }
+![Sinusoid heatmap: Standard Isolation Forest vs Extended Isolation Forest]({{ '/assets/images/sinusoid_heatmap.svg' | relative_url }}){: style="width:100%; display:block; margin-left:0;" }
 
 *Sinusoid: EIF follows the non-axis-aligned data distribution more naturally.*
 
