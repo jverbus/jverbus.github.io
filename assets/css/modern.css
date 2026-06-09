@@ -625,12 +625,16 @@ video {
 }
 
 .proof-strip {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-3);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: var(--space-3);
+  row-gap: var(--space-1);
   margin: 0;
   padding: 0;
   list-style: none;
+  color: var(--text-muted);
+  font-size: 0.95rem;
 }
 
 .home-hero .proof-strip {
@@ -639,32 +643,34 @@ video {
 }
 
 .proof-strip li {
-  min-width: 0;
   margin: 0;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface);
-  padding: 0.72rem 0.8rem;
 }
 
-.proof-strip strong,
-.proof-strip span {
-  display: block;
+.proof-strip li + li::before {
+  content: "·";
+  margin-right: var(--space-3);
+  color: var(--border-strong);
+}
+
+.proof-strip a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.proof-strip a:hover {
+  color: var(--text);
+  border-bottom-color: var(--border-strong);
+  text-decoration: none;
 }
 
 .proof-strip strong {
   color: var(--heading);
-  font-size: 1.02rem;
-  line-height: 1.2;
+  font-weight: 650;
 }
 
-.proof-strip span {
-  margin-top: 0.2rem;
-  color: var(--text-muted);
-  font-size: 0.78rem;
-  line-height: 1.3;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+.proof-strip .proof-source {
+  font-size: 0.85em;
 }
 
 .home-contact {
@@ -690,12 +696,19 @@ video {
 .contact-list a {
   display: inline-flex;
   align-items: center;
+  gap: 0.4rem;
   border: 1px solid var(--border);
   border-radius: 999px;
   padding: 0.34rem 0.62rem;
   color: var(--text-muted);
   background: var(--surface);
   text-decoration: none;
+}
+
+.contact-list .icon {
+  width: 0.95em;
+  height: 0.95em;
+  flex: none;
 }
 
 .contact-list a:hover {
@@ -1197,16 +1210,12 @@ video {
   }
 
   .proof-strip {
-    gap: var(--space-2);
+    column-gap: var(--space-2);
+    font-size: 0.9rem;
   }
 
-  .proof-strip li {
-    padding: 0.55rem 0.6rem;
-  }
-
-  .proof-strip span {
-    font-size: 0.7rem;
-    letter-spacing: 0.03em;
+  .proof-strip li + li::before {
+    margin-right: var(--space-2);
   }
 
   .about-hero {

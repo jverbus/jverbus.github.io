@@ -25,16 +25,16 @@ hide_title: true
   </figure>
   <div class="home-contact" id="contact" aria-label="Contact links">
     <ul class="contact-list">
-      <li><a href="mailto:james.verbus@gmail.com">Email</a></li>
-      <li><a href="https://github.com/jverbus">GitHub</a></li>
-      <li><a href="https://x.com/JamesVerbus">X</a></li>
-      <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ">Google Scholar</a></li>
+      <li><a href="mailto:james.verbus@gmail.com">{% include site/icons/email.svg %} Email</a></li>
+      <li><a href="https://github.com/jverbus">{% include site/icons/github.svg %} GitHub</a></li>
+      <li><a href="https://x.com/JamesVerbus">{% include site/icons/x.svg %} X</a></li>
+      <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ">{% include site/icons/google-scholar.svg %} Google Scholar</a></li>
     </ul>
   </div>
   <ul class="proof-strip" aria-label="Research highlights">
-    <li><strong>30+</strong><span>papers</span></li>
-    <li><strong>10k+</strong><span>citations</span></li>
-    <li><strong>3</strong><span>patents</span></li>
+    <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ"><strong>30+</strong> papers</a></li>
+    <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ"><strong>10k+</strong> citations <span class="proof-source">(Google Scholar)</span></a></li>
+    <li><a href="{{ '/publications/#patents' | relative_url }}"><strong>3</strong> patents</a></li>
   </ul>
 </section>
 
