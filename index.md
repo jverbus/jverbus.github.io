@@ -14,11 +14,9 @@ hide_title: true
   <div class="home-hero-copy">
     <p class="eyebrow">AI systems under uncertainty</p>
     <h1>James Verbus</h1>
-    <p class="home-lede">I build AI systems for uncertain or adversarial environments. My work spans abuse detection, behavior modeling, agents, anomaly detection, AI-generated media, and production-scale AI systems.</p>
-    <p class="home-lede">Previously, I spent nearly a decade at LinkedIn building large-scale systems for anti-abuse, trust, and platform integrity.</p>
-    <p class="home-lede">Before that, I earned my Ph.D. in Physics at Brown University on LUX, one of the world's most sensitive dark matter detectors. LUX searched for ultra-rare dark-matter interactions 4,850 feet underground, where a central challenge was separating faint candidate signals from background noise.</p>
-    <p class="home-lede">That path still shapes my work: building AI systems that operate under uncertainty, reason from incomplete or noisy evidence, and remain robust in adversarial environments under strict performance constraints.</p>
-    <p class="home-lede">My work includes open-source ML software, patents, publications, talks, and collaborations across academia and industry.</p>
+    <p class="home-lede">I build AI systems for uncertain or adversarial environments: abuse detection, behavior modeling, agents, anomaly detection, AI-generated media, and production-scale ML.</p>
+    <p class="home-lede">Previously, I spent nearly a decade at LinkedIn, most recently as a Senior Staff Machine Learning Engineer, building large-scale systems for anti-abuse, trust, and platform integrity.</p>
+    <p class="home-lede">My background began in rare-event physics: I earned my Ph.D. at Brown on LUX, a dark matter experiment searching for faint signals deep underground. That path still shapes my work on noisy evidence, uncertainty, robustness, and real-world constraints.</p>
   </div>
   <figure class="home-hero-photo">
     <img src="{{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }}" alt="James Verbus working on the LUX dark matter detector" width="800" height="800" loading="eager" decoding="async">
@@ -63,21 +61,38 @@ hide_title: true
   </div>
 </section>
 
-<section class="home-section" aria-labelledby="latest-writing-heading">
+<section class="home-section" aria-labelledby="featured-writing-heading">
   <div class="section-heading">
-    <h2 id="latest-writing-heading">Latest Writing</h2>
+    <h2 id="featured-writing-heading">Featured Writing</h2>
   </div>
   <div class="post-list" role="list">
-    {% for post in site.posts limit:5 %}
-      {% assign post_card_date = post.date | date: "%b %-d, %Y" %}
-      {% include site/card.html
-        card_clickable='on'
-        date=post_card_date
-        title=post.title
-        url=post.url
-        description=post.description
-      %}
-    {% endfor %}
+    {% assign eif_post = site.posts | where: "url", "/2026/03/18/announcing-extended-isolation-forest-support/" | first %}
+    {% assign eif_post_date = eif_post.date | date: "%b %-d, %Y" %}
+    {% include site/card.html
+      card_clickable='on'
+      date=eif_post_date
+      title=eif_post.title
+      url=eif_post.url
+      description=eif_post.description
+    %}
+    {% assign rl_post = site.posts | where: "url", "/2026/01/09/brown-physics-ai-winter-school-workshop/" | first %}
+    {% assign rl_post_date = rl_post.date | date: "%b %-d, %Y" %}
+    {% include site/card.html
+      card_clickable='on'
+      date=rl_post_date
+      title=rl_post.title
+      url=rl_post.url
+      description=rl_post.description
+    %}
+    {% assign rag_post = site.posts | where: "url", "/2025/02/10/brown-physics-ai-winter-school-workshop/" | first %}
+    {% assign rag_post_date = rag_post.date | date: "%b %-d, %Y" %}
+    {% include site/card.html
+      card_clickable='on'
+      date=rag_post_date
+      title=rag_post.title
+      url=rag_post.url
+      description=rag_post.description
+    %}
   </div>
   <p class="home-archive-link"><a href="{{ '/posts/' | relative_url }}">View all writing</a></p>
 </section>

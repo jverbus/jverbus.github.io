@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Extended Isolation Forest for Distributed Spark/Scala Anomaly Detection"
-description: "Extended Isolation Forest support for LinkedIn's open-source Spark/Scala isolation-forest library, including random hyperplane splits, benchmarks, synthetic plots, and validation evidence."
+description: "Extended Isolation Forest support for LinkedIn's open-source Spark/Scala isolation-forest library, including random hyperplane splits, benchmarks, synthetic plots, and validation evidence. The work also became a useful case study in how to validate AI-assisted production code with evidence rather than trust."
 last_modified_at: 2026-06-09
 og_image: "/assets/images/social/2026-03-18-announcing-extended-isolation-forest-support-1200x630.jpg"
 og_image_alt: "Extended Isolation Forest for distributed Spark/Scala anomaly detection"
@@ -12,8 +12,6 @@ tags: [isolation forest, extended isolation forest, anomaly detection, outlier d
 ---
 
 I've added **Extended Isolation Forest (EIF)** to LinkedIn's open-source Spark/Scala `isolation-forest` library. EIF replaces axis-aligned splits with random hyperplane splits, reducing score artifacts that standard Isolation Forest can produce and improving anomaly detection in cases where axis-aligned bias is a real limitation.
-
-**TL;DR:** I added Extended Isolation Forest support to LinkedIn's open-source Spark/Scala `isolation-forest` library. The implementation adds random hyperplane splits, keeps the existing standard IF APIs backward-compatible, and is validated with synthetic score maps, 13-dataset benchmarks, reference-implementation parity checks, and edge-case tests. The work also became a useful case study in how to validate AI-assisted production code with evidence rather than trust.
 
 <p>
   <a href="https://github.com/linkedin/isolation-forest" aria-label="Open isolation-forest on GitHub">
@@ -91,7 +89,7 @@ I have not yet systematically benchmarked intermediate extension levels across a
 
 The most important result is not that EIF is universally better. The result is more specific: **fully extended EIF helps most when axis-aligned bias is actually a limitation.**
 
-The higher-dimensional datasets showed the clearest gains from fully extended EIF. On the four datasets in this benchmark suite with at least 21 dimensions, fully extended EIF improved AUROC on all four. In that subset, the mean AUROC improvement was **+0.02** and the median improvement was **+0.007**. AUPRC improved on three of the four, with mean improvement **+0.02** and median improvement **+0.017**.
+The higher-dimensional datasets showed the clearest gains from fully extended EIF. On the four datasets in this benchmark suite with at least 21 dimensions, fully extended EIF improved AUROC on all four.
 
 A few representative results:
 
