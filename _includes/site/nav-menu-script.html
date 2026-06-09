@@ -1,0 +1,31 @@
+<script>
+(function () {
+  var nav = document.querySelector(".nav-global");
+  if (!nav) return;
+
+  var toggle = nav.querySelector(".nav-menu-toggle");
+  var links = nav.querySelector(".nav-links");
+  if (!toggle || !links) return;
+
+  function setOpen(open) {
+    nav.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+  toggle.addEventListener("click", function () {
+    setOpen(toggle.getAttribute("aria-expanded") !== "true");
+  });
+
+  links.addEventListener("click", function (event) {
+    if (event.target.closest("a") && window.matchMedia("(max-width: 760px)").matches) {
+      setOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      setOpen(false);
+    }
+  });
+})();
+</script>

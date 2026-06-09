@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Open Source
-description: "Open source projects and related writing by James Verbus, including LinkedIn's isolation-forest library and Extended Isolation Forest work."
+title: Projects
+description: "Projects and open-source work by James Verbus, including LinkedIn's isolation-forest library and Extended Isolation Forest work."
 og_image: "/assets/images/social/2026-03-18-announcing-extended-isolation-forest-support-1200x630.jpg"
 og_image_alt: "Extended Isolation Forest support for the open-source isolation-forest library"
 og_image_width: 1200
@@ -9,7 +9,7 @@ og_image_height: 630
 last_modified_at: 2026-06-09
 ---
 
-Highlights from my open source work, centered on `linkedin/isolation-forest`, the Spark/Scala implementation I built at LinkedIn and open sourced. The newest major update adds Extended Isolation Forest support for random hyperplane splits.
+Projects and open-source work, centered on `linkedin/isolation-forest`, the Spark/Scala implementation I built at LinkedIn and open sourced. The newest major update adds Extended Isolation Forest support for random hyperplane splits.
 
 ## isolation-forest
 

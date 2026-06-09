@@ -1,16 +1,16 @@
 ---
 layout: page
-title: Posts
+title: Writing
 permalink: /posts/
-description: "Writing by James Verbus on AI/ML systems, agents, behavior modeling, evaluation, and product."
+description: "Writing by James Verbus on AI/ML systems, agents, behavior modeling, evaluation, anomaly detection, and production systems."
 og_image: "/assets/images/social/2025-08-07-berkeley-agentic-ai-summit-2025-1200x630.jpg"
 og_image_alt: "Agentic AI Summit 2025 social preview image"
 og_image_width: 1200
 og_image_height: 630
-last_modified_at: 2026-05-19
+last_modified_at: 2026-06-09
 ---
 
-<p class="home-intro">Notes on AI/ML systems, agents, behavior modeling, evaluation, and product.</p>
+<p class="home-intro">Notes on AI/ML systems, agents, behavior modeling, evaluation, anomaly detection, and production systems.</p>
 
 ## Latest Writing
 
@@ -27,4 +27,4 @@ last_modified_at: 2026-05-19
   {% endfor %}
 </div>
 
-<p class="home-archive-link"><a href="{{ '/archive/' | relative_url }}">View all posts</a></p>
+<p class="home-archive-link"><a href="{{ '/archive/' | relative_url }}">View full archive</a></p>
