@@ -533,7 +533,8 @@ video {
 }
 
 .home-hero-photo {
-  max-width: var(--max-readable);
+  width: 100%;
+  max-width: 100%;
   margin: var(--space-8) 0 0;
 }
 
@@ -640,11 +641,6 @@ video {
 .home-contact {
   max-width: 520px;
   margin-top: var(--space-8);
-}
-
-.home-contact p {
-  margin-bottom: var(--space-4);
-  color: var(--text-muted);
 }
 
 .contact-list {

@@ -22,13 +22,9 @@ hide_title: true
   </div>
   <figure class="home-hero-photo">
     <img src="{{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }}" alt="James Verbus working on the LUX dark matter detector" width="800" height="800" loading="eager" decoding="async">
-    <figcaption>Working on detector hardware for LUX, a dark matter experiment located 4,850 feet underground.</figcaption>
+    <figcaption>Working on detector hardware for the LUX, one of the world's most sensitive dark matter experiments.</figcaption>
   </figure>
-  <div class="home-contact" id="contact" aria-labelledby="contact-heading">
-    <div class="section-heading">
-      <h2 id="contact-heading">Contact</h2>
-    </div>
-    <p>For speaking, collaboration, or professional inquiries, email is the best place to start.</p>
+  <div class="home-contact" id="contact" aria-label="Contact links">
     <ul class="contact-list">
       <li><a href="mailto:james.verbus@gmail.com">Email</a></li>
       <li><a href="https://github.com/jverbus">GitHub</a></li>
