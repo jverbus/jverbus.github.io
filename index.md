@@ -14,9 +14,10 @@ hide_title: true
   <div class="home-hero-copy">
     <p class="eyebrow">AI systems under uncertainty</p>
     <h1>James Verbus</h1>
-    <p class="home-lede">I build AI systems for uncertain or adversarial environments: abuse detection, behavior modeling, agents, anomaly detection, AI-generated media, and production-scale ML.</p>
+    <p class="home-lede">I build AI systems for uncertain or adversarial environments at production scale.</p>
     <p class="home-lede">Previously, I spent nearly a decade at LinkedIn, most recently as a Senior Staff Machine Learning Engineer, building large-scale systems for anti-abuse, trust, and platform integrity.</p>
     <p class="home-lede">My background began in rare-event physics: I earned my Ph.D. at Brown on LUX, a dark matter experiment searching for faint signals deep underground. That path still shapes my work on noisy evidence, uncertainty, robustness, and real-world constraints.</p>
+    <p class="home-lede">These days I'm focused on agentic AI systems. For collaborations, talks, or hard problems worth comparing notes on, <a href="mailto:james.verbus@gmail.com">get in touch</a>.</p>
   </div>
   <figure class="home-hero-photo">
     <img src="{{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }}" alt="James Verbus working on the LUX dark matter detector" width="800" height="800" loading="eager" decoding="async">
@@ -30,6 +31,11 @@ hide_title: true
       <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ">Google Scholar</a></li>
     </ul>
   </div>
+  <ul class="proof-strip" aria-label="Research highlights">
+    <li><strong>30+</strong><span>papers</span></li>
+    <li><strong>10k+</strong><span>citations</span></li>
+    <li><strong>3</strong><span>patents</span></li>
+  </ul>
 </section>
 
 <section class="home-section" aria-labelledby="featured-work-heading">
@@ -101,7 +107,7 @@ hide_title: true
   <div class="section-heading">
     <h2 id="projects-heading">Projects</h2>
   </div>
-  <p>Open-source and software work centered on `linkedin/isolation-forest`, a distributed Spark/Scala implementation for large-scale unsupervised anomaly detection.</p>
+  <p>Open-source and software work centered on <code>linkedin/isolation-forest</code>, a distributed Spark/Scala implementation for large-scale unsupervised anomaly detection.</p>
   <div class="post-list" role="list">
     {% for item in site.data.open_source.major_updates limit:3 %}
       {% include site/card.html
@@ -119,11 +125,6 @@ hide_title: true
   <div class="section-heading">
     <h2 id="research-heading">Research / Publications</h2>
   </div>
-  <ul class="proof-strip" aria-label="Research highlights">
-    <li><strong>30+</strong><span>papers</span></li>
-    <li><strong>10k+</strong><span>citations</span></li>
-    <li><strong>3</strong><span>patents</span></li>
-  </ul>
   <div class="post-list publication-list" role="list">
     {% assign selected_publications_section = site.data.publications.sections | first %}
     {% assign selected_publications = selected_publications_section.items %}

@@ -38,6 +38,7 @@
   --space-12: 3rem;
 
   --max-content: 720px;
+  --max-home: 1000px;
   --max-readable: 68ch;
 }
 
@@ -507,12 +508,37 @@ video {
   text-transform: uppercase;
 }
 
+.page-home .unit-head-inner,
+.page-home .unit-body-inner,
+.page-home .unit-foot-inner {
+  max-width: calc(var(--max-home) + 2 * var(--space-4));
+}
+
+.page-home .entry-content {
+  max-width: var(--max-home);
+}
+
+.home-section {
+  max-width: var(--max-content);
+  margin-inline: auto;
+}
+
 .home-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 400px);
+  grid-template-areas:
+    "copy photo"
+    "contact photo"
+    "stats stats";
+  column-gap: var(--space-12);
+  row-gap: var(--space-6);
+  align-items: start;
   padding: var(--space-6) 0 var(--space-8);
   border-bottom: 1px solid var(--border);
 }
 
 .home-hero-copy {
+  grid-area: copy;
   min-width: 0;
 }
 
@@ -533,9 +559,10 @@ video {
 }
 
 .home-hero-photo {
+  grid-area: photo;
   width: 100%;
   max-width: 100%;
-  margin: var(--space-8) 0 0;
+  margin: 0;
 }
 
 .home-hero-photo img {
@@ -543,8 +570,6 @@ video {
   width: 100%;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
 }
 
 .home-hero-photo figcaption {
@@ -601,12 +626,16 @@ video {
 
 .proof-strip {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-3);
-  max-width: var(--max-readable);
-  margin: 0 0 var(--space-6);
+  margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.home-hero .proof-strip {
+  grid-area: stats;
+  margin-top: var(--space-2);
 }
 
 .proof-strip li {
@@ -639,8 +668,9 @@ video {
 }
 
 .home-contact {
+  grid-area: contact;
   max-width: 520px;
-  margin-top: var(--space-8);
+  margin-top: 0;
 }
 
 .contact-list {
@@ -1141,6 +1171,7 @@ video {
   }
 
   .home-hero {
+    display: block;
     padding-top: var(--space-2);
   }
 
@@ -1148,8 +1179,34 @@ video {
     max-width: 100%;
   }
 
+  .home-hero-photo {
+    margin-top: var(--space-8);
+  }
+
+  .home-hero-photo img {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .home-contact {
+    margin-top: var(--space-8);
+  }
+
+  .home-hero .proof-strip {
+    margin-top: var(--space-6);
+  }
+
   .proof-strip {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2);
+  }
+
+  .proof-strip li {
+    padding: 0.55rem 0.6rem;
+  }
+
+  .proof-strip span {
+    font-size: 0.7rem;
+    letter-spacing: 0.03em;
   }
 
   .about-hero {
