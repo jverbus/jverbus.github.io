@@ -508,10 +508,6 @@ video {
 }
 
 .home-hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.22fr) minmax(220px, 0.78fr);
-  gap: var(--space-8);
-  align-items: start;
   padding: var(--space-6) 0 var(--space-8);
   border-bottom: 1px solid var(--border);
 }
@@ -537,7 +533,8 @@ video {
 }
 
 .home-hero-photo {
-  margin: 0;
+  max-width: 520px;
+  margin: var(--space-8) 0 0;
 }
 
 .home-hero-photo img {
@@ -545,7 +542,7 @@ video {
   width: 100%;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
 }
 
@@ -1185,15 +1182,10 @@ video {
 
   .home-hero {
     padding-top: var(--space-2);
-    grid-template-columns: 1fr;
   }
 
   .home-hero h1 {
     max-width: 100%;
-  }
-
-  .home-hero-photo {
-    max-width: 320px;
   }
 
   .proof-strip {

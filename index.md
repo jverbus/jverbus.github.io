@@ -24,7 +24,7 @@ hide_title: true
   </div>
   <figure class="home-hero-photo">
     <img src="{{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }}" alt="James Verbus working on the LUX dark matter detector" width="800" height="800" loading="eager" decoding="async">
-    <figcaption>Working on detector hardware for the LUX dark matter experiment.</figcaption>
+    <figcaption>LUX dark matter experiment detector hardware.</figcaption>
   </figure>
 </section>
 
@@ -101,8 +101,7 @@ hide_title: true
   <ul class="proof-strip" aria-label="Research highlights">
     <li><strong>30+</strong><span>papers</span></li>
     <li><strong>10k+</strong><span>citations</span></li>
-    <li><strong>CVPRW</strong><span>media forensics</span></li>
-    <li><strong>Patents</strong><span>abuse detection</span></li>
+    <li><strong>3</strong><span>patents</span></li>
   </ul>
   <div class="post-list publication-list" role="list">
     {% assign selected_publications_section = site.data.publications.sections | first %}
@@ -155,7 +154,7 @@ hide_title: true
   <div class="section-heading">
     <h2 id="contact-heading">Contact</h2>
   </div>
-  <p>I'm especially interested in production AI systems, AI-assisted engineering workflows, behavior modeling, anomaly detection, agents, and trustworthy deployment in adversarial environments.</p>
+  <p>For speaking, collaboration, or professional inquiries, email is the best place to start.</p>
   <ul class="contact-list">
     <li><a href="mailto:james.verbus@gmail.com">Email</a></li>
     <li><a href="https://github.com/jverbus">GitHub</a></li>
