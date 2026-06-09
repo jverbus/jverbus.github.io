@@ -12,10 +12,10 @@ last_modified_at: 2026-06-09
 
 <p class="home-intro">Notes on AI/ML systems, agents, behavior modeling, evaluation, anomaly detection, and production systems.</p>
 
-## Latest Writing
+## All Writing
 
 <div class="post-list" role="list">
-  {% for post in site.posts limit:8 %}
+  {% for post in site.posts %}
     {% assign post_card_date = post.date | date: "%b %-d, %Y" %}
     {% include site/card.html
       card_clickable='on'
@@ -26,5 +26,3 @@ last_modified_at: 2026-06-09
     %}
   {% endfor %}
 </div>
-
-<p class="home-archive-link"><a href="{{ '/archive/' | relative_url }}">View full archive</a></p>

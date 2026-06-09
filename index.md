@@ -22,8 +22,20 @@ hide_title: true
   </div>
   <figure class="home-hero-photo">
     <img src="{{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }}" alt="James Verbus working on the LUX dark matter detector" width="800" height="800" loading="eager" decoding="async">
-    <figcaption>LUX dark matter experiment detector hardware.</figcaption>
+    <figcaption>Working on detector hardware for LUX, a dark matter experiment located 4,850 feet underground.</figcaption>
   </figure>
+  <div class="home-contact" id="contact" aria-labelledby="contact-heading">
+    <div class="section-heading">
+      <h2 id="contact-heading">Contact</h2>
+    </div>
+    <p>For speaking, collaboration, or professional inquiries, email is the best place to start.</p>
+    <ul class="contact-list">
+      <li><a href="mailto:james.verbus@gmail.com">Email</a></li>
+      <li><a href="https://github.com/jverbus">GitHub</a></li>
+      <li><a href="https://x.com/JamesVerbus">X</a></li>
+      <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ">Google Scholar</a></li>
+    </ul>
+  </div>
 </section>
 
 <section class="home-section" aria-labelledby="featured-work-heading">
@@ -116,6 +128,19 @@ hide_title: true
         links=item.links
       %}
     {% endfor %}
+    {% assign patents_section = site.data.publications.sections | where: "title", "Patents" | first %}
+    {% assign patent_items = patents_section.items | where: "title", "Deep Learning to Detect Abusive Sequences of User Activity in Online Network" %}
+    {% assign item = patent_items | first %}
+    {% include site/card.html
+      card_clickable='on'
+      card_class='publication-list-item'
+      date=item.date
+      title=item.title
+      url=item.url
+      authors=item.authors
+      meta=item.meta
+      links=item.links
+    %}
   </div>
   <p class="home-archive-link"><a href="{{ '/publications/' | relative_url }}">View publications</a></p>
 </section>
@@ -146,17 +171,4 @@ hide_title: true
     {% endfor %}
   </div>
   <p class="home-archive-link"><a href="{{ '/videos/' | relative_url }}">View videos</a></p>
-</section>
-
-<section class="home-section home-contact" id="contact" aria-labelledby="contact-heading">
-  <div class="section-heading">
-    <h2 id="contact-heading">Contact</h2>
-  </div>
-  <p>For speaking, collaboration, or professional inquiries, email is the best place to start.</p>
-  <ul class="contact-list">
-    <li><a href="mailto:james.verbus@gmail.com">Email</a></li>
-    <li><a href="https://github.com/jverbus">GitHub</a></li>
-    <li><a href="https://x.com/JamesVerbus">X</a></li>
-    <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ">Google Scholar</a></li>
-  </ul>
 </section>
