@@ -1,17 +1,19 @@
 ---
 layout: post
-title: "Adding Extended Isolation Forest to the Spark/Scala Isolation Forest Library I Created"
-description: "Extended Isolation Forest support for the open-source Spark/Scala isolation-forest library I created, including random hyperplane splits, benchmarks, synthetic plots, and validation evidence."
-last_modified_at: 2026-03-18
+title: "Extended Isolation Forest for Distributed Spark/Scala Anomaly Detection"
+description: "Extended Isolation Forest support for LinkedIn's open-source Spark/Scala isolation-forest library, including random hyperplane splits, benchmarks, synthetic plots, and validation evidence."
+last_modified_at: 2026-06-09
 og_image: "/assets/images/social/2026-03-18-announcing-extended-isolation-forest-support-1200x630.jpg"
-og_image_alt: "Adding Extended Isolation Forest to the open-source isolation-forest library"
+og_image_alt: "Extended Isolation Forest for distributed Spark/Scala anomaly detection"
 og_image_width: 1200
 og_image_height: 630
 categories: ["AI and Machine Learning"]
 tags: [isolation forest, extended isolation forest, anomaly detection, outlier detection, Spark, Scala, open source]
 ---
 
-I've added **Extended Isolation Forest (EIF)** to the open-source `isolation-forest` library I created. EIF replaces axis-aligned splits with random hyperplane splits, reducing score artifacts that standard Isolation Forest can produce and improving anomaly detection in cases where axis-aligned bias is a real limitation.
+I've added **Extended Isolation Forest (EIF)** to LinkedIn's open-source Spark/Scala `isolation-forest` library. EIF replaces axis-aligned splits with random hyperplane splits, reducing score artifacts that standard Isolation Forest can produce and improving anomaly detection in cases where axis-aligned bias is a real limitation.
+
+**TL;DR:** I added Extended Isolation Forest support to LinkedIn's open-source Spark/Scala `isolation-forest` library. The implementation adds random hyperplane splits, keeps the existing standard IF APIs backward-compatible, and is validated with synthetic score maps, 13-dataset benchmarks, reference-implementation parity checks, and edge-case tests. The work also became a useful case study in how to validate AI-assisted production code with evidence rather than trust.
 
 <p>
   <a href="https://github.com/linkedin/isolation-forest" aria-label="Open isolation-forest on GitHub">
@@ -114,7 +116,7 @@ The full benchmark table, including AUROC/AUPRC results, standard errors, Liu et
 
 ## Validating AI-produced code with evidence
 
-Because much of this implementation was AI-assisted, I treated validation artifacts as first-class outputs.
+Because much of this implementation was AI-assisted, I treated generated code as untrusted until it produced independent evidence that matched the algorithm, reference implementation, and expected edge-case behavior. Validation artifacts became first-class outputs.
 
 Instead of relying on line-by-line review alone, I asked for evidence that would be easy to inspect and difficult for a broken implementation to satisfy:
 

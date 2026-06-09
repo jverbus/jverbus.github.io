@@ -16,7 +16,7 @@ core_items:
 
 major_updates:
   - date: "Mar 18, 2026"
-    title: "Adding Extended Isolation Forest to the Spark/Scala Isolation Forest Library I Created"
+    title: "Extended Isolation Forest for Distributed Spark/Scala Anomaly Detection"
     url: "/2026/03/18/announcing-extended-isolation-forest-support/"
     description: "March EIF work for linkedin/isolation-forest: random hyperplane splits, validation plots, benchmarks, Spark ML integration, and v4.1.0 support."
 

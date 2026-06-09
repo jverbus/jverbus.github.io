@@ -6,7 +6,7 @@ og_image: "/assets/images/social/2016-08-18-calibrating-the-lux-dark-matter-expe
 og_image_alt: "James Verbus with the LUX dark matter experiment"
 og_image_width: 1200
 og_image_height: 630
-last_modified_at: 2026-05-20
+last_modified_at: 2026-06-09
 ---
 
 <section class="about-hero">
@@ -26,6 +26,8 @@ My background is in experimental particle physics and AI. On the LUX dark matter
 In AI, I have built systems for detecting fake accounts, hacked accounts, bots, automation, scraping, spam, and other abusive behavior while distinguishing it from normal product activity.
 
 Additional work includes `isolation-forest`, a Spark/Scala implementation for large-scale unsupervised anomaly detection, along with patents, publications, talks, and academic collaborations.
+
+I'm especially interested in production AI systems, AI-assisted engineering workflows, behavior modeling, anomaly detection, agents, and trustworthy deployment in adversarial environments.
 
 ## Contact
 
