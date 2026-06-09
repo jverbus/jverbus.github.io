@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Home
-description: "Writing on AI/ML systems, agents, behavior modeling, and production systems in adversarial and uncertain environments."
+description: "AI systems for uncertain or adversarial environments, spanning abuse detection, behavior modeling, agents, anomaly detection, AI-generated media, and production-scale AI."
 og_image: "/assets/images/social/2016-08-18-calibrating-the-lux-dark-matter-experiment-1200x630.jpg"
 og_image_alt: "James Verbus with the LUX dark matter experiment"
 og_image_width: 1200
@@ -14,13 +14,11 @@ hide_title: true
   <div class="home-hero-copy">
     <p class="eyebrow">AI systems under uncertainty</p>
     <h1>James Verbus</h1>
-    <p class="home-lede">Senior staff machine learning engineer working on AI systems, abuse detection, agents, anomaly detection, synthetic media, and production systems in adversarial environments.</p>
-    <p class="home-lede">My background spans experimental particle physics and AI, including work on the LUX dark matter experiment, large-scale systems for detecting fake accounts and abusive behavior, open-source anomaly detection software, patents, publications, talks, and academic collaborations.</p>
-    <div class="home-actions" aria-label="Primary actions">
-      <a class="button-primary" href="{{ '/posts/' | relative_url }}">Read writing</a>
-      <a class="button-secondary" href="{{ '/open-source/' | relative_url }}">See projects</a>
-      <a class="button-secondary" href="#contact">Contact</a>
-    </div>
+    <p class="home-lede">I build AI systems for uncertain or adversarial environments. My work spans abuse detection, behavior modeling, agents, anomaly detection, AI-generated media, and production-scale AI systems.</p>
+    <p class="home-lede">Previously, I spent nearly a decade at LinkedIn building large-scale systems for anti-abuse, trust, and platform integrity.</p>
+    <p class="home-lede">Before that, I earned my Ph.D. in Physics at Brown University on LUX, one of the world's most sensitive dark matter detectors. LUX searched for ultra-rare dark-matter interactions 4,850 feet underground, where a central challenge was separating faint candidate signals from background noise.</p>
+    <p class="home-lede">That path still shapes my work: building AI systems that operate under uncertainty, reason from incomplete or noisy evidence, and remain robust in adversarial environments under strict performance constraints.</p>
+    <p class="home-lede">My work includes open-source ML software, patents, publications, talks, and collaborations across academia and industry.</p>
   </div>
   <figure class="home-hero-photo">
     <img src="{{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }}" alt="James Verbus working on the LUX dark matter detector" width="800" height="800" loading="eager" decoding="async">
