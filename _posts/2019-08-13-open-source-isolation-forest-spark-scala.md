@@ -8,7 +8,7 @@ og_image_alt: "Open Source: Spark/Scala Isolation Forest Library"
 og_image_width: 1200
 og_image_height: 630
 categories: ["AI and Machine Learning"]
-tags: [LinkedIn, isolation forest, outlier detection, unsupervised learning, machine learning, spark, scala]
+tags: [LinkedIn, isolation forest, outlier detection, unsupervised learning, machine learning, Spark, Scala]
 ---
 
 I'm happy to announce that my implementation of the isolation forest unsupervised outlier detection algorithm was open sourced today.
