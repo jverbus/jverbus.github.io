@@ -3,6 +3,35 @@
  * Loop 1 foundation: modern minimalist baseline for jverbus.github.io
  */
 
+/* Inter Variable, SIL OFL 1.1, vendored from @fontsource-variable/inter 5.2.8 */
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/inter-latin-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/inter-latin-wght-italic.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* metric-compatible stand-in while Inter loads, to minimize reflow */
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial");
+  ascent-override: 90%;
+  descent-override: 22.43%;
+  line-gap-override: 0%;
+  size-adjust: 107.64%;
+}
+
 :root {
   color-scheme: light dark;
 
@@ -21,7 +50,7 @@
   --accent-warm: #b45309;
   --selection-bg: #dbeafe;
 
-  --font-sans: Inter, "Avenir Next", Avenir, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-sans: Inter, "Inter Fallback", "Avenir Next", Avenir, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 
   --shadow-soft: 0 1px 2px rgba(16, 24, 40, 0.06), 0 1px 3px rgba(16, 24, 40, 0.10);
@@ -403,6 +432,114 @@ pre code {
   background: transparent;
   border: 0;
   padding: 0;
+}
+
+/* Rouge syntax tokens — single dark palette; pre is dark in both color schemes */
+.highlight .c,
+.highlight .c1,
+.highlight .cm,
+.highlight .cd,
+.highlight .cs {
+  color: #8b98ab;
+  font-style: italic;
+}
+
+.highlight .cp {
+  color: #fbbf24;
+}
+
+.highlight .k,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kv,
+.highlight .o,
+.highlight .ow {
+  color: #ff7b72;
+}
+
+.highlight .kc,
+.highlight .no,
+.highlight .na,
+.highlight .m,
+.highlight .mb,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo,
+.highlight .mx,
+.highlight .il,
+.highlight .si,
+.highlight .se {
+  color: #79c0ff;
+}
+
+.highlight .kt,
+.highlight .nb,
+.highlight .bp,
+.highlight .nc,
+.highlight .nn,
+.highlight .nv,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi {
+  color: #ffa657;
+}
+
+.highlight .s,
+.highlight .s1,
+.highlight .s2,
+.highlight .sb,
+.highlight .sh,
+.highlight .sx,
+.highlight .sr,
+.highlight .ss,
+.highlight .dl {
+  color: #a5d6ff;
+}
+
+.highlight .nd,
+.highlight .nf,
+.highlight .fm {
+  color: #d2a8ff;
+}
+
+.highlight .nt {
+  color: #7ee787;
+}
+
+.highlight .gd {
+  color: #ffa198;
+  background: rgba(248, 81, 73, 0.15);
+}
+
+.highlight .gi {
+  color: #7ee787;
+  background: rgba(63, 185, 80, 0.15);
+}
+
+.highlight .gh,
+.highlight .gu {
+  color: #79c0ff;
+  font-weight: 600;
+}
+
+.highlight .gp {
+  color: #8b98ab;
+}
+
+.highlight .gs {
+  font-weight: 600;
+}
+
+.highlight .ge {
+  font-style: italic;
+}
+
+.highlight .err {
+  color: inherit;
+  background: transparent;
 }
 
 table {
