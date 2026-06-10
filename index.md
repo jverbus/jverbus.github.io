@@ -32,7 +32,7 @@ hide_title: true
   </div>
   <ul class="proof-strip" aria-label="Research highlights">
     <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ"><strong>30+</strong> papers</a></li>
-    <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ"><strong>10k+</strong> citations <span class="proof-source">(Google Scholar)</span></a></li>
+    <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ"><strong>10k+</strong> citations</a></li>
     <li><a href="{{ '/publications/#patents' | relative_url }}"><strong>3</strong> patents</a></li>
   </ul>
 </section>

@@ -814,8 +814,31 @@ h2.post-year-heading:first-of-type {
   font-weight: 650;
 }
 
-.proof-strip .proof-source {
-  font-size: 0.85em;
+@media (min-width: 761px) {
+  .home-hero .proof-strip {
+    gap: 0.85rem;
+  }
+
+  .home-hero .proof-strip a {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .home-hero .proof-strip a:hover {
+    border-bottom-color: transparent;
+  }
+
+  .home-hero .proof-strip strong {
+    display: block;
+    margin-bottom: 0.12rem;
+    font-size: 1.18rem;
+    line-height: 1.15;
+    letter-spacing: 0;
+    text-transform: none;
+  }
 }
 
 .home-contact {
