@@ -1,6 +1,13 @@
 logo_url: /
 
 items:
+  - id: home
+    label: Home
+    url: /
+    active_urls:
+      - /
+      - /index.html
+
   - id: posts
     label: Writing
     url: /posts/

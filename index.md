@@ -14,7 +14,7 @@ hide_title: true
   <div class="home-hero-copy">
     <h1>James Verbus</h1>
     <p class="home-lede">I build AI systems for uncertain or adversarial environments.</p>
-    <p class="home-lede">After nearly a decade at LinkedIn -- most recently as a Senior Staff Machine Learning Engineer building systems for anti-abuse, trust, and platform integrity -- I chose to step away to work closer to the AI frontier.</p>
+    <p class="home-lede">After nearly a decade at LinkedIn where I was most recently as a Senior Staff Machine Learning Engineer building systems for anti-abuse, trust, and platform integrity, I chose to step away to work closer to the AI frontier.</p>
     <p class="home-lede">My background began in rare-event physics: I earned my Ph.D. at Brown on LUX, one of the world's most sensitive dark matter detectors searching for faint signals deep underground.</p>
     <p class="home-lede">These days I'm focused on agentic AI systems. For collaborations, talks, or hard problems worth comparing notes on, <a href="mailto:james.verbus@gmail.com">get in touch</a>.</p>
   </div>

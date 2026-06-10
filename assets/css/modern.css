@@ -194,6 +194,10 @@ button:focus-visible {
   padding: var(--space-3) 0;
 }
 
+.nav-links .home {
+  display: none;
+}
+
 .nav-global .logo {
   display: inline-flex;
   align-items: center;
@@ -546,6 +550,17 @@ table {
   border: 1px solid var(--border);
   border-radius: 8px;
   overflow: hidden;
+}
+
+.table-scroll {
+  max-width: var(--max-readable);
+  margin: 0 0 var(--space-6);
+  overflow-x: auto;
+}
+
+.entry-content .table-scroll > table {
+  margin: 0;
+  max-width: none;
 }
 
 th,
@@ -1313,24 +1328,36 @@ h3:hover .heading-anchor,
   .nav-links {
     display: none;
     grid-template-columns: 1fr;
-    gap: 0.42rem;
+    gap: 0;
     align-items: stretch;
-    padding: 0 0 var(--space-3);
+    border-top: 1px solid var(--border);
+    padding: var(--space-2) 0 var(--space-3);
   }
 
   .nav-global.is-open .nav-links {
     display: grid;
   }
 
+  .nav-links .home {
+    display: block;
+  }
+
   .nav-global li {
     min-width: 0;
+    margin: 0;
+  }
+
+  .nav-links li + li {
+    border-top: 1px solid var(--border);
   }
 
   .nav-global li a {
     width: 100%;
     min-height: 2.75rem;
-    padding: 0.3rem 0.5rem;
-    font-size: 0.82rem;
+    justify-content: flex-start;
+    border-radius: 10px;
+    padding: 0.4rem 0.45rem;
+    font-size: 0.95rem;
   }
 
   .home-hero {
