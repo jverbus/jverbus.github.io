@@ -6,20 +6,20 @@ og_image: "/assets/images/social/2016-08-18-calibrating-the-lux-dark-matter-expe
 og_image_alt: "James Verbus with the LUX dark matter experiment"
 og_image_width: 1200
 og_image_height: 630
-last_modified_at: 2026-06-09
+last_modified_at: 2026-06-10
 hide_title: true
 ---
 
 <section class="home-hero" id="about">
   <div class="home-hero-copy">
     <h1>James Verbus</h1>
-    <p class="home-lede">I build AI systems for uncertain or adversarial environments at production scale.</p>
-    <p class="home-lede">I spent nearly a decade at LinkedIn, most recently as a Senior Staff Machine Learning Engineer, building large-scale systems for anti-abuse, trust, and platform integrity.</p>
-    <p class="home-lede">My background began in rare-event physics: I earned my Ph.D. at Brown on LUX, a dark matter experiment searching for faint signals deep underground.</p>
+    <p class="home-lede">I build AI systems for uncertain or adversarial environments.</p>
+    <p class="home-lede">After nearly a decade at LinkedIn -- most recently as a Senior Staff Machine Learning Engineer building systems for anti-abuse, trust, and platform integrity -- I chose to step away to work closer to the AI frontier.</p>
+    <p class="home-lede">My background began in rare-event physics: I earned my Ph.D. at Brown on LUX, one of the world's most sensitive dark matter detectors searching for faint signals deep underground.</p>
     <p class="home-lede">These days I'm focused on agentic AI systems. For collaborations, talks, or hard problems worth comparing notes on, <a href="mailto:james.verbus@gmail.com">get in touch</a>.</p>
   </div>
   <figure class="home-hero-photo">
-    <img src="{{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }}" alt="James Verbus working on the LUX dark matter detector" width="800" height="800" loading="eager" decoding="async">
+    <img src="{{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }}" srcset="{{ '/assets/images/jverbus_lux_detector-400.jpg' | relative_url }} 400w, {{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }} 800w" sizes="(max-width: 760px) calc(100vw - 2rem), 400px" alt="James Verbus working on the LUX dark matter detector" width="800" height="800" loading="eager" decoding="async" fetchpriority="high">
     <figcaption>Working on detector hardware for the LUX, one of the world's most sensitive dark matter experiments.</figcaption>
   </figure>
   <div class="home-contact" id="contact" aria-label="Contact links">

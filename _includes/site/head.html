@@ -77,7 +77,7 @@
     "author": {
       "@type": "Person",
       "name": {{ site.author.name | jsonify }},
-      "url": {{ '/about/' | absolute_url | jsonify }}
+      "url": {{ '/' | absolute_url | jsonify }}
     },
     "publisher": {
       "@type": "Person",
@@ -123,26 +123,6 @@
     ]
   }
   </script>
-  {% elsif page.url == '/about/' or page.url == '/about.html' %}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": {{ site.author.name | jsonify }},
-    "url": {{ '/about/' | absolute_url | jsonify }},
-    "jobTitle": "Senior Staff Software Engineer",
-    "alumniOf": {
-      "@type": "CollegeOrUniversity",
-      "name": "Brown University"
-    },
-    "sameAs": [
-      {{ site.author.github | prepend: 'https://github.com/' | jsonify }},
-      {{ site.author.twitter | prepend: 'https://x.com/' | jsonify }},
-      "https://scholar.google.com/citations?user=_ksEziAAAAAJ"
-    ],
-    "knowsAbout": ["Machine Learning", "AI", "Anomaly Detection", "Platform Trust", "Security", "Physics"]
-  }
-  </script>
   {% else %}
   <script type="application/ld+json">
   {
@@ -156,11 +136,34 @@
     }
   }
   </script>
+  {% if page.url == '/' or page.url == '/index.html' %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": {{ site.author.name | jsonify }},
+    "url": {{ '/' | absolute_url | jsonify }},
+    "jobTitle": "Senior Staff Machine Learning Engineer",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Brown University"
+    },
+    "sameAs": [
+      {{ site.author.github | prepend: 'https://github.com/' | jsonify }},
+      {{ site.author.twitter | prepend: 'https://x.com/' | jsonify }},
+      "https://scholar.google.com/citations?user=_ksEziAAAAAJ"
+    ],
+    "knowsAbout": ["Machine Learning", "AI", "Anomaly Detection", "Platform Trust", "Security", "Physics"]
+  }
+  </script>
+  {% endif %}
   {% endif %}
 
-  <meta name="theme-color" content="#0f172a">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#090e17">
   <link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
   <link rel="preload" href="{{ '/assets/fonts/inter-latin-wght-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
-  <link href="{{ '/assets/css/modern.css' | relative_url | escape }}?v=loop25" rel="stylesheet" media="all">
+  <link href="{{ '/assets/css/modern.css' | relative_url | escape }}?v=loop26" rel="stylesheet" media="all">
   <link rel="alternate" type="application/atom+xml" title="{{ site.title | escape }}" href="{{ '/atom.xml' | absolute_url | escape }}">
 </head>

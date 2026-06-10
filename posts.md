@@ -7,12 +7,10 @@ og_image: "/assets/images/social/2025-08-07-berkeley-agentic-ai-summit-2025-1200
 og_image_alt: "Agentic AI Summit 2025 social preview image"
 og_image_width: 1200
 og_image_height: 630
-last_modified_at: 2026-06-09
+last_modified_at: 2026-06-10
 ---
 
 <p class="home-intro">Notes on AI/ML systems, agents, behavior modeling, evaluation, anomaly detection, and production systems.</p>
-
-## All Writing
 
 <div class="post-list" role="list">
   {% for post in site.posts %}

@@ -1,0 +1,13 @@
+<script>
+(function () {
+  var headings = document.querySelectorAll(".layout-post .entry-content h2[id], .layout-post .entry-content h3[id]");
+  headings.forEach(function (heading) {
+    var anchor = document.createElement("a");
+    anchor.className = "heading-anchor";
+    anchor.href = "#" + heading.id;
+    anchor.textContent = "#";
+    anchor.setAttribute("aria-label", "Link to this section");
+    heading.appendChild(anchor);
+  });
+})();
+</script>
