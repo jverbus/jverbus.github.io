@@ -18,10 +18,17 @@ hide_title: true
     <p class="home-lede">My background began in rare-event physics: I earned my Ph.D. at Brown on LUX, one of the world's most sensitive dark matter detectors searching for faint signals deep underground.</p>
     <p class="home-lede">These days I'm focused on agentic AI systems. For collaborations, talks, or hard problems worth comparing notes on, <a href="mailto:james.verbus@gmail.com">get in touch</a>.</p>
   </div>
-  <figure class="home-hero-photo">
-    <img src="{{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }}" srcset="{{ '/assets/images/jverbus_lux_detector-400.jpg' | relative_url }} 400w, {{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }} 800w" sizes="(max-width: 760px) calc(100vw - 2rem), 400px" alt="James Verbus working on the LUX dark matter detector" width="800" height="800" loading="eager" decoding="async" fetchpriority="high">
-    <figcaption>Working on detector hardware for the LUX, one of the world's most sensitive dark matter experiments.</figcaption>
-  </figure>
+  <div class="home-hero-side">
+    <figure class="home-hero-photo">
+      <img src="{{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }}" srcset="{{ '/assets/images/jverbus_lux_detector-400.jpg' | relative_url }} 400w, {{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }} 800w" sizes="(max-width: 760px) calc(100vw - 2rem), 400px" alt="James Verbus working on the LUX dark matter detector" width="800" height="800" loading="eager" decoding="async" fetchpriority="high">
+      <figcaption>Working on detector hardware for the LUX, one of the world's most sensitive dark matter experiments.</figcaption>
+    </figure>
+    <ul class="proof-strip" aria-label="Research highlights">
+      <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ"><strong>30+</strong> papers</a></li>
+      <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ"><strong>10k+</strong> citations</a></li>
+      <li><a href="{{ '/publications/#patents' | relative_url }}"><strong>3</strong> patents</a></li>
+    </ul>
+  </div>
   <div class="home-contact" id="contact" aria-label="Contact links">
     <ul class="contact-list">
       <li><a href="mailto:james.verbus@gmail.com">{% include site/icons/email.svg %} Email</a></li>
@@ -30,11 +37,6 @@ hide_title: true
       <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ">{% include site/icons/google-scholar.svg %} Google Scholar</a></li>
     </ul>
   </div>
-  <ul class="proof-strip" aria-label="Research highlights">
-    <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ"><strong>30+</strong> papers</a></li>
-    <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ"><strong>10k+</strong> citations</a></li>
-    <li><a href="{{ '/publications/#patents' | relative_url }}"><strong>3</strong> patents</a></li>
-  </ul>
 </section>
 
 <section class="home-section" aria-labelledby="featured-work-heading">

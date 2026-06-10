@@ -676,8 +676,7 @@ h2.post-year-heading:first-of-type {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 280px;
   grid-template-areas:
-    "copy photo"
-    "copy stats"
+    "copy side"
     "contact contact";
   column-gap: var(--space-10);
   row-gap: var(--space-6);
@@ -711,8 +710,12 @@ h2.post-year-heading:first-of-type {
   line-height: 1.65;
 }
 
+.home-hero-side {
+  grid-area: side;
+  min-width: 0;
+}
+
 .home-hero-photo {
-  grid-area: photo;
   width: 100%;
   max-width: 100%;
   margin: 0;
@@ -790,7 +793,7 @@ h2.post-year-heading:first-of-type {
 }
 
 .home-hero .proof-strip {
-  grid-area: stats;
+  margin-top: var(--space-6);
 }
 
 .proof-strip li {
@@ -1379,10 +1382,6 @@ h3:hover .heading-anchor,
 
   .home-contact {
     margin-top: var(--space-8);
-  }
-
-  .home-hero .proof-strip {
-    margin-top: var(--space-6);
   }
 
   .proof-strip {

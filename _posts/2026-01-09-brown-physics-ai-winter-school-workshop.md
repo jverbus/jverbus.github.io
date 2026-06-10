@@ -35,7 +35,7 @@ A key part of the workshop was turning the orbital-transfer problem into an RL e
 - **Observation:** radius, radial velocity, tangential velocity, target energy error, target angular-momentum error, and previous action.
 - **Action:** either discrete control (`coast`, `prograde`, `retrograde`) or continuous-valued tangential impulse control.
 - **Reward:** dense shaping based on energy/angular-momentum error, plus costs for using Δv, ignition/action changes, crashing, and failing to reach the target region.
-- **Diagnostics:** trajectory plots, radius and radial-velocity histories, thrust impulse histories, and cumulative |Δv|.
+- **Diagnostics:** trajectory plots, radius and radial-velocity histories, thrust impulse histories, and cumulative \|Δv\|.
 
 The Hohmann transfer gave us a useful reference point. In the idealized circular, coplanar, two-body case, the transfer has a clean burn-coast-burn structure. That made it easy to compare the learned policies against something interpretable, rather than treating the RL agent as a black box.
 
