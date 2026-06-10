@@ -4,10 +4,10 @@ title: "Reinforcement Learning for Orbital Transfers at the 2026 AI Winter Schoo
 date: 2026-01-09
 last_modified_at: 2026-06-10
 description: "Hands-on workshop using reinforcement learning (PPO) to solve a simplified orbital transfer problem. Environment design, reward shaping, and training RL agents for space mechanics."
-og_image: "/assets/images/social/2026-01-09-brown-physics-ai-winter-school-workshop-1200x630.jpg"
-og_image_alt: "Reinforcement Learning for Orbital Transfers at the 2026 AI Winter School"
-og_image_width: 1200
-og_image_height: 630
+og_image: "/assets/images/2026-ai-winter-school-banner.png"
+og_image_alt: "2026 AI Winter School banner from the Brown University Department of Physics"
+og_image_width: 1024
+og_image_height: 530
 categories:
   - AI and Machine Learning
 tags:
@@ -19,6 +19,8 @@ tags:
   - Orbital Mechanics
   - Astrodynamics
 ---
+
+<img src="{{ '/assets/images/2026-ai-winter-school-banner.png' | relative_url }}" alt="2026 AI Winter School banner — Brown University Department of Physics, Center for the Fundamental Physics of the Universe, January 6–9, 2026" width="1024" height="530" loading="eager" decoding="async" fetchpriority="high">
 
 I recently gave a 2.5-hour, hands-on workshop on using reinforcement learning (RL) to solve a simplified orbital transfer problem at the **2026 AI Winter School**, hosted by the **Center for the Fundamental Physics of the Universe at Brown University**.
 
