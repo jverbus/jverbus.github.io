@@ -12,8 +12,11 @@ last_modified_at: 2026-06-10
 
 <p class="home-intro">Notes on AI/ML systems, agents, behavior modeling, evaluation, anomaly detection, and production systems.</p>
 
-<div class="post-list" role="list">
-  {% for post in site.posts %}
+{% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+{% for year_group in posts_by_year %}
+<h2 class="post-year-heading" id="writing-{{ year_group.name }}">{{ year_group.name }}</h2>
+<div class="post-list" role="list" aria-labelledby="writing-{{ year_group.name }}">
+  {% for post in year_group.items %}
     {% assign post_card_date = post.date | date: "%b %-d, %Y" %}
     {% include site/card.html
       card_clickable='on'
@@ -24,3 +27,4 @@ last_modified_at: 2026-06-10
     %}
   {% endfor %}
 </div>
+{% endfor %}

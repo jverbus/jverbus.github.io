@@ -634,6 +634,30 @@ video {
   font-size: 1.02rem;
 }
 
+h2.post-year-heading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: var(--max-readable);
+  margin: var(--space-10) 0 var(--space-4);
+  border-top: 0;
+  padding-top: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 650;
+  letter-spacing: 0.05em;
+}
+
+h2.post-year-heading::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid var(--border);
+}
+
+h2.post-year-heading:first-of-type {
+  margin-top: var(--space-2);
+}
+
 .page-home .unit-head-inner,
 .page-home .unit-body-inner,
 .page-home .unit-foot-inner {
@@ -901,6 +925,15 @@ video {
   color: var(--text-muted);
   font-size: 0.95rem;
   line-height: 1.6;
+}
+
+.post-list-summary {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  margin-bottom: 0.35rem;
 }
 
 .editorial-list {
