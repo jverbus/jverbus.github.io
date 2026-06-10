@@ -14,8 +14,8 @@ hide_title: true
   <div class="home-hero-copy">
     <h1>James Verbus</h1>
     <p class="home-lede">I build AI systems for uncertain or adversarial environments at production scale.</p>
-    <p class="home-lede">Previously, I spent nearly a decade at LinkedIn, most recently as a Senior Staff Machine Learning Engineer, building large-scale systems for anti-abuse, trust, and platform integrity.</p>
-    <p class="home-lede">My background began in rare-event physics: I earned my Ph.D. at Brown on LUX, a dark matter experiment searching for faint signals deep underground. That path still shapes my work on noisy evidence, uncertainty, robustness, and real-world constraints.</p>
+    <p class="home-lede">I spent nearly a decade at LinkedIn, most recently as a Senior Staff Machine Learning Engineer, building large-scale systems for anti-abuse, trust, and platform integrity.</p>
+    <p class="home-lede">My background began in rare-event physics: I earned my Ph.D. at Brown on LUX, a dark matter experiment searching for faint signals deep underground.</p>
     <p class="home-lede">These days I'm focused on agentic AI systems. For collaborations, talks, or hard problems worth comparing notes on, <a href="mailto:james.verbus@gmail.com">get in touch</a>.</p>
   </div>
   <figure class="home-hero-photo">
@@ -44,7 +44,7 @@ hide_title: true
   <div class="post-list" role="list">
     {% include site/card.html
       card_clickable='on'
-      date='Projects'
+      date='Open Source'
       title='Extended Isolation Forest for Distributed Spark/Scala Anomaly Detection'
       url='/2026/03/18/announcing-extended-isolation-forest-support/'
       description='Extended Isolation Forest support for linkedin/isolation-forest, with random hyperplane splits, validation plots, benchmarks, reference parity checks, and edge-case tests.'
@@ -66,38 +66,26 @@ hide_title: true
   </div>
 </section>
 
-<section class="home-section" aria-labelledby="featured-writing-heading">
+<section class="home-section" aria-labelledby="recent-writing-heading">
   <div class="section-heading">
-    <h2 id="featured-writing-heading">Featured Writing</h2>
+    <h2 id="recent-writing-heading">Recent Writing</h2>
   </div>
   <div class="post-list" role="list">
-    {% assign eif_post = site.posts | where: "url", "/2026/03/18/announcing-extended-isolation-forest-support/" | first %}
-    {% assign eif_post_date = eif_post.date | date: "%b %-d, %Y" %}
-    {% include site/card.html
-      card_clickable='on'
-      date=eif_post_date
-      title=eif_post.title
-      url=eif_post.url
-      description=eif_post.description
-    %}
-    {% assign rl_post = site.posts | where: "url", "/2026/01/09/brown-physics-ai-winter-school-workshop/" | first %}
-    {% assign rl_post_date = rl_post.date | date: "%b %-d, %Y" %}
-    {% include site/card.html
-      card_clickable='on'
-      date=rl_post_date
-      title=rl_post.title
-      url=rl_post.url
-      description=rl_post.description
-    %}
-    {% assign rag_post = site.posts | where: "url", "/2025/02/10/brown-physics-ai-winter-school-workshop/" | first %}
-    {% assign rag_post_date = rag_post.date | date: "%b %-d, %Y" %}
-    {% include site/card.html
-      card_clickable='on'
-      date=rag_post_date
-      title=rag_post.title
-      url=rag_post.url
-      description=rag_post.description
-    %}
+    {% assign featured_urls = "/2026/03/18/announcing-extended-isolation-forest-support/|/2026/01/09/brown-physics-ai-winter-school-workshop/|/2024/08/15/finding-ai-generated-faces-in-the-wild/" | split: "|" %}
+    {% assign shown = 0 %}
+    {% for post in site.posts %}
+      {% if featured_urls contains post.url %}{% continue %}{% endif %}
+      {% if shown >= 3 %}{% break %}{% endif %}
+      {% assign shown = shown | plus: 1 %}
+      {% assign post_card_date = post.date | date: "%b %-d, %Y" %}
+      {% include site/card.html
+        card_clickable='on'
+        date=post_card_date
+        title=post.title
+        url=post.url
+        description=post.description
+      %}
+    {% endfor %}
   </div>
   <p class="home-archive-link"><a href="{{ '/posts/' | relative_url }}">View all writing</a></p>
 </section>
@@ -108,7 +96,7 @@ hide_title: true
   </div>
   <p>Open-source and software work centered on <code>linkedin/isolation-forest</code>, a distributed Spark/Scala implementation for large-scale unsupervised anomaly detection.</p>
   <div class="post-list" role="list">
-    {% for item in site.data.open_source.major_updates limit:3 %}
+    {% for item in site.data.open_source.core_items %}
       {% include site/card.html
         date=item.date
         title=item.title
