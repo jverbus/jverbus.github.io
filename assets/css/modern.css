@@ -64,7 +64,6 @@
   --space-12: 3rem;
 
   --max-content: 720px;
-  --max-home: 1000px;
   --max-readable: 68ch;
 }
 
@@ -673,29 +672,14 @@ h2.post-year-heading:first-of-type {
   margin-top: var(--space-2);
 }
 
-.page-home .unit-head-inner,
-.page-home .unit-body-inner,
-.page-home .unit-foot-inner {
-  max-width: calc(var(--max-home) + 2 * var(--space-4));
-}
-
-.page-home .entry-content {
-  max-width: var(--max-home);
-}
-
-.home-section {
-  max-width: var(--max-content);
-  margin-inline: auto;
-}
-
 .home-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 400px);
+  grid-template-columns: minmax(0, 1fr) 280px;
   grid-template-areas:
     "copy photo"
-    "contact photo"
+    "contact contact"
     "stats stats";
-  column-gap: var(--space-12);
+  column-gap: var(--space-10);
   row-gap: var(--space-6);
   align-items: start;
   padding: var(--space-6) 0 var(--space-6);
@@ -714,7 +698,7 @@ h2.post-year-heading:first-of-type {
 .home-hero h1 {
   max-width: 12.5em;
   margin: 0;
-  font-size: clamp(2.15rem, 5vw, 3.75rem);
+  font-size: clamp(2.15rem, 4.2vw, 3rem);
   line-height: 1.06;
   letter-spacing: -0.018em;
 }
