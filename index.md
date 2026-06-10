@@ -12,7 +12,6 @@ hide_title: true
 
 <section class="home-hero" id="about">
   <div class="home-hero-copy">
-    <p class="eyebrow">AI systems under uncertainty</p>
     <h1>James Verbus</h1>
     <p class="home-lede">I build AI systems for uncertain or adversarial environments at production scale.</p>
     <p class="home-lede">Previously, I spent nearly a decade at LinkedIn, most recently as a Senior Staff Machine Learning Engineer, building large-scale systems for anti-abuse, trust, and platform integrity.</p>

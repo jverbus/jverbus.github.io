@@ -499,15 +499,6 @@ video {
   font-size: 1.02rem;
 }
 
-.eyebrow {
-  margin: 0 0 var(--space-2);
-  color: var(--accent-secondary);
-  font-size: 0.76rem;
-  font-weight: 720;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 .page-home .unit-head-inner,
 .page-home .unit-body-inner,
 .page-home .unit-foot-inner {
@@ -533,8 +524,12 @@ video {
   column-gap: var(--space-12);
   row-gap: var(--space-6);
   align-items: start;
-  padding: var(--space-6) 0 var(--space-8);
+  padding: var(--space-6) 0 var(--space-6);
   border-bottom: 1px solid var(--border);
+}
+
+.home-hero + .home-section {
+  padding-top: var(--space-8);
 }
 
 .home-hero-copy {
@@ -997,6 +992,13 @@ video {
 
 .layout-page .entry-content li {
   margin-bottom: 0.55rem;
+}
+
+.layout-page .entry-content .contact-list,
+.layout-page .entry-content .proof-strip,
+.layout-page .entry-content .contact-list li,
+.layout-page .entry-content .proof-strip li {
+  margin-bottom: 0;
 }
 
 .project-metrics {
