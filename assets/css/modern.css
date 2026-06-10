@@ -677,8 +677,8 @@ h2.post-year-heading:first-of-type {
   grid-template-columns: minmax(0, 1fr) 280px;
   grid-template-areas:
     "copy photo"
-    "contact contact"
-    "stats stats";
+    "copy stats"
+    "contact contact";
   column-gap: var(--space-10);
   row-gap: var(--space-6);
   align-items: start;
@@ -779,10 +779,9 @@ h2.post-year-heading:first-of-type {
 
 .proof-strip {
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  column-gap: var(--space-3);
-  row-gap: var(--space-1);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.45rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -792,17 +791,10 @@ h2.post-year-heading:first-of-type {
 
 .home-hero .proof-strip {
   grid-area: stats;
-  margin-top: var(--space-2);
 }
 
 .proof-strip li {
   margin: 0;
-}
-
-.proof-strip li + li::before {
-  content: "·";
-  margin-right: var(--space-3);
-  color: var(--border-strong);
 }
 
 .proof-strip a {
@@ -1371,12 +1363,18 @@ h3:hover .heading-anchor,
   }
 
   .proof-strip {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
     column-gap: var(--space-2);
+    row-gap: var(--space-1);
     font-size: 0.9rem;
   }
 
   .proof-strip li + li::before {
+    content: "·";
     margin-right: var(--space-2);
+    color: var(--border-strong);
   }
 
   .post-list-item {
