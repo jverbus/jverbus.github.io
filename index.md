@@ -141,25 +141,23 @@ hide_title: true
   </div>
   <div class="post-list" role="list">
     {% assign selected_talks_section = site.data.videos.sections | first %}
-    {% assign selected_talks = selected_talks_section.items %}
-    {% for item in selected_talks limit:2 %}
-      {% include site/card.html
-        card_class='video-list-item'
-        image=item.image
-        image_alt=item.image_alt
-        image_class='video-list-thumb'
-        content_class='video-list-content'
-        date=item.date
-        title=item.title
-        url=item.url
-        link_target='_blank'
-        link_rel='noopener'
-        summary=item.summary
-        venue=item.venue
-        venue_label='Venue/Host:'
-        links=item.links
-      %}
-    {% endfor %}
+    {% assign llm_talk = selected_talks_section.items | where: "date", "2025" | first %}
+    {% include site/card.html
+      card_class='video-list-item'
+      image=llm_talk.image
+      image_alt=llm_talk.image_alt
+      image_class='video-list-thumb'
+      content_class='video-list-content'
+      date=llm_talk.date
+      title=llm_talk.title
+      url=llm_talk.url
+      link_target='_blank'
+      link_rel='noopener'
+      summary=llm_talk.summary
+      venue=llm_talk.venue
+      venue_label='Venue/Host:'
+      links=llm_talk.links
+    %}
     {% assign panels_section = site.data.videos.sections | where: "title", "Panels" | first %}
     {% assign sxsw_panel = panels_section.items | first %}
     {% include site/card.html
@@ -177,6 +175,23 @@ hide_title: true
       venue=sxsw_panel.venue
       venue_label='Venue/Host:'
       links=sxsw_panel.links
+    %}
+    {% assign abuse_talk = selected_talks_section.items | where: "date", "2019" | first %}
+    {% include site/card.html
+      card_class='video-list-item'
+      image=abuse_talk.image
+      image_alt=abuse_talk.image_alt
+      image_class='video-list-thumb'
+      content_class='video-list-content'
+      date=abuse_talk.date
+      title=abuse_talk.title
+      url=abuse_talk.url
+      link_target='_blank'
+      link_rel='noopener'
+      summary=abuse_talk.summary
+      venue=abuse_talk.venue
+      venue_label='Venue/Host:'
+      links=abuse_talk.links
     %}
   </div>
   <p class="home-archive-link"><a href="{{ '/videos/' | relative_url }}">View videos</a></p>

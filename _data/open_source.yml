@@ -50,6 +50,6 @@ video_links:
 
   - date: "2019"
     title: "Fighting Abuse @Scale: Preventing Abuse Using Unsupervised Learning"
-    url: "https://atscaleconference.com/videos/fighting-abuse-scale-2019-preventing-abuse-using-unsupervised-learning/"
+    url: "https://www.youtube.com/watch?v=2OLy2ypkjpM"
     description: >-
       Detection of abusive activity on a large social network is an adversarial challenge with quickly evolving behavior patterns and imperfect ground truth labels. These characteristics limit the use of supervised learning techniques, but they can be overcome using unsupervised methods. To address these challenges, we created a Scala/Spark implementation of the isolation forest unsupervised outlier detection algorithm; we recently open sourced this library (<a href="https://github.com/linkedin/isolation-forest">github.com/linkedin/isolation-forest</a>).
