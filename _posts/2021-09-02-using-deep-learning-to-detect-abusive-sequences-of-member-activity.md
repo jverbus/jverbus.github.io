@@ -33,7 +33,7 @@ The insight behind the model is that profile views are a tiny slice of what an a
 
 <img src="{{ '/assets/images/activity-sequence-construction.png' | relative_url }}" alt="Bursts of profile views on a distinct-profile-identifier versus time plot, expanded into a colored sequence of request types over time with the time between requests captured" width="1024" height="538" loading="lazy" decoding="async">
 
-*A mock example of a burst of profile views, expanded into the full activity sequence around it. The model also consumes the time gap between consecutive requests. (Figure from the LinkedIn Engineering blog post.)*
+*A mock example of a burst of profile views, expanded into the full activity sequence around it. The model also consumes the time gap between consecutive requests. (Figure from my LinkedIn Engineering blog post.)*
 
 Turning that stream into model input takes two steps. First, an automated process standardizes raw request paths into a common vocabulary of tokens, with no manual feature engineering. Second, each token is mapped to an integer by how frequent that request path is across all members, so a small integer means a very common request and a large integer means a rare one. The encoding itself carries behavioral signal: it says whether this account is doing ordinary things or unusual things, relative to everyone.
 
@@ -45,13 +45,13 @@ A useful way to visualize an encoded sequence is a grid: 200 consecutive request
 
 <img src="{{ '/assets/images/activity-sequence-legit-member.png' | relative_url }}" alt="Grid of 200 encoded requests from a legitimate member showing varied colors and heterogeneous patterns" width="900" height="368" loading="lazy" decoding="async">
 
-*The first two hundred requests from a legitimate member, colored by request-path frequency. Organic browsing produces a varied, heterogeneous texture. (Figure from the LinkedIn Engineering blog post.)*
+*The first two hundred requests from a legitimate member, colored by request-path frequency. Organic browsing produces a varied, heterogeneous texture. (Figure from my LinkedIn Engineering blog post.)*
 
 And here is a scraper:
 
 <img src="{{ '/assets/images/activity-sequence-scraper.png' | relative_url }}" alt="Grid of 200 encoded requests from a scraper showing almost uniformly common requests with little variation" width="900" height="368" loading="lazy" decoding="async">
 
-*The same visualization for an automated scraper. Scripts hammer a few request types and fail to reproduce the subtle variety of real browsing. (Figure from the LinkedIn Engineering blog post.)*
+*The same visualization for an automated scraper. Scripts hammer a few request types and fail to reproduce the subtle variety of real browsing. (Figure from my LinkedIn Engineering blog post.)*
 
 This is the core of why the approach works, and why it is hard to evade. A script's author would have to simulate the ordering, mix, and timing of everything an organic user does incidentally. Scrapers like these, careful enough to randomize timing and revisit profiles, still produce flat, repetitive sequences that stand out immediately against organic texture.
 
@@ -61,7 +61,7 @@ The model is a supervised LSTM classifier with two input branches. The encoded r
 
 <img src="{{ '/assets/images/activity-sequence-architecture.png' | relative_url }}" alt="Architecture diagram: encoded request path sequence through embeddings and convolutions, time deltas through preprocessing, concatenated into an LSTM and classification layer producing an abuse score" width="900" height="516" loading="lazy" decoding="async">
 
-*The two-branch architecture: encoded request paths plus inter-request time gaps, concatenated into an LSTM with a final classification layer that outputs an abuse score. (Figure from the LinkedIn Engineering blog post.)*
+*The two-branch architecture: encoded request paths plus inter-request time gaps, concatenated into an LSTM with a final classification layer that outputs an abuse score. (Figure from my LinkedIn Engineering blog post.)*
 
 One sequence dataset and one architecture serve many behavior classification tasks; only the labels change. That is the scalability argument: a universal input and a single model family, instead of a handcrafted feature set per surface.
 
