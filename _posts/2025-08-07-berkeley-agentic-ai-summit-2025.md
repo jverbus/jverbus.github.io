@@ -2,13 +2,16 @@
 layout: post
 title: "From Demos to Deployment: Insights from Berkeley’s Agentic AI Summit 2025"
 description: "Agentic AI is graduating from cool demos to real‑world deployment. Hardware gains, open standards, rigorous evals, and secure governance are paving the way for billions of reliable, low‑cost digital assistants."
-og_image: "/assets/images/social/2025-08-07-berkeley-agentic-ai-summit-2025-1200x630.jpg"
-og_image_alt: "From Demos to Deployment: Insights from Berkeley’s Agentic AI Summit 2025"
-og_image_width: 1200
-og_image_height: 630
+og_image: "/assets/images/2025-agentic-ai-summit-banner.jpg"
+og_image_alt: "Agentic AI Summit banner, August 2 at UC Berkeley"
+og_image_width: 1280
+og_image_height: 720
+last_modified_at: 2026-06-10
 categories: ["AI and Machine Learning"]
 tags: [Generative AI, UC Berkeley, AI, Agents]
 ---
+
+<img src="{{ '/assets/images/2025-agentic-ai-summit-banner.jpg' | relative_url }}" alt="Agentic AI Summit banner for August 2 at UC Berkeley, showing the Campanile tower and summit sponsor logos" width="1280" height="720" loading="eager" decoding="async" fetchpriority="high">
 
 > **Author’s Note:** This is a repost of my original post [here](https://www.linkedin.com/pulse/from-demos-deployment-insights-berkeleys-agentic-ai-summit-verbus-k1aie/?trackingId=lZ36KGNFSCu5V6BVTVbr2w%3D%3D).
 > The summit website with the full agenda and sessions are available [here](https://rdi.berkeley.edu/events/agentic-ai-summit).

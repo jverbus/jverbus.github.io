@@ -2,7 +2,7 @@
 layout: post
 title: "Extended Isolation Forest for Distributed Spark/Scala Anomaly Detection"
 description: "Extended Isolation Forest support for LinkedIn's open-source Spark/Scala isolation-forest library, including random hyperplane splits, benchmarks, synthetic plots, and validation evidence. The work also became a useful case study in how to validate AI-assisted production code with evidence rather than trust."
-last_modified_at: 2026-06-09
+last_modified_at: 2026-06-10
 og_image: "/assets/images/social/2026-03-18-announcing-extended-isolation-forest-support-1200x630.jpg"
 og_image_alt: "Extended Isolation Forest for distributed Spark/Scala anomaly detection"
 og_image_width: 1200
@@ -15,7 +15,7 @@ I've added **Extended Isolation Forest (EIF)** to LinkedIn's open-source Spark/S
 
 <p>
   <a href="https://github.com/linkedin/isolation-forest" aria-label="Open isolation-forest on GitHub">
-    <img class="project-logo" src="{{ '/assets/images/isolation_forest.svg' | relative_url }}" alt="Isolation Forest logo" width="331" height="326" loading="lazy" decoding="async">
+    <img src="{{ '/assets/images/isolation_forest.svg' | relative_url }}" alt="Isolation Forest logo" width="331" height="326" loading="lazy" decoding="async">
   </a>
 </p>
 
