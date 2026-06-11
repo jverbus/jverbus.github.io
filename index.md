@@ -1,22 +1,21 @@
 ---
 layout: page
 title: Home
-description: "AI systems for uncertain or adversarial environments, spanning abuse detection, behavior modeling, agents, anomaly detection, AI-generated media, and production-scale AI."
+description: "AI systems, measurement, and reliability under uncertainty: agents, evaluation, anomaly detection, and adversarial ML."
 og_image: "/assets/images/social/2016-08-18-calibrating-the-lux-dark-matter-experiment-1200x630.jpg"
 og_image_alt: "James Verbus with the LUX dark matter experiment"
 og_image_width: 1200
 og_image_height: 630
-last_modified_at: 2026-06-10
+last_modified_at: 2026-06-11
 hide_title: true
 ---
 
 <section class="home-hero" id="about">
   <div class="home-hero-copy">
     <h1>James Verbus</h1>
-    <p class="home-lede">I build AI systems for uncertain or adversarial environments.</p>
-    <p class="home-lede">After nearly a decade at LinkedIn where I was most recently as a Senior Staff Machine Learning Engineer building systems for anti-abuse, trust, and platform integrity, I chose to step away to work closer to the AI frontier.</p>
-    <p class="home-lede">My background began in rare-event physics: I earned my Ph.D. at Brown on LUX, one of the world's most sensitive dark matter detectors searching for faint signals deep underground.</p>
-    <p class="home-lede">These days I'm focused on agentic AI systems. For collaborations, talks, or hard problems worth comparing notes on, <a href="mailto:james.verbus@gmail.com">get in touch</a>.</p>
+    <p class="home-lede">I build AI systems for uncertain and adversarial environments: systems where measurement is hard, feedback is noisy, and getting the right answer requires more than an evaluation score.</p>
+    <p class="home-lede">After nearly a decade at LinkedIn, most recently as a Senior Staff Machine Learning Engineer focused on anti-abuse, trust, and platform integrity, I chose to leave to focus full-time on frontier AI systems: agents, simulation, evaluation, measurement, and research workflows.</p>
+    <p class="home-lede">Before LinkedIn, I earned my Ph.D. in physics at Brown working on <a href="{{ '/2016/08/18/calibrating-the-lux-dark-matter-experiment/' | relative_url }}">LUX</a>, one of the world's most sensitive dark-matter detectors. Across physics, platform integrity, and AI, the through-line has been the same: extract weak signals, measure what matters, understand uncertainty, and build systems that remain reliable when the ground truth is difficult to see.</p>
   </div>
   <div class="home-hero-side">
     <figure class="home-hero-photo">
@@ -34,15 +33,16 @@ hide_title: true
     <ul class="contact-list">
       <li><a href="mailto:james.verbus@gmail.com">{% include site/icons/email.svg %} Email</a></li>
       <li><a href="https://github.com/jverbus">{% include site/icons/github.svg %} GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/jamesverbus/">{% include site/icons/linkedin.svg %} LinkedIn</a></li>
       <li><a href="https://x.com/JamesVerbus">{% include site/icons/x.svg %} X</a></li>
       <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ">{% include site/icons/google-scholar.svg %} Google Scholar</a></li>
     </ul>
   </div>
 </section>
 
-<section class="home-section" aria-labelledby="featured-work-heading">
+<section class="home-section" aria-labelledby="featured-writing-heading">
   <div class="section-heading">
-    <h2 id="featured-work-heading">Featured Work</h2>
+    <h2 id="featured-writing-heading">Featured Writing</h2>
   </div>
   <div class="post-list" role="list">
     {% include site/card.html
@@ -66,29 +66,13 @@ hide_title: true
       url='/2026/01/09/brown-physics-ai-winter-school-workshop/'
       description='A hands-on Brown AI Winter School workshop connecting orbital mechanics, reinforcement learning, PPO agents, and practical model diagnostics.'
     %}
-  </div>
-</section>
-
-<section class="home-section" aria-labelledby="recent-writing-heading">
-  <div class="section-heading">
-    <h2 id="recent-writing-heading">Recent Writing</h2>
-  </div>
-  <div class="post-list" role="list">
-    {% assign featured_urls = "/2026/03/18/announcing-extended-isolation-forest-support/|/2026/01/09/brown-physics-ai-winter-school-workshop/|/2024/08/15/finding-ai-generated-faces-in-the-wild/" | split: "|" %}
-    {% assign shown = 0 %}
-    {% for post in site.posts %}
-      {% if featured_urls contains post.url %}{% continue %}{% endif %}
-      {% if shown >= 3 %}{% break %}{% endif %}
-      {% assign shown = shown | plus: 1 %}
-      {% assign post_card_date = post.date | date: "%b %-d, %Y" %}
-      {% include site/card.html
-        card_clickable='on'
-        date=post_card_date
-        title=post.title
-        url=post.url
-        description=post.description
-      %}
-    {% endfor %}
+    {% include site/card.html
+      card_clickable='on'
+      date='Ph.D. Thesis'
+      title='Calibrating the LUX Dark Matter Experiment'
+      url='/2016/08/18/calibrating-the-lux-dark-matter-experiment/'
+      description='An absolute calibration of sub-keV nuclear recoils in the LUX detector using neutron scattering kinematics, improving low-mass WIMP sensitivity sevenfold.'
+    %}
   </div>
   <p class="home-archive-link"><a href="{{ '/posts/' | relative_url }}">View all writing</a></p>
 </section>
@@ -191,4 +175,12 @@ hide_title: true
     %}
   </div>
   <p class="home-archive-link"><a href="{{ '/videos/' | relative_url }}">View videos</a></p>
+</section>
+
+<section class="home-section" aria-labelledby="conversations-heading">
+  <div class="section-heading">
+    <h2 id="conversations-heading">Open to Conversations</h2>
+  </div>
+  <p>I enjoy comparing notes with people building or studying AI systems. I'm especially interested in the intersection of physics and AI, from world models to reinforcement learning and simulation, and in measurement, adversarial problems, and security. If that overlaps with what you're working on, I'd be glad to hear from you.</p>
+  <p><a class="cta-button" href="mailto:james.verbus@gmail.com">Start a conversation</a></p>
 </section>

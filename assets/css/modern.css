@@ -756,6 +756,39 @@ h2.post-year-heading:first-of-type {
   min-width: 0;
 }
 
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.55rem 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cta-button:hover {
+  background: var(--accent-hover);
+  color: #fff;
+  text-decoration: none;
+}
+
+.post-cta {
+  max-width: var(--max-readable);
+  margin: var(--space-10) 0 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-muted);
+  padding: 1rem 1.25rem;
+}
+
+.post-cta p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
 .home-archive-link {
   margin: var(--space-6) 0 var(--space-2);
 }
@@ -1607,5 +1640,10 @@ h3:hover .heading-anchor,
   .video-list-thumb-fallback {
     color: #d7e4f7;
     background: linear-gradient(135deg, #1e2f4d 0%, #162238 100%);
+  }
+
+  .cta-button,
+  .cta-button:hover {
+    color: #0b1020;
   }
 }

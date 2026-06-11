@@ -30,6 +30,8 @@
         <div class="entry-content">
           {{ content }}
 
+          {% include site/post-cta.html %}
+
           <div class="meta">
             {% if page.categories and page.categories != empty %}
             <ul class="list-category list-linear">
