@@ -14,6 +14,7 @@ hide_title: true
       <figcaption>Working on detector hardware for the LUX, one of the world's most sensitive dark matter experiments.</figcaption>
     </figure>
     <ul class="proof-strip" aria-label="Career highlights">
+      <li><a href="{{ '/2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/' | relative_url }}"><strong>10 yrs</strong> production adversarial AI</a></li>
       <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ"><strong>30+</strong> papers</a></li>
       <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ"><strong>10k+</strong> citations</a></li>
       <li><a href="{{ '/publications/#patents' | relative_url }}"><strong>3</strong> patents</a></li>
