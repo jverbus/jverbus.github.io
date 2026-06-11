@@ -3,14 +3,10 @@ layout: page
 title: Writing
 permalink: /posts/
 description: "Writing by James Verbus on AI systems, measurement, and reliability under uncertainty: agents, evaluation, anomaly detection, and adversarial ML."
-og_image: "/assets/images/social/2025-08-07-berkeley-agentic-ai-summit-2025-1200x630.jpg"
-og_image_alt: "Agentic AI Summit 2025 social preview image"
-og_image_width: 1200
-og_image_height: 630
 last_modified_at: 2026-06-12
 ---
 
-<p class="home-intro">Notes on AI/ML systems, agents, behavior modeling, evaluation, anomaly detection, and production systems.</p>
+<p class="home-intro">Notes on AI systems, measurement, and reliability under uncertainty: agents, evaluation, anomaly detection, and adversarial ML.</p>
 
 {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
 {% for year_group in posts_by_year %}
