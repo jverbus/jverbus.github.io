@@ -1,0 +1,9 @@
+items:
+  - label: "Open Source"
+    title: "Isolation Forest"
+    url: "/open-source/isolation-forest/"
+    image: "/assets/images/isolation_forest.svg"
+    image_alt: "Isolation forest project logo"
+    image_width: 331
+    image_height: 326
+    description: "A distributed Spark/Scala isolation forest library for unsupervised anomaly detection, built at LinkedIn and open sourced. Recent major updates added Extended Isolation Forest and ONNX support."

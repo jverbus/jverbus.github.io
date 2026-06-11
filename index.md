@@ -11,12 +11,7 @@ hide_title: true
 ---
 
 <section class="home-hero" id="about">
-  <div class="home-hero-copy">
-    <h1>James Verbus</h1>
-    <p class="home-lede">I build AI systems for uncertain and adversarial environments: systems where measurement is hard, feedback is noisy, and getting the right answer requires more than an evaluation score.</p>
-    <p class="home-lede">After nearly a decade at LinkedIn, most recently as a Senior Staff Machine Learning Engineer focused on anti-abuse, trust, and platform integrity, I chose to leave to focus full-time on frontier AI systems: agents, simulation, evaluation, measurement, and research workflows.</p>
-    <p class="home-lede">Before LinkedIn, I earned my Ph.D. in physics at Brown working on <a href="{{ '/2016/08/18/calibrating-the-lux-dark-matter-experiment/' | relative_url }}">LUX</a>, one of the world's most sensitive dark-matter detectors. Across physics, platform integrity, and AI, the through-line has been the same: extract weak signals, measure what matters, understand uncertainty, and build systems that remain reliable when the ground truth is difficult to see.</p>
-  </div>
+  <h1>James Verbus</h1>
   <div class="home-hero-side">
     <figure class="home-hero-photo">
       <img src="{{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }}" srcset="{{ '/assets/images/jverbus_lux_detector-400.jpg' | relative_url }} 400w, {{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }} 800w" sizes="(max-width: 760px) calc(100vw - 2rem), 400px" alt="James Verbus working on the LUX dark matter detector" width="800" height="800" loading="eager" decoding="async" fetchpriority="high">
@@ -28,6 +23,11 @@ hide_title: true
       <li><a href="{{ '/publications/#patents' | relative_url }}"><strong>3</strong> patents</a></li>
       <li><a href="https://github.com/linkedin/isolation-forest"><strong>250+</strong> GitHub stars</a></li>
     </ul>
+  </div>
+  <div class="home-hero-copy">
+    <p class="home-lede">I build AI systems for uncertain and adversarial environments: systems where measurement is hard, feedback is noisy, and getting the right answer requires more than an evaluation score.</p>
+    <p class="home-lede">After nearly a decade at LinkedIn, most recently as a Senior Staff Machine Learning Engineer focused on anti-abuse, trust, and platform integrity, I chose to leave to focus full-time on frontier AI systems: agents, simulation, evaluation, measurement, and research workflows.</p>
+    <p class="home-lede">Before LinkedIn, I earned my Ph.D. in physics at Brown working on <a href="{{ '/2016/08/18/calibrating-the-lux-dark-matter-experiment/' | relative_url }}">LUX</a>, one of the world's most sensitive dark-matter detectors. Across physics, platform integrity, and AI, the through-line has been the same: extract weak signals, measure what matters, understand uncertainty, and build systems that remain reliable when the ground truth is difficult to see.</p>
   </div>
   <div class="home-contact" id="contact" aria-label="Contact links">
     <ul class="contact-list">
@@ -82,9 +82,17 @@ hide_title: true
     <h2 id="projects-heading">Projects</h2>
   </div>
   <div class="post-list" role="list">
-    {% for item in site.data.open_source.core_items limit:1 %}
+    {% for item in site.data.projects.items limit:1 %}
       {% include site/card.html
-        date=item.date
+        card_clickable='on'
+        card_class='project-list-item'
+        image=item.image
+        image_alt=item.image_alt
+        image_class='project-list-thumb'
+        content_class='project-list-content'
+        image_width=item.image_width
+        image_height=item.image_height
+        date=item.label
         title=item.title
         url=item.url
         description=item.description
