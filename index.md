@@ -23,10 +23,11 @@ hide_title: true
       <img src="{{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }}" srcset="{{ '/assets/images/jverbus_lux_detector-400.jpg' | relative_url }} 400w, {{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }} 800w" sizes="(max-width: 760px) calc(100vw - 2rem), 400px" alt="James Verbus working on the LUX dark matter detector" width="800" height="800" loading="eager" decoding="async" fetchpriority="high">
       <figcaption>Working on detector hardware for the LUX, one of the world's most sensitive dark matter experiments.</figcaption>
     </figure>
-    <ul class="proof-strip" aria-label="Research highlights">
+    <ul class="proof-strip" aria-label="Career highlights">
       <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ"><strong>30+</strong> papers</a></li>
       <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ"><strong>10k+</strong> citations</a></li>
       <li><a href="{{ '/publications/#patents' | relative_url }}"><strong>3</strong> patents</a></li>
+      <li><a href="https://github.com/linkedin/isolation-forest"><strong>250+</strong> GitHub stars</a></li>
     </ul>
   </div>
   <div class="home-contact" id="contact" aria-label="Contact links">

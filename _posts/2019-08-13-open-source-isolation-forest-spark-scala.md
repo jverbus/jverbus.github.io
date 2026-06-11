@@ -55,11 +55,29 @@ val dataWithScores = isolationForestModel.transform(data)
 
 ## Catching Automation in the Wild
 
-The application I pioneered this for at LinkedIn is automation detection. Score every active member on a day and plot the isolation forest score against activity volume, and the picture is immediately useful: the organic population forms a dense bulk, and the sparse high-score region is where automation lives.
+The application I pioneered this for at LinkedIn is automation detection. Score every active member on a day and plot the isolation forest score against activity volume, and the picture is immediately useful: the organic population forms a dense blue bulk, and the sparse high-score region is where automation lives.
 
-One high-scoring cluster turned out, on inspection, to be real members using automation tools, all behaving similarly. Their activity traces made the call easy to trust: one account fired bursts of about thirty actions at a constant rate, paused, then repeated; another ran smaller, more frequent bursts adding up to similar volume. Nothing about that rhythm looks like a person browsing.
+<img src="{{ '/assets/images/isolation-forest-normal-day.jpg' | relative_url }}" alt="Scatter plot of isolation forest score versus number of user actions for all active members on a normal day, with a highlighted cluster of real members using automation tools" width="1280" height="720" loading="lazy" decoding="async">
 
-The more striking case was an attack day. A tight, dark cluster of fake accounts appeared with very high and nearly identical scores, the signature of one actor driving every account with the same script, even though activity volumes varied by an order of magnitude across the cluster. On the volume axis those accounts overlapped substantially with the normal population. Two accounts pulled from the cluster showed how modest the activity could be: thirty to sixty actions in the day, with randomized delays between requests to blend in. Defenses keyed on volume would have had little to work with. The score axis separated them cleanly anyway, because automated behavior sits far from organic behavior in feature space, and that is exactly what the model isolates.
+*A normal day: every active member, plotted by isolation forest score against activity volume. The highlighted cluster is real members using automation tools with similar behavior. (Slide from my Spark + AI Summit 2020 talk.)*
+
+That highlighted cluster turned out, on inspection, to be real members using automation tools, all behaving similarly. Their activity traces made the call easy to trust: one account fired bursts of about thirty actions at a constant rate, paused, then repeated; another ran smaller, more frequent bursts adding up to similar volume. Nothing about that rhythm looks like a person browsing.
+
+<img src="{{ '/assets/images/isolation-forest-automation-bursts.jpg' | relative_url }}" alt="Two time series of automated user actions showing repeated bursts of roughly thirty actions at a constant rate" width="1280" height="720" loading="lazy" decoding="async">
+
+*Two accounts from the highlighted cluster: repeated bursts of roughly thirty actions at a constant rate. (Slide from my Spark + AI Summit 2020 talk.)*
+
+The more striking case was an attack day. A tight, dark cluster of fake accounts appeared with very high and nearly identical scores, the signature of one actor driving every account with the same script, even though activity volumes varied by an order of magnitude across the cluster.
+
+<img src="{{ '/assets/images/isolation-forest-attack-day.jpg' | relative_url }}" alt="Scatter plot from a fake account attack day showing a dense dark cluster at very high isolation forest score above the normal population" width="1280" height="720" loading="lazy" decoding="async">
+
+*Attack day: a coordinated fake account attack appears as a tight cluster at very high score, even though its activity volumes overlap the normal population below. (Slide from my Spark + AI Summit 2020 talk.)*
+
+On the volume axis those accounts overlapped substantially with the normal population, and individual accounts kept their activity modest, only tens of actions over the whole day, with randomized delays between requests to blend in. Defenses keyed on volume would have had little to work with. The score axis separated them cleanly anyway, because automated behavior sits far from organic behavior in feature space, and that is exactly what the model isolates.
+
+<img src="{{ '/assets/images/isolation-forest-attack-accounts.jpg' | relative_url }}" alt="Two time series of automated user actions from attack accounts showing low daily volumes accumulated with randomized timing between requests" width="1280" height="720" loading="lazy" decoding="async">
+
+*Two accounts from the attack cluster: low daily volumes with randomized timing between requests, and still cleanly separated by score. (Slide from my Spark + AI Summit 2020 talk.)*
 
 ## Beyond Automation Detection
 

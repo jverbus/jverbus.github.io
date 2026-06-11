@@ -86,8 +86,6 @@ sections:
           - label: "Brown Digital Repository"
             url: "https://repository.library.brown.edu/studio/item/bdr:674209/"
 
-  - title: Slides
-    items:
       - date: "2016"
         title: "Ph.D. Thesis Defense Slides"
         url: "/assets/files/20160510_jverbus_thesis_defense_v4_public.pdf"
