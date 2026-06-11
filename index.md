@@ -168,8 +168,27 @@ hide_title: true
         summary=item.summary
         venue=item.venue
         venue_label='Venue/Host:'
+        links=item.links
       %}
     {% endfor %}
+    {% assign panels_section = site.data.videos.sections | where: "title", "Panels" | first %}
+    {% assign sxsw_panel = panels_section.items | first %}
+    {% include site/card.html
+      card_class='video-list-item'
+      image=sxsw_panel.image
+      image_alt=sxsw_panel.image_alt
+      image_class='video-list-thumb'
+      content_class='video-list-content'
+      date=sxsw_panel.date
+      title=sxsw_panel.title
+      url=sxsw_panel.url
+      link_target='_blank'
+      link_rel='noopener'
+      summary=sxsw_panel.summary
+      venue=sxsw_panel.venue
+      venue_label='Venue/Host:'
+      links=sxsw_panel.links
+    %}
   </div>
   <p class="home-archive-link"><a href="{{ '/videos/' | relative_url }}">View videos</a></p>
 </section>
