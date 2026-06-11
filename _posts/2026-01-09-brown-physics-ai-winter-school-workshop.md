@@ -37,7 +37,25 @@ A key part of the workshop was turning the orbital-transfer problem into an RL e
 - **Reward:** dense shaping based on energy/angular-momentum error, plus costs for using Δv, ignition/action changes, crashing, and failing to reach the target region.
 - **Diagnostics:** trajectory plots, radius and radial-velocity histories, thrust impulse histories, and cumulative \|Δv\|.
 
-The Hohmann transfer gave us a useful reference point. In the idealized circular, coplanar, two-body case, the transfer has a clean burn-coast-burn structure. That made it easy to compare the learned policies against something interpretable, rather than treating the RL agent as a black box.
+## Analytic Ground Truth: The Hohmann Transfer
+
+Before letting RL control anything, we computed the analytic Hohmann transfer and executed it with the same physics integrator the agents would use. In the idealized circular, coplanar, two-body case, the transfer has a clean burn-coast-burn structure:
+
+1. **Burn 1 at r₁:** raise apoapsis to r₂
+2. **Coast** for half an ellipse
+3. **Burn 2 at r₂:** circularize
+
+From the analytic solution we computed Δv₁, Δv₂, the transfer time, and the total Δv, then simulated those burns directly.
+
+<img src="{{ '/assets/images/rl-orbital-hohmann-trajectory.png' | relative_url }}" alt="Hohmann transfer trajectory: the transfer ellipse touching the inner start orbit and the outer target orbit" width="708" height="711" loading="lazy" decoding="async">
+
+The verification plots made the baseline easy to check: the trajectory should be an ellipse touching r₁ and r₂, the radius-vs-time curve should rise cleanly from r₁ and settle at r₂ after the second burn, and the cumulative Δv should match the theoretical total.
+
+<img src="{{ '/assets/images/rl-orbital-hohmann-verification.png' | relative_url }}" alt="Verification plots for the simulated Hohmann transfer: radius versus time rising to the target, two thrust impulses showing the burn-coast-burn structure, and cumulative delta-v matching the ideal total" width="1411" height="911" loading="lazy" decoding="async">
+
+One teaching detail surfaced immediately: even the "analytic" solution does not land exactly on r₂ in a discrete simulator, because burn 2 fires on the first timestep at or after the computed transfer time. With a finite timestep, that introduces a small timing error. That mismatch was a useful moment to separate modeling error from algorithm error, and discretization effects from continuous-time theory — the total Δv still matches theory even when the final radius is slightly off.
+
+That gave us an interpretable yardstick for the learned policies, rather than treating the RL agent as a black box.
 
 ## What the Thrust Histories Revealed
 

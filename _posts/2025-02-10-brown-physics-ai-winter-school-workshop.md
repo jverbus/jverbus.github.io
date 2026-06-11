@@ -5,7 +5,7 @@ date: 2025-02-10
 last_modified_at: 2026-06-10
 description: "Hands-on workshop on LLMs and Retrieval-Augmented Generation for physics workflows, using the OpenAI API, an open Llama model, and LlamaIndex over research documents."
 og_image: "/assets/images/social/2025-02-10-brown-physics-ai-winter-school-workshop-1200x630.jpg"
-og_image_alt: "Exploring LLMs and RAG at the 2025 AI Winter School (Brown University)"
+og_image_alt: "2025 AI Winter School banner from the Brown University Department of Physics"
 og_image_width: 1200
 og_image_height: 630
 categories:
@@ -18,6 +18,8 @@ tags:
   - RAG
   - Physics
 ---
+
+<img src="{{ '/assets/images/2025-ai-winter-school-banner.jpg' | relative_url }}" alt="2025 AI Winter School banner — Brown University Department of Physics, Center for the Fundamental Physics of the Universe, January 13–16, 2025" width="1024" height="768" loading="eager" decoding="async" fetchpriority="high">
 
 I recently gave a 2.5-hour hands-on workshop on Large Language Models (LLMs) at the 2025 AI Winter School, hosted by the Center for the Fundamental Physics of the Universe at Brown University. The session focused on a practical question: how can physics researchers use LLMs with their own specialized technical material?
 

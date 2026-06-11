@@ -98,7 +98,7 @@ hide_title: true
   </div>
   <p>Open-source and software work centered on <code>linkedin/isolation-forest</code>, a distributed Spark/Scala implementation for large-scale unsupervised anomaly detection.</p>
   <div class="post-list" role="list">
-    {% for item in site.data.open_source.core_items %}
+    {% for item in site.data.open_source.core_items limit:1 %}
       {% include site/card.html
         date=item.date
         title=item.title
