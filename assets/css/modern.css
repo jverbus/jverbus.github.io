@@ -58,6 +58,7 @@
   --space-2: 0.5rem;
   --space-3: 0.75rem;
   --space-4: 1rem;
+  --space-5: 1.25rem;
   --space-6: 1.5rem;
   --space-8: 2rem;
   --space-10: 2.5rem;
@@ -137,6 +138,8 @@ button:focus-visible {
 }
 
 #page {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   overflow-x: clip;
 }
@@ -277,7 +280,6 @@ button:focus-visible {
 }
 
 .body {
-  min-height: calc(100vh - 8rem);
   padding: var(--space-8) 0 var(--space-10);
 }
 
@@ -290,7 +292,7 @@ button:focus-visible {
 
 .the-footer {
   border-top: 1px solid var(--border);
-  margin-top: var(--space-4);
+  margin-top: auto;
 }
 
 .unit-foot-inner {

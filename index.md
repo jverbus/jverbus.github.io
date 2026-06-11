@@ -2,11 +2,7 @@
 layout: page
 title: Home
 description: "AI systems, measurement, and reliability under uncertainty: agents, evaluation, anomaly detection, and adversarial ML."
-og_image: "/assets/images/social/2016-08-18-calibrating-the-lux-dark-matter-experiment-1200x630.jpg"
-og_image_alt: "James Verbus with the LUX dark matter experiment"
-og_image_width: 1200
-og_image_height: 630
-last_modified_at: 2026-06-11
+last_modified_at: 2026-06-12
 hide_title: true
 ---
 

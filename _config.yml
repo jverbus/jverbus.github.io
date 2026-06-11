@@ -14,8 +14,8 @@ highlighter: rouge
 
 # Site metadata
 title: James Verbus
-tagline:
-default_og_image: /assets/images/social/2016-08-18-calibrating-the-lux-dark-matter-experiment-1200x630.jpg
+tagline: "AI systems, measurement, and reliability under uncertainty."
+default_og_image: /assets/images/social/site-default-1200x630.png
 default_og_image_width: 1200
 default_og_image_height: 630
 author:

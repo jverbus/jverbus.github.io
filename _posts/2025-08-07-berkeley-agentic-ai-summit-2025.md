@@ -16,7 +16,7 @@ tags: [Generative AI, UC Berkeley, AI, Agents]
 > **Author’s Note:** This is a repost of my original post [here](https://www.linkedin.com/pulse/from-demos-deployment-insights-berkeleys-agentic-ai-summit-verbus-k1aie/?trackingId=lZ36KGNFSCu5V6BVTVbr2w%3D%3D).
 > The summit website with the full agenda and sessions are available [here](https://rdi.berkeley.edu/events/agentic-ai-summit).
 
-On Saturday (August 2nd, 2025) I attended UC Berkeley’s Agentic AI Summit, where researchers, founders, and operators mapped the road ahead for agentic systems. Below are my key takeaways (using AI to help distill them) from every main‑stage talk and panel. (Views are my own, not those of the summit, the speakers, or my employer.)
+On Saturday (August 2nd, 2025) I attended UC Berkeley’s Agentic AI Summit, where researchers, founders, and operators mapped the road ahead for agentic systems. Below are my key takeaways (using AI to help distill them) from every main‑stage talk and panel. (Views are my own, not those of the summit, the speakers, or my employer at the time.)
 
 TL;DR: Agentic AI is moving beyond demos toward the infrastructure, standards, and reliability required for production. Continued gains in hardware efficiency, open connectors, built-in evaluation, and secure governance will enable billions of low‑cost, task‑oriented agents. In one early deployment, a case study shows that a green‑field function can achieve a 10x productivity boost, foreshadowing orgs built around supervising fleets of digital co‑workers rather than executing every step themselves.
 
@@ -49,13 +49,13 @@ TL;DR: Agentic AI is moving beyond demos toward the infrastructure, standards, a
 - **Ed Chi – “Google Gemini Era: Bringing AI to Universal Assistant and the Real World”:** A single multimodal agent that fuses pattern recognition with tool‑based reasoning is within reach but requires robust workflows, personalization, and search‑grade retrieval.
 - **Jakub Pachocki – “Automating Discovery”:** Frontier models match experts on structured tasks yet still lack the creative “last insight”; enabling genuine discovery is OpenAI’s next frontier.
 - **Sergey Levine – “Multi-Turn Reinforcement Learning for LLM Agents”:** Offline RL on human dialogs, paired with the LLM’s latent world model, enables goal‑conditioned planning without simulators.
-- **Panel – "Foundations of Agents":** Speakers emphasized rigorous guardrails and evaluation pipelines and noted a trend where medium‑size models inherit frontier capabilities within a few generations—hinting at powerful on‑device agents soon.
+- **Panel – "Foundations of Agents":** Speakers emphasized rigorous guardrails and evaluation pipelines and noted a trend where medium‑size models inherit frontier capabilities within a few generations, hinting at powerful on‑device agents soon.
 
 ## Session 4: Next‑Generation Enterprise Agents
 
 - **Burak Gokturk – “AI Trends and the Moment for Agentic Systems”:** Enterprises need flexible platforms that mix models with retrieval and tool calling because model rankings shift too quickly for single‑model bets.
 - **Arvind Jain – “Transforming to an AI‑Native Enterprise”:** AI transformation starts by up‑skilling employees and then re‑architecting processes on a secure, horizontal platform that enforces consistent governance.
-- **May Habib – “From Execution to Supervision: Scaling Productivity with Agents”:** An early agent case study showed one team operating at ~10% of prior head count in a green‑field area, suggesting 10x productivity when agents own the work loop and humans supervise via sandboxing, traceability, and delegated authority—foreshadowing AI‑native firms where agents may even hire people.
+- **May Habib – “From Execution to Supervision: Scaling Productivity with Agents”:** An early agent case study showed one team operating at ~10% of prior head count in a green‑field area, suggesting 10x productivity when agents own the work loop and humans supervise via sandboxing, traceability, and delegated authority, foreshadowing AI‑native firms where agents may even hire people.
 - **Richard Socher – “Search APIs for Accurate Answers and Agents”:** The search layer now caps agent quality; real‑time, citation‑rich APIs let smaller agents outperform larger rivals on some benchmarks.
 - **Panel – "Next‑Generation Enterprise Agents":** Reliability, deep evaluation, and disciplined data/tool handling will decide which enterprise agents graduate from pilots to mission‑critical systems.
 
@@ -63,7 +63,7 @@ TL;DR: Agentic AI is moving beyond demos toward the infrastructure, standards, a
 
 - **Michele Catasta – “The Breakout Year of Coding Agents”:** Bigger RL‑tuned models plus minimal scaffolding pushed coding agents from seconds to ~30 minutes of autonomous work (doubling every seven months); smarter context handling is the next bottleneck.
 - **Karthik Narasimhan – “Reliable AI Agents for Tomorrow’s World”:** Predictability and alignment matter more than raw capability; agents must self‑monitor and cross‑check to earn user trust.
-- **Adarsh Hiremath – “Future of Work in an AI Economy”:** Expert feedback and rigorous evaluation—not extra GPUs—will fuel the next wave; platforms that match domain specialists to training loops are emerging.
-- **Snehal Antani – “Building Scalable AI Companies”:** Their “AI hacker” converts recon data into a cyber‑terrain graph and routes each reasoning query to the lowest‑cost model that meets latency and accuracy SLAs, showing scalability depends on precision prompting, dynamic model routing, and domain‑realistic benchmarks—not ever‑larger monoliths.
+- **Adarsh Hiremath – “Future of Work in an AI Economy”:** Expert feedback and rigorous evaluation, not extra GPUs, will fuel the next wave; platforms that match domain specialists to training loops are emerging.
+- **Snehal Antani – “Building Scalable AI Companies”:** Their “AI hacker” converts recon data into a cyber‑terrain graph and routes each reasoning query to the lowest‑cost model that meets latency and accuracy SLAs, showing scalability depends on precision prompting, dynamic model routing, and domain‑realistic benchmarks, not ever‑larger monoliths.
 - **Panel – "Agents Transforming Industries":** Across coding, talent pipelines, and operations, workflow‑level metrics and human‑in‑the‑loop guardrails remain mandatory until agents prove repeatable reliability.
-- **Vinod Khosla – Fireside Chat:** Vinod argues that resource‑light, high‑risk exploration can out‑innovate big labs, warns that guilds and politics—not algorithms—will set adoption speed, and urges entrepreneurs to chase improbable ideas as AI approaches 80% of tasks in 80% of jobs.
+- **Vinod Khosla – Fireside Chat:** Vinod argues that resource‑light, high‑risk exploration can out‑innovate big labs, warns that guilds and politics, not algorithms, will set adoption speed, and urges entrepreneurs to chase improbable ideas as AI approaches 80% of tasks in 80% of jobs.
