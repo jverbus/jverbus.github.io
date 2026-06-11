@@ -33,7 +33,11 @@ The technique developed in this thesis removes simulation from the energy scale.
 
 The neutron source was an Adelphi Technology DD108 generator. Before deployment, its output was characterized with a time-of-flight measurement at Brown University, confirming a quasi-mono-energetic spectrum at the nominal 2.45 MeV and suitable for the calibration.
 
-At SURF, the generator was positioned outside the water tank shielding LUX, 8 m in diameter, and neutrons were delivered through an air-filled conduit that crosses the water to the detector cryostat, defining a collimated beam through the active xenon volume.
+At SURF, the generator was positioned outside the water tank shielding LUX, 8 m in diameter, and neutrons were delivered through an air-filled conduit that crosses the water to the detector cryostat, defining a collimated beam through the active xenon volume. The conduit was installed and aligned with the detector before the tank was filled.
+
+<img src="{{ '/assets/images/lux-water-tank-conduit.jpg' | relative_url }}" alt="Interior of the empty LUX water tank with the titanium cryostat suspended at center and the neutron conduit hanging horizontally at right" width="970" height="646" loading="lazy" decoding="async">
+
+*The interior of the LUX water tank before filling. The titanium cryostat hangs at center; the neutron conduit is suspended at right, in line with the future beam path. (Photograph courtesy of the Sanford Underground Research Facility; from my dissertation defense slides.)*
 
 <img src="{{ '/assets/images/lux-dd-setup-diagram.jpg' | relative_url }}" alt="Conceptual diagram of the LUX D-D calibration: neutrons travel through a conduit across the water tank into the TPC, where a double scatter is reconstructed from PMT hit patterns and drift times" width="1310" height="1259" loading="lazy" decoding="async">
 
