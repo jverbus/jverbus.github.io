@@ -23,7 +23,7 @@ hide_title: true
   </div>
   <div class="home-hero-copy">
     <p class="home-lede">I build AI systems for uncertain and adversarial environments: systems where measurement is hard, feedback is noisy, and getting the right answer requires more than an evaluation score.</p>
-    <p class="home-lede">After nearly a decade at LinkedIn, most recently as a Senior Staff Machine Learning Engineer focused on anti-abuse, trust, and platform integrity, I chose to leave to focus full-time on frontier AI systems: agents, simulation, evaluation, measurement, and research workflows.</p>
+    <p class="home-lede">For nearly a decade at LinkedIn, most recently as a Senior Staff Machine Learning Engineer, I built production AI for anti-abuse, trust, and platform integrity: deep learning over raw sequences of member activity, unsupervised anomaly detection at scale, and detection of AI-generated images. I created and open-sourced LinkedIn's isolation-forest library, which is used widely in production, and drove significant AI-productivity and infrastructure upgrades across the Trust organization.</p>
     <p class="home-lede">Before LinkedIn, I earned my Ph.D. in physics at Brown working on <a href="{{ '/2016/08/18/calibrating-the-lux-dark-matter-experiment/' | relative_url }}">LUX</a>, one of the world's most sensitive dark-matter detectors. Across physics, platform integrity, and AI, the through-line has been the same: extract weak signals, measure what matters, understand uncertainty, and build systems that remain reliable when the ground truth is difficult to see.</p>
   </div>
   <div class="home-contact" id="contact" aria-label="Contact links">
