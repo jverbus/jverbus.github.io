@@ -73,6 +73,8 @@ These artifacts are not just cosmetic. They correspond to regions where a model 
 
 The plots also served as validation artifacts. If the EIF implementation still produced the same cross-shaped artifacts as standard IF, or if the score contours did not track the known synthetic structure, that would have been a strong signal that something was wrong.
 
+{% include site/if-demo.html %}
+
 ## Benchmark results
 
 I benchmarked three configurations across 13 standard outlier-detection datasets:

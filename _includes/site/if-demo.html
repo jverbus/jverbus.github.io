@@ -1,0 +1,36 @@
+<div class="if-demo" data-if-demo data-seed="20260318" hidden>
+  <h2 class="if-demo-title" id="try-it-live">Try it: retrain both models live</h2>
+  <p class="if-demo-intro">
+    This demo runs a small isolation forest implementation in your browser
+    with the same scoring formula as the library: 256-point subsamples and
+    the standard path-length normalization. Both panels train on the same
+    points. Brighter regions receive higher anomaly scores.
+  </p>
+  <div class="if-demo-toolbar">
+    <div class="if-demo-group" role="group" aria-label="Preset datasets">
+      <button type="button" class="if-demo-btn is-active" data-preset="blob">Single blob</button>
+      <button type="button" class="if-demo-btn" data-preset="two-blobs">Two blobs</button>
+      <button type="button" class="if-demo-btn" data-preset="sinusoid">Sinusoid</button>
+    </div>
+    <div class="if-demo-group">
+      <label class="if-demo-trees">Trees
+        <input type="range" min="25" max="300" step="25" value="100" aria-label="Number of trees">
+        <output aria-hidden="true">100</output>
+      </label>
+      <button type="button" class="if-demo-btn" data-action="reroll" title="Rebuild both forests with a new random seed">Re-roll</button>
+      <button type="button" class="if-demo-btn" data-action="clear">Clear</button>
+    </div>
+  </div>
+  <div class="if-demo-panels">
+    <figure>
+      <canvas class="if-demo-canvas" data-panel="if" role="img" aria-label="Interactive anomaly-score heatmap for standard Isolation Forest with axis-aligned splits. Brighter regions score more anomalous."></canvas>
+      <figcaption>Standard Isolation Forest &middot; axis-aligned splits</figcaption>
+    </figure>
+    <figure>
+      <canvas class="if-demo-canvas" data-panel="eif" role="img" aria-label="Interactive anomaly-score heatmap for Extended Isolation Forest with random hyperplane splits. Brighter regions score more anomalous."></canvas>
+      <figcaption>Extended Isolation Forest &middot; random hyperplanes</figcaption>
+    </figure>
+  </div>
+  <p class="if-demo-hint">Click or drag on either panel to add points &middot; shift-click to erase &middot; both models retrain on every change. Look for the rectangular bands and cross-shaped artifacts on the left that the hyperplane splits on the right avoid.</p>
+</div>
+<script src="{{ '/assets/js/if-demo.js' | relative_url }}?v=1" defer></script>
