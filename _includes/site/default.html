@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 {% include site/head.html %}
-<body class="layout-{{ page.layout | default: 'page' }} page-{{ page.title | default: 'site' | slugify }}{% if page.url == '/' or page.url == '/index.html' %} page-home{% endif %}">
+{% capture body_classes %}layout-{{ page.layout | default: 'page' }} page-{{ page.title | default: 'site' | slugify }}{% if page.url == '/' or page.url == '/index.html' %} page-home{% endif %}{% endcapture %}
+<body class="{{ body_classes | split: ' ' | uniq | join: ' ' }}">
 
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <div id="page" class="hentry">

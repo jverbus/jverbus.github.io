@@ -33,7 +33,6 @@ Talks, panels, and workshop recordings. Newest first.
       summary=item.summary
       details=item.details
       venue=item.venue
-      venue_label='Venue/Host:'
       links=item.links
     %}
   {% endfor %}

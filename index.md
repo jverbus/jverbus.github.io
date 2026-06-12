@@ -155,7 +155,6 @@ hide_title: true
       link_rel='noopener'
       summary=llm_talk.summary
       venue=llm_talk.venue
-      venue_label='Venue/Host:'
       links=llm_talk.links
     %}
     {% assign panels_section = site.data.videos.sections | where: "title", "Panels" | first %}
@@ -173,7 +172,6 @@ hide_title: true
       link_rel='noopener'
       summary=sxsw_panel.summary
       venue=sxsw_panel.venue
-      venue_label='Venue/Host:'
       links=sxsw_panel.links
     %}
     {% assign abuse_talk = selected_talks_section.items | where: "date", "2019" | first %}
@@ -190,7 +188,6 @@ hide_title: true
       link_rel='noopener'
       summary=abuse_talk.summary
       venue=abuse_talk.venue
-      venue_label='Venue/Host:'
       links=abuse_talk.links
     %}
   </div>
