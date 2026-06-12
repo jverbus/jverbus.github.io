@@ -53,10 +53,6 @@ The verification plots made the baseline easy to check: the trajectory should be
 
 <img src="{{ '/assets/images/rl-orbital-hohmann-verification.png' | relative_url }}" alt="Verification plots for the simulated Hohmann transfer: radius versus time rising to the target, two thrust impulses showing the burn-coast-burn structure, and cumulative delta-v matching the ideal total" width="1411" height="911" loading="lazy" decoding="async">
 
-One teaching detail surfaced immediately: even the "analytic" solution does not land exactly on r₂ in a discrete simulator, because burn 2 fires on the first timestep at or after the computed transfer time. With a finite timestep, that introduces a small timing error. That mismatch was a useful moment to separate modeling error from algorithm error, and discretization effects from continuous-time theory — the total Δv still matches theory even when the final radius is slightly off.
-
-That gave us an interpretable yardstick for the learned policies, rather than treating the RL agent as a black box.
-
 ## What the Thrust Histories Revealed
 
 The most useful lesson was that reaching the target orbit is not the same as learning a good transfer.
