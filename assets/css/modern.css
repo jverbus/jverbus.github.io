@@ -122,6 +122,16 @@ button:focus-visible {
   border-radius: 6px;
 }
 
+/* Pill-shaped controls keep their radius when focused */
+.nav-global li a:focus-visible,
+.nav-menu-toggle:focus-visible,
+.cta-button:focus-visible,
+.contact-list a:focus-visible,
+.list-linear a:focus-visible,
+.layout-post .pagination a:focus-visible {
+  border-radius: 999px;
+}
+
 .skip-link {
   position: absolute;
   left: -9999px;
@@ -259,7 +269,7 @@ button:focus-visible {
   border: 1px solid transparent;
   border-radius: 999px;
   padding: 0.34rem 0.72rem;
-  transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease, transform 120ms ease;
+  transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -269,7 +279,6 @@ button:focus-visible {
   border-color: var(--border);
   background: rgba(17, 24, 39, 0.04);
   text-decoration: none;
-  transform: translateY(-0.5px);
 }
 
 .nav-global li.active a {
@@ -339,6 +348,11 @@ h4 {
   color: var(--heading);
   letter-spacing: -0.012em;
   font-weight: 670;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 h1,
@@ -546,10 +560,30 @@ pre code {
 
 table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   border: 1px solid var(--border);
   border-radius: 8px;
-  overflow: hidden;
+}
+
+thead th:first-child {
+  border-top-left-radius: 7px;
+}
+
+thead th:last-child {
+  border-top-right-radius: 7px;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 7px;
+}
+
+tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 7px;
 }
 
 .table-scroll {
@@ -573,6 +607,7 @@ td {
 th {
   background: var(--surface-muted);
   font-weight: 600;
+  border-bottom-color: var(--border-strong);
 }
 
 img,
@@ -627,6 +662,16 @@ video {
   border: 1px solid var(--border);
   border-radius: 999px;
   padding: 0.34rem 0.5rem;
+  transition: background-color 140ms ease, border-color 140ms ease;
+}
+
+.list-linear a:hover {
+  text-decoration: none;
+}
+
+.list-linear a:hover span {
+  background: #e9edf4;
+  border-color: var(--border-strong);
 }
 
 .pagination ul {
@@ -759,6 +804,7 @@ h2.post-year-heading:first-of-type {
   padding: 0.55rem 1.1rem;
   font-weight: 600;
   text-decoration: none;
+  transition: background-color 140ms ease;
 }
 
 .cta-button:hover {
@@ -1275,6 +1321,7 @@ h3:hover .heading-anchor,
   display: block;
   height: 20px;
   width: auto;
+  border-radius: 3px;
 }
 
 .project-hero {
@@ -1631,8 +1678,25 @@ h3:hover .heading-anchor,
   .the-header,
   .the-footer,
   .gotop,
-  .skip-link {
+  .skip-link,
+  .breadcrumbs,
+  .post-cta,
+  .pagination {
     display: none !important;
+  }
+
+  pre {
+    background: #fff;
+    color: #000;
+    border: 1px solid #ddd;
+    box-shadow: none;
+  }
+
+  pre code,
+  .highlight span {
+    color: #000 !important;
+    background: transparent !important;
+    font-weight: 400;
   }
 
   .body {
@@ -1730,6 +1794,11 @@ h3:hover .heading-anchor,
     color: #c2d1e6;
     background: var(--surface-muted);
     border-color: var(--border);
+  }
+
+  .list-linear a:hover span {
+    background: #18263e;
+    border-color: var(--border-strong);
   }
 
   .post-list-item {
