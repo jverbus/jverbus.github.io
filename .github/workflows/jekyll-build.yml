@@ -21,6 +21,14 @@ jobs:
       - name: Validate post social image metadata
         run: python3 scripts/check_post_og.py
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Test interactive isolation-forest demo
+        run: node scripts/test_if_demo.js
+
       - name: Build site
         run: bundle exec jekyll build
 
