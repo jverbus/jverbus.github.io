@@ -9,6 +9,10 @@ og_image_width: 1200
 og_image_height: 630
 categories: ["AI and Machine Learning"]
 tags: [LinkedIn, machine learning, AI, cybersecurity, NLP]
+related:
+  - /2019/08/13/open-source-isolation-forest-spark-scala/
+  - /2023/06/20/detecting-ai-generated-profile-photos/
+  - /2024/08/15/finding-ai-generated-faces-in-the-wild/
 ---
 
 LinkedIn's Anti-Abuse AI team builds and runs the production models defending the platform against fake accounts, account takeovers, profile scraping, and automated spam.

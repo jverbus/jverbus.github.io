@@ -1,0 +1,47 @@
+{%- assign video_items = "" | split: "" -%}
+{%- for section in site.data.videos.sections -%}
+  {%- for item in section.items -%}
+    {%- assign video_items = video_items | push: item -%}
+  {%- endfor -%}
+{%- endfor -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Talks, panels, and workshop recordings by {{ site.author.name }}",
+  "itemListElement": [
+    {%- for item in video_items -%}
+    {%- assign video_thumb = item.image -%}
+    {%- unless video_thumb contains '://' -%}
+      {%- assign video_thumb = video_thumb | absolute_url -%}
+    {%- endunless -%}
+    {%- assign embed_id = nil -%}
+    {%- if item.url contains 'youtube.com/watch' -%}
+      {%- assign embed_id = item.url | split: 'v=' | last | split: '&' | first -%}
+    {%- elsif item.url contains 'youtu.be/' -%}
+      {%- assign embed_id = item.url | split: 'youtu.be/' | last | split: '?' | first -%}
+    {%- endif %}
+    {
+      "@type": "ListItem",
+      "position": {{ forloop.index }},
+      "item": {
+        "@type": "VideoObject",
+        "name": {{ item.title | jsonify }},
+        "description": {{ item.summary | default: item.title | jsonify }},
+        "thumbnailUrl": {{ video_thumb | jsonify }},
+        "uploadDate": {{ item.published | default: item.date | jsonify }},
+        "url": {{ item.url | jsonify }},
+        {%- if embed_id %}
+        "embedUrl": {{ embed_id | prepend: 'https://www.youtube.com/embed/' | jsonify }},
+        {%- endif %}
+        "author": {
+          "@type": "Person",
+          "@id": {{ '/' | absolute_url | append: '#person' | jsonify }},
+          "name": {{ site.author.name | jsonify }}
+        }
+      }
+    }{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor %}
+  ]
+}
+</script>

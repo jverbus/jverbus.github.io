@@ -17,6 +17,10 @@ tags:
   - LLM
   - RAG
   - Physics
+related:
+  - /2026/01/09/brown-physics-ai-winter-school-workshop/
+  - /2024/08/15/finding-ai-generated-faces-in-the-wild/
+  - /2016/08/18/calibrating-the-lux-dark-matter-experiment/
 ---
 
 <img src="{{ '/assets/images/2025-ai-winter-school-banner.jpg' | relative_url }}" alt="2025 AI Winter School banner — Brown University Department of Physics, Center for the Fundamental Physics of the Universe, January 13–16, 2025" width="1024" height="768" loading="eager" decoding="async" fetchpriority="high">

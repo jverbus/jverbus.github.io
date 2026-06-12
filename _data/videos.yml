@@ -7,6 +7,7 @@ sections:
     link_rel: noopener
     items:
       - date: "2026"
+        published: "2026-01-09"
         title: "Brown AI Winter School 2026: Reinforcement Learning for Orbital Transfers"
         url: "https://www.youtube.com/watch?v=BdPzEhGc7Cw"
         image: "https://i.ytimg.com/vi/BdPzEhGc7Cw/hqdefault.jpg"
@@ -16,6 +17,7 @@ sections:
         venue: "AI Winter School 2026, Center for the Fundamental Physics of the Universe at Brown University."
 
       - date: "2025"
+        published: "2025-02-10"
         title: "Brown AI Winter School 2025: Exploring LLMs and RAG"
         url: "https://www.youtube.com/watch?v=3Ra9vuHEh7U&list=PL21yWP3gTVmo7gfqS1y0GSeB5ypla8kvi&index=5"
         image: "https://i.ytimg.com/vi/3Ra9vuHEh7U/hqdefault.jpg"

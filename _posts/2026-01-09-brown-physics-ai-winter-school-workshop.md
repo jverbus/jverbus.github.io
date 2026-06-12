@@ -18,6 +18,10 @@ tags:
   - Physics
   - Orbital Mechanics
   - Astrodynamics
+related:
+  - /2025/02/10/brown-physics-ai-winter-school-workshop/
+  - /2016/08/18/calibrating-the-lux-dark-matter-experiment/
+  - /2026/03/18/announcing-extended-isolation-forest-support/
 ---
 
 <img src="{{ '/assets/images/2026-ai-winter-school-banner.png' | relative_url }}" alt="2026 AI Winter School banner — Brown University Department of Physics, Center for the Fundamental Physics of the Universe, January 6–9, 2026" width="1024" height="530" loading="eager" decoding="async" fetchpriority="high">

@@ -30,6 +30,34 @@
         <div class="entry-content">
           {{ content }}
 
+          {% assign related_posts = "" | split: "" %}
+          {% if page.related %}
+            {% for related_url in page.related %}
+              {% assign related_match = site.posts | where: "url", related_url | first %}
+              {% if related_match %}
+                {% assign related_posts = related_posts | push: related_match %}
+              {% endif %}
+            {% endfor %}
+          {% else %}
+            {% assign primary_category = page.categories | first %}
+            {% if primary_category %}
+              {% assign related_posts = site.posts | where_exp: "p", "p.categories contains primary_category" | where_exp: "p", "p.url != page.url" %}
+            {% endif %}
+          {% endif %}
+          {% if related_posts.size > 0 %}
+          <section class="related-posts" aria-labelledby="related-writing-heading">
+            <h2 class="related-posts-title" id="related-writing-heading">Related writing</h2>
+            <ul class="post-index-list">
+              {% for related_post in related_posts limit: 3 %}
+              <li>
+                <span class="post-index-date">{{ related_post.date | date: "%b %-d, %Y" }}</span>
+                <a href="{{ related_post.url | relative_url }}">{{ related_post.title }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </section>
+          {% endif %}
+
           {% include site/post-cta.html %}
 
           <div class="meta">

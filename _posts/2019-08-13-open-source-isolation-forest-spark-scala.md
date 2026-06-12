@@ -9,6 +9,10 @@ og_image_width: 1200
 og_image_height: 630
 categories: ["AI and Machine Learning"]
 tags: [LinkedIn, isolation forest, outlier detection, unsupervised learning, machine learning, Spark, Scala]
+related:
+  - /2026/03/18/announcing-extended-isolation-forest-support/
+  - /2024/09/23/announcing-onnx-support-in-isolation-forest/
+  - /2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/
 ---
 
 I'm happy to announce that my Scala/Spark implementation of isolation forests, an algorithm for unsupervised outlier detection, was open sourced today. It is the implementation the LinkedIn Anti-Abuse AI team relies on in production to find abusive activity, and this post covers why the algorithm fits the anti-abuse problem, how it works, and what the library gives you.

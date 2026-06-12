@@ -9,6 +9,10 @@ og_image_width: 1200
 og_image_height: 630
 categories: ["AI and Machine Learning"]
 tags: [isolation forest, extended isolation forest, anomaly detection, outlier detection, Spark, Scala, open source]
+related:
+  - /2019/08/13/open-source-isolation-forest-spark-scala/
+  - /2024/09/23/announcing-onnx-support-in-isolation-forest/
+  - /2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/
 ---
 
 I've added **Extended Isolation Forest (EIF)** to LinkedIn's open-source Spark/Scala `isolation-forest` library. EIF replaces axis-aligned splits with random hyperplane splits, reducing score artifacts that standard Isolation Forest can produce and improving anomaly detection in cases where axis-aligned bias is a real limitation.

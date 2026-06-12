@@ -1500,6 +1500,19 @@ h3:hover .heading-anchor,
   margin: 0;
 }
 
+.related-posts {
+  margin-top: var(--space-10);
+}
+
+.related-posts-title {
+  margin: 0 0 var(--space-3);
+  font-size: 1.18rem;
+}
+
+.related-posts .post-index-list {
+  margin-bottom: 0;
+}
+
 /* Interactive isolation-forest demo */
 .if-demo {
   margin: var(--space-8) 0;

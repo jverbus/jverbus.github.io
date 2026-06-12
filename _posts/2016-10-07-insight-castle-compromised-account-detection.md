@@ -9,6 +9,10 @@ og_image_width: 1200
 og_image_height: 630
 categories: ["Data Science Projects"]
 tags: [Insight Data Science, Castle.io, consulting, fraud, account compromise, anomaly detection, outlier detection, unsupervised learning, likelihood]
+related:
+  - /2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/
+  - /2019/08/13/open-source-isolation-forest-spark-scala/
+  - /2016/08/18/calibrating-the-lux-dark-matter-experiment/
 ---
 
 ## Client: Castle Intelligence, Inc.

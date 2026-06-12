@@ -9,6 +9,10 @@ og_image_width: 1200
 og_image_height: 630
 categories: ["AI and Machine Learning"]
 tags: [LinkedIn, machine learning, AI, Generative AI, deepfake]
+related:
+  - /2024/08/15/finding-ai-generated-faces-in-the-wild/
+  - /2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/
+  - /2026/03/18/announcing-extended-isolation-forest-support/
 ---
 
 Fake accounts increasingly rely on AI-generated profile photos: a synthetic face is unique and photorealistic, and it leaves none of the reverse-image-search traces that stolen photos do. Detecting these images automatically, at platform scale where false positives are expensive, is a hard, high-stakes problem for any platform that fights fake accounts.

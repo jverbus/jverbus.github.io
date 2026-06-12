@@ -9,6 +9,10 @@ og_image_height: 630
 last_modified_at: 2026-06-10
 categories: ["AI and Machine Learning"]
 tags: [LinkedIn, machine learning, AI, Generative AI, deepfake]
+related:
+  - /2023/06/20/detecting-ai-generated-profile-photos/
+  - /2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/
+  - /2026/03/18/announcing-extended-isolation-forest-support/
 ---
 
 Our [2023 detector]({{ '/2023/06/20/detecting-ai-generated-profile-photos/' | relative_url }}) exploited the rigid facial geometry of StyleGAN images, and it worked extremely well against that family of generators. But the generative landscape did not hold still. Within a year, a fake profile photo could just as easily come from Stable Diffusion, DALL-E 2, or Midjourney, none of which share StyleGAN's telltale alignment, and it would arrive small and recompressed by whatever upload pipeline it passed through.

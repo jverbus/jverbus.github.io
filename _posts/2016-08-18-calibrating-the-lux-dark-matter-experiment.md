@@ -9,6 +9,10 @@ og_image_width: 1200
 og_image_height: 630
 categories: ["Ph.D. Thesis"]
 tags: [Physics, astrophysics, dark matter, D-D neutron generator, Brown University, LUX, LZ]
+related:
+  - /2026/01/09/brown-physics-ai-winter-school-workshop/
+  - /2016/10/07/insight-castle-compromised-account-detection/
+  - /2019/08/13/open-source-isolation-forest-spark-scala/
 ---
 
 Dark matter constitutes about 85% of the matter in the universe, yet it has never been directly observed. The [Large Underground Xenon (LUX)](https://lux.brown.edu/LUX_dark_matter/Home.html) experiment searched for it with a dual-phase liquid xenon time projection chamber (TPC) containing 370 kg of xenon, 250 kg of it active, operated on the 4850-foot level at the Sanford Underground Research Facility in Lead, South Dakota. At the time of this work, LUX held the most stringent limits over most of the WIMP mass range on Weakly Interacting Massive Particles (WIMPs), a leading class of dark matter candidates.

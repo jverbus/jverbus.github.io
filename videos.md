@@ -38,3 +38,5 @@ Talks, panels, and workshop recordings. Newest first.
   {% endfor %}
 </div>
 {% endfor %}
+
+{% include site/video-schema.html %}
