@@ -1551,7 +1551,8 @@ h3:hover .heading-anchor,
   gap: var(--space-2);
 }
 
-.if-demo-btn {
+.if-demo-btn,
+.demo-btn {
   font: inherit;
   font-size: 0.85rem;
   font-weight: 550;
@@ -1564,7 +1565,8 @@ h3:hover .heading-anchor,
   transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
 }
 
-.if-demo-btn:hover {
+.if-demo-btn:hover,
+.demo-btn:hover {
   color: var(--text);
   border-color: var(--border-strong);
   background: var(--surface-muted);
@@ -1576,7 +1578,8 @@ h3:hover .heading-anchor,
   background: #f7fbff;
 }
 
-.if-demo-btn:focus-visible {
+.if-demo-btn:focus-visible,
+.demo-btn:focus-visible {
   border-radius: 999px;
 }
 
@@ -1621,7 +1624,8 @@ h3:hover .heading-anchor,
   cursor: crosshair;
 }
 
-.if-demo-panels figcaption {
+.if-demo-panels figcaption,
+.orbit-demo-layout figcaption {
   margin-top: 0.45rem;
   color: var(--text-muted);
   font-size: 0.78rem;
@@ -1671,6 +1675,72 @@ h3:hover .heading-anchor,
   color: var(--text-muted);
   font-size: 0.82rem;
   line-height: 1.55;
+}
+
+/* Interactive orbital-transfer demo */
+.orbit-demo {
+  margin: var(--space-8) 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: var(--space-4) var(--space-4) var(--space-3);
+}
+
+.orbit-demo-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-3);
+}
+
+.orbit-demo-layout figure {
+  margin: 0;
+  min-width: 0;
+}
+
+.orbit-demo-map {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #0c1426;
+}
+
+.orbit-demo-charts {
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+}
+
+.orbit-demo-chart {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2.1 / 1;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-muted);
+}
+
+.orbit-demo-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.orbit-demo-readout {
+  margin: var(--space-2) 0 0;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.orbit-demo-status {
+  margin: var(--space-1) 0 0;
+  min-height: 1.4em;
+  color: var(--text);
+  font-size: 0.88rem;
+  font-weight: 550;
 }
 
 /* Editorial prose: running text in Source Serif 4; UI chrome stays in Inter */
@@ -1865,6 +1935,10 @@ h3:hover .heading-anchor,
     grid-template-columns: 1fr;
   }
 
+  .orbit-demo-layout {
+    grid-template-columns: 1fr;
+  }
+
   .video-list-item {
     grid-template-columns: 1fr;
     gap: 0.75rem;
@@ -1936,7 +2010,8 @@ h3:hover .heading-anchor,
   .breadcrumbs,
   .post-cta,
   .pagination,
-  .if-demo {
+  .if-demo,
+  .orbit-demo {
     display: none !important;
   }
 

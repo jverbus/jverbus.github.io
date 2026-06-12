@@ -1,0 +1,39 @@
+<div id="fly-it-live" aria-hidden="true"></div>
+<div class="orbit-demo" data-orbit-demo hidden>
+  <h2 class="if-demo-title" id="fly-it-live-heading">Try it: fly the transfer yourself</h2>
+  <p class="if-demo-intro">
+    The same setup as the workshop notebook: a normalized 2-D two-body
+    simulator with tangential impulse control. Start on the inner circular
+    orbit (r&#8321; = 1) and circularize at the target radius
+    (r&#8322; = 1.8) using as little &Delta;v as possible. The analytic
+    Hohmann transfer needs &Delta;v = 0.249 &mdash; try to beat it, or press
+    Run Hohmann to watch the textbook solution execute in discrete time.
+  </p>
+  <div class="orbit-demo-layout">
+    <figure>
+      <canvas class="orbit-demo-map" data-orbit="map" role="img" aria-label="Orbit view: a planet at the center, dashed start and target orbits, the analytic Hohmann transfer ellipse, and the ship with its trail."></canvas>
+      <figcaption>Orbit view &middot; dashed circles: start and target orbits &middot; dotted arc: analytic Hohmann transfer</figcaption>
+    </figure>
+    <div class="orbit-demo-charts">
+      <figure>
+        <canvas class="orbit-demo-chart" data-orbit="radius" role="img" aria-label="Radius versus time, with the target radius band shaded."></canvas>
+        <figcaption>Radius vs. time &middot; shaded band: target</figcaption>
+      </figure>
+      <figure>
+        <canvas class="orbit-demo-chart" data-orbit="thrust" role="img" aria-label="History of thrust impulses; upward stems are prograde, downward stems are retrograde."></canvas>
+        <figcaption>Thrust history</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="orbit-demo-controls">
+    <button type="button" class="demo-btn" data-action="prograde">&#9650; Prograde</button>
+    <button type="button" class="demo-btn" data-action="retrograde">&#9660; Retrograde</button>
+    <button type="button" class="demo-btn" data-action="pause" aria-pressed="false">Pause</button>
+    <button type="button" class="demo-btn" data-action="reset">Reset</button>
+    <button type="button" class="demo-btn" data-action="hohmann" title="Execute the analytic burn-coast-burn plan in the simulator">Run Hohmann</button>
+  </div>
+  <p class="orbit-demo-readout" data-orbit-readout aria-hidden="true"></p>
+  <p class="orbit-demo-status" data-orbit-status role="status"></p>
+  <p class="if-demo-hint">Hold a burn button to keep firing (or use the &uarr;/&darr; arrow keys) &middot; prograde fires along your velocity, retrograde against it &middot; watch the thrust history: a clean transfer is two burns and a coast, not a stream of corrections.</p>
+</div>
+<script src="{{ '/assets/js/orbit-demo.js' | relative_url }}?v=1" defer></script>

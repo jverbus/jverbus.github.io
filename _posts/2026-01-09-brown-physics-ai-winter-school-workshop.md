@@ -61,6 +61,8 @@ One teaching detail surfaced immediately: even the "analytic" solution does not 
 
 That gave us an interpretable yardstick for the learned policies, rather than treating the RL agent as a black box.
 
+{% include site/orbit-demo.html %}
+
 ## What the Thrust Histories Revealed
 
 The most useful lesson was that reaching the target orbit is not the same as learning a good transfer.
