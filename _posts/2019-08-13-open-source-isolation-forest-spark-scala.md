@@ -2,7 +2,7 @@
 layout: post
 title: "Open Source: Spark/Scala Isolation Forest Library"
 description: "Announcement and resources for LinkedIn's open-source Scala/Spark isolation-forest library for large-scale unsupervised anomaly detection."
-last_modified_at: 2026-06-10
+last_modified_at: 2026-06-12
 og_image: "/assets/images/social/2019-08-13-open-source-isolation-forest-spark-scala-1200x630.jpg"
 og_image_alt: "Open Source: Spark/Scala Isolation Forest Library"
 og_image_width: 1200
@@ -71,11 +71,11 @@ That highlighted cluster turned out, on inspection, to be real members using aut
 
 *Two accounts from the highlighted cluster: repeated bursts of roughly thirty actions at a constant rate. (Slide from my Spark + AI Summit 2020 talk.)*
 
-The more striking case was an attack day. A tight, dark cluster of fake accounts appeared with very high and nearly identical scores, the signature of one actor driving every account with the same script, even though activity volumes varied by an order of magnitude across the cluster.
+The more striking case was an attack day. A tight cluster of fake accounts appeared with very high and nearly identical scores, the signature of one actor driving every account with the same script, even though activity volumes varied by an order of magnitude across the cluster.
 
-<img src="{{ '/assets/images/isolation-forest-attack-day.jpg' | relative_url }}" alt="Scatter plot from a fake account attack day showing a dense dark cluster at very high isolation forest score above the normal population" width="1280" height="720" loading="lazy" decoding="async">
+<img src="{{ '/assets/images/isolation-forest-attack-day-highlighted.jpg' | relative_url }}" alt="Scatter plot from a fake account attack day with the fake account cluster highlighted in red at very high isolation forest score above the normal population" width="1276" height="720" loading="lazy" decoding="async">
 
-*Attack day: a coordinated fake account attack appears as a tight cluster at very high score, even though its activity volumes overlap the normal population below. (Slide from my Spark + AI Summit 2020 talk.)*
+*Attack day: a coordinated fake account attack appears as a tight cluster, highlighted in red, at very high score, even though its activity volumes overlap the normal population below. (Slide from my Fighting Abuse @Scale 2019 talk.)*
 
 On the volume axis those accounts overlapped substantially with the normal population, and individual accounts kept their activity modest, only tens of actions over the whole day, with randomized delays between requests to blend in. Defenses keyed on volume would have had little to work with. The score axis separated them cleanly anyway, because automated behavior sits far from organic behavior in feature space, and that is exactly what the model isolates.
 
