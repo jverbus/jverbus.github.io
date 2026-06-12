@@ -1,10 +1,12 @@
 <div class="if-demo" data-if-demo data-seed="20260318" hidden>
   <h2 class="if-demo-title" id="try-it-live">Try it: retrain both models live</h2>
   <p class="if-demo-intro">
-    This demo runs a small isolation forest implementation in your browser
-    with the same scoring formula as the library: 256-point subsamples and
-    the standard path-length normalization. Both panels train on the same
-    points. Brighter regions receive higher anomaly scores.
+    Standard Isolation Forest on the left, fully extended EIF on the right,
+    trained in your browser on the same points with the library's scoring
+    formula: 256-point subsamples and the standard path-length
+    normalization. Add points anywhere and look for the rectangular bands
+    and cross-shaped artifacts on the left that the hyperplane splits on
+    the right avoid.
   </p>
   <div class="if-demo-toolbar">
     <div class="if-demo-group" role="group" aria-label="Preset datasets">
@@ -31,6 +33,12 @@
       <figcaption>Extended Isolation Forest &middot; random hyperplanes</figcaption>
     </figure>
   </div>
-  <p class="if-demo-hint">Click or drag on either panel to add points &middot; shift-click to erase &middot; both models retrain on every change. Look for the rectangular bands and cross-shaped artifacts on the left that the hyperplane splits on the right avoid.</p>
+  <div class="if-demo-scale">
+    <span class="if-demo-scale-name">Anomaly score</span>
+    <span class="if-demo-scale-value">Low</span>
+    <span class="if-demo-scale-bar" aria-hidden="true"></span>
+    <span class="if-demo-scale-value">High</span>
+  </div>
+  <p class="if-demo-hint">Click or drag on either panel to add points &middot; shift-click to erase &middot; both models retrain on every change.</p>
 </div>
-<script src="{{ '/assets/js/if-demo.js' | relative_url }}?v=2" defer></script>
+<script src="{{ '/assets/js/if-demo.js' | relative_url }}?v=3" defer></script>

@@ -17,6 +17,9 @@
   var MAX_POINTS = 1200;
   var GRID_W = 128;
   var GRID_H = 96;
+  // Display gamma < 1 stretches the dark (low-score) end of the ramp,
+  // where the axis-aligned banding artifacts live.
+  var DISPLAY_GAMMA = 0.8;
 
   /* ---------------- random numbers ---------------- */
 
@@ -236,6 +239,28 @@
     return out;
   }
 
+  // Robust shared color range: a 2-98 percentile stretch over both score
+  // grids. Clipping the extreme tails spends the color ramp on the score
+  // structure instead of on a handful of extreme cells, and sharing one
+  // range across panels keeps the IF vs EIF comparison honest.
+  function computeColorRange(gridA, gridB) {
+    var sample = [];
+    var i;
+    for (i = 0; i < gridA.length; i += 3) sample.push(gridA[i]);
+    for (i = 0; i < gridB.length; i += 3) sample.push(gridB[i]);
+    sample.sort(function (a, b) {
+      return a - b;
+    });
+    var lo = sample[Math.floor(0.02 * (sample.length - 1))];
+    var hi = sample[Math.ceil(0.98 * (sample.length - 1))];
+    if (hi - lo < 0.02) {
+      var mid = (hi + lo) / 2;
+      lo = mid - 0.01;
+      hi = mid + 0.01;
+    }
+    return [lo, hi];
+  }
+
   /* ---------------- preset datasets ---------------- */
 
   function clamp01(v, lo, hi) {
@@ -350,6 +375,7 @@
       return v || fallback;
     }
 
+
     function fitCanvas(canvas) {
       var rect = canvas.getBoundingClientRect();
       if (rect.width === 0) return;
@@ -366,7 +392,8 @@
       var range = Math.max(1e-6, hi - lo);
       var px = image.data;
       for (var i = 0; i < grid.length; i++) {
-        var t = (grid[i] - lo) / range;
+        var t = Math.max(0, Math.min(1, (grid[i] - lo) / range));
+        t = Math.pow(t, DISPLAY_GAMMA);
         var k = 3 * Math.max(0, Math.min(255, Math.round(t * 255)));
         px[i * 4] = lut[k];
         px[i * 4 + 1] = lut[k + 1];
@@ -441,20 +468,9 @@
       var gridIf = scoreGrid(ifForest, gw, gh);
       var gridEif = scoreGrid(eifForest, gw, gh);
 
-      // one normalization across both panels keeps the comparison honest
-      var lo = Infinity;
-      var hi = -Infinity;
-      var i;
-      for (i = 0; i < gridIf.length; i++) {
-        if (gridIf[i] < lo) lo = gridIf[i];
-        if (gridIf[i] > hi) hi = gridIf[i];
-      }
-      for (i = 0; i < gridEif.length; i++) {
-        if (gridEif[i] < lo) lo = gridEif[i];
-        if (gridEif[i] > hi) hi = gridEif[i];
-      }
-      paintPanel(ifCtx, ifCanvas, gridIf, lo, hi);
-      paintPanel(eifCtx, eifCanvas, gridEif, lo, hi);
+      var range = computeColorRange(gridIf, gridEif);
+      paintPanel(ifCtx, ifCanvas, gridIf, range[0], range[1]);
+      paintPanel(eifCtx, eifCanvas, gridEif, range[0], range[1]);
     }
 
     function schedule() {
@@ -632,6 +648,7 @@
     cFactor: cFactor,
     buildForest: buildForest,
     scoreGrid: scoreGrid,
+    computeColorRange: computeColorRange,
     makePreset: makePreset,
     SUBSAMPLE: SUBSAMPLE
   };

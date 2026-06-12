@@ -1616,6 +1616,42 @@ h3:hover .heading-anchor,
   text-transform: uppercase;
 }
 
+.if-demo-scale {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.if-demo-scale-name {
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.if-demo-scale-value {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Stop positions bake in the display gamma (t^0.8) used by the heatmaps,
+   so the bar reflects the actual score-to-color mapping */
+.if-demo-scale-bar {
+  flex: 1;
+  max-width: 240px;
+  height: 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    #440154 0%,
+    #3b528b 17.7%,
+    #21918c 42%,
+    #5ec962 69.8%,
+    #fde725 100%
+  );
+}
+
 .if-demo-hint {
   margin: var(--space-3) 0 0;
   max-width: none;

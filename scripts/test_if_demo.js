@@ -245,6 +245,30 @@ for (const extended of [false, true]) {
     "max diff " + maxDiff.toExponential(2));
 }
 
+/* ---- robust color range increases contrast over min/max ---- */
+
+{
+  const f = forests(17, false);
+  const g = forests(18, true);
+  const a = demo.scoreGrid(f, 64, 48);
+  const b = demo.scoreGrid(g, 64, 48);
+  const [lo, hi] = demo.computeColorRange(a, b);
+  let min = Infinity;
+  let max = -Infinity;
+  for (const grid of [a, b]) {
+    for (const v of grid) {
+      if (v < min) min = v;
+      if (v > max) max = v;
+    }
+  }
+  check("color range ordered and within score bounds",
+    lo < hi && lo >= min && hi <= max,
+    lo.toFixed(3) + " .. " + hi.toFixed(3));
+  check("percentile stretch narrower than raw min/max",
+    hi - lo < max - min,
+    "stretched " + (hi - lo).toFixed(3) + " vs raw " + (max - min).toFixed(3));
+}
+
 /* ---- single-tree forest (slider minimum) stays well-behaved ---- */
 
 {
