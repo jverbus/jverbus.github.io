@@ -297,6 +297,16 @@ for (const name of ["blob", "two-blobs", "sinusoid"]) {
     data.ys.every((v) => v >= 0 && v <= 1);
   check("preset '" + name + "' has 256 in-range points",
     data.xs.length === 256 && data.ys.length === 256 && inRange);
+
+  // preset chips resample: a new seed must give a genuinely new draw,
+  // and the same seed must reproduce the same draw
+  const again = demo.makePreset(name, 1);
+  const fresh = demo.makePreset(name, 2);
+  const identical = data.xs.every((v, i) => v === again.xs[i]) &&
+    data.ys.every((v, i) => v === again.ys[i]);
+  const changed = data.xs.some((v, i) => v !== fresh.xs[i]);
+  check("preset '" + name + "' reproducible per seed, fresh per reseed",
+    identical && changed);
 }
 
 /* ---- timing sanity ---- */

@@ -362,9 +362,17 @@
 
     var started = false;
 
-    function loadPreset(name) {
+    // First load of the demo is deterministic so the opening view matches
+    // the post's figures; every preset click after that draws a fresh
+    // dataset from the distribution — a true resample.
+    var dataSeed = baseSeed + 7;
+
+    function loadPreset(name, reseed) {
       started = true;
-      var data = makePreset(name, baseSeed + 7);
+      if (reseed) {
+        dataSeed = (dataSeed * 1664525 + 1013904223) >>> 0;
+      }
+      var data = makePreset(name, dataSeed);
       state.xs = data.xs;
       state.ys = data.ys;
       schedule();
@@ -565,7 +573,7 @@
         presetButtons.forEach(function (other) {
           other.classList.toggle("is-active", other === button);
         });
-        loadPreset(button.getAttribute("data-preset"));
+        loadPreset(button.getAttribute("data-preset"), true);
       });
     });
 
