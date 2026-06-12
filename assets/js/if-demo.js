@@ -249,28 +249,28 @@
     var i;
     if (name === "two-blobs") {
       var centers = [
-        [0.32, 0.64],
-        [0.68, 0.36]
+        [0.24, 0.74],
+        [0.76, 0.26]
       ];
       for (var c = 0; c < 2; c++) {
         for (i = 0; i < 128; i++) {
-          xs.push(clamp01(centers[c][0] + 0.07 * randNormal(rng), 0.03, 0.97));
-          ys.push(clamp01(centers[c][1] + 0.07 * randNormal(rng), 0.03, 0.97));
+          xs.push(clamp01(centers[c][0] + 0.055 * randNormal(rng), 0.03, 0.97));
+          ys.push(clamp01(centers[c][1] + 0.055 * randNormal(rng), 0.03, 0.97));
         }
       }
     } else if (name === "sinusoid") {
       for (i = 0; i < 256; i++) {
         var u = rng();
         var x = 0.06 + 0.88 * u;
-        var y = 0.5 + 0.27 * Math.sin(2 * Math.PI * 1.2 * u);
+        var y = 0.5 + 0.23 * Math.sin(2 * Math.PI * 1.2 * u);
         xs.push(x);
-        ys.push(clamp01(y + 0.035 * randNormal(rng), 0.03, 0.97));
+        ys.push(clamp01(y + 0.03 * randNormal(rng), 0.03, 0.97));
       }
     } else {
       // single blob
       for (i = 0; i < 256; i++) {
-        xs.push(clamp01(0.5 + 0.09 * randNormal(rng), 0.03, 0.97));
-        ys.push(clamp01(0.5 + 0.09 * randNormal(rng), 0.03, 0.97));
+        xs.push(clamp01(0.5 + 0.065 * randNormal(rng), 0.03, 0.97));
+        ys.push(clamp01(0.5 + 0.065 * randNormal(rng), 0.03, 0.97));
       }
     }
     return { xs: xs, ys: ys };

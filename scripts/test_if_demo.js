@@ -191,15 +191,15 @@ for (const extended of [false, true]) {
 /* ---- two-blobs ghost regions (the post's centerpiece claim) ---- */
 
 {
-  // With blobs at (0.32, 0.64) and (0.68, 0.36), the axis-aligned ghost
+  // With blobs at (0.24, 0.74) and (0.76, 0.26), the axis-aligned ghost
   // regions sit at the other two corners of that rectangle. Those points
-  // are >= 4 sigma from both blobs and genuinely anomalous, but standard
+  // are many sigma from both blobs and genuinely anomalous, but standard
   // IF under-scores them because each lies inside the low-score bands cast
   // along both blobs' axes. EIF should score them noticeably higher.
   const data = demo.makePreset("two-blobs", 12345);
   const ghosts = [
-    [0.32, 0.36],
-    [0.68, 0.64]
+    [0.24, 0.26],
+    [0.76, 0.74]
   ];
   const diffs = [];
   for (const seed of [101, 202, 303, 404, 505]) {
@@ -243,6 +243,26 @@ for (const extended of [false, true]) {
   }
   check("scoreGrid matches forest.score exactly", maxDiff < 1e-12,
     "max diff " + maxDiff.toExponential(2));
+}
+
+/* ---- single-tree forest (slider minimum) stays well-behaved ---- */
+
+{
+  for (const extended of [false, true]) {
+    const f = demo.buildForest(blob.xs, blob.ys, {
+      trees: 1,
+      extended: extended,
+      seed: 9
+    });
+    let ok = true;
+    for (let i = 0; i <= 10; i++) {
+      for (let j = 0; j <= 10; j++) {
+        const s = f.score(i / 10, j / 10);
+        if (!(s > 0 && s < 1)) ok = false;
+      }
+    }
+    check((extended ? "EIF" : "IF") + " with a single tree scores in (0, 1)", ok);
+  }
 }
 
 /* ---- presets sane ---- */
