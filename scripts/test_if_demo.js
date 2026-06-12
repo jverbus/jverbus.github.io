@@ -245,6 +245,29 @@ for (const extended of [false, true]) {
     "max diff " + maxDiff.toExponential(2));
 }
 
+/* ---- the two panels must receive genuinely different grids ---- */
+
+{
+  // Regression guard for the mobile bug where both panels displayed the
+  // same heatmap: the grids handed to the painter must differ. (The
+  // display-layer fix is per-panel offscreen canvases; this pins the
+  // data layer so any future "panels look identical" report points at
+  // rendering, not scoring.)
+  const seed = 20260318;
+  const data = demo.makePreset("blob", seed + 7);
+  const fIf = demo.buildForest(data.xs, data.ys,
+    { trees: 100, extended: false, seed: seed });
+  const fEif = demo.buildForest(data.xs, data.ys,
+    { trees: 100, extended: true, seed: seed + 1 });
+  const a = demo.scoreGrid(fIf, 64, 48);
+  const b = demo.scoreGrid(fEif, 64, 48);
+  let meanDiff = 0;
+  for (let i = 0; i < a.length; i++) meanDiff += Math.abs(a[i] - b[i]);
+  meanDiff /= a.length;
+  check("IF and EIF panel grids differ", meanDiff > 0.01,
+    "mean |IF-EIF| " + meanDiff.toFixed(4));
+}
+
 /* ---- robust color range increases contrast over min/max ---- */
 
 {

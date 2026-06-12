@@ -327,26 +327,31 @@
   /* ---------------- demo widget ---------------- */
 
   function initDemo(root) {
-    var canvases = root.querySelectorAll("canvas[data-panel]");
-    if (canvases.length !== 2) return false;
-    var ifCanvas = root.querySelector('canvas[data-panel="if"]');
-    var eifCanvas = root.querySelector('canvas[data-panel="eif"]');
-    var ifCtx = ifCanvas.getContext("2d");
-    var eifCtx = eifCanvas.getContext("2d");
-    if (!ifCtx || !eifCtx) return false;
+    // Each panel owns its offscreen canvas and ImageData. Sharing one
+    // offscreen between panels breaks on iOS WebKit: its deferred canvas
+    // compositing can resolve both drawImage calls against the source's
+    // final contents, leaving both panels showing the same heatmap.
+    function makePanel(canvas) {
+      if (!canvas) return null;
+      var ctx = canvas.getContext("2d");
+      if (!ctx) return null;
+      var off = document.createElement("canvas");
+      var offCtx = off.getContext("2d");
+      if (!offCtx) return null;
+      return { canvas: canvas, ctx: ctx, off: off, offCtx: offCtx, image: null };
+    }
+
+    var ifPanel = makePanel(root.querySelector('canvas[data-panel="if"]'));
+    var eifPanel = makePanel(root.querySelector('canvas[data-panel="eif"]'));
+    if (!ifPanel || !eifPanel) return false;
 
     var lut = buildLut();
-    var off = document.createElement("canvas");
-    var offCtx = off.getContext("2d");
-    var image = null;
 
-    function setGridSize(gw, gh) {
-      if (off.width !== gw || off.height !== gh) {
-        off.width = gw;
-        off.height = gh;
-        image = offCtx.createImageData(gw, gh);
-      } else if (!image) {
-        image = offCtx.createImageData(gw, gh);
+    function setPanelGrid(panel, gw, gh) {
+      if (panel.off.width !== gw || panel.off.height !== gh || !panel.image) {
+        panel.off.width = gw;
+        panel.off.height = gh;
+        panel.image = panel.offCtx.createImageData(gw, gh);
       }
     }
 
@@ -396,9 +401,11 @@
       }
     }
 
-    function paintPanel(ctx, canvas, grid, lo, hi) {
+    function paintPanel(panel, grid, lo, hi) {
+      var ctx = panel.ctx;
+      var canvas = panel.canvas;
       var range = Math.max(1e-6, hi - lo);
-      var px = image.data;
+      var px = panel.image.data;
       for (var i = 0; i < grid.length; i++) {
         var t = Math.max(0, Math.min(1, (grid[i] - lo) / range));
         t = Math.pow(t, DISPLAY_GAMMA);
@@ -408,11 +415,11 @@
         px[i * 4 + 2] = lut[k + 2];
         px[i * 4 + 3] = 255;
       }
-      offCtx.putImageData(image, 0, 0);
+      panel.offCtx.putImageData(panel.image, 0, 0);
       ctx.imageSmoothingEnabled = true;
       ctx.imageSmoothingQuality = "high";
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(off, 0, 0, canvas.width, canvas.height);
+      ctx.drawImage(panel.off, 0, 0, canvas.width, canvas.height);
 
       // training points: light fill with dark ring reads on every ramp color
       var r = Math.max(2, canvas.width / 320);
@@ -433,7 +440,9 @@
       }
     }
 
-    function paintEmpty(ctx, canvas) {
+    function paintEmpty(panel) {
+      var ctx = panel.ctx;
+      var canvas = panel.canvas;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = styleColor("--surface-muted", "#f3f6fb");
       ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -451,11 +460,11 @@
 
     function render() {
       state.pending = false;
-      fitCanvas(ifCanvas);
-      fitCanvas(eifCanvas);
+      fitCanvas(ifPanel.canvas);
+      fitCanvas(eifPanel.canvas);
       if (state.xs.length < 2) {
-        paintEmpty(ifCtx, ifCanvas);
-        paintEmpty(eifCtx, eifCanvas);
+        paintEmpty(ifPanel);
+        paintEmpty(eifPanel);
         return;
       }
       var ifForest = buildForest(state.xs, state.ys, {
@@ -472,13 +481,14 @@
       // a full-resolution pass lands on pointer release
       var gw = state.coarse ? GRID_W / 2 : GRID_W;
       var gh = state.coarse ? GRID_H / 2 : GRID_H;
-      setGridSize(gw, gh);
+      setPanelGrid(ifPanel, gw, gh);
+      setPanelGrid(eifPanel, gw, gh);
       var gridIf = scoreGrid(ifForest, gw, gh);
       var gridEif = scoreGrid(eifForest, gw, gh);
 
       var range = computeColorRange(gridIf, gridEif);
-      paintPanel(ifCtx, ifCanvas, gridIf, range[0], range[1]);
-      paintPanel(eifCtx, eifCanvas, gridEif, range[0], range[1]);
+      paintPanel(ifPanel, gridIf, range[0], range[1]);
+      paintPanel(eifPanel, gridEif, range[0], range[1]);
     }
 
     function schedule() {
@@ -562,8 +572,8 @@
       canvas.addEventListener("pointercancel", stop);
     }
 
-    bindPointer(ifCanvas);
-    bindPointer(eifCanvas);
+    bindPointer(ifPanel.canvas);
+    bindPointer(eifPanel.canvas);
 
     /* ---- controls ---- */
 
@@ -623,6 +633,11 @@
         scheme.addEventListener("change", schedule);
       }
     }
+    // Repaint after back/forward-cache restores; mobile Safari can evict
+    // canvas contents while the page is suspended.
+    window.addEventListener("pageshow", function (event) {
+      if (event.persisted) schedule();
+    });
 
     root.hidden = false;
 
