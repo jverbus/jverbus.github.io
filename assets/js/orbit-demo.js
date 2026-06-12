@@ -132,6 +132,7 @@
       radii: [], // {t, r} decimated history
       burns: [], // {t, dv} signed
       stepCount: 0,
+      flying: false, // first manual burn fired
       autopilot: null // {burnTime} when waiting for burn 2
     };
 
@@ -179,7 +180,11 @@
       if (sim.ended) return;
       if (sim.autopilot) {
         sim.autopilot = null;
+        sim.flying = true;
         setStatus("Autopilot cancelled — you have the controls.");
+      } else if (!sim.flying) {
+        sim.flying = true;
+        setStatus("In flight — circularize inside the shaded target band.");
       }
       sim.dvUsed += applyImpulse(sim.state, dir, IMPULSE);
       sim.burns.push({ t: sim.state.t, dv: dir * IMPULSE });
@@ -207,8 +212,8 @@
         "t " + fmt(sim.state.t, 1) +
         " · r " + fmt(el.r, 2) +
         " · v " + fmt(el.v, 2) +
-        " · Δv used " + fmt(sim.dvUsed) +
-        " · Hohmann " + fmt(plan.total);
+        " · Δv " + fmt(sim.dvUsed) +
+        " (Hohmann " + fmt(plan.total) + ")";
     }
 
     function checkEvents() {
@@ -366,11 +371,6 @@
         }
         ctx.stroke();
       }
-
-      ctx.fillStyle = colors.muted;
-      ctx.font = "500 " + Math.max(10, Math.round(canvas.width / 42)) + "px Inter, sans-serif";
-      ctx.textBaseline = "top";
-      ctx.fillText("radius", 8, 6);
     }
 
     function drawThrustChart() {
@@ -399,11 +399,6 @@
         ctx.lineTo(x, mid - b.dv * stemScale);
         ctx.stroke();
       }
-
-      ctx.fillStyle = colors.muted;
-      ctx.font = "500 " + Math.max(10, Math.round(canvas.width / 42)) + "px Inter, sans-serif";
-      ctx.textBaseline = "top";
-      ctx.fillText("thrust impulses (↑ prograde · ↓ retrograde)", 8, 6);
     }
 
     function draw() {
@@ -436,6 +431,7 @@
             sim.dvUsed += applyImpulse(sim.state, 1, plan.dv2);
             sim.burns.push({ t: sim.state.t, dv: plan.dv2 });
             sim.autopilot = null;
+            setStatus("Autopilot: burn 2 fired — circularizing at the target.");
           }
           carry -= DT;
         }
@@ -475,11 +471,12 @@
       sim.stepCount = 0;
       sim.ended = false;
       sim.arrived = false;
+      sim.flying = false;
       sim.autopilot = null;
       carry = 0;
       setRunning(!reduceMotion);
       setStatus(message ||
-        "Coasting on the start orbit. Fire prograde to raise your orbit.");
+        "Coasting on the start orbit — fire prograde to raise it.");
     }
 
     /* ---- controls ---- */
