@@ -1678,7 +1678,8 @@ h3:hover .heading-anchor,
 }
 
 /* Interactive orbital-transfer demo */
-.orbit-demo {
+.orbit-demo,
+.lux-demo {
   margin: var(--space-8) 0;
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -1736,13 +1737,19 @@ h3:hover .heading-anchor,
   background: var(--surface-muted);
 }
 
-.orbit-demo-controls {
+.orbit-demo-controls,
+.lux-demo-controls {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
 }
 
-.orbit-demo-status {
+.lux-demo-controls {
+  margin-top: var(--space-3);
+}
+
+.orbit-demo-status,
+.lux-demo-status {
   margin: var(--space-2) 0 0;
   min-height: 1.4em;
   color: var(--text);
@@ -1750,11 +1757,32 @@ h3:hover .heading-anchor,
   font-weight: 550;
 }
 
-.orbit-demo-readout {
+.orbit-demo-readout,
+.lux-demo-readout {
   margin: var(--space-1) 0 0;
   color: var(--text-muted);
   font-size: 0.82rem;
   font-variant-numeric: tabular-nums;
+}
+
+/* Interactive LUX kinematics demo */
+.lux-demo-tpc,
+.lux-demo-chart {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.lux-demo-tpc {
+  background: #0c1426;
+  touch-action: none;
+  cursor: grab;
+}
+
+.lux-demo-chart {
+  background: var(--surface-muted);
 }
 
 /* Editorial prose: running text in Source Serif 4; UI chrome stays in Inter */
@@ -2030,7 +2058,8 @@ h3:hover .heading-anchor,
   .post-cta,
   .pagination,
   .if-demo,
-  .orbit-demo {
+  .orbit-demo,
+  .lux-demo {
     display: none !important;
   }
 

@@ -33,6 +33,8 @@ The technique developed in this thesis removes simulation from the energy scale.
 
 *A mono-energetic neutron scattering twice within a dual-phase TPC. The reconstructed vertex positions define the scattering angle, which sets the energy of the first recoil. (Figure from my Ph.D. thesis.)*
 
+{% include site/lux-demo.html %}
+
 ## A Neutron Beam Through the Water Shield
 
 The neutron source was an Adelphi Technology DD108 generator. Before deployment, its output was characterized with a time-of-flight measurement at Brown University, confirming a quasi-mono-energetic spectrum at the nominal 2.45 MeV and suitable for the calibration.

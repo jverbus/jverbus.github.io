@@ -30,6 +30,7 @@ jobs:
         run: |
           node scripts/test_if_demo.js
           node scripts/test_orbit_demo.js
+          node scripts/test_lux_demo.js
 
       - name: Build site
         run: bundle exec jekyll build

@@ -1,0 +1,29 @@
+<div id="kinematics-live" aria-hidden="true"></div>
+<div class="lux-demo" data-lux-demo hidden>
+  <h2 class="if-demo-title" id="kinematics-live-heading">Try it: the kinematics behind the energy scale</h2>
+  <p class="if-demo-intro">
+    Drag the two scatter vertices of a double-scatter event. The beam
+    direction and the line between the vertices set the scattering angle
+    &theta; of the first interaction, and exact two-body elastic kinematics
+    convert &theta; into the recoil energy &mdash; no simulation, no signal
+    model. Small angles reach below 1 keV; a full backscatter pins the
+    74 keV endpoint.
+  </p>
+  <div class="if-demo-panels">
+    <figure>
+      <canvas class="lux-demo-tpc" data-lux="tpc" role="img" aria-label="Side view of the time projection chamber: a 2.45 MeV neutron beam enters from the left and scatters at two draggable vertices, defining the scattering angle."></canvas>
+      <figcaption>TPC side view &middot; dashed: incoming 2.45 MeV beam</figcaption>
+    </figure>
+    <figure>
+      <canvas class="lux-demo-chart" data-lux="chart" role="img" aria-label="Nuclear recoil energy versus scattering angle on a log scale, with the sub-keV region shaded and the current event marked."></canvas>
+      <figcaption>Recoil energy vs. &theta; &middot; log scale &middot; shaded: sub-keV</figcaption>
+    </figure>
+  </div>
+  <div class="lux-demo-controls">
+    <button type="button" class="demo-btn" data-action="reset">Reset</button>
+  </div>
+  <p class="lux-demo-status" data-lux-status role="status"></p>
+  <p class="lux-demo-readout" data-lux-readout aria-hidden="true"></p>
+  <p class="if-demo-hint">Drag scatter 1 along the beam line and scatter 2 anywhere in the volume &middot; the marker on the curve follows your event &middot; the energy scale comes from geometry alone, which is the point of the calibration.</p>
+</div>
+<script src="{{ '/assets/js/lux-demo.js' | relative_url }}?v=1" defer></script>
