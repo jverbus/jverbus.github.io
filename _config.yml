@@ -4,6 +4,8 @@ exclude:
   - ".rvmrc"
   - ".rbenv-version"
   - "README.md"
+  - "AGENTS.md"
+  - "CLAUDE.md"
   - "Rakefile"
   - "Gemfile"
   - "Gemfile.lock"
