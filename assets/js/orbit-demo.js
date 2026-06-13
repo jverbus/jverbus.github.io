@@ -23,6 +23,10 @@
   var TARGET_E_TOL = 0.025; // eccentricity for success
   var IMPULSE = 0.02; // delta-v per burn tick
   var SIM_SPEED = 1.4; // simulation time units per real second
+  // Controller burns must be small enough to land inside the deadbands
+  // they steer toward, or the controller bang-bangs across them forever.
+  var GREEDY_IMPULSE = 0.004;
+  var GREEDY_DT = 0.15; // time between controller decisions
 
   /* ---------------- physics core ---------------- */
 
@@ -105,6 +109,62 @@
     return { state: s, elements: el, totalDv: used, plan: plan };
   }
 
+  // A deliberately myopic feedback controller — the "trims the orbit"
+  // failure mode from the post. It chases the target semi-major axis with
+  // burns at whatever phase it happens to be in (energetically wasteful),
+  // then damps eccentricity near the apsides. It reaches the target; the
+  // thrust history shows the price.
+  function greedyDecision(s, r2) {
+    var el = orbitElements(s);
+    var da = (r2 - el.a) / r2;
+    // climb (or descend) with burns gated to the half of the orbit where
+    // they also keep eccentricity bounded
+    if (da > 0.01) return el.r >= el.a ? 1 : 0;
+    if (da < -0.01) return el.r <= el.a ? -1 : 0;
+    // trim eccentricity only near the apsides, where tangential burns
+    // actually move e instead of just perturbing a
+    if (el.e > 0.015 && Math.abs(el.r - el.a) > 0.5 * el.a * el.e) {
+      return el.r > el.a ? 1 : -1;
+    }
+    return 0;
+  }
+
+  function simulateGreedy(r1, r2, dt) {
+    var s = makeState(r1);
+    var used = 0;
+    var burnCount = 0;
+    var nextControl = 0;
+    var arrivedAt = null;
+    var horizon = 200;
+    while (s.t < horizon) {
+      step(s, dt);
+      if (s.t >= nextControl) {
+        nextControl = s.t + GREEDY_DT;
+        var dir = greedyDecision(s, r2);
+        if (dir !== 0) {
+          used += applyImpulse(s, dir, GREEDY_IMPULSE);
+          burnCount++;
+        }
+        var el = orbitElements(s);
+        if (
+          arrivedAt === null &&
+          Math.abs(el.a - r2) / r2 < 0.02 &&
+          el.e < 0.025
+        ) {
+          arrivedAt = s.t;
+        }
+        if (arrivedAt !== null && dir === 0) break; // converged and quiet
+      }
+    }
+    return {
+      state: s,
+      elements: orbitElements(s),
+      totalDv: used,
+      burnCount: burnCount,
+      arrivedAt: arrivedAt
+    };
+  }
+
   /* ---------------- demo widget ---------------- */
 
   function initDemo(root) {
@@ -133,7 +193,8 @@
       burns: [], // {t, dv} signed
       stepCount: 0,
       flying: false, // first manual burn fired
-      autopilot: null // {burnTime} when waiting for burn 2
+      autopilot: null, // {burnTime} when waiting for burn 2
+      greedy: null // {nextControl} while the greedy controller is engaged
     };
 
     var CHART_WINDOW = 45; // time units shown in the strip charts
@@ -178,10 +239,11 @@
 
     function burn(dir) {
       if (sim.ended) return;
-      if (sim.autopilot) {
+      if (sim.autopilot || sim.greedy) {
         sim.autopilot = null;
+        sim.greedy = null;
         sim.flying = true;
-        setStatus("Autopilot cancelled — you have the controls.");
+        setStatus("Controller cancelled — you have the controls.");
       } else if (!sim.flying) {
         sim.flying = true;
         setStatus("In flight — circularize inside the shaded target band.");
@@ -433,6 +495,19 @@
             sim.autopilot = null;
             setStatus("Autopilot: burn 2 fired — circularizing at the target.");
           }
+          if (sim.greedy && sim.state.t >= sim.greedy.nextControl) {
+            sim.greedy.nextControl = sim.state.t + GREEDY_DT;
+            var greedyDir = greedyDecision(sim.state, R2);
+            if (greedyDir !== 0) {
+              sim.dvUsed += applyImpulse(sim.state, greedyDir, GREEDY_IMPULSE);
+              sim.burns.push({
+                t: sim.state.t,
+                dv: greedyDir * GREEDY_IMPULSE
+              });
+            } else if (sim.arrived) {
+              sim.greedy = null; // converged and quiet
+            }
+          }
           carry -= DT;
         }
         checkEvents();
@@ -473,6 +548,7 @@
       sim.arrived = false;
       sim.flying = false;
       sim.autopilot = null;
+      sim.greedy = null;
       carry = 0;
       setRunning(!reduceMotion);
       setStatus(message ||
@@ -535,6 +611,15 @@
       });
     }
 
+    var greedyButton = root.querySelector('button[data-action="greedy"]');
+    if (greedyButton) {
+      greedyButton.addEventListener("click", function () {
+        reset("Greedy controller engaged — it gets there. Watch the thrust history.");
+        sim.greedy = { nextControl: 0 };
+        setRunning(true);
+      });
+    }
+
     root.addEventListener("keydown", function (event) {
       if (event.key === "ArrowUp") {
         event.preventDefault();
@@ -591,7 +676,11 @@
     applyImpulse: applyImpulse,
     orbitElements: orbitElements,
     hohmann: hohmann,
-    simulateHohmann: simulateHohmann
+    simulateHohmann: simulateHohmann,
+    greedyDecision: greedyDecision,
+    simulateGreedy: simulateGreedy,
+    GREEDY_IMPULSE: GREEDY_IMPULSE,
+    GREEDY_DT: GREEDY_DT
   };
 
   if (typeof module !== "undefined" && module.exports) {

@@ -115,6 +115,27 @@ function check(name, condition, detail) {
     Math.abs(el.a - 1.8) / 1.8 < 0.02 && el.e < 0.025);
 }
 
+/* ---- greedy controller: reaches the target, wastefully ---- */
+
+{
+  const plan = orbit.hohmann(1, 1.8);
+  const g = orbit.simulateGreedy(1, 1.8, orbit.DT);
+  const el = g.elements;
+  check("greedy reaches the success band (|a-1.8|/1.8 < 2%, e < 0.025)",
+    Math.abs(el.a - 1.8) / 1.8 < 0.02 && el.e < 0.025,
+    "a " + el.a.toFixed(4) + ", e " + el.e.toFixed(4));
+  check("greedy arrives within the demo's patience (t < 150)",
+    g.arrivedAt !== null && g.arrivedAt < 150,
+    "arrived t " + (g.arrivedAt === null ? "never" : g.arrivedAt.toFixed(1)));
+  check("greedy costs more delta-v than Hohmann",
+    g.totalDv > plan.total,
+    "greedy " + g.totalDv.toFixed(4) + " vs Hohmann " + plan.total.toFixed(4));
+  check("greedy chatters (>= 15 burns vs Hohmann's 2)",
+    g.burnCount >= 15, g.burnCount + " burns");
+  check("greedy delta-v bookkeeping exact",
+    Math.abs(g.totalDv - g.burnCount * orbit.GREEDY_IMPULSE) < 1e-12);
+}
+
 /* ---- retrograde burns crash into the planet ---- */
 
 {

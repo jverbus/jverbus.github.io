@@ -6,8 +6,9 @@
     &mdash; the same setup as the workshop notebook. Start on the inner
     orbit (r&#8321; = 1) and circularize at the target (r&#8322; = 1.8)
     using as little &Delta;v as possible. The analytic Hohmann transfer
-    needs 0.249 &mdash; try to beat it, or press Run Hohmann to watch the
-    textbook solution.
+    needs 0.249 &mdash; try to beat it, press Run Hohmann to watch the
+    textbook solution, or Run Greedy to see a myopic controller reach the
+    target the expensive way.
   </p>
   <div class="orbit-demo-layout">
     <figure>
@@ -21,6 +22,7 @@
         <button type="button" class="demo-btn" data-action="pause" aria-pressed="false">Pause</button>
         <button type="button" class="demo-btn" data-action="reset">Reset</button>
         <button type="button" class="demo-btn" data-action="hohmann" title="Execute the analytic burn-coast-burn plan in the simulator">Run Hohmann</button>
+        <button type="button" class="demo-btn" data-action="greedy" title="A myopic feedback controller: it reaches the target — compare its thrust history and &#916;v with Hohmann's">Run Greedy</button>
       </div>
       <p class="orbit-demo-status" data-orbit-status role="status"></p>
       <p class="orbit-demo-readout" data-orbit-readout aria-hidden="true"></p>
@@ -38,4 +40,4 @@
   </div>
   <p class="if-demo-hint">Hold a burn button (or the &uarr;/&darr; keys) to keep firing &middot; prograde is along your velocity &middot; a clean transfer is two burns and a coast, not a stream of corrections.</p>
 </div>
-<script src="{{ '/assets/js/orbit-demo.js' | relative_url }}?v=2" defer></script>
+<script src="{{ '/assets/js/orbit-demo.js' | relative_url }}?v=3" defer></script>
