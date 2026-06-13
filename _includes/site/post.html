@@ -34,15 +34,10 @@
           {% if page.related %}
             {% for related_url in page.related %}
               {% assign related_match = site.posts | where: "url", related_url | first %}
-              {% if related_match %}
+              {% if related_match and related_match.url != page.url %}
                 {% assign related_posts = related_posts | push: related_match %}
               {% endif %}
             {% endfor %}
-          {% else %}
-            {% assign primary_category = page.categories | first %}
-            {% if primary_category %}
-              {% assign related_posts = site.posts | where_exp: "p", "p.categories contains primary_category" | where_exp: "p", "p.url != page.url" %}
-            {% endif %}
           {% endif %}
           {% if related_posts.size > 0 %}
           <section class="related-posts" aria-labelledby="related-writing-heading">

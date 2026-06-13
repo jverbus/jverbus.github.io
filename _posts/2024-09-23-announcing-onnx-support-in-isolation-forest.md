@@ -12,7 +12,6 @@ tags: [LinkedIn, machine learning, isolation forest, ONNX, open source]
 related:
   - /2026/03/18/announcing-extended-isolation-forest-support/
   - /2019/08/13/open-source-isolation-forest-spark-scala/
-  - /2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/
 ---
 
 ![ONNX support architecture for LinkedIn isolation forest]({{ '/assets/images/isolation_forest_onnx.png' | relative_url }}){: width="1280" height="720" style="width:90%; display: block; margin-left: 0;" }

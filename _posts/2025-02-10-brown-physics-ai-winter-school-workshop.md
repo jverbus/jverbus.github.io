@@ -19,7 +19,6 @@ tags:
   - Physics
 related:
   - /2026/01/09/brown-physics-ai-winter-school-workshop/
-  - /2024/08/15/finding-ai-generated-faces-in-the-wild/
   - /2016/08/18/calibrating-the-lux-dark-matter-experiment/
 ---
 
