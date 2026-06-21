@@ -2,7 +2,7 @@
 layout: page
 title: Home
 description: "AI systems, measurement, and reliability under uncertainty: agents, evaluation, anomaly detection, and adversarial ML."
-last_modified_at: 2026-06-12
+last_modified_at: 2026-06-21
 hide_title: true
 ---
 
@@ -33,6 +33,7 @@ hide_title: true
       <li><a href="https://www.linkedin.com/in/jamesverbus/">{% include site/icons/linkedin.svg %} LinkedIn</a></li>
       <li><a href="https://x.com/JamesVerbus">{% include site/icons/x.svg %} X</a></li>
       <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ">{% include site/icons/google-scholar.svg %} Google Scholar</a></li>
+      <li><a href="https://orcid.org/0000-0002-5812-022X">{% include site/icons/orcid.svg %} ORCID</a></li>
     </ul>
   </div>
 </section>
