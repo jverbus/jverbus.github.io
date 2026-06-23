@@ -72,6 +72,8 @@ GitHub Actions runs on every pull request and push to `master`:
 
 - **Jekyll Build** — demo test suites, post OG-image guardrails, site build, and generated-output
   validation (sitemap/noindex conflicts, local link targets, OG image dimensions, leaked artifacts).
+  Pushes to `master` deploy the validated `_site` artifact to GitHub Pages and publish the commit
+  SHA at `/site-revision.txt`.
 - **Link Check** — Lychee against the generated `_site/**/*.html` (config in `.github/lychee.toml`).
 
 ## Legacy URL redirects
