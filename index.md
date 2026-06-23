@@ -1,17 +1,18 @@
 ---
 layout: page
 title: Home
-description: "AI systems, measurement, and reliability under uncertainty: agents, evaluation, anomaly detection, and adversarial ML."
-last_modified_at: 2026-06-21
+description: "AI systems for messy, adversarial environments: bot and automation detection, anomaly detection, sequence modeling, synthetic media, and AI productivity."
+last_modified_at: 2026-06-23
 hide_title: true
 ---
 
 <section class="home-hero" id="about">
   <div class="home-hero-grid">
     <div class="home-hero-copy">
-      <p class="home-eyebrow">AI systems · measurement · reliability</p>
+      <p class="home-eyebrow">AI systems · detection · synthetic media</p>
       <h1>James Verbus</h1>
-      <p class="home-lede home-lede-primary">I build AI systems for uncertain and adversarial environments: systems where measurement is hard, feedback is noisy, and getting the right answer requires more than an evaluation score.</p>
+      <p class="home-lede home-lede-primary">I build and evaluate AI systems for messy, adversarial environments.</p>
+      <p class="home-lede">Recent work spans bot and automation detection, anomaly detection, sequence modeling, synthetic media, and AI productivity.</p>
       <div class="home-hero-actions" aria-label="Primary links">
         <a class="cta-button" href="{{ '/posts/' | relative_url }}">Read the work</a>
         <a class="secondary-button" href="#start-here">Start here</a>
@@ -27,7 +28,7 @@ hide_title: true
   </div>
 
   <ul class="proof-grid" aria-label="Career highlights">
-    <li><a href="{{ '/2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/' | relative_url }}"><strong>10 yrs</strong><span>production adversarial AI</span></a></li>
+    <li><a href="{{ '/2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/' | relative_url }}"><strong>10 yrs</strong><span>LinkedIn Trust AI</span></a></li>
     <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ"><strong>30+</strong><span>papers</span></a></li>
     <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ"><strong>10k+</strong><span>citations</span></a></li>
     <li><a href="{{ '/publications/#patents' | relative_url }}"><strong>3</strong><span>patents</span></a></li>
@@ -36,19 +37,19 @@ hide_title: true
 
   <nav class="home-route-grid" aria-label="Primary work areas">
     <a class="home-route-card" href="{{ '/posts/' | relative_url }}">
-      <span class="home-route-kicker">AI Systems</span>
-      <strong>Production trust, anomaly detection, and validation under adversarial feedback.</strong>
+      <span class="home-route-kicker">Detection Systems</span>
+      <strong>Bot and automation detection, anomaly detection, and validation in adversarial settings.</strong>
       <span>Read field notes and technical case studies.</span>
     </a>
     <a class="home-route-card" href="{{ '/publications/' | relative_url }}">
       <span class="home-route-kicker">Research</span>
-      <strong>Synthetic media detection, platform integrity, and low-signal physics measurement.</strong>
+      <strong>Synthetic media detection, sequence modeling, and low-signal physics measurement.</strong>
       <span>Browse papers, patents, posters, and engineering writeups.</span>
     </a>
     <a class="home-route-card" href="{{ '/videos/' | relative_url }}">
       <span class="home-route-kicker">Talks / Projects</span>
-      <strong>Hands-on AI workshops, open-source tools, and interactive technical demos.</strong>
-      <span>Watch talks or jump into shipped artifacts.</span>
+      <strong>Hands-on AI workshops, open-source anomaly detection, and AI productivity tools.</strong>
+      <span>Watch talks or try interactive demos.</span>
     </a>
   </nav>
 
@@ -67,40 +68,40 @@ hide_title: true
 <section class="home-section home-start" id="start-here" aria-labelledby="start-here-heading">
   <div class="section-heading">
     <p class="section-kicker">Start here</p>
-    <h2 id="start-here-heading">A fast path through the work</h2>
+    <h2 id="start-here-heading">Representative work</h2>
   </div>
   <div class="home-start-grid" role="list">
     <article class="home-start-card" role="listitem">
       <p class="home-start-label">Technical case study</p>
       <h3><a href="{{ '/2026/03/18/announcing-extended-isolation-forest-support/' | relative_url }}">Extended Isolation Forest for Spark/Scala anomaly detection</a></h3>
-      <p>Random hyperplane splits, synthetic plots, benchmarks, and validation evidence for production open-source ML.</p>
+      <p>Distributed anomaly detection with random hyperplane splits, validation plots, benchmarks, and reference parity checks.</p>
     </article>
     <article class="home-start-card" role="listitem">
       <p class="home-start-label">Research</p>
       <h3><a href="{{ '/2024/08/15/finding-ai-generated-faces-in-the-wild/' | relative_url }}">Finding AI-generated faces in the wild</a></h3>
-      <p>CVPR workshop research and LinkedIn Engineering writeup on detecting synthetic profile images in real-world settings.</p>
+      <p>CVPR workshop research and a LinkedIn Engineering writeup on synthetic profile-image detection at platform scale.</p>
     </article>
     <article class="home-start-card" role="listitem">
       <p class="home-start-label">Workshop</p>
       <h3><a href="{{ '/2026/01/09/brown-physics-ai-winter-school-workshop/' | relative_url }}">Reinforcement learning for orbital transfers</a></h3>
-      <p>A Brown AI Winter School workshop connecting orbital mechanics, PPO agents, and practical model diagnostics.</p>
+      <p>A Brown AI Winter School workshop on orbital mechanics, PPO agents, and practical model diagnostics.</p>
     </article>
     <article class="home-start-card" role="listitem">
       <p class="home-start-label">Open source</p>
       <h3><a href="{{ '/open-source/isolation-forest/' | relative_url }}">LinkedIn's isolation-forest library</a></h3>
-      <p>A distributed Spark/Scala library for large-scale unsupervised anomaly detection, with EIF and ONNX support.</p>
+      <p>Distributed Spark/Scala anomaly detection with Extended Isolation Forest and ONNX support.</p>
     </article>
   </div>
 </section>
 
 <section class="home-section home-throughline" aria-labelledby="throughline-heading">
   <div class="section-heading">
-    <p class="section-kicker">Throughline</p>
-    <h2 id="throughline-heading">Measurement work across AI, trust, and physics</h2>
+    <p class="section-kicker">Background</p>
+    <h2 id="throughline-heading">Detection work across trust, AI, and physics</h2>
   </div>
   <div class="home-throughline-copy">
-    <p>For nearly a decade at LinkedIn, most recently as a Senior Staff Machine Learning Engineer, I built production AI for anti-abuse, trust, and platform integrity: deep learning over raw sequences of member activity, unsupervised anomaly detection at scale, and detection of AI-generated images. I created and open-sourced LinkedIn's isolation-forest library, which is used widely in production, and drove significant AI-productivity and infrastructure upgrades across the Trust organization.</p>
-    <p>Before LinkedIn, I earned my Ph.D. in physics at Brown working on <a href="{{ '/2016/08/18/calibrating-the-lux-dark-matter-experiment/' | relative_url }}">LUX</a>, one of the world's most sensitive dark-matter detectors. Across physics, platform integrity, and AI, the through-line has been the same: extract weak signals, measure what matters, understand uncertainty, and build systems that remain reliable when the ground truth is difficult to see.</p>
+    <p>At LinkedIn, most recently as a Senior Staff Machine Learning Engineer, I built production systems for Trust: bot and automation detection, deep models over member-activity sequences, unsupervised anomaly detection at scale, and detection of AI-generated profile images. I also created and open-sourced LinkedIn's isolation-forest library and led AI productivity work for Trust engineering teams.</p>
+    <p>Before LinkedIn, I earned my Ph.D. in physics at Brown working on <a href="{{ '/2016/08/18/calibrating-the-lux-dark-matter-experiment/' | relative_url }}">LUX</a>, one of the world's most sensitive dark-matter detectors. The common thread is practical measurement: extracting weak signals from noisy data, checking uncertainty, and making systems useful when ground truth is incomplete.</p>
   </div>
 </section>
 
@@ -263,8 +264,8 @@ hide_title: true
 
 <section class="home-section" aria-labelledby="conversations-heading">
   <div class="section-heading">
-    <h2 id="conversations-heading">Open to Conversations</h2>
+    <h2 id="conversations-heading">Contact</h2>
   </div>
-  <p>I enjoy comparing notes with people building or studying AI systems. I'm especially interested in the intersection of physics and AI, from world models to reinforcement learning and simulation, and in measurement, adversarial problems, and security. If that overlaps with what you're working on, I'd be glad to hear from you.</p>
-  <p><a class="cta-button" href="mailto:james.verbus@gmail.com">Start a conversation</a></p>
+  <p>I like hearing from people working on AI systems, detection, synthetic media, sequence modeling, physics, or AI productivity. Email is the easiest way to reach me.</p>
+  <p><a class="cta-button" href="mailto:james.verbus@gmail.com">Email me</a></p>
 </section>
