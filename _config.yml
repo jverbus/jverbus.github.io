@@ -16,7 +16,7 @@ highlighter: rouge
 
 # Site metadata
 title: James Verbus
-tagline: "AI systems, measurement, and reliability under uncertainty."
+tagline: "AI systems for messy, adversarial environments."
 default_og_image: /assets/images/social/site-default-1200x630.png
 default_og_image_width: 1200
 default_og_image_height: 630
@@ -41,5 +41,9 @@ defaults:
       og_image_height: 630
   - scope:
       path: "assets/files"
+    values:
+      sitemap: false
+  - scope:
+      path: "googlec15fb936e51d8bcb.html"
     values:
       sitemap: false
