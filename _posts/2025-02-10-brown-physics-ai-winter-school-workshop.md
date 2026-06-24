@@ -2,8 +2,8 @@
 layout: post
 title: "Exploring LLMs and RAG at the 2025 AI Winter School (Brown University)"
 date: 2025-02-10
-last_modified_at: 2026-06-10
-description: "Hands-on workshop on LLMs and Retrieval-Augmented Generation for physics workflows, using the OpenAI API, an open Llama model, and LlamaIndex over research documents."
+last_modified_at: 2026-06-24
+description: "Hands-on workshop on source-grounded LLM workflows for physics: direct-model baselines, vector retrieval over LUX papers and Brown theses, retrieval diagnostics, and API/open-model tradeoffs."
 og_image: "/assets/images/social/2025-02-10-brown-physics-ai-winter-school-workshop-1200x630.jpg"
 og_image_alt: "2025 AI Winter School banner from the Brown University Department of Physics"
 og_image_width: 1200
@@ -24,58 +24,59 @@ related:
 
 <img src="{{ '/assets/images/2025-ai-winter-school-banner.jpg' | relative_url }}" alt="2025 AI Winter School banner — Brown University Department of Physics, Center for the Fundamental Physics of the Universe, January 13–16, 2025" width="1024" height="768" loading="eager" decoding="async" fetchpriority="high">
 
-I recently gave a 2.5-hour hands-on workshop on Large Language Models (LLMs) at the 2025 AI Winter School, hosted by the Center for the Fundamental Physics of the Universe at Brown University. The session focused on a practical question: how can physics researchers use LLMs with their own specialized technical material?
+At the 2025 AI Winter School, hosted by the Center for the Fundamental Physics of the Universe at Brown University, I led a 2.5-hour hands-on workshop on using large language models with physics-specific source material.
 
-Rather than covering how to train LLMs from scratch, the workshop focused on using existing models in research workflows. Participants worked through Google Colab notebooks that compared API-based and locally hosted models, then connected both approaches to a basic retrieval-augmented generation (RAG) system.
+The workshop was not about training a foundation model. It was about a narrower research workflow: take technical questions whose answers live in papers and theses, compare direct model answers against source-grounded answers, and inspect the retrieval evidence before trusting the result.
 
-## Workshop Goals
+The example corpus came from LUX dark matter calibration papers and Brown Particle Astrophysics theses. The questions were deliberately concrete: neutron-source rates, mean D-D neutron energy, electric fields used in LUX yield measurements, the liquid-xenon nuclear-recoil endpoint, S1/S2 signal sizes, and the origin of low-energy `127Xe` calibration events. Those are the kinds of details a generic model may phrase confidently while getting wrong.
 
-The workshop covered four main topics:
+## The Scientific Problem
 
-- setting up an LLM through the OpenAI API
-- running an open Llama model locally in a GPU-backed notebook
-- building a RAG system over physics papers and theses
-- inspecting retrieved source chunks to understand and debug model answers
+For scientific use, the hard part is not asking an LLM to explain "dark matter detectors" or "neutron calibration." The hard part is asking for a specific number, condition, or systematic detail and being able to trace the answer back to the document that supports it.
 
-The examples used LUX dark matter calibration documents and Brown Particle Astrophysics theses as the document corpus. The point was not the particular experiment, but the workflow: many physics questions depend on technical details scattered across papers, theses, detector notes, calibration documents, internal analysis writeups, and code-adjacent documentation.
+In a physics analysis, a plausible answer is not enough. A usable answer needs provenance:
 
-## Why RAG Is Useful for Physics
+- which document was used
+- which page or text region contained the answer
+- whether the retrieved passage actually supports the claim
+- whether the model preserved units, qualifiers, and uncertainty language
+- whether the answer came from the requested source rather than adjacent but incompatible material
 
-A general-purpose LLM may be able to explain broad physics concepts, but it often will not know the details of a specific experiment, calibration, analysis note, or recently published result. That information may be private, too new, too specialized, or simply absent from the model's training data.
+That framing makes retrieval-augmented generation (RAG) less of a chatbot feature and more of an evidence-routing problem.
 
-One option is to paste a large amount of context into the prompt. That can work for small cases, but it does not scale well to a research group's full document collection. Context windows are finite, long prompts can be expensive, and adding irrelevant text can make the model's job harder.
+## Retrieval Model
 
-RAG provides a more scalable pattern:
+The RAG system in the notebooks used a standard dense-retrieval pipeline:
 
-1. split documents into chunks
-2. convert each chunk into an embedding vector
-3. store those vectors in a vector index
-4. embed the user's question
-5. retrieve the most relevant chunks
-6. pass the retrieved context to the LLM along with the question
+1. parse source documents from a Google Drive directory
+2. split the extracted text into overlapping chunks
+3. embed each chunk into a vector space
+4. embed the user question into the same vector space
+5. retrieve the top-ranked chunks by vector similarity
+6. pass those chunks, plus the question, to the LLM
 
-For physics researchers, this turns an LLM into a more useful interface to technical source material. Instead of asking the model to rely only on its training data, the model can answer using relevant sections of papers, theses, notes, or documentation retrieved at query time.
+In shorthand, the retriever ranks chunks by a score such as:
 
-## API-Based Models vs. Open Models
+```text
+score(q, c_i) = cos(embed(q), embed(c_i))
+```
 
-A major part of the workshop was comparing two common ways to use LLMs.
+This changes the model's job. Without retrieval, the model is being asked to answer from its parameters. With retrieval, the model is being asked to synthesize an answer from a small set of retrieved passages. That is a meaningful improvement, but it is not a proof of correctness. A RAG answer can still fail if the parser loses a table, the embedding model ranks the wrong passage, the top-k cutoff excludes the relevant chunk, or the LLM misreads the retrieved evidence.
 
-| Approach             | Advantages                                                                                            | Tradeoffs                                                                                            |
-| -------------------- | ----------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| **OpenAI API**       | Fast setup, strong model performance, no local GPU required, useful for prototyping                   | Requires using a hosted service, has API costs, and gives less control over model internals          |
-| **Open Llama model** | More control over model choice, runtime, tokenizer, inference settings, and data-handling environment | Requires more setup, GPU/RAM resources, dependency management, and model access through Hugging Face |
+## Two Implementations
 
-The OpenAI notebook was the quickest path to a working LLM workflow. Participants created an API key, stored it in Colab secrets, and used the OpenAI API together with LlamaIndex.
+The workshop used two parallel Colab notebooks so participants could see the same workflow with different model-serving assumptions.
 
-The Llama notebook showed a more controlled but heavier-weight setup. Participants used Meta's Llama model through Hugging Face, requested access to the gated model weights, created a Hugging Face token, and ran the model in a GPU-backed Colab environment. Even the 8-billion-parameter model required substantially more compute than the API example.
+| Path | Model setup | Retrieval setup | Role in the workshop |
+| --- | --- | --- | --- |
+| **Hosted API** | `gpt-4o-mini` through the OpenAI API | LlamaIndex document loading, chunking, embeddings, vector indexing, and query engine | Fast path for prototyping and comparing model answers against retrieved evidence |
+| **Open model** | `meta-llama/Meta-Llama-3.1-8B-Instruct` through Hugging Face in a GPU-backed Colab runtime | LlamaIndex with `BAAI/bge-small-en-v1.5` embeddings for vector search | More explicit control over model weights, runtime, tokenizer, embedding model, and data-handling environment |
 
-This distinction matters for research groups. A hosted API may be best for rapid prototyping, while an open model may be preferable when local deployment, reproducibility, model control, cost structure, or data-handling constraints are more important.
+The hosted path minimized setup. The open-model path exposed more of the system boundary: model access, GPU memory, dependency management, inference latency, tokenizer behavior, and the fact that "local" control still requires disciplined handling of the surrounding retrieval and prompting code.
 
-## Technical Setup
+## Indexing Parameters
 
-For the RAG portion, we used LlamaIndex to load documents, chunk text, create embeddings, and build a vector index. In the OpenAI notebook, the LLM was `gpt-4o-mini`, with embeddings from the OpenAI API (LlamaIndex's default). In the Llama notebook, the model was `meta-llama/Meta-Llama-3.1-8B-Instruct`, with a small open embedding model (`BAAI/bge-small-en-v1.5`) handling the vector search.
-
-The workshop used simple starting values for the RAG parameters:
+For the first pass, the notebooks used compact, inspectable RAG settings:
 
 ```python
 Settings.chunk_size = 1000
@@ -85,47 +86,57 @@ query_engine = index.as_query_engine(similarity_top_k=5)
 response = query_engine.query(question)
 ```
 
-These are not universal defaults. They are engineering parameters.
+These are engineering choices, not universal defaults.
 
-- **Chunk size** controls how much text is retrieved at once.
-- **Chunk overlap** helps avoid losing context at chunk boundaries.
-- **Embedding model** determines how text is represented in vector space.
-- **Top-k retrieval** controls how many chunks are passed to the LLM.
+- **Chunk size:** larger chunks preserve more local context, but make retrieval less selective and consume more prompt budget.
+- **Chunk overlap:** overlap reduces boundary artifacts, especially when a definition, figure caption, or table explanation straddles a chunk boundary.
+- **Embedding model:** the embedding model defines the retrieval geometry. It determines which passages are "near" the question before the LLM sees anything.
+- **Top-k retrieval:** increasing `similarity_top_k` improves recall only if the relevant chunks are somewhere near the top of the ranking; it also adds more irrelevant text for the generator to reconcile.
 
-There are real tradeoffs. If chunks are too small, the retrieved text may omit surrounding context needed to answer the question. If chunks are too large, similarity search may become less precise, and the retrieved context may waste valuable context-window space.
+For physics PDFs, those choices are not cosmetic. Tables, equations, captions, units, and paragraph references can be separated by PDF extraction. A chunk that is reasonable for prose may be too small for a table and its caption, while a chunk that preserves a table may be too broad for precise nearest-neighbor retrieval.
 
-## Debugging RAG
+## What We Inspected
 
-One of the most important parts of the workshop was inspecting the retrieved sources. The notebooks showed how to examine objects such as:
+The important notebook cells were not just the calls that generated answers. They were the cells that exposed the retrieval trace:
 
 ```python
 response.metadata
 response.source_nodes
 ```
 
-This lets the user see which documents, pages, and text chunks were actually passed to the model.
+That output lets the user separate three different failure modes:
 
-That matters because a bad RAG answer can come from different failure modes:
+| Failure mode | What it looks like | What to check |
+| --- | --- | --- |
+| Missing corpus coverage | The answer is generic or absent because the relevant paper/thesis was never indexed | Directory contents, document parser output, index construction |
+| Retrieval failure | The answer uses source text, but from the wrong document, page, calibration, or energy range | `source_nodes`, page metadata, chunk text, similarity ranking |
+| Generation failure | The right passage was retrieved, but the model changed a number, dropped a unit, or over-compressed a caveat | Source passage against final answer, especially numerical claims |
 
-- the relevant document was not included in the index
-- the retriever selected the wrong chunks
-- the model had the right context but still generated an incorrect answer
+This is why the workshop used questions with checkable numerical answers. If the answer says "about 2.45 MeV" when the source reports a measured mean energy with statistical and systematic uncertainties, the difference matters. If an answer reports an endpoint but drops whether it is in `keVnr`, the unit loss matters. If an answer identifies `127Xe` without distinguishing cosmogenic activation from a calibration source, the provenance matters.
 
-This is especially important for quantitative scientific work. RAG can improve grounding, but it does not make an answer automatically correct. The retrieved evidence still needs to be checked.
+## Incremental Indexing
 
-## Growing the Document Index
+The notebooks also added new documents to an existing index. The first corpus used LUX D-D calibration papers; the second pass inserted Brown Particle Astrophysics theses:
 
-We also showed how to add documents incrementally. After starting with a small set of LUX calibration papers, we added additional Brown theses to the existing index instead of rebuilding the full index from scratch.
+```python
+new_documents = SimpleDirectoryReader(new_llama_index_data_path, recursive=True).load_data()
+new_nodes = SimpleNodeParser().get_nodes_from_documents(new_documents)
+index.insert_nodes(new_nodes)
+```
 
-That is closer to how a real research group would use this kind of system. A group knowledge base may grow over time as new papers, theses, detector notes, analysis notes, and internal documentation are added. Incremental indexing makes that workflow more practical, especially when the corpus becomes large enough that rebuilding the entire vector index would be slow or expensive.
+That exercise was included because a research group's document base is not static. Papers, theses, detector notes, analysis notes, meeting slides, and internal documentation accumulate over years. Rebuilding a small demo index is trivial; maintaining an auditable research index requires attention to versioning, provenance, document freshness, access control, and regression tests for important queries.
 
-## Takeaway
+## Practical Standard
 
-The main takeaway was that LLMs become much more useful for scientific work when they are connected to the right technical context and when their sources can be inspected.
+The standard I wanted participants to take away was deliberately strict:
 
-For physics researchers, RAG is valuable not because it makes an LLM infallible, but because it provides a practical way to query specialized document collections using natural language. It can help researchers find relevant sections of papers, compare details across documents, navigate long theses or technical notes, and prototype assistants for experiment-specific knowledge bases.
+1. ask the model a domain-specific question
+2. inspect the retrieved source chunks
+3. verify the answer against the source text
+4. check units, assumptions, and uncertainty language
+5. revise the corpus, chunking, embedding model, or prompt when the retrieval trace is wrong
 
-The API and open-model workflows each have a place. Hosted APIs are often the easiest way to prototype. Open models require more infrastructure but give more control. In both cases, the essential research practice is the same: keep the evidence visible, verify quantitative claims, and treat the system as an assistant for navigating technical material rather than as an authority.
+That is slower than treating an LLM as an oracle, but it is closer to how scientific work is actually checked. For physics, RAG earns its keep only when it shortens the path from question to source evidence without hiding uncertainty behind fluent prose.
 
 ## Materials
 
