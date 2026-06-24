@@ -2,7 +2,7 @@
 layout: page
 title: Home
 description: "AI systems for messy, adversarial environments: bot and automation detection, anomaly detection, sequence modeling, synthetic media, and AI productivity."
-last_modified_at: 2026-06-23
+last_modified_at: 2026-06-24
 hide_title: true
 ---
 
@@ -21,9 +21,20 @@ hide_title: true
 
     <div class="home-hero-media">
       <figure class="home-hero-photo">
-        <img src="{{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }}" srcset="{{ '/assets/images/jverbus_lux_detector-400.jpg' | relative_url }} 400w, {{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }} 800w" sizes="(max-width: 760px) calc(100vw - 2rem), 360px" alt="James Verbus working on the LUX dark matter detector" width="800" height="800" loading="eager" decoding="async" fetchpriority="high">
-        <figcaption>Working on detector hardware for LUX, one of the world's most sensitive dark matter experiments.</figcaption>
+        <img src="{{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }}" srcset="{{ '/assets/images/jverbus_lux_detector-400.jpg' | relative_url }} 400w, {{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }} 800w" sizes="(max-width: 760px) calc(100vw - 2rem), 420px" alt="James Verbus working on the LUX dark matter detector" width="800" height="800" loading="eager" decoding="async" fetchpriority="high">
+        <figcaption>[01] LUX hardware - dark matter detection, SURF, South Dakota.</figcaption>
       </figure>
+
+      <div class="home-contact" id="contact" aria-label="Contact links">
+        <ul class="contact-list">
+          <li><a href="mailto:james.verbus@gmail.com">{% include site/icons/email.svg %} Email</a></li>
+          <li><a href="https://github.com/jverbus">{% include site/icons/github.svg %} GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/jamesverbus/">{% include site/icons/linkedin.svg %} LinkedIn</a></li>
+          <li><a href="https://x.com/JamesVerbus">{% include site/icons/x.svg %} X</a></li>
+          <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ">{% include site/icons/google-scholar.svg %} Google Scholar</a></li>
+          <li><a href="https://orcid.org/0000-0002-5812-022X">{% include site/icons/orcid.svg %} ORCID</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 
@@ -53,16 +64,6 @@ hide_title: true
     </a>
   </nav>
 
-  <div class="home-contact" id="contact" aria-label="Contact links">
-    <ul class="contact-list">
-      <li><a href="mailto:james.verbus@gmail.com">{% include site/icons/email.svg %} Email</a></li>
-      <li><a href="https://github.com/jverbus">{% include site/icons/github.svg %} GitHub</a></li>
-      <li><a href="https://www.linkedin.com/in/jamesverbus/">{% include site/icons/linkedin.svg %} LinkedIn</a></li>
-      <li><a href="https://x.com/JamesVerbus">{% include site/icons/x.svg %} X</a></li>
-      <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ">{% include site/icons/google-scholar.svg %} Google Scholar</a></li>
-      <li><a href="https://orcid.org/0000-0002-5812-022X">{% include site/icons/orcid.svg %} ORCID</a></li>
-    </ul>
-  </div>
 </section>
 
 <section class="home-section home-start" id="start-here" aria-labelledby="start-here-heading">
