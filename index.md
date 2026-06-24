@@ -9,7 +9,7 @@ hide_title: true
 <section class="home-hero" id="about">
   <div class="home-hero-grid">
     <div class="home-hero-copy">
-      <p class="home-eyebrow">AI systems · detection · synthetic media</p>
+      <p class="home-eyebrow">Adversarial AI · Automation detection · Synthetic media</p>
       <h1>James Verbus</h1>
       <p class="home-lede home-lede-primary">I build and evaluate AI systems for messy, adversarial environments.</p>
       <p class="home-lede">Recent work spans bot and automation detection, anomaly detection, sequence modeling, synthetic media, and AI productivity.</p>
