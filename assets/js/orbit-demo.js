@@ -15,7 +15,7 @@
   "use strict";
 
   var R1 = 1;
-  var R2 = 1.8;
+  var R2 = 1.6;
   var DT = 0.004;
   var CRASH_RADIUS = 0.2;
   var ESCAPE_RADIUS = 2.5;
@@ -619,16 +619,6 @@
         setRunning(true);
       });
     }
-
-    root.addEventListener("keydown", function (event) {
-      if (event.key === "ArrowUp") {
-        event.preventDefault();
-        burn(1);
-      } else if (event.key === "ArrowDown") {
-        event.preventDefault();
-        burn(-1);
-      }
-    });
 
     /* ---- environment hooks ---- */
 

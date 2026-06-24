@@ -28,16 +28,16 @@ function check(name, condition, detail) {
   }
 }
 
-/* ---- Hohmann closed form vs hand-derived values for r1=1, r2=1.8 ---- */
+/* ---- Hohmann closed form vs hand-derived values for r1=1, r2=1.6 ---- */
 
 {
-  const plan = orbit.hohmann(1, 1.8);
-  // Independent derivation: a_t = 1.4
-  // dv1 = sqrt(2 - 1/1.4) - 1            = 0.13393...
-  // dv2 = sqrt(1/1.8) - sqrt(2/1.8 - 1/1.4) = 0.11545...
-  const dv1 = Math.sqrt(2 - 1 / 1.4) - 1;
-  const dv2 = Math.sqrt(1 / 1.8) - Math.sqrt(2 / 1.8 - 1 / 1.4);
-  const tT = Math.PI * Math.sqrt(1.4 ** 3);
+  const plan = orbit.hohmann(1, 1.6);
+  // Independent derivation: a_t = 1.3
+  // dv1 = sqrt(2 - 1/1.3) - 1                = 0.10940...
+  // dv2 = sqrt(1/1.6) - sqrt(2/1.6 - 1/1.3) = 0.09719...
+  const dv1 = Math.sqrt(2 - 1 / 1.3) - 1;
+  const dv2 = Math.sqrt(1 / 1.6) - Math.sqrt(2 / 1.6 - 1 / 1.3);
+  const tT = Math.PI * Math.sqrt(1.3 ** 3);
   check("Hohmann dv1 matches hand calc", Math.abs(plan.dv1 - dv1) < 1e-12,
     plan.dv1.toFixed(6));
   check("Hohmann dv2 matches hand calc", Math.abs(plan.dv2 - dv2) < 1e-12,
@@ -45,7 +45,7 @@ function check(name, condition, detail) {
   check("Hohmann transfer time matches hand calc",
     Math.abs(plan.time - tT) < 1e-12, plan.time.toFixed(6));
   check("Hohmann total in expected range",
-    plan.total > 0.249 && plan.total < 0.25, plan.total.toFixed(6));
+    plan.total > 0.206 && plan.total < 0.207, plan.total.toFixed(6));
 }
 
 /* ---- conservation over 20 orbits of an eccentric orbit ---- */
@@ -91,19 +91,19 @@ function check(name, condition, detail) {
 /* ---- elements of a circular orbit ---- */
 
 {
-  const el = orbit.orbitElements(orbit.makeState(1.8));
+  const el = orbit.orbitElements(orbit.makeState(1.6));
   check("circular elements: a = r, e = 0",
-    Math.abs(el.a - 1.8) < 1e-12 && el.e < 1e-7,
+    Math.abs(el.a - 1.6) < 1e-12 && el.e < 1e-7,
     "a " + el.a.toFixed(6) + ", e " + el.e.toExponential(1));
 }
 
 /* ---- discrete Hohmann execution (the demo's autopilot) ---- */
 
 {
-  const result = orbit.simulateHohmann(1, 1.8, orbit.DT);
+  const result = orbit.simulateHohmann(1, 1.6, orbit.DT);
   const el = result.elements;
-  check("autopilot circularizes near r2 (|a-1.8| < 0.5%)",
-    Math.abs(el.a - 1.8) / 1.8 < 0.005, "a " + el.a.toFixed(4));
+  check("autopilot circularizes near r2 (|a-1.6| < 0.5%)",
+    Math.abs(el.a - 1.6) / 1.6 < 0.005, "a " + el.a.toFixed(4));
   check("autopilot eccentricity small (e < 0.01)", el.e < 0.01,
     "e " + el.e.toFixed(5));
   check("autopilot delta-v equals analytic total exactly",
@@ -112,17 +112,17 @@ function check(name, condition, detail) {
   check("timing quirk: residual eccentricity nonzero but tiny",
     el.e > 0 && el.e < 0.01, el.e.toExponential(2));
   check("autopilot meets the demo's success thresholds",
-    Math.abs(el.a - 1.8) / 1.8 < 0.02 && el.e < 0.025);
+    Math.abs(el.a - 1.6) / 1.6 < 0.02 && el.e < 0.025);
 }
 
 /* ---- greedy controller: reaches the target, wastefully ---- */
 
 {
-  const plan = orbit.hohmann(1, 1.8);
-  const g = orbit.simulateGreedy(1, 1.8, orbit.DT);
+  const plan = orbit.hohmann(1, 1.6);
+  const g = orbit.simulateGreedy(1, 1.6, orbit.DT);
   const el = g.elements;
-  check("greedy reaches the success band (|a-1.8|/1.8 < 2%, e < 0.025)",
-    Math.abs(el.a - 1.8) / 1.8 < 0.02 && el.e < 0.025,
+  check("greedy reaches the success band (|a-1.6|/1.6 < 2%, e < 0.025)",
+    Math.abs(el.a - 1.6) / 1.6 < 0.02 && el.e < 0.025,
     "a " + el.a.toFixed(4) + ", e " + el.e.toFixed(4));
   check("greedy arrives within the demo's patience (t < 150)",
     g.arrivedAt !== null && g.arrivedAt < 150,
