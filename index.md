@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Home
-description: "AI systems for messy, adversarial environments: bot and automation detection, anomaly detection, sequence modeling, synthetic media, and AI productivity."
+description: "AI systems for adversarial environments: bot and automation detection, anomaly detection, sequence modeling, synthetic media, and AI productivity."
 last_modified_at: 2026-06-24
 hide_title: true
 ---
@@ -10,19 +10,18 @@ hide_title: true
   <div class="home-hero-grid">
     <div class="home-hero-copy">
       <p class="home-eyebrow">Adversarial AI · Automation detection · Synthetic media</p>
-      <h1>James Verbus</h1>
-      <p class="home-lede home-lede-primary">I build and evaluate AI systems for messy, adversarial environments.</p>
-      <p class="home-lede">Recent work spans bot and automation detection, anomaly detection, sequence modeling, synthetic media, and AI productivity.</p>
+      <h1 class="home-hero-headline">AI systems for<br><span class="home-hero-headline-muted">adversarial settings.</span></h1>
+      <p class="home-lede home-lede-primary">I build and evaluate AI systems for adversarial environments: bot and automation detection, anomaly detection, sequence modeling, synthetic media, and AI productivity.</p>
       <div class="home-hero-actions" aria-label="Primary links">
         <a class="cta-button" href="{{ '/posts/' | relative_url }}">Read the work</a>
-        <a class="secondary-button" href="#start-here">Start here</a>
+        <a class="secondary-button" href="#start-here">What I work on <span aria-hidden="true">&darr;</span></a>
       </div>
     </div>
 
     <div class="home-hero-media">
       <figure class="home-hero-photo">
         <img src="{{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }}" srcset="{{ '/assets/images/jverbus_lux_detector-400.jpg' | relative_url }} 400w, {{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }} 800w" sizes="(max-width: 760px) calc(100vw - 2rem), 420px" alt="James Verbus working on the LUX dark matter detector" width="800" height="800" loading="eager" decoding="async" fetchpriority="high">
-        <figcaption>[01] LUX hardware - dark matter detection, SURF, South Dakota.</figcaption>
+        <figcaption>LUX dark matter detector, Sanford Underground Research Facility.</figcaption>
       </figure>
 
       <div class="home-contact" id="contact" aria-label="Contact links">
@@ -68,7 +67,7 @@ hide_title: true
 
 <section class="home-section home-start" id="start-here" aria-labelledby="start-here-heading">
   <div class="section-heading">
-    <p class="section-kicker">Start here</p>
+    <p class="section-kicker">What I work on</p>
     <h2 id="start-here-heading">Representative work</h2>
   </div>
   <div class="home-start-grid" role="list">
@@ -93,6 +92,7 @@ hide_title: true
       <p>Distributed Spark/Scala anomaly detection with Extended Isolation Forest and ONNX support.</p>
     </article>
   </div>
+  <p class="home-archive-link"><a href="{{ '/posts/' | relative_url }}">View all writing</a></p>
 </section>
 
 <section class="home-section home-throughline" aria-labelledby="throughline-heading">
@@ -104,43 +104,6 @@ hide_title: true
     <p>At LinkedIn, most recently as a Senior Staff Machine Learning Engineer, I built production systems for Trust: bot and automation detection, deep models over member-activity sequences, unsupervised anomaly detection at scale, and detection of AI-generated profile images. I also created and open-sourced LinkedIn's isolation-forest library and led AI productivity work for Trust engineering teams.</p>
     <p>Before LinkedIn, I earned my Ph.D. in physics at Brown working on <a href="{{ '/2016/08/18/calibrating-the-lux-dark-matter-experiment/' | relative_url }}">LUX</a>, one of the world's most sensitive dark-matter detectors. The common thread is practical measurement: extracting weak signals from noisy data, checking uncertainty, and making systems useful when ground truth is incomplete.</p>
   </div>
-</section>
-
-<section class="home-section" aria-labelledby="featured-writing-heading">
-  <div class="section-heading">
-    <h2 id="featured-writing-heading">Featured Writing</h2>
-  </div>
-  <div class="post-list" role="list">
-    {% include site/card.html
-      card_clickable='on'
-      date='Open Source'
-      title='Extended Isolation Forest for Distributed Spark/Scala Anomaly Detection'
-      url='/2026/03/18/announcing-extended-isolation-forest-support/'
-      description='Extended Isolation Forest support for linkedin/isolation-forest, with random hyperplane splits, validation plots, benchmarks, reference parity checks, and edge-case tests.'
-    %}
-    {% include site/card.html
-      card_clickable='on'
-      date='Research'
-      title='Finding AI-Generated Faces in the Wild'
-      url='/2024/08/15/finding-ai-generated-faces-in-the-wild/'
-      description='Research and engineering work on detecting AI-generated profile images in real-world settings, including CVPR workshop publication and LinkedIn Engineering write-up.'
-    %}
-    {% include site/card.html
-      card_clickable='on'
-      date='Workshop'
-      title='Reinforcement Learning for Orbital Transfers'
-      url='/2026/01/09/brown-physics-ai-winter-school-workshop/'
-      description='A hands-on Brown AI Winter School workshop connecting orbital mechanics, reinforcement learning, PPO agents, and practical model diagnostics.'
-    %}
-    {% include site/card.html
-      card_clickable='on'
-      date='Ph.D. Thesis'
-      title='Calibrating the LUX Dark Matter Experiment'
-      url='/2016/08/18/calibrating-the-lux-dark-matter-experiment/'
-      description='An absolute calibration of sub-keV nuclear recoils in the LUX detector using neutron scattering kinematics, improving low-mass WIMP sensitivity sevenfold.'
-    %}
-  </div>
-  <p class="home-archive-link"><a href="{{ '/posts/' | relative_url }}">View all writing</a></p>
 </section>
 
 <section class="home-section" aria-labelledby="projects-heading">
