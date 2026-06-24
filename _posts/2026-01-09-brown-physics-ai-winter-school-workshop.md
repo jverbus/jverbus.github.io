@@ -2,8 +2,8 @@
 layout: post
 title: "Reinforcement Learning for Orbital Transfers at the 2026 AI Winter School (Brown University)"
 date: 2026-01-09
-last_modified_at: 2026-06-10
-description: "Hands-on workshop using reinforcement learning (PPO) to solve a simplified orbital transfer problem. Environment design, reward shaping, and training RL agents for space mechanics."
+last_modified_at: 2026-06-24
+description: "Hands-on workshop framing orbital transfer as a controlled two-body dynamics problem: Hohmann benchmark, Gymnasium environment, PPO policies, reward shaping, and diagnostics for chatter and delta-v efficiency."
 og_image: "/assets/images/2026-ai-winter-school-banner.png"
 og_image_alt: "2026 AI Winter School banner from the Brown University Department of Physics"
 og_image_width: 1024
@@ -24,66 +24,119 @@ related:
 
 <img src="{{ '/assets/images/2026-ai-winter-school-banner.png' | relative_url }}" alt="2026 AI Winter School banner — Brown University Department of Physics, Center for the Fundamental Physics of the Universe, January 6–9, 2026" width="1024" height="530" loading="eager" decoding="async" fetchpriority="high">
 
-I recently gave a 2.5-hour, hands-on workshop on using reinforcement learning (RL) to solve a simplified orbital transfer problem at the **2026 AI Winter School**, hosted by the **Center for the Fundamental Physics of the Universe at Brown University**.
+At the 2026 AI Winter School, hosted by the Center for the Fundamental Physics of the Universe at Brown University, I led a 2.5-hour hands-on workshop on reinforcement learning for orbital transfers.
 
-The goal of the workshop was educational: use a familiar physics problem with a known analytic solution as a sandbox for understanding the practical RL workflow. We started with the classic **Hohmann transfer** as a baseline, then built a small **2D, two-body orbital simulator** and trained PPO (**Proximal Policy Optimization**) agents to learn transfer policies in simulation.
+The workshop was not about claiming that RL is the right way to solve a textbook astrodynamics problem. The point was to use a problem with known mechanics and a known analytic solution as a controlled environment for learning the applied RL workflow: define the state, action, reward, and diagnostics; train a policy; compare it against ground truth; then explain the failure modes.
 
-The setup was intentionally simple: circular orbit transfer, normalized two-body gravity, no drag, no J2 perturbation, no third body, and tangential per-step Δv impulses. That kept the notebook compact enough to inspect directly while still producing meaningful orbital behavior.
+## Control Problem
 
-## From Physics Problem to RL Problem
+The notebook used nondimensional two-body dynamics. The gravitational parameter was set to `μ = 1`, the spacecraft started on a circular orbit at `r1 = 1`, and the target was a larger circular orbit at `r2 = 1.6`. The model omitted drag, finite-duration thrust, J2 perturbations, third bodies, attitude dynamics, and mass depletion. Control was a tangential impulse applied once per simulation step.
 
-A key part of the workshop was turning the orbital-transfer problem into an RL environment:
+The state evolves under central gravity:
 
-- **Observation:** radius, radial velocity, tangential velocity, target energy error, target angular-momentum error, and previous action.
-- **Action:** either discrete control (`coast`, `prograde`, `retrograde`) or continuous-valued tangential impulse control.
-- **Reward:** dense shaping based on energy/angular-momentum error, plus costs for using Δv, ignition/action changes, crashing, and failing to reach the target region.
-- **Diagnostics:** trajectory plots, radius and radial-velocity histories, thrust impulse histories, and cumulative \|Δv\|.
+```text
+dx/dt = v
+dv/dt = -μ x / |x|^3
+```
 
-## Analytic Ground Truth: The Hohmann Transfer
+That stripped-down model is still useful because the relevant orbital invariants are visible. For a circular target orbit, the target specific energy and angular momentum are known:
 
-Before letting RL control anything, we computed the analytic Hohmann transfer and executed it with the same physics integrator the agents would use. In the idealized circular, coplanar, two-body case, the transfer has a clean burn-coast-burn structure:
+```text
+E* = -μ / (2 r2)
+L* = sqrt(μ r2)
+```
 
-1. **Burn 1 at r₁:** raise apoapsis to r₂
-2. **Coast** for half an ellipse
-3. **Burn 2 at r₂:** circularize
+The RL environment did not need to know the absolute orbital angle. The observation vector used normalized radius, radial velocity, tangential velocity, angular-momentum error, energy error, and previous action. Removing angle makes the policy rotationally symmetric: the same local orbital state should produce the same control decision anywhere around the planet.
 
-From the analytic solution we computed Δv₁, Δv₂, the transfer time, and the total Δv, then simulated those burns directly.
+## Hohmann Benchmark
+
+Before training PPO, the notebook computed the Hohmann transfer. For circular, coplanar orbits with two impulsive burns, the transfer semi-major axis is:
+
+```text
+aT = (r1 + r2) / 2
+```
+
+The two burns and transfer time are:
+
+```text
+Δv1 = sqrt(μ(2/r1 - 1/aT)) - sqrt(μ/r1)
+Δv2 = sqrt(μ/r2) - sqrt(μ(2/r2 - 1/aT))
+T   = π sqrt(aT^3 / μ)
+```
+
+That closed-form solution gave the workshop a real yardstick: not just "did the agent reach the target," but how much Δv it spent, how many burns it used, whether it circularized, and whether the trajectory matched the expected burn-coast-burn structure.
 
 <img src="{{ '/assets/images/rl-orbital-hohmann-trajectory.png' | relative_url }}" alt="Hohmann transfer trajectory: the transfer ellipse touching the inner start orbit and the outer target orbit" width="708" height="711" loading="lazy" decoding="async">
 
-The verification plots made the baseline easy to check: the trajectory should be an ellipse touching r₁ and r₂, the radius-vs-time curve should rise cleanly from r₁ and settle at r₂ after the second burn, and the cumulative Δv should match the theoretical total.
+The verification plots made the baseline concrete: the trajectory should be an ellipse touching `r1` and `r2`, the radius history should rise from the inner orbit to the outer orbit after the second burn, and cumulative Δv should match the analytic total.
 
 <img src="{{ '/assets/images/rl-orbital-hohmann-verification.png' | relative_url }}" alt="Verification plots for the simulated Hohmann transfer: radius versus time rising to the target, two thrust impulses showing the burn-coast-burn structure, and cumulative delta-v matching the ideal total" width="1411" height="911" loading="lazy" decoding="async">
 
-One teaching detail surfaced immediately: even the "analytic" solution does not land exactly on r₂ in a discrete simulator, because burn 2 fires on the first timestep at or after the computed transfer time. With a finite timestep, that introduces a small timing error. That mismatch was a useful moment to separate modeling error from algorithm error, and discretization effects from continuous-time theory — the total Δv still matches theory even when the final radius is slightly off.
-
-That gave us an interpretable yardstick for the learned policies, rather than treating the RL agent as a black box.
+One useful teaching detail appeared immediately: even the analytic plan does not land exactly on `r2` in a finite-timestep simulator if the second burn fires on the first step at or after the computed transfer time. The total Δv still matches theory, but the final orbit has a small residual timing error. That separates continuous-time theory, numerical integration, and policy behavior before RL enters the discussion.
 
 {% include site/orbit-demo.html %}
 
-## What the Thrust Histories Revealed
+## RL Formulation
 
-The most useful lesson was that reaching the target orbit is not the same as learning a good transfer.
+The Gymnasium environment held the physics fixed and varied the control interface:
 
-Some learned policies reached the target region but kept applying small corrective impulses. The trajectory plot looked reasonable, but the thrust history told a different story: the policy had learned to trim the orbit rather than execute a clean transfer. That gave us a concrete way to discuss reward shaping, action-space design, chatter, overcorrection, and the difference between endpoint success and efficient control.
+| Component | Implementation |
+| --- | --- |
+| **Observation** | Normalized `r`, `vr`, `vt`, target angular-momentum error, target energy error, previous action |
+| **Discrete action** | `coast`, full prograde impulse, full retrograde impulse |
+| **Continuous action** | throttle in `[-1, 1]`, mapped to a signed tangential Δv impulse |
+| **Success criteria** | tolerances on `|r - r2|`, `|vr|`, and `|L - L*|` |
+| **Failure criteria** | crash/escape radius or episode timeout |
 
-The discrete controller was crude but readable: it had to stitch together the transfer from small prograde and retrograde impulses. The continuous controller had more expressive control, but that flexibility did not automatically produce cleaner behavior. In some runs, it reached the target region and then kept correcting.
+The dense reward used a combined energy/angular-momentum error:
 
-Those failure modes were the point of the demo. The plots made the learned behavior visible.
+```text
+err = |E - E*| / |E*| + |L - L*| / |L*|
+```
 
-## Hands-on Experiment
+with shaping approximately proportional to:
 
-The final section of the notebook let participants modify the training configuration and rerun experiments. They could adjust parameters such as maximum per-step impulse, control-effort cost, ignition penalty, shaping scale, training steps, entropy coefficient, and learning rate.
+```text
+err_previous - γ err_current
+```
 
-The point was not to produce a perfect mission optimizer in one afternoon. It was to practice the applied RL loop:
+Then the environment subtracted fuel and ignition/switching penalties, added a one-time success bonus on first entry into the tolerance region, and added a holding reward for staying there. PPO was trained with observation/reward normalization during training, frozen normalization statistics during evaluation, and deterministic policy rollout for diagnostics.
+
+## What the Diagnostics Caught
+
+The important lesson was that endpoint success is too weak a metric. A policy can enter the success region and still be a poor transfer.
+
+The notebook compared policies using trajectory, radius history, radial velocity, thrust impulses, cumulative Δv, number of burns or active-thrust steps, closest-to-target statistics, and the mission report against the Hohmann ideal.
+
+The failure modes were instructive:
+
+- **Discrete control:** small fixed impulses can reach the target, but often with many prograde/retrograde corrections. The orbit may satisfy the tolerance band while wasting Δv.
+- **Continuous control:** throttle control is more expressive, but it can learn micro-thrusting: almost continuous small corrections that keep the error low while hiding poor fuel efficiency.
+- **Tolerance exploitation:** a policy can appear to "beat" the ideal by stopping inside loose tolerances on a slightly elliptical orbit. That is not a better transfer; it is a reminder that the metric defines the game.
+- **Final-state ambiguity:** final radius alone is misleading for eccentric orbits. Closest approach, radial-velocity history, angular momentum, and thrust history are needed to interpret what the policy actually learned.
+
+## Experiment Loop
+
+The final notebook section let participants edit a `ModeConfig` and rerun training. The knobs were not decorative; each one changes the control problem:
+
+- `dv_mag`: control authority per step
+- `fuel_cost_penalty`: cost of using Δv
+- `ignition_penalty`: cost of turning on or changing thrust
+- `reward_shaping_scale`: strength of dense energy/angular-momentum shaping
+- `training_timesteps`, `learning_rate`, and `ent_coef`: PPO optimization and exploration behavior
+
+The practical standard was:
 
 ```text
 train a policy
-inspect what it did
-explain the behavior
-change the environment or reward
-try again
+inspect trajectory, thrust, and Δv
+compare against Hohmann
+explain the failure mode
+change one parameter or design choice
+rerun
 ```
+
+That loop is the point of using RL in a problem with analytic ground truth. The goal is not to celebrate a learned policy for reaching the target. The goal is to make the policy's behavior legible enough that failures are evidence for the next experiment.
 
 ## Materials
 
