@@ -1,15 +1,15 @@
 ---
 layout: page
 title: Publications
-description: "Publications by James Verbus across AI systems, measurement, and reliability under uncertainty, from deepfake detection to dark matter physics."
+description: "Publications by James Verbus across synthetic media detection, platform integrity, anomaly detection, sequence modeling, and dark matter physics."
 og_image: "/assets/images/social/2024-08-15-finding-ai-generated-faces-in-the-wild-1200x630.jpg"
 og_image_alt: "Finding AI-Generated Faces in the Wild social preview image"
 og_image_width: 1200
 og_image_height: 630
-last_modified_at: 2026-06-12
+last_modified_at: 2026-06-23
 ---
 
-For a complete publication list (>30 papers, >10k citations), see [Google Scholar](https://scholar.google.com/citations?user=_ksEziAAAAAJ&sortby=pubdate). Selected publications below.
+Selected research across synthetic media detection, platform integrity, anomaly detection, sequence modeling, and dark matter physics. For the full record (>30 papers, >10k citations), see [Google Scholar](https://scholar.google.com/citations?user=_ksEziAAAAAJ&sortby=pubdate).
 
 {% for section in site.data.publications.sections %}
 ## {{ section.title }}

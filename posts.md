@@ -2,11 +2,11 @@
 layout: page
 title: Writing
 permalink: /posts/
-description: "Writing by James Verbus on AI systems, measurement, and reliability under uncertainty: agents, evaluation, anomaly detection, and adversarial ML."
-last_modified_at: 2026-06-12
+description: "Writing by James Verbus on bot and automation detection, anomaly detection, sequence modeling, synthetic media, AI productivity, and physics."
+last_modified_at: 2026-06-23
 ---
 
-<p class="home-intro">Notes on AI systems, measurement, and reliability under uncertainty: agents, evaluation, anomaly detection, and adversarial ML.</p>
+<p class="home-intro">Field notes, case studies, and workshop writeups on detection systems, anomaly detection, sequence modeling, synthetic media, AI productivity, and physics.</p>
 
 {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
 {% for year_group in posts_by_year %}

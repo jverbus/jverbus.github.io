@@ -1,11 +1,11 @@
 ---
 layout: page
 title: Projects
-description: "Projects by James Verbus supporting AI systems, measurement, and reliability under uncertainty, including LinkedIn's open-source isolation-forest library."
-last_modified_at: 2026-06-12
+description: "Open-source projects by James Verbus, including LinkedIn's distributed Spark/Scala isolation-forest library for anomaly detection."
+last_modified_at: 2026-06-23
 ---
 
-Projects I build and maintain. Select a project for details, major updates, and related writing and talks.
+Open-source projects and supporting artifacts. Start with the distributed Spark/Scala isolation-forest library I built at LinkedIn for large-scale anomaly detection.
 
 <div class="post-list" role="list">
   {% for item in site.data.projects.items %}
