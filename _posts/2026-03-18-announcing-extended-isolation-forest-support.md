@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Extended Isolation Forest for Distributed Spark/Scala Anomaly Detection"
-description: "Extended Isolation Forest support for LinkedIn's open-source Spark/Scala isolation-forest library, including random hyperplane splits, benchmarks, synthetic plots, and validation evidence. The work also became a useful case study in how to validate AI-assisted production code with evidence rather than trust."
-last_modified_at: 2026-06-10
+description: "Extended Isolation Forest support for LinkedIn's open-source Spark/Scala isolation-forest library, including sparse random hyperplane splits, benchmark parity checks, synthetic score maps, and validation evidence. The work also became a useful case study in how to validate AI-assisted production code with evidence rather than trust."
+last_modified_at: 2026-06-24
 og_image: "/assets/images/social/2026-03-18-announcing-extended-isolation-forest-support-1200x630.jpg"
 og_image_alt: "Extended Isolation Forest for distributed Spark/Scala anomaly detection"
 og_image_width: 1200
@@ -14,7 +14,7 @@ related:
   - /2024/09/23/announcing-onnx-support-in-isolation-forest/
 ---
 
-I've added **Extended Isolation Forest (EIF)** to LinkedIn's open-source Spark/Scala `isolation-forest` library. EIF replaces axis-aligned splits with random hyperplane splits, reducing score artifacts that standard Isolation Forest can produce and improving anomaly detection in cases where axis-aligned bias is a real limitation.
+I added **Extended Isolation Forest (EIF)** to LinkedIn's open-source Spark/Scala `isolation-forest` library. EIF keeps the same isolation-score idea as standard Isolation Forest, but changes the split geometry: instead of partitioning one feature at a time, it partitions with random hyperplanes.
 
 <p>
   <a href="https://github.com/linkedin/isolation-forest" aria-label="Open isolation-forest on GitHub">
@@ -22,27 +22,41 @@ I've added **Extended Isolation Forest (EIF)** to LinkedIn's open-source Spark/S
   </a>
 </p>
 
-I originally created and open-sourced this Spark/Scala implementation in 2019. It is used widely in production and supports distributed training and scoring, Spark ML pipeline integration, model persistence, and ONNX export for standard Isolation Forest. EIF landed in [PR #79](https://github.com/linkedin/isolation-forest/pull/79) on March 18, 2026, was introduced in `v4.1.0`, and is now available in the [`isolation-forest` repository](https://github.com/linkedin/isolation-forest).
+I originally created and open-sourced this Spark/Scala implementation in 2019. It is used widely in production and supports distributed training and scoring, Spark ML pipeline integration, model persistence, and ONNX export for standard Isolation Forest. EIF landed in [PR #79](https://github.com/linkedin/isolation-forest/pull/79) on March 18, 2026, was introduced in `v4.1.0`, and is available in the [`isolation-forest` repository](https://github.com/linkedin/isolation-forest).
 
-EIF is additive: existing standard Isolation Forest APIs, typical Spark ML pipelines, saved-model loading, and standard-IF ONNX export behavior remain backward-compatible. The release also tightens validation for invalid edge cases, such as empty ensembles, too-small `maxSamples` values, and feature vectors whose dimension does not match the model's known training dimension.
+The change is additive. Existing standard Isolation Forest APIs, Spark ML pipelines, saved-model loading, and standard-IF ONNX export behavior remain backward-compatible. The release also tightens validation for edge cases such as empty ensembles, too-small `maxSamples` values, and feature vectors whose dimension does not match the model's training dimension.
 
-## The axis-aligned bias problem
+## The Scoring Model
 
-Standard Isolation Forest, introduced by [Liu, Ting, and Zhou in 2008](https://doi.org/10.1109/ICDM.2008.17), builds an ensemble of random binary trees. At each node, the algorithm selects one feature and a random split value to partition the data. Because every split is aligned with a single feature axis, the algorithm has a directional bias.
+Standard Isolation Forest, introduced by [Liu, Ting, and Zhou in 2008](https://doi.org/10.1109/ICDM.2008.17), scores points by how quickly random trees isolate them. Points isolated by shorter paths receive higher anomaly scores; points that require longer paths receive lower scores.
 
-In practice, that bias shows up as score-map artifacts: axis-aligned splits can create rectangular bands and ghost-like regions where areas that are similarly far from the training data receive inconsistent anomaly scores.
+The usual score is:
 
-The practical consequence is unreliable scoring. The score contours can reflect partition geometry rather than the data distribution, assign inconsistent scores to similarly unusual points, and under-score anomalies that fall in ghost-like low-score regions.
+```text
+s(x, psi) = 2^(-E[h(x)] / c(psi))
+```
 
-This matters most when features are correlated or when the geometry of the data does not line up neatly with individual coordinate axes, which is common in real-world datasets.
+where `h(x)` is path length, `E[h(x)]` is the ensemble-average path length, `psi` is the subsample size, and `c(psi)` is the average unsuccessful-search path length used for normalization.
 
-## How Extended Isolation Forest works
+EIF does not change that interpretation. It changes the tree geometry used to produce the path lengths.
 
-Extended Isolation Forest, proposed by [Hariri, Carrasco Kind, and Brunner](https://doi.org/10.1109/TKDE.2019.2947676), generalizes standard Isolation Forest by replacing axis-aligned splits with **random hyperplane splits**.
+## The Axis-Aligned Bias Problem
 
-Instead of choosing one feature and one threshold, each split is defined by a random normal vector and an offset that together specify a hyperplane. A point is sent left or right depending on which side of that hyperplane it falls.
+Standard Isolation Forest builds each tree with axis-aligned splits: choose one feature, choose a split value inside that feature's observed range, and send the point left or right based on that coordinate.
 
-The key parameter is `extensionLevel`, which controls how many coordinates participate in each hyperplane:
+That works well in many settings, but it gives the score map a directional bias. In two dimensions, the artifacts are visible as rectangular bands and ghost-like regions where similarly unusual points receive inconsistent scores. The problem is most obvious when features are correlated or when the data distribution is rotated relative to the coordinate axes.
+
+## How EIF Changes the Split
+
+Extended Isolation Forest, proposed by [Hariri, Carrasco Kind, and Brunner](https://doi.org/10.1109/TKDE.2019.2947676), replaces axis-aligned splits with random hyperplane splits. Each split samples a normal vector and a point in the node's bounding box. A point is routed by the sign of:
+
+```text
+(x - p) · n
+```
+
+where `x` is the scored point, `p` is the sampled point on the split plane, and `n` is the random normal vector.
+
+The main parameter is `extensionLevel`, which controls how many coordinates participate in each hyperplane:
 
 - **`extensionLevel = 0`**: one coordinate is non-zero, giving axis-aligned EIF behavior.
 - **`extensionLevel = numFeatures - 1`**: all coordinates can be non-zero, giving fully extended hyperplanes.
@@ -54,31 +68,31 @@ In the implementation, the valid range is based on the resolved feature subspace
 
 One detail is worth making explicit: `extensionLevel = 0` is intentionally close to standard Isolation Forest, but it is not identical. Standard IF retries when it samples a constant feature; EIF follows the reference EIF split semantics, which matters for parity with the original Python and C++ implementations.
 
-## Seeing the difference
+## Seeing the Difference
 
 The effect is especially easy to see in two dimensions. The following heatmaps, generated with the library, show outlier scores across the feature space for three synthetic datasets.
 
-In each case, Standard Isolation Forest on the left shows cross-shaped artifacts along the feature axes, while Extended Isolation Forest on the right produces smoother, less axis-biased contours.
+In each case, Standard Isolation Forest on the left shows cross-shaped artifacts along the feature axes. Extended Isolation Forest on the right produces smoother, less axis-biased contours.
 
-![Single blob heatmap: Standard Isolation Forest vs Extended Isolation Forest]({{ '/assets/images/single_blob_heatmap.svg' | relative_url }}){: style="width:100%; display:block; margin-left:0;" }
+![Single blob heatmap: Standard Isolation Forest vs Extended Isolation Forest]({{ '/assets/images/single_blob_heatmap.svg' | relative_url }})
 
 *Single blob: EIF produces more radial score contours where standard IF shows axis-aligned artifacts.*
 
-![Two blobs heatmap: Standard Isolation Forest vs Extended Isolation Forest]({{ '/assets/images/two_blobs_heatmap.svg' | relative_url }}){: style="width:100%; display:block; margin-left:0;" }
+![Two blobs heatmap: Standard Isolation Forest vs Extended Isolation Forest]({{ '/assets/images/two_blobs_heatmap.svg' | relative_url }})
 
 *Two blobs: EIF produces fewer ghost-like score artifacts between and around the clusters.*
 
-![Sinusoid heatmap: Standard Isolation Forest vs Extended Isolation Forest]({{ '/assets/images/sinusoid_heatmap.svg' | relative_url }}){: style="width:100%; display:block; margin-left:0;" }
+![Sinusoid heatmap: Standard Isolation Forest vs Extended Isolation Forest]({{ '/assets/images/sinusoid_heatmap.svg' | relative_url }})
 
 *Sinusoid: EIF better tracks the non-axis-aligned data distribution.*
 
-These artifacts are not just cosmetic. They correspond to regions where a model can assign inconsistent anomaly scores, including under-scoring unusual points that happen to fall in ghost-like low-score regions.
+These artifacts are not just cosmetic. They correspond to regions where the model assigns inconsistent anomaly scores, including under-scoring unusual points that fall in ghost-like low-score regions.
 
-The plots also served as validation artifacts. If the EIF implementation still produced the same cross-shaped artifacts as standard IF, or if the score contours did not track the known synthetic structure, that would have been a strong signal that something was wrong.
+The plots also served as validation artifacts. If the EIF implementation had produced the same cross-shaped artifacts as standard IF, or if the score contours failed to track the known synthetic structure, that would have been evidence that the implementation was wrong.
 
 {% include site/if-demo.html %}
 
-## Benchmark results
+## Benchmark Results
 
 I benchmarked three configurations across 13 standard outlier-detection datasets:
 
@@ -86,15 +100,15 @@ I benchmarked three configurations across 13 standard outlier-detection datasets
 - EIF with `extensionLevel = 0`
 - Fully extended EIF
 
-I also compared the results against the original Liu et al. Isolation Forest paper and the reference Python EIF implementation from Hariri et al. All experiments used 100 trees, 256 samples per tree, and 10 trials with distinct random seeds.
+I compared the results against the original Liu et al. Isolation Forest paper and the reference Python EIF implementation from Hariri et al. All experiments used 100 trees, 256 samples per tree, and 10 trials with distinct random seeds.
 
 These benchmarks are endpoint comparisons, not an exhaustive `extensionLevel` sweep. They validate the standard IF implementation, the axis-aligned EIF endpoint, and the fully extended EIF endpoint against published and reference implementations.
 
 I have not yet systematically benchmarked intermediate extension levels across all 13 datasets, but I did run a targeted sweep on Ionosphere. In that sweep, AUROC increased from about **0.86** at `extensionLevel = 0` to about **0.91** at full extension, with intermediate values improving along the way.
 
-The most important result is not that EIF is universally better. The result is more specific: **fully extended EIF helps most when axis-aligned bias is actually a limitation.**
+The result is not that EIF is universally better. The result is more specific: **fully extended EIF helps most when axis-aligned bias is actually a limitation.**
 
-The higher-dimensional datasets showed the clearest gains from fully extended EIF. On the four datasets in this benchmark suite with at least 21 dimensions, fully extended EIF improved AUROC on all four.
+The higher-dimensional datasets showed the strongest case for fully extended EIF. In the representative rounded results below, fully extended EIF improved Ionosphere and Satellite, was comparable on Arrhythmia and Cardio, and was worse on the lower-dimensional Mulcross and HTTP datasets.
 
 A few representative results:
 
@@ -107,28 +121,27 @@ A few representative results:
 | Mulcross | 4 | 0.99 | 0.85 | 0.94 | 0.44 | Standard IF higher |
 | HTTP (KDDCUP99) | 3 | 0.9997 | 0.93 | 0.994 | 0.38 | Standard IF higher |
 
-The parity checks were also important:
+The parity checks were as important as the headline comparisons:
 
 - My standard IF results closely match the original Liu et al. paper.
 - My fully extended EIF results closely match the reference Python EIF implementation.
 - EIF with `extensionLevel = 0` closely matches the reference EIF implementation at the same extension level.
 
-That gives me confidence that the implementation is behaving as intended.
+That gives me confidence that the implementation is behaving as intended, rather than merely producing plausible-looking scores.
 
 The full benchmark table, including AUROC/AUPRC results, standard errors, Liu et al. comparisons, and reference Python EIF comparisons, is available in the repository README.
 
-## Validating AI-produced code with evidence
+## Validating AI-Produced Code With Evidence
 
 Because much of this implementation was AI-assisted, I treated generated code as untrusted until it produced independent evidence that matched the algorithm, reference implementation, and expected edge-case behavior. Validation artifacts became first-class outputs.
 
-Instead of relying on line-by-line review alone, I asked for evidence that would be easy to inspect and difficult for a broken implementation to satisfy:
+Instead of relying on line-by-line review alone, I asked for evidence that would be easy to inspect and hard for a broken implementation to satisfy:
 
 - score heatmaps on synthetic datasets where the expected behavior is visually obvious
 - benchmark comparisons against the original Isolation Forest paper and the reference Python EIF implementation
-- AUROC/AUPRC comparisons between Spark EIF and the reference Python EIF implementation
 - edge-case tests for degenerate splits, persistence, constant features, tiny datasets, seed reproducibility, and invalid parameter values
 
-The plots were especially useful. On simple two-dimensional datasets, standard Isolation Forest should show axis-aligned artifacts, and EIF should reduce them. That gives a quick visual check that the implementation has the expected qualitative behavior before reviewing lower-level code paths.
+The plots were especially useful. On simple two-dimensional datasets, standard Isolation Forest should show axis-aligned artifacts, and EIF should reduce them. That gives a fast visual check that the implementation has the expected qualitative behavior before reviewing lower-level code paths.
 
 The validation artifacts also caught real issues.
 
@@ -142,7 +155,7 @@ The checked-in tests covered the parts that visual inspection cannot: training a
 
 I also ran a separate edge-case study outside the main benchmark table. It covered hyperparameter sweeps, contamination behavior, seed reproducibility, save/load equality, low-dimensional data, constant-feature data, all-constant data, and tiny datasets. All **61 / 61** checks passed.
 
-The point was not to choose between tests and plots. The tests protected invariants and the plots made model behavior visually verifiable.
+The point was not to choose between tests and plots. The tests protected invariants; the plots made model behavior visually verifiable.
 
 The workflow that worked best was:
 
@@ -151,15 +164,15 @@ The workflow that worked best was:
 3. inspect those artifacts first
 4. review the code paths behind surprising results
 
-AI did not replace review. It changed the review target from "read every generated line" to "evaluate the evidence, then inspect where it matters."
+AI did not replace review. It changed the review target from "read every generated line" to "evaluate the evidence, then inspect the code paths behind surprising results."
 
-## Implementation highlights
+## Implementation Highlights
 
 The EIF implementation keeps the public Spark ML surface aligned with standard Isolation Forest, while isolating the new behavior to split generation, split representation, and node scoring.
 
 **Sparse hyperplane representation.** Each EIF split stores only the active coordinates of the random hyperplane: feature indices, weights, and offset. Dense normal vectors are not materialized. Model size and per-node scoring cost therefore scale with `extensionLevel + 1`, not with the full input dimensionality. With `extensionLevel = 3`, a node evaluates a four-term dot product.
 
-**Spark ML integration.** EIF uses the same Spark ML `Estimator` / `Model` contract as standard Isolation Forest. It can be used in Spark ML `Pipeline`s and follows the same distributed model persistence pattern.
+**Spark ML integration.** EIF uses the same Spark ML `Estimator` / `Model` contract as standard Isolation Forest. It works in Spark ML `Pipeline`s and follows the same distributed model persistence pattern.
 
 **Persistence across Spark versions.** Spark 4.x save/load validation exposed a precision mismatch in the Avro-backed model representation: hyperplane weights did not round-trip at full double precision.
 
@@ -175,7 +188,7 @@ I reach for **Extended Isolation Forest** when my data has correlated features, 
 
 When I use EIF, I treat `extensionLevel` as a hyperparameter. `extensionLevel = numFeatures - 1` is a useful default and an important reference point, but it is not a guarantee of best performance. Intermediate values can be the right compromise when fully extended splits are not the best empirical fit.
 
-## Getting started
+## Getting Started
 
 The library is available in the [`isolation-forest` repository](https://github.com/linkedin/isolation-forest), with artifacts published to Maven Central. Full documentation, examples, and benchmark details are in the project README. The synthetic plot scripts are linked from the Resources section below.
 
