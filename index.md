@@ -2,7 +2,7 @@
 layout: page
 title: Home
 description: "AI systems for adversarial environments: bot and automation detection, anomaly detection, sequence modeling, synthetic media, and AI productivity."
-last_modified_at: 2026-06-24
+last_modified_at: 2026-06-25
 hide_title: true
 ---
 
@@ -13,8 +13,8 @@ hide_title: true
       <h1 class="home-hero-headline">AI systems for<br><span class="home-hero-headline-muted">adversarial settings.</span></h1>
       <p class="home-lede home-lede-primary">I build and evaluate AI systems for adversarial environments: bot and automation detection, anomaly detection, sequence modeling, synthetic media, and AI productivity.</p>
       <div class="home-hero-actions" aria-label="Primary links">
-        <a class="cta-button" href="{{ '/posts/' | relative_url }}">Read the work</a>
-        <a class="secondary-button" href="#start-here">What I work on <span aria-hidden="true">&darr;</span></a>
+        <a class="cta-button" href="{{ '/posts/' | relative_url }}">Read posts</a>
+        <a class="secondary-button" href="#start-here">Representative work <span aria-hidden="true">&darr;</span></a>
       </div>
     </div>
 
