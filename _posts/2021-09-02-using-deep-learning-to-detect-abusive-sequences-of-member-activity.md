@@ -2,7 +2,7 @@
 layout: post
 title: "Using deep learning to detect abusive sequences of member activity"
 description: "Production deep learning approach for detecting abusive sequences of member activity at LinkedIn using request-level behavior streams."
-last_modified_at: 2026-06-10
+last_modified_at: 2026-06-25
 og_image: "/assets/images/social/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity-1200x630.jpg"
 og_image_alt: "Using deep learning to detect abusive sequences of member activity"
 og_image_width: 1200
@@ -90,7 +90,6 @@ The model also produces activity sequence embeddings, and those open a second fr
 ### Videos
 
 - [Talk recording (YouTube)](https://www.youtube.com/watch?v=4iX2agE3YWE)
-- [Using Deep Learning to Detect Abusive Sequences of Member Activity on LinkedIn (Scale Exchange)](https://exchange.scale.com/public/videos/using-deep-learning-to-detect-abusive-sequences-of-member-activity-on-linkedin)
 
 ### Patents
 

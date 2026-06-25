@@ -88,7 +88,7 @@ hide_title: true
     </article>
     <article class="home-start-card" role="listitem">
       <p class="home-start-label">Open source anomaly detection</p>
-      <h3><a href="{{ '/open-source/isolation-forest/' | relative_url }}">LinkedIn's isolation-forest library</a></h3>
+      <h3><a href="{{ '/open-source/isolation-forest/' | relative_url }}">Open-source Spark/Scala isolation-forest library</a></h3>
       <p>Distributed Spark/Scala anomaly detection, from the original open-source release through ONNX export and Extended Isolation Forest.</p>
     </article>
   </div>
@@ -101,7 +101,7 @@ hide_title: true
     <h2 id="throughline-heading">Detection work across trust, AI, and physics</h2>
   </div>
   <div class="home-throughline-copy">
-    <p>At LinkedIn, most recently as a Senior Staff Machine Learning Engineer, I built production systems for Trust: bot and automation detection, deep models over member-activity sequences, unsupervised anomaly detection at scale, and detection of AI-generated profile images. I also created and open-sourced LinkedIn's isolation-forest library and led AI productivity work for Trust engineering teams.</p>
+    <p>At LinkedIn, most recently as a Senior Staff Machine Learning Engineer, I built production systems for Trust: bot and automation detection, deep models over member-activity sequences, unsupervised anomaly detection at scale, and detection of AI-generated profile images. I also created and open-sourced the Spark/Scala isolation-forest library and led AI productivity work for Trust engineering teams.</p>
     <p>Before LinkedIn, I earned my Ph.D. in physics at Brown working on <a href="{{ '/2016/08/18/calibrating-the-lux-dark-matter-experiment/' | relative_url }}">LUX</a>, one of the world's most sensitive dark-matter detectors. The common thread is practical measurement: extracting weak signals from noisy data, checking uncertainty, and making systems useful when ground truth is incomplete.</p>
   </div>
 </section>
