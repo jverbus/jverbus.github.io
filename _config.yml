@@ -17,7 +17,7 @@ highlighter: rouge
 # Site metadata
 title: James Verbus
 tagline: "AI systems for adversarial environments."
-default_og_image: /assets/images/social/site-default-1200x630.png
+default_og_image: /assets/images/social/site-default-2026-1200x630.png
 default_og_image_width: 1200
 default_og_image_height: 630
 author:
