@@ -72,9 +72,9 @@ hide_title: true
   </div>
   <div class="home-start-grid" role="list">
     <article class="home-start-card" role="listitem">
-      <p class="home-start-label">Technical case study</p>
-      <h3><a href="{{ '/2026/03/18/announcing-extended-isolation-forest-support/' | relative_url }}">Extended Isolation Forest for Spark/Scala anomaly detection</a></h3>
-      <p>Distributed anomaly detection with random hyperplane splits, validation plots, benchmarks, and reference parity checks.</p>
+      <p class="home-start-label">Sequence modeling</p>
+      <h3><a href="{{ '/2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/' | relative_url }}">Deep learning for abusive activity sequences</a></h3>
+      <p>Production sequence models over member activity streams, with request-path embeddings, timing features, and clustering over learned representations.</p>
     </article>
     <article class="home-start-card" role="listitem">
       <p class="home-start-label">Research</p>
@@ -87,9 +87,9 @@ hide_title: true
       <p>A Brown AI Winter School workshop on orbital mechanics, PPO agents, and practical model diagnostics.</p>
     </article>
     <article class="home-start-card" role="listitem">
-      <p class="home-start-label">Open source</p>
+      <p class="home-start-label">Open source anomaly detection</p>
       <h3><a href="{{ '/open-source/isolation-forest/' | relative_url }}">LinkedIn's isolation-forest library</a></h3>
-      <p>Distributed Spark/Scala anomaly detection with Extended Isolation Forest and ONNX support.</p>
+      <p>Distributed Spark/Scala anomaly detection, from the original open-source release through ONNX export and Extended Isolation Forest.</p>
     </article>
   </div>
   <p class="home-archive-link"><a href="{{ '/posts/' | relative_url }}">View all writing</a></p>
