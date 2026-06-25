@@ -2425,8 +2425,36 @@ h3:hover .heading-anchor,
   .bd,
   .post-list,
   .post-list-item {
+    width: 100%;
     max-width: 100%;
     min-width: 0;
+  }
+
+  .layout-post .unit-article,
+  .layout-post .unit-article-inner,
+  .layout-post .content,
+  .layout-post .bd,
+  .layout-post .bd > .entry-content {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .layout-post .entry-content > p,
+  .layout-post .entry-content > ul,
+  .layout-post .entry-content > ol,
+  .layout-post .entry-content > blockquote,
+  .layout-post .entry-content > pre,
+  .layout-post .entry-content > table,
+  .layout-post .entry-content .table-scroll {
+    width: 100%;
+    max-width: calc(100vw - 2rem);
+  }
+
+  .layout-post .entry-content img,
+  .layout-post .entry-content video,
+  .layout-post .entry-content canvas {
+    max-width: calc(100vw - 2rem);
   }
 
   .home-eyebrow,
