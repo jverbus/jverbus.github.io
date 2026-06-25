@@ -93,8 +93,6 @@ The same representation also produces activity sequence embeddings. Accounts run
 
 The embeddings can also serve as features for downstream outlier-detection models, replacing hand-engineered activity summaries with learned representations of the sequence.
 
-The durable lesson is that the representation was the leverage point. The LSTM mattered, but the bigger shift was modeling platform abuse as sequence behavior over a standardized event vocabulary. That made the approach portable across surfaces, gave weak labels a richer input to train on, and produced embeddings useful beyond the original scraper classifier.
-
 ## Resources
 
 ### Blogs
