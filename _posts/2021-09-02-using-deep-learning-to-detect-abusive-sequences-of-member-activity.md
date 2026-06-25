@@ -91,7 +91,7 @@ The same representation also produces activity sequence embeddings. Accounts run
 
 *A two-dimensional projection of activity sequence embeddings. Accounts associated with similar scripts or extensions land in nearby regions of the learned space. (Slide from my Scale AI talk.)*
 
-Once requests are tokens, the same stream can support multiple views. A sequential model preserves order. An activity-transition matrix preserves how often one standardized path follows another and can be fed to a convolutional model. A TF-IDF view treats each account's request sequence as a document and highlights request types that are distinctive across accounts. These are different projections of the same object: the account's behavioral trace.
+The embeddings can also serve as features for downstream outlier-detection models, replacing hand-engineered activity summaries with learned representations of the sequence.
 
 The durable lesson is that the representation was the leverage point. The LSTM mattered, but the bigger shift was modeling platform abuse as sequence behavior over a standardized event vocabulary. That made the approach portable across surfaces, gave weak labels a richer input to train on, and produced embeddings useful beyond the original scraper classifier.
 
