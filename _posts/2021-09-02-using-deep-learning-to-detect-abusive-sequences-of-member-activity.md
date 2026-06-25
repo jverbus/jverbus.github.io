@@ -77,7 +77,7 @@ This is a weak-supervision pattern. An unsupervised or rules-assisted system pro
 
 The initial proof-of-concept model was evaluated out of time, on data from well after the training period, at the natural class balance. That matters: a balanced offline sample can make a rare-abuse problem look cleaner than it is. In the real distribution, scrapers are a small fraction of total activity, so the useful question is whether the high-score tail is dominated by the abusive population.
 
-<img src="{{ '/assets/images/activity-sequence-results.png' | relative_url }}" alt="Slide showing LSTM score distributions on an unbalanced out-of-time test dataset, with non-scrapers concentrated at low scores and scrapers concentrated in the high-score tail" width="900" height="506" loading="lazy" decoding="async">
+<img src="{{ '/assets/images/activity-sequence-results.png' | relative_url }}" alt="Slide showing LSTM score distributions on an unbalanced out-of-time test dataset, with non-scrapers concentrated at low scores and scrapers concentrated in the high-score tail" width="1920" height="1080" loading="lazy" decoding="async">
 
 *Out-of-time score distributions at natural class balance. Non-scrapers concentrate at low LSTM scores, while high-confidence scrapers dominate the high-score tail. (Slide from my Scale AI talk.)*
 
@@ -87,7 +87,7 @@ The score distributions separated strongly. Non-scrapers concentrated at low sco
 
 The same representation also produces activity sequence embeddings. Accounts running the same browser extension, scraper, or automation framework tend to traverse the site in similar ways, so their learned representations can cluster together. That gives defenders another handle on coordinated activity: instead of only asking whether one account looks abusive, ask which accounts are behaviorally close to each other.
 
-<img src="{{ '/assets/images/activity-sequence-embeddings.png' | relative_url }}" alt="Slide showing a two-dimensional projection of activity sequence embeddings, with non-scrapers, scrapers, and high-score scrapers forming visible clusters" width="900" height="506" loading="lazy" decoding="async">
+<img src="{{ '/assets/images/activity-sequence-embeddings.png' | relative_url }}" alt="Slide showing a two-dimensional projection of activity sequence embeddings, with non-scrapers, scrapers, and high-score scrapers forming visible clusters" width="1920" height="1080" loading="lazy" decoding="async">
 
 *A two-dimensional projection of activity sequence embeddings. Accounts associated with similar scripts or extensions land in nearby regions of the learned space. (Slide from my Scale AI talk.)*
 
