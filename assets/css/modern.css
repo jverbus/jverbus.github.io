@@ -1705,6 +1705,38 @@ h2.post-year-heading:first-of-type {
   padding: var(--space-2);
 }
 
+.has-math .math-display {
+  max-width: var(--max-readable);
+  margin: 0 0 var(--space-6);
+  overflow-x: auto;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: transparent;
+  box-shadow: none;
+  padding: var(--space-5) 0;
+}
+
+.has-math .math-display math {
+  display: block;
+  width: max-content;
+  min-width: max-content;
+  margin: 0 auto;
+  padding: 0 var(--space-2);
+  color: var(--heading);
+  font-family: math, "Latin Modern Math", "STIX Two Math", "Cambria Math", "Times New Roman", serif;
+  font-size: 1.28rem;
+  line-height: 1.55;
+  math-style: normal;
+}
+
+.has-math .math-inline math {
+  color: var(--heading);
+  font-family: math, "Latin Modern Math", "STIX Two Math", "Cambria Math", "Times New Roman", serif;
+  font-size: 1em;
+  vertical-align: -0.08em;
+}
+
 /* Italic paragraph directly under an image reads as its caption */
 .layout-post .entry-content p:has(> img:only-child) + p:has(> em:only-child) {
   margin-top: calc(var(--space-2) - var(--space-6));
@@ -2446,6 +2478,7 @@ h3:hover .heading-anchor,
   .layout-post .entry-content > blockquote,
   .layout-post .entry-content > pre,
   .layout-post .entry-content > table,
+  .layout-post .entry-content .math-display,
   .layout-post .entry-content .table-scroll {
     width: 100%;
     max-width: calc(100vw - 2rem);
@@ -2455,6 +2488,15 @@ h3:hover .heading-anchor,
   .layout-post .entry-content video,
   .layout-post .entry-content canvas {
     max-width: calc(100vw - 2rem);
+  }
+
+  .has-math .math-display {
+    padding: var(--space-4) 0;
+  }
+
+  .has-math .math-display math {
+    margin: 0 auto;
+    font-size: 1.08rem;
   }
 
   .home-eyebrow,
@@ -2734,6 +2776,13 @@ h3:hover .heading-anchor,
   }
 
   pre {
+    background: #fff;
+    color: #000;
+    border: 1px solid #ddd;
+    box-shadow: none;
+  }
+
+  .math-display {
     background: #fff;
     color: #000;
     border: 1px solid #ddd;

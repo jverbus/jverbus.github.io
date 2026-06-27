@@ -2,12 +2,13 @@
 layout: post
 title: "Reinforcement Learning for Orbital Transfers at the 2026 AI Winter School (Brown University)"
 date: 2026-01-09
-last_modified_at: 2026-06-24
+last_modified_at: 2026-06-27
 description: "Hands-on workshop framing orbital transfer as a controlled two-body dynamics problem: Hohmann benchmark, Gymnasium environment, PPO policies, reward shaping, and diagnostics for chatter and delta-v efficiency."
 og_image: "/assets/images/2026-ai-winter-school-banner.png"
 og_image_alt: "2026 AI Winter School banner from the Brown University Department of Physics"
 og_image_width: 1024
 og_image_height: 530
+math: true
 categories:
   - AI and Machine Learning
 tags:
@@ -30,21 +31,78 @@ The workshop was not about claiming that RL is the right way to solve a textbook
 
 ## Control Problem
 
-The notebook used nondimensional two-body dynamics. The gravitational parameter was set to `μ = 1`, the spacecraft started on a circular orbit at `r1 = 1`, and the target was a larger circular orbit at `r2 = 1.6`. The model omitted drag, finite-duration thrust, J2 perturbations, third bodies, attitude dynamics, and mass depletion. Control was a tangential impulse applied once per simulation step.
+The notebook used nondimensional two-body dynamics. The gravitational parameter was set to <span class="math-inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>μ</mi><mo>=</mo><mn>1</mn></math></span>, the spacecraft started on a circular orbit at <span class="math-inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>r</mi><mn>1</mn></msub><mo>=</mo><mn>1</mn></math></span>, and the target was a larger circular orbit at <span class="math-inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>r</mi><mn>2</mn></msub><mo>=</mo><mn>1.6</mn></math></span>. The model omitted drag, finite-duration thrust, J2 perturbations, third bodies, attitude dynamics, and mass depletion. Control was a tangential impulse applied once per simulation step.
 
 The state evolves under central gravity:
 
-```text
-dx/dt = v
-dv/dt = -μ x / |x|^3
-```
+<div class="math-display" aria-label="Central gravity dynamics">
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <semantics>
+    <mtable columnalign="right center left" columnspacing="0.35em" rowspacing="0.35em">
+      <mtr>
+        <mtd>
+          <mfrac>
+            <mrow><mi>d</mi><mi mathvariant="bold">x</mi></mrow>
+            <mrow><mi>d</mi><mi>t</mi></mrow>
+          </mfrac>
+        </mtd>
+        <mtd><mo>=</mo></mtd>
+        <mtd><mi mathvariant="bold">v</mi></mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <mfrac>
+            <mrow><mi>d</mi><mi mathvariant="bold">v</mi></mrow>
+            <mrow><mi>d</mi><mi>t</mi></mrow>
+          </mfrac>
+        </mtd>
+        <mtd><mo>=</mo></mtd>
+        <mtd>
+          <mo>-</mo>
+          <mfrac>
+            <mrow><mi>μ</mi><mi mathvariant="bold">x</mi></mrow>
+            <msup>
+              <mrow><mo>|</mo><mi mathvariant="bold">x</mi><mo>|</mo></mrow>
+              <mn>3</mn>
+            </msup>
+          </mfrac>
+        </mtd>
+      </mtr>
+    </mtable>
+    <annotation encoding="application/x-tex">\begin{aligned}\frac{d\mathbf{x}}{dt} &= \mathbf{v} \\ \frac{d\mathbf{v}}{dt} &= -\frac{\mu\mathbf{x}}{|\mathbf{x}|^3}\end{aligned}</annotation>
+  </semantics>
+</math>
+</div>
 
 That stripped-down model is still useful because the relevant orbital invariants are visible. For a circular target orbit, the target specific energy and angular momentum are known:
 
-```text
-E* = -μ / (2 r2)
-L* = sqrt(μ r2)
-```
+<div class="math-display" aria-label="Target specific energy and angular momentum">
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <semantics>
+    <mtable columnalign="right center left" columnspacing="0.35em" rowspacing="0.35em">
+      <mtr>
+        <mtd><msup><mi>E</mi><mo>*</mo></msup></mtd>
+        <mtd><mo>=</mo></mtd>
+        <mtd>
+          <mo>-</mo>
+          <mfrac>
+            <mi>μ</mi>
+            <mrow><mn>2</mn><msub><mi>r</mi><mn>2</mn></msub></mrow>
+          </mfrac>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd><msup><mi>L</mi><mo>*</mo></msup></mtd>
+        <mtd><mo>=</mo></mtd>
+        <mtd>
+          <msqrt><mrow><mi>μ</mi><msub><mi>r</mi><mn>2</mn></msub></mrow></msqrt>
+        </mtd>
+      </mtr>
+    </mtable>
+    <annotation encoding="application/x-tex">\begin{aligned}E^* &= -\frac{\mu}{2r_2} \\ L^* &= \sqrt{\mu r_2}\end{aligned}</annotation>
+  </semantics>
+</math>
+</div>
 
 The RL environment did not need to know the absolute orbital angle. The observation vector used normalized radius, radial velocity, tangential velocity, angular-momentum error, energy error, and previous action. Removing angle makes the policy rotationally symmetric: the same local orbital state should produce the same control decision anywhere around the planet.
 
@@ -52,17 +110,82 @@ The RL environment did not need to know the absolute orbital angle. The observat
 
 Before training PPO, the notebook computed the Hohmann transfer. For circular, coplanar orbits with two impulsive burns, the transfer semi-major axis is:
 
-```text
-aT = (r1 + r2) / 2
-```
+<div class="math-display" aria-label="Hohmann transfer semi-major axis">
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <semantics>
+    <mrow>
+      <msub><mi>a</mi><mi>T</mi></msub>
+      <mo>=</mo>
+      <mfrac>
+        <mrow><msub><mi>r</mi><mn>1</mn></msub><mo>+</mo><msub><mi>r</mi><mn>2</mn></msub></mrow>
+        <mn>2</mn>
+      </mfrac>
+    </mrow>
+    <annotation encoding="application/x-tex">a_T = \frac{r_1 + r_2}{2}</annotation>
+  </semantics>
+</math>
+</div>
 
 The two burns and transfer time are:
 
-```text
-Δv1 = sqrt(μ(2/r1 - 1/aT)) - sqrt(μ/r1)
-Δv2 = sqrt(μ/r2) - sqrt(μ(2/r2 - 1/aT))
-T   = π sqrt(aT^3 / μ)
-```
+<div class="math-display" aria-label="Hohmann transfer burns and transfer time">
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <semantics>
+    <mtable columnalign="right center left" columnspacing="0.35em" rowspacing="0.42em">
+      <mtr>
+        <mtd><mrow><mi>Δ</mi><msub><mi>v</mi><mn>1</mn></msub></mrow></mtd>
+        <mtd><mo>=</mo></mtd>
+        <mtd>
+          <msqrt>
+            <mrow>
+              <mi>μ</mi>
+              <mo>(</mo>
+              <mfrac><mn>2</mn><msub><mi>r</mi><mn>1</mn></msub></mfrac>
+              <mo>-</mo>
+              <mfrac><mn>1</mn><msub><mi>a</mi><mi>T</mi></msub></mfrac>
+              <mo>)</mo>
+            </mrow>
+          </msqrt>
+          <mo>-</mo>
+          <msqrt><mfrac><mi>μ</mi><msub><mi>r</mi><mn>1</mn></msub></mfrac></msqrt>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd><mrow><mi>Δ</mi><msub><mi>v</mi><mn>2</mn></msub></mrow></mtd>
+        <mtd><mo>=</mo></mtd>
+        <mtd>
+          <msqrt><mfrac><mi>μ</mi><msub><mi>r</mi><mn>2</mn></msub></mfrac></msqrt>
+          <mo>-</mo>
+          <msqrt>
+            <mrow>
+              <mi>μ</mi>
+              <mo>(</mo>
+              <mfrac><mn>2</mn><msub><mi>r</mi><mn>2</mn></msub></mfrac>
+              <mo>-</mo>
+              <mfrac><mn>1</mn><msub><mi>a</mi><mi>T</mi></msub></mfrac>
+              <mo>)</mo>
+            </mrow>
+          </msqrt>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd><mi>T</mi></mtd>
+        <mtd><mo>=</mo></mtd>
+        <mtd>
+          <mi>π</mi>
+          <msqrt>
+            <mfrac>
+              <msubsup><mi>a</mi><mi>T</mi><mn>3</mn></msubsup>
+              <mi>μ</mi>
+            </mfrac>
+          </msqrt>
+        </mtd>
+      </mtr>
+    </mtable>
+    <annotation encoding="application/x-tex">\begin{aligned}\Delta v_1 &= \sqrt{\mu\left(\frac{2}{r_1} - \frac{1}{a_T}\right)} - \sqrt{\frac{\mu}{r_1}} \\ \Delta v_2 &= \sqrt{\frac{\mu}{r_2}} - \sqrt{\mu\left(\frac{2}{r_2} - \frac{1}{a_T}\right)} \\ T &= \pi\sqrt{\frac{a_T^3}{\mu}}\end{aligned}</annotation>
+  </semantics>
+</math>
+</div>
 
 That closed-form solution gave the workshop a real yardstick: not just "did the agent reach the target," but how much Δv it spent, how many burns it used, whether it circularized, and whether the trajectory matched the expected burn-coast-burn structure.
 
@@ -85,20 +208,47 @@ The Gymnasium environment held the physics fixed and varied the control interfac
 | **Observation** | Normalized `r`, `vr`, `vt`, target angular-momentum error, target energy error, previous action |
 | **Discrete action** | `coast`, full prograde impulse, full retrograde impulse |
 | **Continuous action** | throttle in `[-1, 1]`, mapped to a signed tangential Δv impulse |
-| **Success criteria** | tolerances on `|r - r2|`, `|vr|`, and `|L - L*|` |
+| **Success criteria** | tolerances on <span class="math-inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>&#x7c;</mo><mi>r</mi><mo>-</mo><msub><mi>r</mi><mn>2</mn></msub><mo>&#x7c;</mo></mrow></math></span>, <span class="math-inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>&#x7c;</mo><msub><mi>v</mi><mi>r</mi></msub><mo>&#x7c;</mo></mrow></math></span>, and <span class="math-inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>&#x7c;</mo><mi>L</mi><mo>-</mo><msup><mi>L</mi><mo>*</mo></msup><mo>&#x7c;</mo></mrow></math></span> |
 | **Failure criteria** | crash/escape radius or episode timeout |
 
 The dense reward used a combined energy/angular-momentum error:
 
-```text
-err = |E - E*| / |E*| + |L - L*| / |L*|
-```
+<div class="math-display" aria-label="Energy and angular-momentum error">
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <semantics>
+    <mrow>
+      <mi>err</mi>
+      <mo>=</mo>
+      <mfrac>
+        <mrow><mo>|</mo><mi>E</mi><mo>-</mo><msup><mi>E</mi><mo>*</mo></msup><mo>|</mo></mrow>
+        <mrow><mo>|</mo><msup><mi>E</mi><mo>*</mo></msup><mo>|</mo></mrow>
+      </mfrac>
+      <mo>+</mo>
+      <mfrac>
+        <mrow><mo>|</mo><mi>L</mi><mo>-</mo><msup><mi>L</mi><mo>*</mo></msup><mo>|</mo></mrow>
+        <mrow><mo>|</mo><msup><mi>L</mi><mo>*</mo></msup><mo>|</mo></mrow>
+      </mfrac>
+    </mrow>
+    <annotation encoding="application/x-tex">\mathrm{err} = \frac{|E - E^*|}{|E^*|} + \frac{|L - L^*|}{|L^*|}</annotation>
+  </semantics>
+</math>
+</div>
 
 with shaping approximately proportional to:
 
-```text
-err_previous - γ err_current
-```
+<div class="math-display" aria-label="Reward shaping term">
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <semantics>
+    <mrow>
+      <msub><mi>err</mi><mtext>previous</mtext></msub>
+      <mo>-</mo>
+      <mi>γ</mi>
+      <msub><mi>err</mi><mtext>current</mtext></msub>
+    </mrow>
+    <annotation encoding="application/x-tex">\mathrm{err}_{previous} - \gamma\,\mathrm{err}_{current}</annotation>
+  </semantics>
+</math>
+</div>
 
 Then the environment subtracted fuel and ignition/switching penalties, added a one-time success bonus on first entry into the tolerance region, and added a holding reward for staying there. PPO was trained with observation/reward normalization during training, frozen normalization statistics during evaluation, and deterministic policy rollout for diagnostics.
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% include site/head.html %}
-{% capture body_classes %}layout-{{ page.layout | default: 'page' }} page-{{ page.title | default: 'site' | slugify }}{% if page.url == '/' or page.url == '/index.html' %} page-home{% endif %}{% endcapture %}
+{% capture body_classes %}layout-{{ page.layout | default: 'page' }} page-{{ page.title | default: 'site' | slugify }}{% if page.url == '/' or page.url == '/index.html' %} page-home{% endif %}{% if page.math %} has-math{% endif %}{% endcapture %}
 <body class="{{ body_classes | split: ' ' | uniq | join: ' ' }}">
 
 <a class="skip-link" href="#main-content">Skip to main content</a>
