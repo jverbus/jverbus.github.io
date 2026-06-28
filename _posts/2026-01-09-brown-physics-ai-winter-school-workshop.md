@@ -31,9 +31,9 @@ The workshop was not about claiming that RL is the right way to solve a textbook
 
 ## Control Problem
 
-The notebook used nondimensional two-body dynamics. The gravitational parameter was set to <span class="math-inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>μ</mi><mo>=</mo><mn>1</mn></math></span>, the spacecraft started on a circular orbit at <span class="math-inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>r</mi><mn>1</mn></msub><mo>=</mo><mn>1</mn></math></span>, and the target was a larger circular orbit at <span class="math-inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>r</mi><mn>2</mn></msub><mo>=</mo><mn>1.6</mn></math></span>. The model omitted drag, finite-duration thrust, J2 perturbations, third bodies, attitude dynamics, and mass depletion. Control was a tangential impulse applied once per simulation step.
+The notebook used nondimensional two-body dynamics: unit gravitational parameter, an initial circular orbit at radius 1, and a target circular orbit at radius 1.6. I call those radii <span class="math-inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>r</mi><mn>1</mn></msub></math></span> and <span class="math-inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>r</mi><mn>2</mn></msub></math></span> below. The model omitted drag, finite-duration thrust, J2 perturbations, third bodies, attitude dynamics, and mass depletion. Control was a tangential impulse applied once per simulation step.
 
-The state evolves under central gravity:
+With <span class="math-inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi mathvariant="bold">r</mi></math></span> as the spacecraft position vector and <span class="math-inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi><mo>=</mo><mrow><mo>|</mo><mi mathvariant="bold">r</mi><mo>|</mo></mrow></math></span> as its scalar radius, the state evolves under central gravity:
 
 <div class="math-display" aria-label="Central gravity dynamics">
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -42,7 +42,7 @@ The state evolves under central gravity:
       <mtr>
         <mtd>
           <mfrac>
-            <mrow><mi>d</mi><mi mathvariant="bold">x</mi></mrow>
+            <mrow><mi>d</mi><mi mathvariant="bold">r</mi></mrow>
             <mrow><mi>d</mi><mi>t</mi></mrow>
           </mfrac>
         </mtd>
@@ -60,16 +60,13 @@ The state evolves under central gravity:
         <mtd>
           <mo>-</mo>
           <mfrac>
-            <mrow><mi>μ</mi><mi mathvariant="bold">x</mi></mrow>
-            <msup>
-              <mrow><mo>|</mo><mi mathvariant="bold">x</mi><mo>|</mo></mrow>
-              <mn>3</mn>
-            </msup>
+            <mrow><mi>μ</mi><mi mathvariant="bold">r</mi></mrow>
+            <msup><mi>r</mi><mn>3</mn></msup>
           </mfrac>
         </mtd>
       </mtr>
     </mtable>
-    <annotation encoding="application/x-tex">\begin{aligned}\frac{d\mathbf{x}}{dt} &= \mathbf{v} \\ \frac{d\mathbf{v}}{dt} &= -\frac{\mu\mathbf{x}}{|\mathbf{x}|^3}\end{aligned}</annotation>
+    <annotation encoding="application/x-tex">\begin{aligned}\frac{d\mathbf{r}}{dt} &= \mathbf{v} \\ \frac{d\mathbf{v}}{dt} &= -\frac{\mu\mathbf{r}}{r^3},\quad r=|\mathbf{r}|\end{aligned}</annotation>
   </semantics>
 </math>
 </div>
