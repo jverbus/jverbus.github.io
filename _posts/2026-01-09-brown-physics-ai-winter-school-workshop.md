@@ -33,7 +33,7 @@ The workshop was not about claiming that RL is the right way to solve a textbook
 
 The notebook used nondimensional two-body dynamics: unit gravitational parameter, an initial circular orbit at radius 1, and a target circular orbit at radius 1.6. I call those radii <span class="math-inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>r</mi><mn>1</mn></msub></math></span> and <span class="math-inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>r</mi><mn>2</mn></msub></math></span> below. The model omitted drag, finite-duration thrust, J2 perturbations, third bodies, attitude dynamics, and mass depletion. Control was a tangential impulse applied once per simulation step.
 
-With <span class="math-inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi mathvariant="bold">r</mi></math></span> as the spacecraft position vector and <span class="math-inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi><mo>=</mo><mrow><mo>|</mo><mi mathvariant="bold">r</mi><mo>|</mo></mrow></math></span> as its scalar radius, the state evolves under central gravity:
+Here the arrowed r denotes the spacecraft position vector; the plain r denotes its scalar radius. The state evolves under central gravity:
 
 <div class="math-display" aria-label="Central gravity dynamics">
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -42,17 +42,17 @@ With <span class="math-inline"><math xmlns="http://www.w3.org/1998/Math/MathML">
       <mtr>
         <mtd>
           <mfrac>
-            <mrow><mi>d</mi><mi mathvariant="bold">r</mi></mrow>
+            <mrow><mi>d</mi><mover accent="true"><mi>r</mi><mo>→</mo></mover></mrow>
             <mrow><mi>d</mi><mi>t</mi></mrow>
           </mfrac>
         </mtd>
         <mtd><mo>=</mo></mtd>
-        <mtd><mi mathvariant="bold">v</mi></mtd>
+        <mtd><mover accent="true"><mi>v</mi><mo>→</mo></mover></mtd>
       </mtr>
       <mtr>
         <mtd>
           <mfrac>
-            <mrow><mi>d</mi><mi mathvariant="bold">v</mi></mrow>
+            <mrow><mi>d</mi><mover accent="true"><mi>v</mi><mo>→</mo></mover></mrow>
             <mrow><mi>d</mi><mi>t</mi></mrow>
           </mfrac>
         </mtd>
@@ -60,13 +60,20 @@ With <span class="math-inline"><math xmlns="http://www.w3.org/1998/Math/MathML">
         <mtd>
           <mo>-</mo>
           <mfrac>
-            <mrow><mi>μ</mi><mi mathvariant="bold">r</mi></mrow>
+            <mrow><mi>μ</mi><mover accent="true"><mi>r</mi><mo>→</mo></mover></mrow>
             <msup><mi>r</mi><mn>3</mn></msup>
           </mfrac>
         </mtd>
       </mtr>
+      <mtr>
+        <mtd><mi>r</mi></mtd>
+        <mtd><mo>=</mo></mtd>
+        <mtd>
+          <mrow><mo>|</mo><mover accent="true"><mi>r</mi><mo>→</mo></mover><mo>|</mo></mrow>
+        </mtd>
+      </mtr>
     </mtable>
-    <annotation encoding="application/x-tex">\begin{aligned}\frac{d\mathbf{r}}{dt} &= \mathbf{v} \\ \frac{d\mathbf{v}}{dt} &= -\frac{\mu\mathbf{r}}{r^3},\quad r=|\mathbf{r}|\end{aligned}</annotation>
+    <annotation encoding="application/x-tex">\begin{aligned}\frac{d\vec{r}}{dt} &= \vec{v} \\ \frac{d\vec{v}}{dt} &= -\frac{\mu\vec{r}}{r^3} \\ r &= |\vec{r}|\end{aligned}</annotation>
   </semantics>
 </math>
 </div>
