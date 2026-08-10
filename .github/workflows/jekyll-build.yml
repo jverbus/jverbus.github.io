@@ -39,7 +39,7 @@ jobs:
         run: bundle exec jekyll build
 
       - name: Validate generated site output
-        run: python3 scripts/check_generated_site.py _site
+        run: python3 scripts/check_generated_site.py _site --require-absolute-site-urls
 
       - name: Stamp deployment revision
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'

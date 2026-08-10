@@ -1,0 +1,17 @@
+{% assign redirect_destination = page.legacy_redirect_to | absolute_url %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Moved</title>
+  <link rel="canonical" href="{{ redirect_destination | escape }}" />
+  <meta name="robots" content="noindex,follow" />
+  <meta http-equiv="refresh" content="0; url={{ redirect_destination | escape }}" />
+  <script>location.replace({{ redirect_destination | jsonify }});</script>
+</head>
+<body>
+  <p>This page moved to
+    <a href="{{ redirect_destination | escape }}">its new URL</a>.
+  </p>
+</body>
+</html>
