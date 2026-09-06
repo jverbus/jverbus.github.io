@@ -18,7 +18,7 @@ Our [2023 detector]({{ '/2023/06/20/detecting-ai-generated-profile-photos/' | re
 
 In *Finding AI-Generated Faces in the Wild*, our LinkedIn team and Professor Hany Farid at UC Berkeley evaluated detection across GAN and diffusion engines, including generators withheld from training. We also tested reduced resolution and JPEG compression, using separately resolution-matched models for the small-image results. We published this [coauthored paper]({{ '/assets/files/porcile2024-finding-ai-generated-faces-in-the-wild.pdf' | relative_url }}#page=1) at the [Workshop on Media Forensics](https://sites.google.com/view/wmf2024/home) at CVPR 2024.
 
-This post describes the model evaluated in that paper. [Section 3, footnote 7]({{ '/assets/files/porcile2024-finding-ai-generated-faces-in-the-wild.pdf' | relative_url }}#page=4) identifies it as an older LinkedIn model that had already been replaced when the paper was published.
+The production model described here [had already been replaced by the time we published the paper]({{ '/assets/files/porcile2024-finding-ai-generated-faces-in-the-wild.pdf' | relative_url }}#page=4).
 
 ## One Classifier, Ten Engines
 
@@ -28,7 +28,7 @@ We trained and evaluated against 18 datasets: 120,000 real profile photos from L
 
 *Representative AI-generated images from the ten synthesis engines used for training and evaluation. Some engines contribute faces only; others contribute both faces and non-face images. (Figure 2 of the paper; dataset counts in Table 1.)*
 
-At a fixed 0.5% false positive rate, the classifier detected 98% of AI-generated faces from engines seen in training. [Table 2]({{ '/assets/files/porcile2024-finding-ai-generated-faces-in-the-wild.pdf' | relative_url }}#page=5) reports 84.5% for the held-out evaluation, which Section 2.6 describes as a set of 5,000 faces from four engines. The listed per-engine rates varied: EG3D reached 99.5% and generated.photos 95.4%, while Midjourney mostly slips through (19.4%). The 84.5% is the paper's reported result, not an unweighted mean of these three examples. Adding examples from new engines to training is one possible response; this held-out test does not establish generalization to future generators.
+At a fixed 0.5% false positive rate, the classifier detected 98% of AI-generated faces from engines seen in training. We reported 84.5% detection on the held-out evaluation of 5,000 faces from four engines at the same false-positive rate ([Table 2]({{ '/assets/files/porcile2024-finding-ai-generated-faces-in-the-wild.pdf' | relative_url }}#page=5)). Performance varied considerably by generator: EG3D reached 99.5% and generated.photos 95.4%, while Midjourney mostly slips through (19.4%). Adding examples from new engines to training is one possible response.
 
 ## Built for the Wild
 
@@ -45,13 +45,13 @@ A model trained only at 512 pixels lost most of its detection power on 128-pixel
 ## What the detector appears to use
 {: #a-face-specific-signal-not-a-synthesis-fingerprint }
 
-The detector flagged none of the synthetic non-face images in this evaluation: their true positive rate was 0% (Table 2). The training data provides a confound: some real training photos contain no face, while every synthetic training image contains one. The result is consistent with reliance on facial properties, but it does not isolate a unique mechanism or rule out low-level synthesis artifacts.
+The detector flagged none of the synthetic non-face images in this evaluation: their true positive rate was 0% (Table 2).
 
 <img src="{{ '/assets/images/ai-faces-wild-saliency.jpg' | relative_url }}" alt="AI-generated faces alongside their integrated-gradient attribution maps, which concentrate on facial regions" width="641" height="1483" loading="lazy" decoding="async">
 
 *Integrated-gradient attributions for AI-generated faces concentrate around the face and other areas of skin. The top row averages 100 StyleGAN 2 faces together; the others are individual examples. (Figure 5 of the paper.)*
 
-The attributions also suggest that facial regions contribute to classification, as discussed in [Section 4.1]({{ '/assets/files/porcile2024-finding-ai-generated-faces-in-the-wild.pdf' | relative_url }}#page=6). Together with the non-face result, they support a hypothesis about facial structure. They do not prove that the model has learned a synthesis-independent property that will survive arbitrary image processing.
+The attributions discussed in [Section 4.1]({{ '/assets/files/porcile2024-finding-ai-generated-faces-in-the-wild.pdf' | relative_url }}#page=6) concentrate on facial regions. These observations are consistent with the detector using facial structure. The difference between real and synthetic training images—only the real set contained some non-faces—makes that interpretation harder to isolate.
 
 ## Resources
 

@@ -62,7 +62,7 @@
         "index.md"
       ],
       "location": "Route cards: all three",
-      "summary": "Used the three destination-specific descriptions without changing the route cards or destinations.",
+      "summary": "Removed repeated terms from the route-card descriptions while preserving each headline, card structure, and destination.",
       "evidence": [],
       "remaining_question": null
     },
@@ -179,7 +179,7 @@
         {
           "id": "CASTLE",
           "url": "check_castle.py",
-          "locator": "Executed cmp/SHA and full DOM/head/card/feed comparison: source + seven assets, complete page/head, 19 entries in 11 generated files."
+          "locator": "Executed cmp/SHA and full DOM/head/card/feed comparison: source + seven assets, complete page/head, 20 entries in 12 generated files, including the nested RSS item after the R42-02 fix."
         }
       ],
       "remaining_question": null
@@ -199,7 +199,7 @@
         {
           "id": "CASTLE",
           "url": "check_castle.py",
-          "locator": "Executed cmp/SHA and full DOM/head/card/feed comparison: source + seven assets, complete page/head, 19 entries in 11 generated files."
+          "locator": "Executed cmp/SHA and full DOM/head/card/feed comparison: source + seven assets, complete page/head, 20 entries in 12 generated files, including the nested RSS item after the R42-02 fix."
         }
       ],
       "remaining_question": null
@@ -244,7 +244,7 @@
         {
           "id": "CASTLE",
           "url": "check_castle.py",
-          "locator": "Executed cmp/SHA and full DOM/head/card/feed comparison: source + seven assets, complete page/head, 19 entries in 11 generated files."
+          "locator": "Executed cmp/SHA and full DOM/head/card/feed comparison: source + seven assets, complete page/head, 20 entries in 12 generated files, including the nested RSS item after the R42-02 fix."
         }
       ],
       "remaining_question": null
@@ -587,7 +587,7 @@
         "_posts/2026-03-18-announcing-extended-isolation-forest-support.md"
       ],
       "location": "Seeing the Difference: post-plot commentary",
-      "summary": "Kept the three score-map captions and a scoped geometry observation; described the concrete mismatch in Validation.",
+      "summary": "Kept the score-map captions and the observation about low-score bands on the pictured synthetic datasets.",
       "evidence": [],
       "remaining_question": null
     },
@@ -611,7 +611,7 @@
         "_posts/2026-03-18-announcing-extended-isolation-forest-support.md"
       ],
       "location": "Benchmark Results: dimensionality interpretation",
-      "summary": "Removed the dimensionality/geometry causal explanation; identified the benchmark as endpoint comparisons.",
+      "summary": "Retained endpoint comparisons and one limitation: isolating dimensionality or alignment effects would require a controlled experiment.",
       "evidence": [
         {
           "id": "EIF_README",
@@ -713,7 +713,7 @@
         "_posts/2026-03-18-announcing-extended-isolation-forest-support.md"
       ],
       "location": "Persistence: precision rationale",
-      "summary": "Cited Float weights, Double offsets, float products with double accumulation, and scoped round-trip comparisons; removed a general precision guarantee.",
+      "summary": "Cited Float weights, Double offsets, float products with double accumulation, and round-trip comparisons on the tests' data, ending at that specific tested scope.",
       "evidence": [
         {
           "id": "EIF_SCHEMA",
@@ -962,7 +962,7 @@
         "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md"
       ],
       "location": "Second opening paragraph",
-      "summary": "Replaced the foundation-model contrast with the direct comparison of model answers and retrieved sources.",
+      "summary": "Distinguished direct model answers from answers generated from passages retrieved from LUX papers and Brown theses.",
       "evidence": [],
       "remaining_question": null
     },
@@ -1051,7 +1051,7 @@
         "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md"
       ],
       "location": "Two Implementations: post-table paragraph",
-      "summary": "Described hosted API access versus a model running in a GPU Colab session, without a privacy guarantee.",
+      "summary": "Described API access and the Llama model running in a GPU-backed Colab session with its access, dependency, and memory requirements.",
       "evidence": [],
       "remaining_question": null
     },
@@ -1140,7 +1140,7 @@
         "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md"
       ],
       "location": "Practical Standard and Materials introductions",
-      "summary": "Moved the unique diagnostic procedure earlier, preserved practical-standard and material anchors, and ended with saved evidence and concise materials.",
+      "summary": "Preserved the diagnostic procedure and old anchors, and ended the saved example with the thesis passage added to retrieval.",
       "evidence": [],
       "remaining_question": null
     },
@@ -1274,7 +1274,7 @@
         "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md"
       ],
       "location": "Validated by Parity: numerical claim",
-      "summary": "Specified the verified float32 six-feature test input and maximum absolute score difference below 1e-5, without an all-input guarantee.",
+      "summary": "Described the dated six-feature float32 integration test and its maximum absolute score-difference assertion below 1e-5; the test was inspected, not rerun.",
       "evidence": [
         {
           "id": "ONNX_INTEGRATION",
@@ -1346,7 +1346,7 @@
         "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md"
       ],
       "location": "Held-out result aggregation",
-      "summary": "Cited Table 2's 84.5% and the 5,000-face four-engine evaluation; did not calculate an unweighted mean or invent the fourth rate.",
+      "summary": "Reported Table 2's 84.5% at 0.5% FPR on 5,000 held-out faces from four engines, followed by three per-generator examples without presenting them as the full set.",
       "evidence": [
         {
           "id": "FACE24",
@@ -1364,7 +1364,7 @@
         "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md"
       ],
       "location": "Held-out result: final clause",
-      "summary": "Identified retraining as a possible response and bounded the claim about future generators.",
+      "summary": "Kept adding new-engine training examples as a possible response, with the reported performance confined to the held-out evaluation.",
       "evidence": [],
       "remaining_question": null
     },
@@ -1425,7 +1425,7 @@
         "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md"
       ],
       "location": "Face-specific section opening",
-      "summary": "Scoped the zero non-face detections to the evaluation and retained the real/synthetic training-data confound.",
+      "summary": "Kept the observed zero non-face detections and consolidated the real/synthetic training confound beside one qualified facial-structure interpretation.",
       "evidence": [
         {
           "id": "FACE24",
@@ -1473,7 +1473,7 @@
         "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md"
       ],
       "location": "Temporal scope of the described detector",
-      "summary": "Added the verified Section 3 footnote-7 note about the older model having already been replaced.",
+      "summary": "Stated directly that the production model had been replaced by publication, linked to the verified Section 3 footnote 7.",
       "evidence": [
         {
           "id": "FACE24",
@@ -1687,7 +1687,7 @@
         "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md"
       ],
       "location": "Frequency-ranked token IDs",
-      "summary": "Retained frequency-ordered categorical IDs and removed the assertion that the ordering imposes an embedding prior.",
+      "summary": "Explained canonicalization, frequency-ordered token IDs, and learned embedding lookup without an embedding-prior claim or rebuttal.",
       "evidence": [
         {
           "id": "P21",
@@ -1741,7 +1741,7 @@
         "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md"
       ],
       "location": "Labels From an Unsupervised Teacher",
-      "summary": "Preserved the Isolation Forest weak-label origin and removed an unsupported inference about escaping teacher bias.",
+      "summary": "Kept the Isolation Forest label origin and one limitation on independently measuring attacks missed by that labeling model; historical-attack augmentation remains a possibility.",
       "evidence": [
         {
           "id": "P21",
@@ -1759,7 +1759,7 @@
         "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md"
       ],
       "location": "Evaluation at Natural Class Balance",
-      "summary": "Tied the roughly thousandfold annotation to slide 34's plotted weak-label counts rather than a separation/production metric.",
+      "summary": "Stated the direction verified in slide 34: roughly a thousand times fewer non-scrapers than scrapers in the highlighted high-score bins, using Isolation-Forest-derived labels.",
       "evidence": [
         {
           "id": "SEQFIG",
@@ -2440,15 +2440,49 @@
     "lux_demo": "passed: 12 checks",
     "post_og": "passed; output byte-identical to baseline",
     "generated_site": "passed; output byte-identical to baseline",
-    "castle": "passed",
+    "castle": "passed: source, seven assets, complete page/head, 20 entries in 12 files including RSS",
     "preservation": "passed",
     "git_diff_check": "passed",
-    "browser_visual_review": "not_run: agent.browsers.list returned []",
+    "browser_visual_review": "completed: Chrome 152.0.7977.77 at 1440x1080 and 390x844; homepage and nine posts in dark mode, five pages also in light mode; dates, anchors, MathML, tables and initialized demo introductions/canvases inspected; reduced motion enabled",
     "notebook_execution": "not_run: outside editorial scope",
-    "remote_CI": "not_run: no push authorized",
-    "final_review_build": "passed from temporary source with BUNDLE_GEMFILE pointing to existing repository Gemfile; handoff/report excluded",
-    "report_integrity": "passed: exactly 154 unique IDs, 17 pattern families, seven optional holds"
+    "remote_CI": "Jekyll Build and Link Check passed at reviewed head bbd9500; current follow-up commit checks are on PR #42",
+    "final_review_build": "passed from /private/tmp/pr42-followup-20260906/site-source with the existing repository Gemfile; both handoffs and review files excluded",
+    "report_integrity": "passed: exactly 154 unique IDs, 17 pattern families, seven optional holds",
+    "castle_xml_regressions": "passed: five tests, including four RSS mutation subcases; reproduced failure before selector fix"
   },
   "factual_value_or_formula_corrections": [],
-  "implementation_commit": "74b04dab034d407c60ad6c66501b8dfd305a25b9"
+  "implementation_commit": "74b04dab034d407c60ad6c66501b8dfd305a25b9",
+  "followup": {
+    "reviewed_head": "bbd9500a4a6077373b1e2e5935a88285f71248a6",
+    "date": "2026-09-06",
+    "local_artifacts": "/private/tmp/pr42-followup-20260906",
+    "items": [
+      {
+        "id": "R42-01",
+        "status": "edited",
+        "summary": "Consolidated repeated caveats in the five named posts while retaining specific evidence limits, scientific content, credit, and the AI disclosure."
+      },
+      {
+        "id": "R42-02",
+        "status": "fixed_and_tested",
+        "summary": "Traverse XML descendants; five regression tests cover nested RSS, Castle title/description/URL/date mutations, unrelated feed changes, Atom, and sitemap. Original-baseline comparison passes for 20 entries across 12 files."
+      },
+      {
+        "id": "R42-03",
+        "status": "verified_edited",
+        "summary": "Viewed slide 34 and restored the direction: non-scraper counts are roughly a thousand times smaller than scraper counts in the highlighted high-score bins, with weak-label scope retained."
+      },
+      {
+        "id": "R42-04",
+        "status": "edited",
+        "summary": "Corrected generated-versus-retrieved wording and removed immediate route-card repetition without changing structure or destinations."
+      },
+      {
+        "id": "R42-05",
+        "status": "validated_with_limits",
+        "summary": "Build, 63 demo checks, both validators, RSS regressions, original-baseline preservation, and focused desktop/mobile Chrome review completed.",
+        "remaining_question": "Other browser engines, physical-device touch, and full animation/control behavior were not tested. Scientific evidence gaps remain, including the exact LUX sevenfold ratio: reanalysis conclusion and Figure 3 inspected, no explicit numerical statement located or curve digitization performed."
+      }
+    ]
+  }
 }

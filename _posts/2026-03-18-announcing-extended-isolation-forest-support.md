@@ -82,7 +82,7 @@ These library-generated heatmaps compare standard Isolation Forest (left) with f
 
 *Sinusoid: EIF better tracks the non-axis-aligned data distribution.*
 
-The low-score bands show where standard IF can under-score unusual points. These plots check the expected qualitative geometry; they do not establish performance on other datasets.
+The low-score bands show where standard IF can under-score unusual points in these synthetic datasets.
 
 {% include site/if-demo.html %}
 
@@ -96,11 +96,11 @@ I benchmarked three configurations across 13 standard outlier-detection datasets
 
 I compared the results against the original Liu et al. Isolation Forest paper and the reference Python EIF implementation from Hariri et al. All experiments used 100 trees, 256 samples per tree, and 10 trials with distinct random seeds.
 
-These benchmarks compare the standard IF, axis-aligned EIF, and fully extended EIF endpoints against published and reference results. They do not sweep every `extensionLevel`.
+These benchmarks compare the standard IF, axis-aligned EIF, and fully extended EIF endpoints against published and reference results.
 
 I have not yet systematically benchmarked intermediate extension levels across all 13 datasets, but I did run a targeted sweep on Ionosphere. The [saved study output in PR #79](https://github.com/linkedin/isolation-forest/pull/79) reports AUROC increasing from about **0.86** at `extensionLevel = 0` to about **0.91** at full extension, with intermediate values improving along the way.
 
-EIF improved some datasets and reduced performance on others; the table shows both. Fully extended EIF improved Ionosphere and Satellite, had similar AUROC on Arrhythmia and Cardio, and performed worse on Mulcross and HTTP. These endpoint comparisons do not isolate dimensionality or axis alignment as the cause of the differences.
+Fully extended EIF improved Ionosphere and Satellite, had similar AUROC on Arrhythmia and Cardio, and performed worse on Mulcross and HTTP. The comparisons vary by dataset; isolating the effects of dimensionality or axis alignment would require a controlled experiment.
 
 | Dataset | Dim | Standard IF AUROC | Standard IF AUPRC | Fully extended EIF AUROC | Fully extended EIF AUPRC |
 |---|---:|---:|---:|---:|---:|
@@ -133,7 +133,7 @@ The EIF implementation keeps the public Spark ML surface aligned with standard I
 
 **Spark ML integration.** EIF uses the same Spark ML `Estimator` / `Model` contract as standard Isolation Forest. It works in Spark ML `Pipeline`s and follows the same distributed model persistence pattern.
 
-**Persistence across Spark versions.** The [persisted schema](https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/isolation-forest/src/main/scala/com/linkedin/relevance/isolationforest/extended/ExtendedIsolationForestModelReadWrite.scala) stores hyperplane weights as floats and offsets as doubles. [Scoring](https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/isolation-forest/src/main/scala/com/linkedin/relevance/isolationforest/extended/ExtendedUtils.scala) multiplies float weights and feature values and accumulates the terms in a double. The [round-trip tests](https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/isolation-forest/src/test/scala/com/linkedin/relevance/isolationforest/extended/ExtendedIsolationForestModelWriteReadTest.scala) compare saved and loaded tree parameters and predictions on their test data. These checks do not establish a general bound on quantization error for arbitrary inputs.
+**Persistence across Spark versions.** The [persisted schema](https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/isolation-forest/src/main/scala/com/linkedin/relevance/isolationforest/extended/ExtendedIsolationForestModelReadWrite.scala) stores hyperplane weights as floats and offsets as doubles. [Scoring](https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/isolation-forest/src/main/scala/com/linkedin/relevance/isolationforest/extended/ExtendedUtils.scala) multiplies float weights and feature values and accumulates the terms in a double. The [round-trip tests](https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/isolation-forest/src/test/scala/com/linkedin/relevance/isolationforest/extended/ExtendedIsolationForestModelWriteReadTest.scala) compare saved and loaded tree parameters and predictions on their test data.
 
 ## Choosing between IF and EIF
 

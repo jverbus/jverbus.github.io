@@ -50,7 +50,7 @@ The package is on [PyPI](https://pypi.org/project/isolation-forest-onnx/). Pin t
 ## Comparing Spark and ONNX scores
 {: #validated-by-parity }
 
-The [original converter tests](https://github.com/linkedin/isolation-forest/blob/ae6efe58db52a705151420ed6adcd556498a352b/isolation-forest-onnx/test/test_isolation_forest_converter.py) compared benchmark AUROC with expected values. A [later end-to-end integration test, present in the March 2026 revision](https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/isolation-forest-onnx/test/integration/test_isolation_forest_onnx_integration.py), scores the same six-feature test data with the Spark model and exported ONNX graph, then compares their outputs. It passes float32 features to Python ONNX Runtime and asserts a maximum absolute score difference below `1e-5`. This is a tolerance on that test's inputs, not exact identity or an all-input equivalence guarantee.
+The [original converter tests](https://github.com/linkedin/isolation-forest/blob/ae6efe58db52a705151420ed6adcd556498a352b/isolation-forest-onnx/test/test_isolation_forest_converter.py) compared benchmark AUROC with expected values. A [later end-to-end integration test, present in the March 2026 revision](https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/isolation-forest-onnx/test/integration/test_isolation_forest_onnx_integration.py), scores the same six-feature test data with the Spark model and exported ONNX graph, then compares their outputs. It passes float32 features to Python ONNX Runtime and asserts a maximum absolute score difference below `1e-5`.
 
 ## Scope
 

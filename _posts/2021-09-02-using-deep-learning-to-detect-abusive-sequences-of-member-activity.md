@@ -31,7 +31,7 @@ We modeled the ordered requests from an account, including the requests around e
 
 *A mock burst of profile views, expanded into the full request sequence around it. The model also consumes the time gap between consecutive requests. (Figure from my LinkedIn Engineering blog post.)*
 
-The pipeline canonicalizes raw request paths into standardized path tokens, then assigns integer IDs in global request-frequency order: common requests get small IDs and rare requests get large IDs. These IDs index the learned embeddings described below; frequency ordering alone does not specify a prior on those embeddings.
+The pipeline canonicalizes raw request paths into standardized path tokens, then assigns integer IDs in global request-frequency order: common requests get small IDs and rare requests get large IDs. These IDs index learned request-path embeddings.
 
 Timing is kept as a parallel signal. For each adjacent pair of requests, the model receives the elapsed time between them. In NLP terms, the request-path stream is the sentence, the standardized paths are tokens, and the inter-request delays are a second channel that tells the model how the sentence was paced.
 
@@ -65,7 +65,7 @@ The timing branch processes the inter-request time gaps. After the path and timi
 
 Supervised sequence models need labels, and scraping does not come with clean ground truth. The labels for this model came from a different production signal: the [isolation forest]({{ '/2019/08/13/open-source-isolation-forest-spark-scala/' | relative_url }}) outlier-detection approach we used for automation detection. Those labels could be augmented with examples from known historical attacks.
 
-These are weak labels. The sequence model learns a different representation from the standardized request stream, but that does not establish that it escapes the labeling model's biases or recovers attacks that model missed.
+The labels came from Isolation Forest, so this evaluation does not independently measure detection of attacks that the labeling model missed.
 
 ## Evaluation at Natural Class Balance
 
@@ -75,7 +75,7 @@ The initial proof-of-concept model was evaluated out of time, on data from well 
 
 *Out-of-time labeled score distributions at natural class balance. The scraper groups are labeled by Isolation Forest, including a group with high Isolation Forest scores. (Slide 34 from my Scale AI talk.)*
 
-The slide annotates roughly a thousandfold difference in plotted non-scraper and scraper counts near the high-score end. This is a count comparison within those labeled distributions. The slide does not specify an operating threshold and reviewed production precision or recall, so it does not measure the false-positive burden of a deployed workflow.
+In the high-score bins highlighted on the slide, plotted non-scraper counts are roughly a thousand times smaller than scraper counts. This comparison uses Isolation-Forest-derived labels. The slide does not specify a decision threshold or reviewed production precision or recall.
 
 ## Embeddings and Coordinated Automation
 

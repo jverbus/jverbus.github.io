@@ -49,17 +49,17 @@ hide_title: true
     <a class="home-route-card" href="{{ '/posts/' | relative_url }}">
       <span class="home-route-kicker">Detection Systems</span>
       <strong>Technical posts on abuse detection</strong>
-      <span>Read field notes and technical case studies.</span>
+      <span>Read field notes and case studies.</span>
     </a>
     <a class="home-route-card" href="{{ '/publications/' | relative_url }}">
       <span class="home-route-kicker">Research</span>
       <strong>Papers, patents, and my physics thesis</strong>
-      <span>Browse papers, patents, posters, and engineering writeups.</span>
+      <span>Browse posters and engineering writeups, too.</span>
     </a>
     <a class="home-route-card" href="{{ '/videos/' | relative_url }}">
       <span class="home-route-kicker">Talks / Projects</span>
       <strong>Workshop recordings, talks, and demos</strong>
-      <span>Watch talks or try interactive demos.</span>
+      <span>Watch or try them yourself.</span>
     </a>
   </nav>
 

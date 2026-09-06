@@ -26,7 +26,7 @@ related:
 
 At the 2025 AI Winter School, hosted by the Center for the Fundamental Physics of the Universe at Brown University, I led a 2.5-hour hands-on workshop on using large language models with physics-specific source material.
 
-Participants compared direct model answers with answers retrieved from LUX papers and Brown theses.
+Participants compared direct model answers with answers generated from passages retrieved from LUX papers and Brown theses.
 
 The corpus covered LUX dark matter calibrations and Brown Particle Astrophysics theses. We asked about the mean D-D neutron energy, the electric fields used in LUX yield measurements, and the origin and energy of low-energy `127Xe` calibration events. The [saved `127Xe` example below](#a-saved-corpus-coverage-example) shows what changed when the relevant thesis was added.
 
@@ -68,7 +68,7 @@ The workshop used two parallel Colab notebooks so participants could see the sam
 | **Hosted API** | `gpt-4o-mini` through the OpenAI API | LlamaIndex document loading, chunking, embeddings, vector indexing, and query engine | Fast path for prototyping and comparing model answers against retrieved evidence |
 | **Open model** | `meta-llama/Meta-Llama-3.1-8B-Instruct` through Hugging Face in a GPU-backed Colab runtime | LlamaIndex with `BAAI/bge-small-en-v1.5` embeddings for vector search | Running the model and configuring its tokenizer and embeddings in the Colab session |
 
-The hosted path required API access. The Llama path required Hugging Face model access, the notebook's dependencies, and enough GPU memory in Colab. It ran in a hosted Colab session, so open weights did not make the exercise private laptop execution.
+The hosted path required API access. The Llama model ran in a GPU-backed Colab session with the notebook's dependencies, Hugging Face model access, and enough GPU memory.
 
 ## Indexing Parameters
 
@@ -130,7 +130,7 @@ The [hosted-API notebook's saved outputs](https://github.com/jverbus/jverbus.git
 
 Before insertion, the retrieved passages came from the D-D papers. One discussed cosmogenic `131mXe`; the generated answer substituted that isotope and did not identify the `127Xe` threshold. After insertion, the saved answer reported a lowest energy deposition of **186 eV** and attributed the `127Xe` to cosmogenic activation while the xenon was above ground.
 
-The new retrieval trace includes the Huang thesis, pages 77–78 in the notebook metadata. The page-78 passage describes the calibration as “reaching all the way down to the observation of 186 eV energy deposition”; the page-77 passage attributes the isotope to cosmogenic activation before the xenon was moved underground. These are passages saved in `response.source_nodes`, so the answer's energy, units, and origin can be checked against the retrieved text. This example demonstrates a corpus-coverage correction, not a general accuracy rate for the system.
+The new retrieval trace includes the Huang thesis, pages 77–78 in the notebook metadata. The page-78 passage describes the calibration as “reaching all the way down to the observation of 186 eV energy deposition”; the page-77 passage attributes the isotope to cosmogenic activation before the xenon was moved underground. These are passages saved in `response.source_nodes`, so the answer's energy, units, and origin can be checked against the retrieved text. Adding the thesis gave the retriever the passage containing the 186 eV result and the isotope's origin.
 
 ## Materials
 

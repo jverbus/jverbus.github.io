@@ -104,7 +104,8 @@ def castle_entries(site):
     for path in sorted(site.rglob("*.xml")):
         root = ET.parse(path).getroot()
         selected = []
-        for node in root:
+        # RSS nests items inside channel; Atom entries and sitemap URLs are direct children.
+        for node in root.iter():
             if node.tag.split("}")[-1] not in {"entry", "item", "url"}:
                 continue
             if any((n.text or "").strip().endswith(ROUTE) or
