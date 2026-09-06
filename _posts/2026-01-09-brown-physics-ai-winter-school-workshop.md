@@ -2,8 +2,8 @@
 layout: post
 title: "Reinforcement Learning for Orbital Transfers at the 2026 AI Winter School (Brown University)"
 date: 2026-01-09
-last_modified_at: 2026-06-27
-description: "Hands-on workshop framing orbital transfer as a controlled two-body dynamics problem: Hohmann benchmark, Gymnasium environment, PPO policies, reward shaping, and diagnostics for chatter and delta-v efficiency."
+last_modified_at: 2026-09-06
+description: "Training PPO policies for orbital transfers and comparing their trajectories and delta-v with a Hohmann baseline."
 og_image: "/assets/images/2026-ai-winter-school-banner.png"
 og_image_alt: "2026 AI Winter School banner from the Brown University Department of Physics"
 og_image_width: 1024
@@ -27,7 +27,7 @@ related:
 
 At the 2026 AI Winter School, hosted by the Center for the Fundamental Physics of the Universe at Brown University, I led a 2.5-hour hands-on workshop on reinforcement learning for orbital transfers.
 
-The workshop was not about claiming that RL is the right way to solve a textbook astrodynamics problem. The point was to use a problem with known mechanics and a known analytic solution as a controlled environment for learning the applied RL workflow: define the state, action, reward, and diagnostics; train a policy; compare it against ground truth; then explain the failure modes.
+I used a two-body transfer with a known analytic solution so we could compare learned policies with a baseline. This article is a workshop guide to training and inspecting policies, rather than a performance report. The [notebook](#code) contains the environment, training procedure, and saved example outputs for running that comparison.
 
 ## Control Problem
 
@@ -78,7 +78,7 @@ Here the arrowed r denotes the spacecraft position vector; the plain r denotes i
 </math>
 </div>
 
-That stripped-down model is still useful because the relevant orbital invariants are visible. For a circular target orbit, the target specific energy and angular momentum are known:
+For a circular target orbit, the target specific energy and angular momentum are:
 
 <div class="math-display" aria-label="Target specific energy and angular momentum">
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -191,15 +191,17 @@ The two burns and transfer time are:
 </math>
 </div>
 
-That closed-form solution gave the workshop a real yardstick: not just "did the agent reach the target," but how much Δv it spent, how many burns it used, whether it circularized, and whether the trajectory matched the expected burn-coast-burn structure.
+The policy comparison uses total Δv, circularization error, and burn history against this baseline.
 
 <img src="{{ '/assets/images/rl-orbital-hohmann-trajectory.png' | relative_url }}" alt="Hohmann transfer trajectory: the transfer ellipse touching the inner start orbit and the outer target orbit" width="708" height="711" loading="lazy" decoding="async">
 
-The verification plots made the baseline concrete: the trajectory should be an ellipse touching `r1` and `r2`, the radius history should rise from the inner orbit to the outer orbit after the second burn, and cumulative Δv should match the analytic total.
+*The transfer ellipse touches the initial circular orbit at `r1` and the target orbit at `r2`.*
 
 <img src="{{ '/assets/images/rl-orbital-hohmann-verification.png' | relative_url }}" alt="Verification plots for the simulated Hohmann transfer: radius versus time rising to the target, two thrust impulses showing the burn-coast-burn structure, and cumulative delta-v matching the ideal total" width="1411" height="911" loading="lazy" decoding="async">
 
-One useful teaching detail appeared immediately: even the analytic plan does not land exactly on `r2` in a finite-timestep simulator if the second burn fires on the first step at or after the computed transfer time. The total Δv still matches theory, but the final orbit has a small residual timing error. That separates continuous-time theory, numerical integration, and policy behavior before RL enters the discussion.
+*Radius history, the two impulses, and accumulated Δv for the simulated Hohmann transfer.*
+
+The finite-timestep simulation does not land exactly on `r2`: the second burn fires on the first step at or after the computed transfer time. In the notebook's saved baseline, the final radius is 1.5999 against the theoretical 1.6000, with a timestep of 0.00050; total Δv agrees at the displayed precision of 0.2066. This residual precedes policy training and reflects the numerical implementation of the analytic plan.
 
 {% include site/orbit-demo.html %}
 
@@ -256,22 +258,21 @@ with shaping approximately proportional to:
 
 Then the environment subtracted fuel and ignition/switching penalties, added a one-time success bonus on first entry into the tolerance region, and added a holding reward for staying there. PPO was trained with observation/reward normalization during training, frozen normalization statistics during evaluation, and deterministic policy rollout for diagnostics.
 
-## What the Diagnostics Caught
-
-The important lesson was that endpoint success is too weak a metric. A policy can enter the success region and still be a poor transfer.
+## Failure modes to inspect
+{: #what-the-diagnostics-caught }
 
 The notebook compared policies using trajectory, radius history, radial velocity, thrust impulses, cumulative Δv, number of burns or active-thrust steps, closest-to-target statistics, and the mission report against the Hohmann ideal.
 
-The failure modes were instructive:
+When inspecting a run, check for these possible failure modes:
 
-- **Discrete control:** small fixed impulses can reach the target, but often with many prograde/retrograde corrections. The orbit may satisfy the tolerance band while wasting Δv.
+- **Discrete control:** small fixed impulses can reach the target with many prograde/retrograde corrections. The orbit may satisfy the tolerance band while wasting Δv.
 - **Continuous control:** throttle control is more expressive, but it can learn micro-thrusting: almost continuous small corrections that keep the error low while hiding poor fuel efficiency.
-- **Tolerance exploitation:** a policy can appear to "beat" the ideal by stopping inside loose tolerances on a slightly elliptical orbit. That is not a better transfer; it is a reminder that the metric defines the game.
+- **Tolerance exploitation:** a policy that stops inside a loose tolerance band on an elliptical orbit has not met the same endpoint conditions as the Hohmann transfer. Its Δv is therefore not directly comparable to the ideal circular-to-circular transfer.
 - **Final-state ambiguity:** final radius alone is misleading for eccentric orbits. Closest approach, radial-velocity history, angular momentum, and thrust history are needed to interpret what the policy actually learned.
 
 ## Experiment Loop
 
-The final notebook section let participants edit a `ModeConfig` and rerun training. The knobs were not decorative; each one changes the control problem:
+The final section exposes these parameters through `ModeConfig`:
 
 - `dv_mag`: control authority per step
 - `fuel_cost_penalty`: cost of using Δv
@@ -279,7 +280,7 @@ The final notebook section let participants edit a `ModeConfig` and rerun traini
 - `reward_shaping_scale`: strength of dense energy/angular-momentum shaping
 - `training_timesteps`, `learning_rate`, and `ent_coef`: PPO optimization and exploration behavior
 
-The practical standard was:
+For each comparison, record the configuration, seed, training budget, and success tolerances, then:
 
 ```text
 train a policy
@@ -290,24 +291,11 @@ change one parameter or design choice
 rerun
 ```
 
-That loop is the point of using RL in a problem with analytic ground truth. The goal is not to celebrate a learned policy for reaching the target. The goal is to make the policy's behavior legible enough that failures are evidence for the next experiment.
+The [saved notebook](https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/2026_01_09_James_Verbus_Brown_AI_Winter_School_RL_Orbital_Transfers.ipynb) includes discrete and continuous policy reports, but does not fix a training seed. Its final custom experiment also has a saved configuration printout that differs from the displayed setup. Those outputs illustrate the diagnostics; they do not supply a reproducible comparison of parameter choices.
 
 ## Materials
 
-### Workshop Recording
-
-[Workshop Recording](https://www.youtube.com/watch?v=BdPzEhGc7Cw)
-
-### Slides
-
-[Slides (PDF)]({{ '/assets/files/2026-01-09%20-%20James%20Verbus%20-%20Brown%20AI%20Winter%20School%20-%20Reinforcement%20Learning%20for%20Orbital%20Transfers.pdf' | relative_url }})
-
-### Code
-
-[RL for Orbital Transfers Notebook]({{ '/assets/files/2026_01_09_James_Verbus_Brown_AI_Winter_School_RL_Orbital_Transfers.ipynb' | relative_url }})
-
-### Event Page
-
-For the full schedule and recordings across all modules:
-
-[2026 AI Winter School (Indico)](https://indico.physics.brown.edu/event/192/)
+- <span id="workshop-recording" aria-hidden="true"></span>[Workshop Recording](https://www.youtube.com/watch?v=BdPzEhGc7Cw)
+- <span id="slides" aria-hidden="true"></span>[Slides (PDF)]({{ '/assets/files/2026-01-09%20-%20James%20Verbus%20-%20Brown%20AI%20Winter%20School%20-%20Reinforcement%20Learning%20for%20Orbital%20Transfers.pdf' | relative_url }})
+- <span id="code" aria-hidden="true"></span>[RL for Orbital Transfers Notebook]({{ '/assets/files/2026_01_09_James_Verbus_Brown_AI_Winter_School_RL_Orbital_Transfers.ipynb' | relative_url }})
+- <span id="event-page" aria-hidden="true"></span>[2026 AI Winter School (Indico)](https://indico.physics.brown.edu/event/192/)

@@ -1,17 +1,17 @@
 ---
 layout: page
 title: Home
-description: "AI systems for adversarial environments: bot and automation detection, anomaly detection, sequence modeling, synthetic media, and AI productivity."
-last_modified_at: 2026-06-25
+description: "James Verbus: machine learning engineer, physicist, and author of the Spark/Scala isolation-forest library."
+last_modified_at: 2026-09-06
 hide_title: true
 ---
 
 <section class="home-hero" id="about">
   <div class="home-hero-grid">
     <div class="home-hero-copy">
-      <p class="home-eyebrow">Adversarial AI · Automation detection · Synthetic media</p>
+      <p class="home-eyebrow">James Verbus</p>
       <h1 class="home-hero-headline">AI systems for<br><span class="home-hero-headline-muted">adversarial settings.</span></h1>
-      <p class="home-lede home-lede-primary">I build and evaluate AI systems for adversarial environments: bot and automation detection, anomaly detection, sequence modeling, synthetic media, and AI productivity.</p>
+      <p class="home-lede home-lede-primary">At LinkedIn, I worked on automation detection and AI-generated profile photos, and built the Spark/Scala isolation-forest library.</p>
       <div class="home-hero-actions" aria-label="Primary links">
         <a class="cta-button" href="{{ '/posts/' | relative_url }}">Read posts</a>
         <a class="secondary-button" href="#start-here">Representative work <span aria-hidden="true">&darr;</span></a>
@@ -48,18 +48,18 @@ hide_title: true
   <nav class="home-route-grid" aria-label="Primary work areas">
     <a class="home-route-card" href="{{ '/posts/' | relative_url }}">
       <span class="home-route-kicker">Detection Systems</span>
-      <strong>Bot and automation detection, anomaly detection, and validation in adversarial settings.</strong>
-      <span>Read field notes and technical case studies.</span>
+      <strong>Technical posts on abuse detection</strong>
+      <span>Read field notes and case studies.</span>
     </a>
     <a class="home-route-card" href="{{ '/publications/' | relative_url }}">
       <span class="home-route-kicker">Research</span>
-      <strong>Synthetic media detection, sequence modeling, and low-signal physics measurement.</strong>
-      <span>Browse papers, patents, posters, and engineering writeups.</span>
+      <strong>Papers, patents, and my physics thesis</strong>
+      <span>Browse posters and engineering writeups, too.</span>
     </a>
     <a class="home-route-card" href="{{ '/videos/' | relative_url }}">
       <span class="home-route-kicker">Talks / Projects</span>
-      <strong>Hands-on AI workshops, open-source anomaly detection, and AI productivity tools.</strong>
-      <span>Watch talks or try interactive demos.</span>
+      <strong>Workshop recordings, talks, and demos</strong>
+      <span>Watch or try them yourself.</span>
     </a>
   </nav>
 
@@ -74,22 +74,22 @@ hide_title: true
     <article class="home-start-card" role="listitem">
       <p class="home-start-label">Sequence modeling</p>
       <h3><a href="{{ '/2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/' | relative_url }}">Deep learning for abusive activity sequences</a></h3>
-      <p>Production sequence models over member activity streams, with request-path embeddings, timing features, and clustering over learned representations.</p>
+      <p>Detecting low-volume scrapers from the order and timing of their requests.</p>
     </article>
     <article class="home-start-card" role="listitem">
       <p class="home-start-label">Research</p>
       <h3><a href="{{ '/2024/08/15/finding-ai-generated-faces-in-the-wild/' | relative_url }}">Finding AI-generated faces in the wild</a></h3>
-      <p>CVPR workshop research and a LinkedIn Engineering writeup on synthetic profile-image detection at platform scale.</p>
+      <p>Testing a face detector on GAN and diffusion models, including generators withheld from training.</p>
     </article>
     <article class="home-start-card" role="listitem">
       <p class="home-start-label">Workshop</p>
       <h3><a href="{{ '/2026/01/09/brown-physics-ai-winter-school-workshop/' | relative_url }}">Reinforcement learning for orbital transfers</a></h3>
-      <p>A Brown AI Winter School workshop on orbital mechanics, PPO agents, and practical model diagnostics.</p>
+      <p>Training PPO policies for orbital transfers and comparing them with the Hohmann solution.</p>
     </article>
     <article class="home-start-card" role="listitem">
       <p class="home-start-label">Open source anomaly detection</p>
       <h3><a href="{{ '/open-source/isolation-forest/' | relative_url }}">Open-source Spark/Scala isolation-forest library</a></h3>
-      <p>Distributed Spark/Scala anomaly detection, from the original open-source release through ONNX export and Extended Isolation Forest.</p>
+      <p>How random partitions identify unusual account activity, and how to distribute training and scoring in Spark.</p>
     </article>
   </div>
   <p class="home-archive-link"><a href="{{ '/posts/' | relative_url }}">View all writing</a></p>
@@ -97,11 +97,11 @@ hide_title: true
 
 <section class="home-section home-throughline" aria-labelledby="throughline-heading">
   <div class="section-heading">
-    <p class="section-kicker">Background</p>
-    <h2 id="throughline-heading">Detection work across trust, AI, and physics</h2>
+    <p class="section-kicker">Career</p>
+    <h2 id="throughline-heading">Background</h2>
   </div>
   <div class="home-throughline-copy">
-    <p>At LinkedIn, most recently as a Senior Staff Machine Learning Engineer, I built production systems for Trust: bot and automation detection, deep models over member-activity sequences, unsupervised anomaly detection at scale, and detection of AI-generated profile images. I also created and open-sourced the Spark/Scala isolation-forest library and led AI productivity work for Trust engineering teams.</p>
+    <p>At LinkedIn, most recently as a Senior Staff Machine Learning Engineer, I built production detection systems for Trust. I created and open-sourced the Spark/Scala isolation-forest library and led AI productivity work for Trust engineering teams.</p>
     <p>Before LinkedIn, I earned my Ph.D. in physics at Brown working on <a href="{{ '/2016/08/18/calibrating-the-lux-dark-matter-experiment/' | relative_url }}">LUX</a>, one of the world's most sensitive dark-matter detectors. The common thread is practical measurement: extracting weak signals from noisy data, checking uncertainty, and making systems useful when ground truth is incomplete.</p>
   </div>
 </section>
@@ -230,6 +230,6 @@ hide_title: true
   <div class="section-heading">
     <h2 id="conversations-heading">Contact</h2>
   </div>
-  <p>I like hearing from people working on AI systems, detection, synthetic media, sequence modeling, physics, or AI productivity. Email is the easiest way to reach me.</p>
+  <p>Questions or corrections? Email me.</p>
   <p><a class="cta-button" href="mailto:james.verbus@gmail.com">Email me</a></p>
 </section>

@@ -2,13 +2,15 @@
 <div class="orbit-demo" data-orbit-demo hidden>
   <h2 class="if-demo-title" id="fly-it-live-heading">Try it: fly the transfer yourself</h2>
   <p class="if-demo-intro">
-    A normalized 2-D two-body simulator with tangential impulse control.
-    It uses the same mechanics as the workshop notebook: start on
+    A normalized 2-D two-body simulator with impulses along or opposite
+    the current velocity. Unlike the notebook's local tangential control,
+    this direction can include a radial component. Start on
     r&#8321; = 1 and circularize at r&#8322; = 1.6
     using as little &Delta;v as possible. The analytic Hohmann transfer
     needs &Delta;v &asymp; 0.207 &mdash; try to match it, press Run Hohmann to watch the
     textbook solution, or Run Greedy to see a myopic controller reach the
-    target the expensive way.
+    target the expensive way. The browser demo uses manual, analytic and
+    greedy controllers; it does not run the trained PPO policy.
   </p>
   <div class="orbit-demo-layout">
     <figure>
@@ -38,6 +40,6 @@
       </figure>
     </div>
   </div>
-  <p class="if-demo-hint">Hold a burn button to keep firing &middot; prograde is along your velocity &middot; a clean transfer is two burns and a coast, not a stream of corrections.</p>
+  <p class="if-demo-hint">Hold a burn button to keep firing &middot; prograde is along your velocity &middot; compare your impulses and &Delta;v with the two-burn Hohmann plan.</p>
 </div>
 <script src="{{ '/assets/js/orbit-demo.js' | relative_url }}?v=4" defer></script>

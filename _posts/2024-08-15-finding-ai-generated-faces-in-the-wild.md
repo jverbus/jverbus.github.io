@@ -1,12 +1,12 @@
 ---
 layout: post
 title: "Finding AI-Generated Faces in the Wild"
-description: "Detecting GAN- and diffusion-generated faces in the wild: one classifier across ten synthesis engines, robust to low resolution and heavy compression."
+description: "Evaluating synthetic-face detection across GAN and diffusion engines, including held-out generators and reduced image quality."
 og_image: "/assets/images/social/2024-08-15-finding-ai-generated-faces-in-the-wild-1200x630.jpg"
 og_image_alt: "Finding AI-Generated Faces in the Wild"
 og_image_width: 1200
 og_image_height: 630
-last_modified_at: 2026-06-10
+last_modified_at: 2026-09-06
 categories: ["AI and Machine Learning"]
 tags: [LinkedIn, machine learning, AI, Generative AI, deepfake]
 related:
@@ -14,9 +14,11 @@ related:
   - /2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/
 ---
 
-Our [2023 detector]({{ '/2023/06/20/detecting-ai-generated-profile-photos/' | relative_url }}) exploited the rigid facial geometry of StyleGAN images, and it worked extremely well against that family of generators. But the generative landscape did not hold still. Within a year, a fake profile photo could just as easily come from Stable Diffusion, DALL-E 2, or Midjourney, none of which share StyleGAN's telltale alignment, and it would arrive small and recompressed by whatever upload pipeline it passed through.
+Our [2023 detector]({{ '/2023/06/20/detecting-ai-generated-profile-photos/' | relative_url }}) exploited the rigid facial geometry of StyleGAN images. But the generative landscape did not hold still. Stable Diffusion, DALL-E 2, and Midjourney could also generate faces, without StyleGAN's alignment. Upload pipelines could then downscale and recompress those images.
 
-*Finding AI-Generated Faces in the Wild*, again with Professor Hany Farid at UC Berkeley, takes on that messier problem: one classifier that detects AI-generated faces across both GAN and diffusion engines, and keeps working at the reduced resolutions and compression levels real platforms actually see. We published it at the [Workshop on Media Forensics](https://sites.google.com/view/wmf2024/home) at CVPR 2024.
+In *Finding AI-Generated Faces in the Wild*, our LinkedIn team and Professor Hany Farid at UC Berkeley evaluated detection across GAN and diffusion engines, including generators withheld from training. We also tested reduced resolution and JPEG compression, using separately resolution-matched models for the small-image results. We published this [coauthored paper]({{ '/assets/files/porcile2024-finding-ai-generated-faces-in-the-wild.pdf' | relative_url }}#page=1) at the [Workshop on Media Forensics](https://sites.google.com/view/wmf2024/home) at CVPR 2024.
+
+The production model described here [had already been replaced by the time we published the paper]({{ '/assets/files/porcile2024-finding-ai-generated-faces-in-the-wild.pdf' | relative_url }}#page=4).
 
 ## One Classifier, Ten Engines
 
@@ -24,9 +26,9 @@ We trained and evaluated against 18 datasets: 120,000 real profile photos from L
 
 <img src="{{ '/assets/images/ai-faces-wild-engines.jpg' | relative_url }}" alt="Grid of representative AI-generated face and non-face images from ten synthesis engines including generated.photos, StyleGAN 1 to 3, EG3D, DALL-E 2, Midjourney, and Stable Diffusion variants" width="1253" height="1648" loading="lazy" decoding="async">
 
-*Representative AI-generated images from the ten synthesis engines used for training and evaluation. Some engines contribute faces only; others contribute both faces and non-face images. (Figure from the paper.)*
+*Representative AI-generated images from the ten synthesis engines used for training and evaluation. Some engines contribute faces only; others contribute both faces and non-face images. (Figure 2 of the paper; dataset counts in Table 1.)*
 
-At a fixed 0.5% false positive rate, the classifier catches 98% of AI-generated faces from engines seen in training. On the four held-out engines the average is 84.5%, with an honest spread behind it: EG3D transfers almost perfectly (99.5%) and generated.photos nearly as well (95.4%), while Midjourney mostly slips through (19.4%). Generalization is good in some directions and weak in others, and the practical answer is the operational one: fold new engines into training as they appear.
+At a fixed 0.5% false positive rate, the classifier detected 98% of AI-generated faces from engines seen in training. We reported 84.5% detection on the held-out evaluation of 5,000 faces from four engines at the same false-positive rate ([Table 2]({{ '/assets/files/porcile2024-finding-ai-generated-faces-in-the-wild.pdf' | relative_url }}#page=5)). Performance varied considerably by generator: EG3D reached 99.5% and generated.photos 95.4%, while Midjourney mostly slips through (19.4%). Adding examples from new engines to training is one possible response.
 
 ## Built for the Wild
 
@@ -36,35 +38,25 @@ The architecture is straightforward: images are resized to 512 pixels and fed th
 
 <img src="{{ '/assets/images/ai-faces-wild-robustness.png' | relative_url }}" alt="Two plots showing true positive rate versus image resolution and versus JPEG quality, with resolution-matched training maintaining high accuracy at small sizes" width="656" height="706" loading="lazy" decoding="async">
 
-*True positive rate as a function of resolution (top) and JPEG quality (bottom) at a fixed 0.5% false positive rate. In the top panel, the solid curve is the 512-trained model evaluated at lower resolutions; the dashed curve is a model trained at the matching resolution. (Figure from the paper.)*
+*True positive rate as a function of resolution (top) and JPEG quality (bottom) at a fixed 0.5% false positive rate. In the top panel, the solid curve is the 512-trained model evaluated at lower resolutions; each point on the dashed curve uses a model trained at the matching resolution. The JPEG model was trained on uncompressed images and a range of JPEG qualities. (Figure 3 of the paper.)*
 
-The resolution curves carry a deployment lesson. A model trained only at 512 pixels loses most of its detection power on 128-pixel images, but a model trained at that smaller scale stays around 90%. Matching training resolution to the sizes a platform actually serves is what preserves detection on small images. Compression is more forgiving, with detection degrading gradually as JPEG quality falls from 100 to 20.
+A model trained only at 512 pixels lost most of its detection power on 128-pixel images. A separate model trained and evaluated at 128 pixels stayed around 90%, at the same 0.5% false positive rate. For the model trained with mixed uncompressed and JPEG images, detection degraded as JPEG quality fell from 100 to 20. [Section 4]({{ '/assets/files/porcile2024-finding-ai-generated-faces-in-the-wild.pdf' | relative_url }}#page=6) reports 94.3% TPR at quality 80 and 88.0% at quality 60, both at 0.5% FPR.
 
-## A Face-Specific Signal, Not a Synthesis Fingerprint
+## What the detector appears to use
+{: #a-face-specific-signal-not-a-synthesis-fingerprint }
 
-The most interesting result is what the classifier ignores. Non-face images produced by the same synthesis engines are never flagged: the true positive rate on synthetic non-faces is 0%. Part of the explanation is mundane, since the real training photos include some non-faces while every synthetic training image contains a face. But the result also points away from the model relying on a low-level generator fingerprint, some statistical residue of the synthesis process, because that residue would be present in the non-faces too.
+The detector flagged none of the synthetic non-face images in this evaluation: their true positive rate was 0% (Table 2).
 
 <img src="{{ '/assets/images/ai-faces-wild-saliency.jpg' | relative_url }}" alt="AI-generated faces alongside their integrated-gradient attribution maps, which concentrate on facial regions" width="641" height="1483" loading="lazy" decoding="async">
 
-*Integrated-gradient attributions for AI-generated faces concentrate around the face and other areas of skin. The top row averages 100 StyleGAN 2 faces together; the others are individual examples. (Figure from the paper.)*
+*Integrated-gradient attributions for AI-generated faces concentrate around the face and other areas of skin. The top row averages 100 StyleGAN 2 faces together; the others are individual examples. (Figure 5 of the paper.)*
 
-Integrated-gradient attributions point the same way: the pixels that matter most to the model concentrate around the face and other areas of skin. Together these results suggest the classifier keys on a property of AI-generated faces themselves, which is exactly the kind of signal you want in the wild, because face-level properties survive the resizing and recompression that scrub away forensic fingerprints.
+The attributions discussed in [Section 4.1]({{ '/assets/files/porcile2024-finding-ai-generated-faces-in-the-wild.pdf' | relative_url }}#page=6) concentrate on facial regions. These observations are consistent with the detector using facial structure. The difference between real and synthetic training images—only the real set contained some non-faces—makes that interpretation harder to isolate.
 
 ## Resources
 
-### Blogs
-
-- [Finding AI-generated (deepfake) faces in the wild](https://www.linkedin.com/blog/engineering/trust-and-safety/finding-ai-generated-deepfake-faces-in-the-wild)
-
-### Papers
-
-- [Finding AI-Generated Faces in the Wild](https://openaccess.thecvf.com/content/CVPR2024W/WMF/papers/Porcile_Finding_AI-Generated_Faces_in_the_Wild_CVPRW_2024_paper.pdf) ([arXiv:2311.08577](https://arxiv.org/abs/2311.08577))
-
-### Posters
-
-- [Finding AI-Generated Faces in the Wild]({{ '/assets/files/CVPRW_poster_2024.pdf' | relative_url }})
-
-### Videos
-
-- [SXSW 2024 panel with DARPA: "Real or Not: Defending Authenticity in a Digital World"](https://www.youtube.com/watch?v=8zniAjqWI2A)
+- <span id="blogs" aria-hidden="true"></span>Engineering article: [Finding AI-generated (deepfake) faces in the wild](https://www.linkedin.com/blog/engineering/trust-and-safety/finding-ai-generated-deepfake-faces-in-the-wild)
+- <span id="papers" aria-hidden="true"></span>Paper: [Finding AI-Generated Faces in the Wild](https://openaccess.thecvf.com/content/CVPR2024W/WMF/papers/Porcile_Finding_AI-Generated_Faces_in_the_Wild_CVPRW_2024_paper.pdf) ([arXiv:2311.08577](https://arxiv.org/abs/2311.08577))
+- <span id="posters" aria-hidden="true"></span>Poster: [Finding AI-Generated Faces in the Wild]({{ '/assets/files/CVPRW_poster_2024.pdf' | relative_url }})
+- <span id="videos" aria-hidden="true"></span>[SXSW 2024 panel with DARPA: "Real or Not: Defending Authenticity in a Digital World"](https://www.youtube.com/watch?v=8zniAjqWI2A)
 - [DARPA recap: "SXSW Panel Replay: Real or Not, Defending Authenticity in a Digital World"](https://www.darpa.mil/news/2024/sxsw-panel-replay)

@@ -6,4 +6,4 @@ items:
     image_alt: "Isolation forest project logo"
     image_width: 331
     image_height: 326
-    description: "A distributed Spark/Scala isolation forest library for unsupervised anomaly detection, built at LinkedIn and open sourced. Recent major updates added Extended Isolation Forest and ONNX support."
+    description: "Distributed Isolation Forest and Extended Isolation Forest for Spark, with ONNX export for standard Isolation Forest models."

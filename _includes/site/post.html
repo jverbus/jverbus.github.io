@@ -1,3 +1,6 @@
+{% assign editorial_post_urls = '/2016/08/18/calibrating-the-lux-dark-matter-experiment/,/2019/08/13/open-source-isolation-forest-spark-scala/,/2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/,/2023/06/20/detecting-ai-generated-profile-photos/,/2024/08/15/finding-ai-generated-faces-in-the-wild/,/2024/09/23/announcing-onnx-support-in-isolation-forest/,/2025/02/10/brown-physics-ai-winter-school-workshop/,/2026/01/09/brown-physics-ai-winter-school-workshop/,/2026/03/18/announcing-extended-isolation-forest-support/' | split: ',' %}
+{% assign editorial_post = false %}
+{% if editorial_post_urls contains page.url %}{% assign editorial_post = true %}{% endif %}
 <article class="unit-article layout-post">
   <div class="unit-inner unit-article-inner">
     <div class="content">
@@ -14,11 +17,29 @@
             <h1 class="h2 entry-title">{{ page.title }}</h1>
             {% assign word_count = content | strip_html | number_of_words %}
             {% assign reading_minutes = word_count | plus: 199 | divided_by: 200 %}
+            {% assign published_day = page.date | date: '%Y-%m-%d' %}
+            {% assign updated_day = page.last_modified_at | date: '%Y-%m-%d' %}
+            {% if page.url == '/2016/10/07/insight-castle-compromised-account-detection/' or editorial_post == false %}
             <p class="post-date">
               <time title="{{ page.date | date_to_xmlschema }}" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
               <span aria-hidden="true">·</span>
               <span>{{ reading_minutes }} min read</span>
             </p>
+            {% elsif page.last_modified_at and updated_day != published_day %}
+            <p class="post-date">
+              <span>Originally published <time title="{{ page.date | date_to_xmlschema }}" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time></span>
+              <span aria-hidden="true">·</span>
+              <span>Updated <time title="{{ page.last_modified_at | date_to_xmlschema }}" datetime="{{ page.last_modified_at | date_to_xmlschema }}">{{ page.last_modified_at | date: "%B %-d, %Y" }}</time></span>
+              <span aria-hidden="true">·</span>
+              <span>{{ reading_minutes }} min read</span>
+            </p>
+            {% else %}
+            <p class="post-date">
+              <time title="{{ page.date | date_to_xmlschema }}" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+              <span aria-hidden="true">·</span>
+              <span>{{ reading_minutes }} min read</span>
+            </p>
+            {% endif %}
             {% if page.description %}
             <p class="post-summary">{{ page.description }}</p>
             {% endif %}
@@ -53,7 +74,7 @@
           </section>
           {% endif %}
 
-          {% include site/post-cta.html %}
+          {% include site/post-cta.html editable=editorial_post %}
 
           <div class="meta">
             {% if page.categories and page.categories != empty %}

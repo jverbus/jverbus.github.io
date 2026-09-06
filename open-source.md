@@ -2,10 +2,10 @@
 layout: page
 title: Projects
 description: "Open-source projects by James Verbus, including LinkedIn's distributed Spark/Scala isolation-forest library for anomaly detection."
-last_modified_at: 2026-06-23
+last_modified_at: 2026-09-06
 ---
 
-Open-source projects and supporting artifacts. Start with the distributed Spark/Scala isolation-forest library I built at LinkedIn for large-scale anomaly detection.
+Open-source software.
 
 <div class="post-list" role="list">
   {% for item in site.data.projects.items %}

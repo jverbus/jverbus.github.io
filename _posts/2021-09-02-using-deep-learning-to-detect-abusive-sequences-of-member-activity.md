@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Using deep learning to detect abusive sequences of member activity"
-description: "Production sequence modeling for platform abuse detection at LinkedIn: request-path token streams, timing features, LSTM/CNN scoring, weak-label bootstrapping, and embeddings for coordinated automation."
-last_modified_at: 2026-06-25
+description: "Detecting logged-in profile scrapers from the order and timing of their requests."
+last_modified_at: 2026-09-06
 og_image: "/assets/images/social/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity-1200x630.jpg"
 og_image_alt: "Using deep learning to detect abusive sequences of member activity"
 og_image_width: 1200
@@ -15,45 +15,41 @@ related:
   - /2024/08/15/finding-ai-generated-faces-in-the-wild/
 ---
 
-At LinkedIn, the Anti-Abuse AI team built and ran models for fake accounts, account takeovers, scraping, spam, and other forms of automated platform abuse.
+One logged-in profile scraper we studied at LinkedIn viewed roughly seventy distinct profiles in a day with randomized delays. Another viewed profiles in short bursts and deliberately revisited profiles it had already seen. Their activity volumes could plausibly have been human; request counts alone gave us little separation.
 
-This post revisits a production deep learning model I built with my colleague Beibei Wang. The key idea was to stop treating scraping as a set of hand-built counters and instead model the ordered language of member activity: what an account requests, in what order, and with what timing. The original LinkedIn Engineering write-up and a recorded talk are linked under Resources.
+I built a production deep learning model with my colleague Beibei Wang to use the order and timing of requests as a complementary representation. The [original coauthored engineering article](https://www.linkedin.com/blog/engineering/trust-and-safety/using-deep-learning-to-detect-abusive-sequences-of-member-activi) describes the work; a recorded talk is linked under [Resources](#resources).
 
 ## The Modeling Problem
 
-Fake account rings, account takeovers, API abuse, and scraping look different at the product layer, but they share a common dependency on automation. A bad actor controlling a fleet of accounts, sending spam through a browser extension, or harvesting profile data is usually running a repeatable process. That suggests a useful abstraction: learn the behavior of automation itself rather than building a separate feature set for every product surface.
-
-The first production use case was logged-in profile scraping. That was a good stress test because careful scrapers do not simply blast traffic. One scraper we studied viewed profiles in short bursts and deliberately revisited profiles it had already seen. Another viewed roughly seventy distinct profiles in a day with randomized delays. Both stayed within activity ranges that could plausibly be human, making aggregate request counts a weak detector. The discriminative signal was the joint pattern of request types, ordering, repetition, and timing.
-
-That setting has three modeling constraints. The representation has to work across many site surfaces. It has to retain fine-grained behavioral structure that aggregate features discard. And it has to be robust enough for an adversarial domain where attackers adapt to visible defenses. Labels are also imperfect: scraping does not arrive with clean ground truth, and the natural class balance is extremely skewed.
+Automation used for fake accounts, account takeovers, API abuse, and scraping can leave repeatable request sequences. Logged-in profile scraping was our first production use case: we modeled request types, ordering, repetition, and timing, including activity across site surfaces. Labels were imperfect, scraping was rare relative to normal activity, and attackers could adapt to visible defenses.
 
 ## From Requests to Tokens
 
-Profile views are only one slice of what an account does. Around them sit logins, searches, messaging requests, settings changes, page resources, and the long tail of browser requests that make up a session. The full ordered stream is the behavioral object worth modeling.
+We modeled the ordered requests from an account, including the requests around each profile view: logins, searches, messages, settings changes, and page resources.
 
 <img src="{{ '/assets/images/activity-sequence-construction.png' | relative_url }}" alt="Bursts of profile views on a distinct-profile-identifier versus time plot, expanded into a colored sequence of request types over time with the time between requests captured" width="1024" height="538" loading="lazy" decoding="async">
 
 *A mock burst of profile views, expanded into the full request sequence around it. The model also consumes the time gap between consecutive requests. (Figure from my LinkedIn Engineering blog post.)*
 
-The input pipeline has two important steps. First, raw request paths are canonicalized into standardized path tokens, creating a shared vocabulary across the site. Second, each token is mapped to an integer according to global request-path frequency: common requests get small ranks, rare requests get large ranks. That gives the model a stable categorical vocabulary and a weak global prior about how ordinary each request type is.
+The pipeline canonicalizes raw request paths into standardized path tokens, then assigns integer IDs in global request-frequency order: common requests get small IDs and rare requests get large IDs. These IDs index learned request-path embeddings.
 
 Timing is kept as a parallel signal. For each adjacent pair of requests, the model receives the elapsed time between them. In NLP terms, the request-path stream is the sentence, the standardized paths are tokens, and the inter-request delays are a second channel that tells the model how the sentence was paced.
 
 ## What the Model Sees
 
-A useful way to visualize an encoded sequence is a grid: 200 consecutive requests, twenty per row, colored by how common each request is. Here is a normal, healthy member browsing the site:
+The grid shows 200 consecutive requests, twenty per row, colored by how common each request is. Here is a legitimate member browsing the site:
 
 <img src="{{ '/assets/images/activity-sequence-legit-member.png' | relative_url }}" alt="Grid of 200 encoded requests from a legitimate member showing varied colors and heterogeneous patterns" width="900" height="368" loading="lazy" decoding="async">
 
-*The first two hundred requests from a legitimate member, colored by request-path frequency. Organic browsing produces a varied, heterogeneous texture. (Figure from my LinkedIn Engineering blog post.)*
+*The first two hundred requests from this legitimate member, colored by request-path frequency, show a varied mix of request types. (Figure 2 from our LinkedIn Engineering article.)*
 
 And here is a scraper:
 
 <img src="{{ '/assets/images/activity-sequence-scraper.png' | relative_url }}" alt="Grid of 200 encoded requests from a scraper showing almost uniformly common requests with little variation" width="900" height="368" loading="lazy" decoding="async">
 
-*The same visualization for an automated scraper. Scripts hammer a few request types and fail to reproduce the subtle variety of real browsing. (Figure from my LinkedIn Engineering blog post.)*
+*The same visualization for this scraper is dominated by common request types, with little variation. (Figure 3 from our LinkedIn Engineering article.)*
 
-This visualization is not the model; it is a sanity check on the representation. It shows why the raw sequence contains signal that summary features lose. A script can randomize delays and revisit targets, but it still has to reproduce the incidental mix of requests that real browsing creates: navigation, searches, profile views, background resources, pauses, and context switches. The encoded sequence exposes that texture directly.
+The grid displays the ordered token IDs that feed the request-path branch. Inter-request time gaps enter through a separate branch and are not shown in these grids.
 
 ## Architecture: Local Motifs, Timing, Memory
 
@@ -63,48 +59,38 @@ The timing branch processes the inter-request time gaps. After the path and timi
 
 <img src="{{ '/assets/images/activity-sequence-architecture.png' | relative_url }}" alt="Architecture diagram: encoded request path sequence through embeddings and convolutions, time deltas through preprocessing, concatenated into an LSTM and classification layer producing an abuse score" width="900" height="516" loading="lazy" decoding="async">
 
-*The two-branch architecture: encoded request paths plus inter-request time gaps, concatenated into an LSTM with a final classification layer that outputs an abuse score. (Figure from my LinkedIn Engineering blog post.)*
-
-The architecture has a useful inductive bias. Convolutions capture local behavioral phrases, timing features capture cadence, and the LSTM captures longer sequential context. The model is still supervised, but the feature engineering burden moves from product-specific counters to a general event representation that can be reused across abuse types.
+*Request-path and timing branches of the sequence classifier. (Figure 4 from our LinkedIn Engineering article.)*
 
 ## Labels From an Unsupervised Teacher
 
 Supervised sequence models need labels, and scraping does not come with clean ground truth. The labels for this model came from a different production signal: the [isolation forest]({{ '/2019/08/13/open-source-isolation-forest-spark-scala/' | relative_url }}) outlier-detection approach we used for automation detection. Those labels could be augmented with examples from known historical attacks.
 
-This is a weak-supervision pattern. An unsupervised or rules-assisted system produces high-confidence labels; a supervised sequence model then learns from the much richer request stream. The student model is not limited to reproducing the teacher's feature space, because its input is the raw standardized activity sequence.
+The labels came from Isolation Forest, so this evaluation does not independently measure detection of attacks that the labeling model missed.
 
 ## Evaluation at Natural Class Balance
 
-The initial proof-of-concept model was evaluated out of time, on data from well after the training period, at the natural class balance. That matters: a balanced offline sample can make a rare-abuse problem look cleaner than it is. In the real distribution, scrapers are a small fraction of total activity, so the useful question is whether the high-score tail is dominated by the abusive population.
+The initial proof-of-concept model was evaluated out of time, on data from well after the training period, at the natural class balance. The slide plots the labeled populations without balancing a rare-abuse sample.
 
 <img src="{{ '/assets/images/activity-sequence-results.png' | relative_url }}" alt="Slide showing LSTM score distributions on an unbalanced out-of-time test dataset, with non-scrapers concentrated at low scores and scrapers concentrated in the high-score tail" width="1920" height="1080" loading="lazy" decoding="async">
 
-*Out-of-time score distributions at natural class balance. Non-scrapers concentrate at low LSTM scores, while high-confidence scrapers dominate the high-score tail. (Slide from my Scale AI talk.)*
+*Out-of-time labeled score distributions at natural class balance. The scraper groups are labeled by Isolation Forest, including a group with high Isolation Forest scores. (Slide 34 from my Scale AI talk.)*
 
-The score distributions separated strongly. Non-scrapers concentrated at low scores, while labeled scrapers concentrated at high scores, with roughly a thousandfold separation between the distributions at the high-score end. That is the operational property the model needed: a ranking that surfaces sophisticated low-volume scrapers without flooding the defense workflow with normal members.
+In the high-score bins highlighted on the slide, plotted non-scraper counts are roughly a thousand times smaller than scraper counts. This comparison uses Isolation-Forest-derived labels. The slide does not specify a decision threshold or reviewed production precision or recall.
 
 ## Embeddings and Coordinated Automation
 
-The same representation also produces activity sequence embeddings. Accounts running the same browser extension, scraper, or automation framework tend to traverse the site in similar ways, so their learned representations can cluster together. That gives defenders another handle on coordinated activity: instead of only asking whether one account looks abusive, ask which accounts are behaviorally close to each other.
+The model also produces activity sequence embeddings. Nearby sequence embeddings can help identify accounts worth investigating together. Similar request patterns are an investigative lead; they do not by themselves prove shared control or use of a particular script.
 
 <img src="{{ '/assets/images/activity-sequence-embeddings.png' | relative_url }}" alt="Slide showing a two-dimensional projection of activity sequence embeddings, with non-scrapers, scrapers, and high-score scrapers forming visible clusters" width="1920" height="1080" loading="lazy" decoding="async">
 
-*A two-dimensional projection of activity sequence embeddings. Accounts associated with similar scripts or extensions land in nearby regions of the learned space. (Slide from my Scale AI talk.)*
+*A two-dimensional projection of activity sequence embeddings, colored by the displayed non-scraper and scraper label groups. Proximity represents behavioral resemblance. (Slide from my Scale AI talk.)*
 
 The embeddings can also serve as features for downstream outlier-detection models, replacing hand-engineered activity summaries with learned representations of the sequence.
 
 ## Resources
 
-### Blogs
-
-- [Using deep learning to detect abusive sequences of member activity (LinkedIn Engineering)](https://www.linkedin.com/blog/engineering/trust-and-safety/using-deep-learning-to-detect-abusive-sequences-of-member-activi)
-
-### Videos
-
-- [Talk recording (YouTube)](https://www.youtube.com/watch?v=4iX2agE3YWE)
-
-### Patents
-
-- US Patent 11,936,682: [DEEP LEARNING TO DETECT ABUSIVE SEQUENCES OF USER ACTIVITY IN ONLINE NETWORK]({{ '/assets/files/11936682.pdf' | relative_url }})
+- <span id="blogs" aria-hidden="true"></span>[Using deep learning to detect abusive sequences of member activity (LinkedIn Engineering)](https://www.linkedin.com/blog/engineering/trust-and-safety/using-deep-learning-to-detect-abusive-sequences-of-member-activi)
+- <span id="videos" aria-hidden="true"></span>[Talk recording (YouTube)](https://www.youtube.com/watch?v=4iX2agE3YWE)
+- <span id="patents" aria-hidden="true"></span>US Patent 11,936,682: [DEEP LEARNING TO DETECT ABUSIVE SEQUENCES OF USER ACTIVITY IN ONLINE NETWORK]({{ '/assets/files/11936682.pdf' | relative_url }})
 - US Patent 11,991,197: [DEEP LEARNING USING ACTIVITY GRAPH TO DETECT ABUSIVE USER ACTIVITY IN ONLINE NETWORKS]({{ '/assets/files/11991197.pdf' | relative_url }})
 - US Patent 12,500,923: [IDENTIFYING COORDINATED MALICIOUS ACTIVITIES USING SEQUENCES OF REQUESTS]({{ '/assets/files/12500923.pdf' | relative_url }})
