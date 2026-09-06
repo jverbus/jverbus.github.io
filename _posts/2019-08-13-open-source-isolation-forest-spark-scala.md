@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Open Source: Spark/Scala Isolation Forest Library"
-description: "Announcement and resources for LinkedIn's open-source Scala/Spark isolation-forest library for large-scale unsupervised anomaly detection."
-last_modified_at: 2026-06-12
+description: "Why we built a distributed Isolation Forest implementation for detecting unusual account activity at LinkedIn."
+last_modified_at: 2026-09-06
 og_image: "/assets/images/social/2019-08-13-open-source-isolation-forest-spark-scala-1200x630.jpg"
 og_image_alt: "Open Source: Spark/Scala Isolation Forest Library"
 og_image_width: 1200
@@ -15,13 +15,13 @@ related:
   - /2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/
 ---
 
-I'm happy to announce that my Scala/Spark implementation of isolation forests, an algorithm for unsupervised outlier detection, was open sourced today. It is the implementation the LinkedIn Anti-Abuse AI team relies on in production to find abusive activity, and this post covers why the algorithm fits the anti-abuse problem, how it works, and what the library gives you.
+I open-sourced this Scala/Spark implementation of isolation forests in 2019. The LinkedIn Anti-Abuse AI team used it in production to find unusual account activity for investigation.
 
 ## Why Unsupervised Learning Fits Anti-Abuse
 
 Three properties of the abuse domain make unsupervised methods attractive.
 
-First, labels are scarce. New abuse vectors arrive with few or no ground truth labels, which makes training a supervised model impractical and even evaluation difficult. Second, signal per account is thin. An individual abusive account may do very little until the moment it acts, and low-volume abuse hides inside ordinary browsing; confidence often requires noticing many accounts behaving the same way. Third, the domain is adversarial. Attackers adapt to whatever defenses ship, so labels collected today may describe yesterday's attack. Outlier detection sidesteps much of this: if attacker behavior lands anywhere unusual in feature space relative to organic users, it can be caught without labels.
+First, labels are scarce. New abuse vectors arrive with few or no ground truth labels, which makes training a supervised model impractical and even evaluation difficult. Second, signal per account is thin. An individual abusive account may do very little until the moment it acts, and low-volume abuse hides inside ordinary browsing; confidence often requires noticing many accounts behaving the same way. Third, the domain is adversarial. Attackers adapt to whatever defenses ship, so labels collected today may describe yesterday's attack. Outlier detection can surface unusual attacker behavior when the chosen features separate it from organic behavior. Training without labels does not remove the difficulties of evaluation or adversarial change.
 
 ## How Isolation Forests Work
 
@@ -33,13 +33,13 @@ The trick is what isolation costs. Outliers, being few and unusual, get separate
 
 *An example isolation tree. Outliers reach leaf nodes in a few splits; inliers take longer paths to isolate. (Figure from my LinkedIn Engineering blog post.)*
 
-The technique has practical advantages beyond accuracy. Benchmark studies rate it among the strongest outlier detection methods, and it holds up as feature counts grow. Its computational and memory costs are low enough to train and score large volumes of data nearly interactively. It makes fewer assumptions than the alternatives: nothing parametric about the data distribution, and no distance metric of the kind nearest-neighbor methods require. And it is increasingly widely used, with active academic research extending the algorithm and growing industry adoption, especially in trust and anti-abuse.
+Isolation Forest does not require a parametric data-distribution model or a nearest-neighbor distance metric. Its sampled trees can be trained and scored independently, which fits the distributed implementation below.
 
 ## The Library
 
-The implementation is Scala on Spark, with distributed training and scoring. It inherits from the Estimator and Model base classes in Spark ML, so it drops into existing Spark ML pipelines, and trained models persist to and load from HDFS. Artifacts are published to [Maven Central](https://repo.maven.apache.org/maven2/com/linkedin/isolation-forest/), so using it is a dependency declaration away.
+The implementation is Scala on Spark, with distributed training and scoring. It inherits from the Estimator and Model base classes in Spark ML, so it integrates with existing Spark ML pipelines, and trained models persist to and load from HDFS. Artifacts are published to [Maven Central](https://repo.maven.apache.org/maven2/com/linkedin/isolation-forest/); the README includes the [dependency configuration](https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/README.md#add-an-isolation-forest-dependency-to-your-project).
 
-Training and scoring look like standard Spark ML:
+This example configuration trains and scores through Spark ML. The [contamination parameter](https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/README.md#model-parameters) sets the fraction used to determine the outlier-label threshold; it does not change the trained trees or anomaly scores. The value `0.1` below is an example, not measured abuse prevalence or a recommended threshold for every application.
 
 ```scala
 import com.linkedin.relevance.isolationforest._
@@ -59,25 +59,25 @@ val dataWithScores = isolationForestModel.transform(data)
 
 ## Catching Automation in the Wild
 
-The application I pioneered this for at LinkedIn is automation detection. Score every active member on a day and plot the isolation forest score against activity volume, and the picture is immediately useful: the organic population forms a dense blue bulk, and the sparse high-score region is where automation lives.
+The application I pioneered this for at LinkedIn was automation detection. Plotting every active member's daily score against activity volume showed a sparse high-score region above the dense bulk of accounts. Reviewing accounts in that region revealed a cluster using automation tools.
 
 <img src="{{ '/assets/images/isolation-forest-normal-day.jpg' | relative_url }}" alt="Scatter plot of isolation forest score versus number of user actions for all active members on a normal day, with a highlighted cluster of real members using automation tools" width="1280" height="720" loading="lazy" decoding="async">
 
 *A normal day: every active member, plotted by isolation forest score against activity volume. The highlighted cluster is real members using automation tools with similar behavior. (Slide from my Spark + AI Summit 2020 talk.)*
 
-That highlighted cluster turned out, on inspection, to be real members using automation tools, all behaving similarly. Their activity traces made the call easy to trust: one account fired bursts of about thirty actions at a constant rate, paused, then repeated; another ran smaller, more frequent bursts adding up to similar volume. Nothing about that rhythm looks like a person browsing.
+The reviewed accounts had repeated activity patterns: one fired bursts of about thirty actions at a constant rate, paused, then repeated; another ran smaller, more frequent bursts adding up to similar volume.
 
 <img src="{{ '/assets/images/isolation-forest-automation-bursts.jpg' | relative_url }}" alt="Two time series of automated user actions showing repeated bursts of roughly thirty actions at a constant rate" width="1280" height="720" loading="lazy" decoding="async">
 
 *Two accounts from the highlighted cluster: repeated bursts of roughly thirty actions at a constant rate. (Slide from my Spark + AI Summit 2020 talk.)*
 
-The more striking case was an attack day. A tight cluster of fake accounts appeared with very high and nearly identical scores, the signature of one actor driving every account with the same script, even though activity volumes varied by an order of magnitude across the cluster.
+On an attack day, a tight cluster of fake accounts appeared with very high and nearly identical scores, consistent with coordinated automation, even though activity volumes varied by an order of magnitude across the cluster.
 
 <img src="{{ '/assets/images/isolation-forest-attack-day-highlighted.jpg' | relative_url }}" alt="Scatter plot from a fake account attack day with the fake account cluster highlighted in red at very high isolation forest score above the normal population" width="1276" height="720" loading="lazy" decoding="async">
 
 *Attack day: a coordinated fake account attack appears as a tight cluster, highlighted in red, at very high score, even though its activity volumes overlap the normal population below. (Slide from my Fighting Abuse @Scale 2019 talk.)*
 
-On the volume axis those accounts overlapped substantially with the normal population, and individual accounts kept their activity modest, only tens of actions over the whole day, with randomized delays between requests to blend in. Defenses keyed on volume would have had little to work with. The score axis separated them cleanly anyway, because automated behavior sits far from organic behavior in feature space, and that is exactly what the model isolates.
+Individual accounts kept their activity modest, only tens of actions over the whole day, with randomized delays between requests. In this attack, the learned score separated the cluster even though its activity volume overlapped that of other accounts.
 
 <img src="{{ '/assets/images/isolation-forest-attack-accounts.jpg' | relative_url }}" alt="Two time series of automated user actions from attack accounts showing low daily volumes accumulated with randomized timing between requests" width="1280" height="720" loading="lazy" decoding="async">
 
@@ -85,23 +85,15 @@ On the volume axis those accounts overlapped substantially with the normal popul
 
 ## Beyond Automation Detection
 
-The same machinery transfers to any problem where unusual is suspicious: surfacing sophisticated fake accounts and advanced persistent threats for human review when no labels exist, insider threat and network intrusion detection, account takeover detection from unusual login and post-login activity, alerting on time series such as payment fraud, flagging anomalous feature distributions as an ML health assurance layer, and even spotting underperforming machines in a data center from their resource usage.
+Possible applications include flagging unusual login activity for account-takeover review or monitoring shifts in an ML system's feature distributions. These are potential uses, separate from the LinkedIn cases above; the [original discussion](https://www.linkedin.com/blog/engineering/data-management/isolation-forest) lists others.
 
 ## Since Then
 
-**Update (2026):** the library has kept growing. It gained [ONNX export]({{ '/2024/09/23/announcing-onnx-support-in-isolation-forest/' | relative_url }}) in 2024, so standard models trained in Spark can score anywhere an ONNX runtime runs, and [Extended Isolation Forest]({{ '/2026/03/18/announcing-extended-isolation-forest-support/' | relative_url }}) support in 2026, which replaces axis-aligned splits with random hyperplanes (EIF models are not yet ONNX-convertible). The repository now also ships benchmarks against the results reported in the original Liu et al. paper and a reference Python implementation, with scripts to reproduce them.
+**Update (2026):** the library gained [ONNX export]({{ '/2024/09/23/announcing-onnx-support-in-isolation-forest/' | relative_url }}) in 2024, so standard models trained in Spark can be scored with a compatible ONNX runtime, and [Extended Isolation Forest]({{ '/2026/03/18/announcing-extended-isolation-forest-support/' | relative_url }}) support in 2026, which replaces axis-aligned splits with random hyperplanes (EIF models are not yet ONNX-convertible). The repository also ships benchmarks against the results reported in the original Liu et al. paper and a reference Python implementation, with scripts to reproduce them.
 
 ## Resources
 
-### Blogs
-
-- [Detecting and preventing abuse on LinkedIn using isolation forests (LinkedIn Engineering)](https://engineering.linkedin.com/blog/2019/isolation-forest)
-
-### GitHub
-
-- [linkedin/isolation-forest](https://github.com/linkedin/isolation-forest)
-
-### Videos
-
-- [Preventing Abuse Using Unsupervised Learning](https://www.youtube.com/watch?v=sFRrFWYNAUI)
+- <span id="blogs" aria-hidden="true"></span>[Detecting and preventing abuse on LinkedIn using isolation forests (LinkedIn Engineering)](https://engineering.linkedin.com/blog/2019/isolation-forest)
+- <span id="github" aria-hidden="true"></span>[linkedin/isolation-forest](https://github.com/linkedin/isolation-forest)
+- <span id="videos" aria-hidden="true"></span>[Preventing Abuse Using Unsupervised Learning](https://www.youtube.com/watch?v=sFRrFWYNAUI)
 - [FIGHTING ABUSE @SCALE 2019: PREVENTING ABUSE USING UNSUPERVISED LEARNING](https://atscaleconference.com/videos/fighting-abuse-scale-2019-preventing-abuse-using-unsupervised-learning/)

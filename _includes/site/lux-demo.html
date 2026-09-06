@@ -4,10 +4,11 @@
   <p class="if-demo-intro">
     Drag the two scatter vertices of a double-scatter event. The beam
     direction and the line between the vertices set the scattering angle
-    &theta; of the first interaction, and exact two-body elastic kinematics
-    convert &theta; into the recoil energy &mdash; no simulation, no signal
-    model. Small angles reach below 1 keV; a full backscatter pins the
-    74 keV endpoint.
+    &theta; of the first interaction. For this double-scatter energy tag,
+    the known incident neutron energy and measured angle determine the
+    recoil energy kinematically, using the neutron and xenon masses.
+    Small angles reach below 1 keV; a full backscatter pins the 74 keV
+    endpoint. This diagram is illustrative, not a full detector-response model.
   </p>
   <div class="if-demo-panels">
     <figure>
@@ -24,6 +25,6 @@
   </div>
   <p class="lux-demo-status" data-lux-status role="status"></p>
   <p class="lux-demo-readout" data-lux-readout aria-hidden="true"></p>
-  <p class="if-demo-hint">Drag scatter 1 along the beam line and scatter 2 anywhere in the volume &middot; the marker on the curve follows your event &middot; the energy scale comes from geometry alone, which is the point of the calibration.</p>
+  <p class="if-demo-hint">Drag scatter 1 along the beam line and scatter 2 anywhere in the volume &middot; the marker on the curve follows your event &middot; the energy tag uses the measured angle and known incident energy.</p>
 </div>
 <script src="{{ '/assets/js/lux-demo.js' | relative_url }}?v=1" defer></script>

@@ -1,13 +1,13 @@
 ---
 layout: page
 title: Isolation Forest
-description: "LinkedIn's open-source isolation-forest library: distributed Spark/Scala anomaly detection with Extended Isolation Forest and ONNX support, built and maintained by James Verbus."
+description: "Distributed Isolation Forest and Extended Isolation Forest for Spark, with ONNX export for standard Isolation Forest models."
 permalink: /open-source/isolation-forest/
 og_image: "/assets/images/social/2026-03-18-announcing-extended-isolation-forest-support-1200x630.jpg"
 og_image_alt: "Extended Isolation Forest support for the open-source isolation-forest library"
 og_image_width: 1200
 og_image_height: 630
-last_modified_at: 2026-06-11
+last_modified_at: 2026-09-06
 ---
 
 <div class="project-hero">
@@ -21,7 +21,7 @@ last_modified_at: 2026-06-11
   </div>
 </div>
 
-`linkedin/isolation-forest` is a distributed Scala/Spark isolation forest implementation I built at LinkedIn and open sourced for large-scale unsupervised anomaly detection. The newest major update adds Extended Isolation Forest support for random hyperplane splits.
+`linkedin/isolation-forest` is a distributed Scala/Spark isolation forest implementation I built at LinkedIn and open sourced for large-scale unsupervised anomaly detection. EIF support was added in March 2026.
 
 <div class="post-list" role="list">
   {% for item in site.data.open_source.core_items %}

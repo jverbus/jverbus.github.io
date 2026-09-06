@@ -109,3 +109,51 @@ Each demo is one vanilla-JS IIFE in `assets/js/<name>-demo.js` plus an include i
   text slightly affects it. That is accepted.
 - Touch interactions: drag-surface canvases use `touch-action: none`; tap-only canvases use
   `pan-y` so the page still scrolls.
+
+## Editorial review
+
+- The September 2026 editorial scope is the nine posts dated 2016-08-18, 2019-08-13,
+  2021-09-02, 2023-06-20, 2024-08-15, 2024-09-23, 2025-02-10, 2026-01-09, and 2026-03-18;
+  their supporting home/Writing/project/publication/video/archive copy and data; post
+  header/contact and demo explanations; and these guardrails/review records. Linked papers,
+  notebooks, slides, assets, demo algorithms, and other repositories are read-only evidence.
+- **Castle is excluded, directly and indirectly.** Preserve its source, front matter, local
+  assets, complete rendered page/head/contact/footer, and its own card/feed/index entries.
+  Before shared edits, save an actual unchanged-tree build and source/asset hashes outside
+  the repository. Compare after each shared change and at completion. An exception must use
+  Castle's existing URL outside its source; never add an opt-out field or relax preservation
+  checks. DOM comparison may ignore only inter-element formatting whitespace. If no baseline
+  can be verified, defer the risky shared change and report it.
+- Write from the specific problem, mechanism, observation, or limitation. Consolidate repeated
+  explanations, keeping technical substance, equations, MathML, code, numbers, units, datasets,
+  failures, figures, credits, AI-assistance disclosures, formal titles, distinct resource links,
+  publication dates, URLs, and old section/demo anchors. Date actual revisions. Distinguish
+  original results, later explanations/experiments, saved examples, and future possibilities;
+  date any newly reproduced output and retain its environment. Do not invent historical runs,
+  personal contributions, anecdotes, citations, tolerances, or outcomes.
+- Attach precise section/figure/table locators to quantitative claims when verified, and use
+  immutable code/test links for implementation behavior. Keep photo/collaboration credit and
+  experimental qualifiers. A missing source calls for a conservative scope or an unresolved
+  question in the excluded review report, not an invented counterclaim or a public TODO.
+  Shorter copy must not turn benchmark agreement into universal correctness, weak labels into
+  independent production metrics, similarity into common control, or possible uses into shipped
+  deployments. Compare voice with the original engineering articles and physics methods paper;
+  Castle may be read as a reference but never included in task-generating style searches.
+- Review these 17 pattern families in context, using an explicit eligible-file allowlist:
+  (1) point-is-not/point-is framing; (2) goal-is-not/goal-is framing; (3) result-is-not/result-is
+  framing; (4) not-because/but-because; (5) that/this-matters transitions; (6) importance or
+  worth-making-explicit announcements; (7) duplicate takeaway endings; (8) cumulative balanced
+  two-part cadence; (9) repeated rather-than alternatives; (10) abstract common-thread biography;
+  (11) colon-led inventories/noun piles; (12) gives-me-confidence conclusions; (13) especially-
+  important framing; (14) filler practical; (15) filler useful; (16) repeated evidence/grounding/
+  validation/robustness commentary; (17) generic contact invitations. Keep necessary technical
+  contrasts, meaningful lists, the request/language analogy, and natural short sentences.
+  Record edited, retained-for-reason, or absent; do not chase zero matches, deletion percentages,
+  or AI-detector scores. These are editorial judgments, not authorship proofs.
+- Preserve the seven optional holds: homepage metrics and common-thread sentence, global
+  tagline/footer, AI Innovators interview summary, publication/citation counts, the face article's
+  vivid pipeline paragraph, and the LUX/LZ transition. Also retain "the generative landscape did
+  not hold still" and "mostly slips through" while qualifying their surrounding claims.
+- Complete safe authorized edits without another approval conversation. Report the draft and
+  evidence limits for James's eventual review; do not claim his approval of its voice. Keep the
+  per-finding and pattern review in `scripts/editorial-review/`, excluded from generated content.
