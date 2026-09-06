@@ -1,0 +1,2454 @@
+{
+  "starting_commit": "05561bf052e4e3639ec245c9cdbeee61e02fb585",
+  "audit_reference_commit": "05561bf052e4e3639ec245c9cdbeee61e02fb585",
+  "branch": "editorial/source-grounded-copy",
+  "implementation_date": "2026-09-06",
+  "castle_source_unchanged": true,
+  "castle_render_status": "passed",
+  "castle_baseline_directory": "/private/tmp/blog-editorial-20260906",
+  "castle_hashes": {
+    "_posts/2016-10-07-insight-castle-compromised-account-detection.md": "dcad716bcb594c3f3b1413ce0a1e3bd98bad13d307fb114ce043e7e2757bd4ba",
+    "assets/files/James_Verbus_FinalDemo.pdf": "77de183c4d8599e5242290621ccb18fce7d226f5f18428890acc06792b52789b",
+    "assets/images/castle_distance_between_events.png": "2b96377df44ad16831a7f22e853760db890d0fbae25e1e3bf63b32d0296366b3",
+    "assets/images/castle_neg_log_likelihood.png": "1a3490a938d1419075bc442a0a2d637e26bce8454dde6419545d80f442c3057a",
+    "assets/images/castle_roc_curve.png": "1b6a94ef64184b3a25f7097d64bb1ce2e8137bb88411e3fa8b39d6d1e8a8814a",
+    "assets/images/castle_time_since_last_action_days.png": "00c217ed2d04947ca9cd27a1bdc7e1055141e6452f8e40b7f6a3d5c462955d7c",
+    "assets/images/castle_time_since_last_action_seconds.png": "71b38dc0e2a3cec3bba08f7fa86dcc80fc4421707f2fb038dafa8c94b2073b89",
+    "assets/images/social/2016-10-07-insight-castle-compromised-account-detection-1200x630.jpg": "7af65710a5ed0355ce8de39832c0a6fa8c03b79329cd6cc139d1228f24f7ad99"
+  },
+  "items": [
+    {
+      "id": "HOME-01",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "index.md"
+      ],
+      "location": "Hero: description, eyebrow, headline and lede",
+      "summary": "Kept the hero headline, replaced the eyebrow with James Verbus, and used the specified LinkedIn lede.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "HOME-02",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "index.md"
+      ],
+      "location": "Hero lede and metadata",
+      "summary": "Removed AI productivity from the hero inventory and retained the factual leadership role in Background.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "HOME-03",
+      "original_classification": "RETAIN — optional — P2",
+      "status": "optional_retained",
+      "changed_paths": [],
+      "location": "Career highlights grid",
+      "summary": "Preserved the complete metrics strip, including counts, links, labels, and markup.",
+      "evidence": [],
+      "remaining_question": null,
+      "reviewed_paths": [
+        "index.md"
+      ]
+    },
+    {
+      "id": "HOME-04",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "index.md"
+      ],
+      "location": "Route cards: all three",
+      "summary": "Used the three destination-specific descriptions without changing the route cards or destinations.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "HOME-05",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "index.md"
+      ],
+      "location": "Sequence-model representative card",
+      "summary": "Replaced the sequence-card inventory with the specified low-volume scraper summary.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "HOME-06",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "index.md"
+      ],
+      "location": "Synthetic-media representative card",
+      "summary": "Described the face card as a held-out generator evaluation.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "HOME-07",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "index.md"
+      ],
+      "location": "RL representative card",
+      "summary": "Used the specified PPO/Hohmann workshop summary.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "HOME-08",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "index.md",
+        "_data/projects.yml"
+      ],
+      "location": "Isolation Forest representative card and Projects section",
+      "summary": "Made the representative IF card about random partitions and distributed training/scoring; the Projects card supplies the project description.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "HOME-09",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "index.md"
+      ],
+      "location": "Background heading and first paragraph",
+      "summary": "Renamed the section Background and condensed the role/employer/library account; retained physics and AI productivity.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "HOME-10",
+      "original_classification": "RETAIN — optional — P2",
+      "status": "optional_retained",
+      "changed_paths": [],
+      "location": "Background, final sentence",
+      "summary": "Preserved the entire common-thread sentence verbatim.",
+      "evidence": [],
+      "remaining_question": null,
+      "reviewed_paths": [
+        "index.md"
+      ]
+    },
+    {
+      "id": "HOME-11",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "index.md"
+      ],
+      "location": "Contact paragraph",
+      "summary": "Shortened the contact paragraph to the specified sentence and retained its email button.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "SITE-01",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+        "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md",
+        "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md",
+        "_posts/2023-06-20-detecting-ai-generated-profile-photos.md",
+        "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md",
+        "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md",
+        "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+        "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md",
+        "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+        "_includes/site/post.html"
+      ],
+      "location": "post-summary rendering and front matter of the nine editable posts; Castle excluded",
+      "summary": "Applied all nine exact descriptions, retained the single description field, and checked visible summaries and metadata.",
+      "evidence": [
+        {
+          "id": "BASELINE",
+          "url": "check_preservation.py",
+          "locator": "Executed against actual pre-edit working-tree snapshot: 43 HTML routes, 240 anchors, distinct destinations, figures, code/MathML, metadata identity, seven optional holds, fresh indexes/sitemap."
+        },
+        {
+          "id": "CASTLE",
+          "url": "check_castle.py",
+          "locator": "Executed cmp/SHA and full DOM/head/card/feed comparison: source + seven assets, complete page/head, 19 entries in 11 generated files."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "SITE-02",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_includes/site/post-cta.html",
+        "_includes/site/post.html",
+        "index.md"
+      ],
+      "location": "_includes/site/post-cta.html; index.md Contact; preserve Castle rendering",
+      "summary": "Shortened eligible contact blocks and the home contact paragraph; retained Castle's old branch using its existing URL.",
+      "evidence": [
+        {
+          "id": "CASTLE",
+          "url": "check_castle.py",
+          "locator": "Executed cmp/SHA and full DOM/head/card/feed comparison: source + seven assets, complete page/head, 19 entries in 11 generated files."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "SITE-03",
+      "original_classification": "RETAIN — optional — P2",
+      "status": "optional_retained",
+      "changed_paths": [],
+      "location": "_config.yml tagline and its rendered footer use",
+      "summary": "Preserved the global tagline, configuration, and footer byte for byte.",
+      "evidence": [],
+      "remaining_question": null,
+      "reviewed_paths": [
+        "_config.yml"
+      ]
+    },
+    {
+      "id": "SITE-04",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_includes/site/post.html",
+        "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+        "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md",
+        "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md",
+        "_posts/2023-06-20-detecting-ai-generated-profile-photos.md",
+        "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md",
+        "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md",
+        "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+        "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md",
+        "_posts/2026-03-18-announcing-extended-isolation-forest-support.md"
+      ],
+      "location": "_includes/site/post.html: displayed date",
+      "summary": "Added original/updated dates for the nine eligible posts while preserving reading time and Castle's original header branch.",
+      "evidence": [
+        {
+          "id": "BASELINE",
+          "url": "check_preservation.py",
+          "locator": "Executed against actual pre-edit working-tree snapshot: 43 HTML routes, 240 anchors, distinct destinations, figures, code/MathML, metadata identity, seven optional holds, fresh indexes/sitemap."
+        },
+        {
+          "id": "CASTLE",
+          "url": "check_castle.py",
+          "locator": "Executed cmp/SHA and full DOM/head/card/feed comparison: source + seven assets, complete page/head, 19 entries in 11 generated files."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "SITE-05",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md",
+        "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md",
+        "_posts/2023-06-20-detecting-ai-generated-profile-photos.md",
+        "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md",
+        "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md",
+        "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+        "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md",
+        "_posts/2026-03-18-announcing-extended-isolation-forest-support.md"
+      ],
+      "location": "Cross-post Resources and Materials sections",
+      "summary": "Consolidated seven article resource lists and EIF's code/benchmark sections; retained LUX's useful multi-link groups and every old destination/anchor.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "SITE-06",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "AGENTS.md"
+      ],
+      "location": "AGENTS.md content guidance",
+      "summary": "Appended self-contained scope, Castle preservation, technical preservation, source handling, and all 17 pattern-family guardrails.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "WRITE-01",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "posts.md"
+      ],
+      "location": "Visible introductory paragraph",
+      "summary": "Changed the Writing introduction to Technical posts and workshop notes.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "WRITE-02",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "posts.md"
+      ],
+      "location": "Front-matter description",
+      "summary": "Used the specified concise Writing metadata description.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "PROJ-01",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "isolation-forest.md",
+        "_data/projects.yml",
+        "_data/open_source.yml"
+      ],
+      "location": "Description",
+      "summary": "Qualified project descriptions so ONNX export applies to standard IF; preserved the authorship sentence.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "PROJ-02",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "isolation-forest.md",
+        "_data/open_source.yml"
+      ],
+      "location": "Opening paragraph",
+      "summary": "Dated EIF's addition to March 2026 and removed the duplicate authorship/purpose from the repository card.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "PROJ-03",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "open-source.md"
+      ],
+      "location": "open-source.md introduction and _data/projects.yml card",
+      "summary": "Shortened the Projects introduction to Open-source software.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "PROJ-04",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_data/open_source.yml"
+      ],
+      "location": "_data/open_source.yml: major_updates EIF description",
+      "summary": "Described the EIF update through random-hyperplane splits and reference comparisons.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "PROJ-05",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_data/open_source.yml"
+      ],
+      "location": "_data/open_source.yml: external_writing descriptions",
+      "summary": "Distinguished original anti-abuse context from exporting Spark-trained models.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "PROJ-06",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_data/open_source.yml"
+      ],
+      "location": "_data/open_source.yml: both video descriptions",
+      "summary": "Shortened both talk abstracts, scoped label-free training, and kept separate library links.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "VIDEO-01",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_data/videos.yml"
+      ],
+      "location": "2026 workshop summary, details and venue",
+      "summary": "Shortened the 2026 workshop summary, kept the venue field, and linked the post for its syllabus.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "VIDEO-02",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_data/videos.yml"
+      ],
+      "location": "2025 workshop details",
+      "summary": "Described querying the LUX/Brown corpus and inspecting passages, without claiming every answer improved.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "VIDEO-03",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_data/videos.yml"
+      ],
+      "location": "2025 workshop details",
+      "summary": "Specified that the Llama model ran in Colab.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "VIDEO-04",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_data/videos.yml"
+      ],
+      "location": "2021 talk summary",
+      "summary": "Shortened the production sequence-model summary and retained the early-results qualifier.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "VIDEO-05",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_data/videos.yml"
+      ],
+      "location": "2019 @Scale summary",
+      "summary": "Scoped the 2019 talk summary to unusual behavior and training without labeled examples.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "VIDEO-06",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_data/videos.yml"
+      ],
+      "location": "SXSW panel summary",
+      "summary": "Shortened the SXSW summary while preserving the official panel title and DARPA link.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "VIDEO-07",
+      "original_classification": "RETAIN — optional — P2",
+      "status": "optional_retained",
+      "changed_paths": [],
+      "location": "AI Innovators interview summary",
+      "summary": "Preserved the AI Innovators interview item, including its practical-ML summary.",
+      "evidence": [],
+      "remaining_question": null,
+      "reviewed_paths": [
+        "_data/videos.yml"
+      ]
+    },
+    {
+      "id": "VIDEO-08",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "videos.md"
+      ],
+      "location": "videos.md introduction and description",
+      "summary": "Used the specified short Videos introduction and corresponding description.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "PUB-01",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "publications.md"
+      ],
+      "location": "Intro and front-matter description",
+      "summary": "Shortened the Publications introduction/metadata while preserving the full-record count sentence.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "PUB-02",
+      "original_classification": "RETAIN — optional — P2",
+      "status": "optional_retained",
+      "changed_paths": [],
+      "location": "Publication and citation counts",
+      "summary": "Preserved publication/citation counts and the original Scholar destination.",
+      "evidence": [],
+      "remaining_question": null,
+      "reviewed_paths": [
+        "publications.md"
+      ]
+    },
+    {
+      "id": "PUB-03",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_data/publications.yml"
+      ],
+      "location": "_data/publications.yml: LinkedIn Engineering summaries",
+      "summary": "Distinguished all five engineering entries by their actual topics and study scopes.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "PUB-04",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_data/publications.yml"
+      ],
+      "location": "_data/publications.yml: 2023 summary",
+      "summary": "Identified the 2023 work as compact embeddings for StyleGAN profile photos.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "EIF-01",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2026-03-18-announcing-extended-isolation-forest-support.md"
+      ],
+      "location": "Front-matter description",
+      "summary": "Applied the specified one-sentence EIF description.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "EIF-02",
+      "original_classification": "VERIFY FIRST — P2",
+      "status": "verified_edited",
+      "changed_paths": [
+        "_posts/2026-03-18-announcing-extended-isolation-forest-support.md"
+      ],
+      "location": "Introductory library history",
+      "summary": "Replaced unsupported broad adoption wording with linked, documented LinkedIn production use.",
+      "evidence": [
+        {
+          "id": "P19",
+          "url": "https://www.linkedin.com/blog/engineering/data-management/isolation-forest",
+          "locator": "2019 article: anti-abuse challenges, conditional feature separation, production use, and potential applications."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "EIF-03",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2026-03-18-announcing-extended-isolation-forest-support.md"
+      ],
+      "location": "Scoring, split geometry and heatmap introductions",
+      "summary": "Removed repeated score/geometry transitions while preserving both equations, extension examples, and figure explanations.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "EIF-04",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2026-03-18-announcing-extended-isolation-forest-support.md"
+      ],
+      "location": "How EIF Changes the Split: level-zero caveat",
+      "summary": "Started the level-zero caveat directly and preserved constant-feature retries and resolved feature-subspace semantics.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "EIF-05",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2026-03-18-announcing-extended-isolation-forest-support.md"
+      ],
+      "location": "Seeing the Difference: post-plot commentary",
+      "summary": "Kept the three score-map captions and a scoped geometry observation; described the concrete mismatch in Validation.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "EIF-06",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2026-03-18-announcing-extended-isolation-forest-support.md"
+      ],
+      "location": "Benchmark Results: main conclusion",
+      "summary": "Reported the dataset wins and losses directly without the result-is-not rhetorical setup.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "EIF-07",
+      "original_classification": "VERIFY FIRST — P0",
+      "status": "scoped_conservatively",
+      "changed_paths": [
+        "_posts/2026-03-18-announcing-extended-isolation-forest-support.md"
+      ],
+      "location": "Benchmark Results: dimensionality interpretation",
+      "summary": "Removed the dimensionality/geometry causal explanation; identified the benchmark as endpoint comparisons.",
+      "evidence": [
+        {
+          "id": "EIF_README",
+          "url": "https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/README.md#performance-and-benchmarks",
+          "locator": "Endpoint comparisons: 13 datasets, 100 trees, 256 samples, 10 distinct-seed trials, standard errors. Model parameters section describes contamination/threshold semantics."
+        }
+      ],
+      "remaining_question": "No controlled experiment here isolates dimensionality/correlation/axis alignment as the cause of benchmark changes; no such cause is asserted."
+    },
+    {
+      "id": "EIF-08",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2026-03-18-announcing-extended-isolation-forest-support.md"
+      ],
+      "location": "Benchmark table and parity bullets",
+      "summary": "Removed only the nonnumeric Takeaway column and repeated confidence conclusion; retained all six rows and numeric columns plus full uncertainties.",
+      "evidence": [
+        {
+          "id": "EIF_README",
+          "url": "https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/README.md#performance-and-benchmarks",
+          "locator": "Endpoint comparisons: 13 datasets, 100 trees, 256 samples, 10 distinct-seed trials, standard errors. Model parameters section describes contamination/threshold semantics."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "EIF-09",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2026-03-18-announcing-extended-isolation-forest-support.md"
+      ],
+      "location": "Validation opening",
+      "summary": "Opened Validation with degenerate-split retries and reference mismatches, retaining the AI-assistance disclosure.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "EIF-10",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2026-03-18-announcing-extended-isolation-forest-support.md"
+      ],
+      "location": "Validation: repeated list and plots paragraph",
+      "summary": "Linked the existing plots/table and retained the three distinct validation issues without repeating their introductions.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "EIF-11",
+      "original_classification": "VERIFY FIRST — P0",
+      "status": "scoped_conservatively",
+      "changed_paths": [
+        "_posts/2026-03-18-announcing-extended-isolation-forest-support.md"
+      ],
+      "location": "Validation: separate edge-case study",
+      "summary": "Retained the reported 61/61 result, linked the PR's saved output, and distinguished the separate local study from checked-in tests.",
+      "evidence": [
+        {
+          "id": "EIFPR",
+          "url": "https://github.com/linkedin/isolation-forest/pull/79",
+          "locator": "Merged 2026-03-18 at 9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d. PR body has saved 61 passed/0 failed separate-study output and Ionosphere sweep .8600 to .9079. Full script/configuration not located."
+        }
+      ],
+      "remaining_question": "PR saved output is inspectable, but the separate 61-check study script and complete seed/configuration record were not located. Not relabeled as the checked-in suite or rerun."
+    },
+    {
+      "id": "EIF-12",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2026-03-18-announcing-extended-isolation-forest-support.md"
+      ],
+      "location": "Validation ending: tests/plots, workflow and review conclusion",
+      "summary": "Condensed the AI-assisted review account and removed the three repetitive workflow conclusions.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "EIF-13",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2026-03-18-announcing-extended-isolation-forest-support.md"
+      ],
+      "location": "Persistence story in two sections",
+      "summary": "Kept the persistence discovery in Validation and the final schema/test description in Implementation.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "EIF-14",
+      "original_classification": "VERIFY FIRST — P0",
+      "status": "verified_edited",
+      "changed_paths": [
+        "_posts/2026-03-18-announcing-extended-isolation-forest-support.md"
+      ],
+      "location": "Persistence: precision rationale",
+      "summary": "Cited Float weights, Double offsets, float products with double accumulation, and scoped round-trip comparisons; removed a general precision guarantee.",
+      "evidence": [
+        {
+          "id": "EIF_SCHEMA",
+          "url": "https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/isolation-forest/src/main/scala/com/linkedin/relevance/isolationforest/extended/ExtendedIsolationForestModelReadWrite.scala#L59",
+          "locator": "Lines 59–66: indices, Array[Float] weights and Double offset; direct SplitHyperplane conversion."
+        },
+        {
+          "id": "EIF_DOT",
+          "url": "https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/isolation-forest/src/main/scala/com/linkedin/relevance/isolationforest/extended/ExtendedUtils.scala#L21",
+          "locator": "Fields and dot overloads, lines 21–55: float products, double accumulator; vector values cast to float to match training."
+        },
+        {
+          "id": "EIF_ROUNDTRIP",
+          "url": "https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/isolation-forest/src/test/scala/com/linkedin/relevance/isolationforest/extended/ExtendedIsolationForestModelWriteReadTest.scala#L51",
+          "locator": "assertTreesEqual lines 51–75 uses eps=1e-12 for weights/offsets and exact indices. Save/load prediction checks start line 78; example mammography config uses 100 trees, 256 samples, seed 1, extension 1. Inspected, not rerun."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "EIF-15",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2026-03-18-announcing-extended-isolation-forest-support.md"
+      ],
+      "location": "Choosing between IF and EIF",
+      "summary": "Condensed selection advice to comparison on actual data, extension-level tuning, and standard IF for ONNX.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "EIF-16",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2026-03-18-announcing-extended-isolation-forest-support.md"
+      ],
+      "location": "Getting Started and Resources",
+      "summary": "Merged Getting Started and Resources into Code and benchmarks; preserved both anchors and the immutable reproduction/reference links.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "RL-01",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "Description",
+      "summary": "Applied the specified PPO/Hohmann description.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "RL-02",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "Second introductory paragraph",
+      "summary": "Introduced the analytic-baseline teaching problem directly and explicitly presented the article as a workshop guide.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "RL-03",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "Control Problem: after equations",
+      "summary": "Moved directly from dynamics to target invariants while retaining omitted physics, units, actions, and observations.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "RL-04",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "Hohmann Benchmark: paragraph after equations",
+      "summary": "Stated delta-v, circularization error, and burn history once as the comparison quantities.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "RL-05",
+      "original_classification": "EDIT — P1",
+      "status": "verified_edited",
+      "changed_paths": [
+        "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "Hohmann figures and captions",
+      "summary": "Separated the geometry and history captions; anchored the finite-step observation to the saved analytic baseline values.",
+      "evidence": [
+        {
+          "id": "RLNB",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/2026_01_09_James_Verbus_Brown_AI_Winter_School_RL_Orbital_Transfers.ipynb",
+          "locator": "Cells 10 ModeConfig/constants, 13 polar_components, 19 saved analytic baseline, 22 dv_val*et, 25 no fixed PPO seed, 30/33 saved policy reports, 37 custom setup, 38 report, 39 differing saved config. Reports IDs 1d980710/c2aeb61e; no new run."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "RL-06",
+      "original_classification": "VERIFY FIRST — P0",
+      "status": "scoped_conservatively",
+      "changed_paths": [
+        "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "RL diagnostics: empirical status of failure modes",
+      "summary": "Renamed the section Failure modes to inspect, preserved its old anchor, and used conditional failure descriptions.",
+      "evidence": [
+        {
+          "id": "RLNB",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/2026_01_09_James_Verbus_Brown_AI_Winter_School_RL_Orbital_Transfers.ipynb",
+          "locator": "Cells 10 ModeConfig/constants, 13 polar_components, 19 saved analytic baseline, 22 dv_val*et, 25 no fixed PPO seed, 30/33 saved policy reports, 37 custom setup, 38 report, 39 differing saved config. Reports IDs 1d980710/c2aeb61e; no new run."
+        }
+      ],
+      "remaining_question": "Saved examples do not establish that every listed failure occurred in the workshop; the section provides conditional diagnostic guidance."
+    },
+    {
+      "id": "RL-07",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "Diagnostics: endpoint-success framing",
+      "summary": "Removed the general endpoint-success lesson while keeping the diagnostic quantities and concrete possible failures.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "RL-08",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "Tolerance-exploitation explanation",
+      "summary": "Explained the different endpoint conditions of a loose elliptical success band and the circular Hohmann target.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "RL-09",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "Experiment Loop opening",
+      "summary": "Introduced ModeConfig directly and retained every parameter name and effect.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "RL-10",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "Experiment Loop: text block and final paragraph",
+      "summary": "Kept the experiment loop and added configuration/seed/budget/tolerance recording; removed the repeated goal ending.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "RL-11",
+      "original_classification": "VERIFY FIRST — P0",
+      "status": "scoped_conservatively",
+      "changed_paths": [
+        "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "Missing empirical comparison beside Hohmann",
+      "summary": "Used the workshop-guide fallback; linked saved outputs and identified missing fixed seeds and the inconsistent custom configuration.",
+      "evidence": [
+        {
+          "id": "RLNB",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/2026_01_09_James_Verbus_Brown_AI_Winter_School_RL_Orbital_Transfers.ipynb",
+          "locator": "Cells 10 ModeConfig/constants, 13 polar_components, 19 saved analytic baseline, 22 dv_val*et, 25 no fixed PPO seed, 30/33 saved policy reports, 37 custom setup, 38 report, 39 differing saved config. Reports IDs 1d980710/c2aeb61e; no new run."
+        }
+      ],
+      "remaining_question": "No fixed seed and no consistent complete record for the custom experiment. No invented comparison table or new training run."
+    },
+    {
+      "id": "RL-12",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_includes/site/orbit-demo.html"
+      ],
+      "location": "Adjacent _includes/site/orbit-demo.html",
+      "summary": "Explicitly separated the browser's manual/analytic/greedy controllers from trained PPO.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "RL-13",
+      "original_classification": "VERIFY FIRST — P0",
+      "status": "verified_edited",
+      "changed_paths": [
+        "_includes/site/orbit-demo.html"
+      ],
+      "location": "orbit-demo.html hint versus tangential-control description",
+      "summary": "Corrected the browser introduction to velocity-aligned impulses and distinguished the notebook's local tangential impulses.",
+      "evidence": [
+        {
+          "id": "ORBIT_CODE",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/js/orbit-demo.js#L55",
+          "locator": "applyImpulse lines 55–61 normalizes vx/vy. Existing tangential comment is imprecise when radial velocity is nonzero; JS unchanged."
+        },
+        {
+          "id": "RLNB",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/2026_01_09_James_Verbus_Brown_AI_Winter_School_RL_Orbital_Transfers.ipynb",
+          "locator": "Cells 10 ModeConfig/constants, 13 polar_components, 19 saved analytic baseline, 22 dv_val*et, 25 no fixed PPO seed, 30/33 saved policy reports, 37 custom setup, 38 report, 39 differing saved config. Reports IDs 1d980710/c2aeb61e; no new run."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "RAG-01",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "Description",
+      "summary": "Applied the specified description and retained the workshop, duration, and LUX/Brown corpus.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "RAG-02",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "Second opening paragraph",
+      "summary": "Replaced the foundation-model contrast with the direct comparison of model answers and retrieved sources.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "RAG-03",
+      "original_classification": "EDIT — P1",
+      "status": "verified_edited",
+      "changed_paths": [
+        "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "Corpus/questions paragraph",
+      "summary": "Reduced the opening question inventory and developed the saved 127Xe corpus-insertion example with question, answer, passage, and units.",
+      "evidence": [
+        {
+          "id": "RAGNB",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/2025_01_15_James_Verbus_Brown_AI_Winter_School_Open_AI.ipynb",
+          "locator": "Zero-based cells 8 pins, 38 chunking/gpt-4o-mini, 40 index, 42 top-k 5; saved 53–55 before insertion, 58 insertion, 59 answer, 60 metadata, 61 passages. Huang file: 20200501_Huang_PhD_thesis_Brown_physics_2019_submit_to_Brown_Repo_v5.pdf; metadata pp.77–78."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "RAG-04",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "The Scientific Problem: opening contrast",
+      "summary": "Stated the numerical-answer requirement as source location, units, and uncertainty.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "RAG-05",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "Provenance list and its concluding sentence",
+      "summary": "Retained the provenance checks and removed the abstract evidence-routing conclusion.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "RAG-06",
+      "original_classification": "VERIFY FIRST — P2",
+      "status": "scoped_conservatively",
+      "changed_paths": [
+        "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "Retrieval Model: scoring formula",
+      "summary": "Labeled cosine similarity as a conceptual example instead of asserting the historical index implementation.",
+      "evidence": [
+        {
+          "id": "RAGNB",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/2025_01_15_James_Verbus_Brown_AI_Winter_School_Open_AI.ipynb",
+          "locator": "Zero-based cells 8 pins, 38 chunking/gpt-4o-mini, 40 index, 42 top-k 5; saved 53–55 before insertion, 58 insertion, 59 answer, 60 metadata, 61 passages. Huang file: 20200501_Huang_PhD_thesis_Brown_physics_2019_submit_to_Brown_Repo_v5.pdf; metadata pp.77–78."
+        },
+        {
+          "id": "LLAMANB",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/2025_01_15_James_Verbus_Brown_AI_Winter_School_LLaMa.ipynb",
+          "locator": "Cells 8 pins and 39 chunking/BAAI/bge-small-en-v1.5 FastEmbedEmbedding; historical meta-llama/Meta-Llama-3.1-8B-Instruct in GPU Colab. No execution."
+        }
+      ],
+      "remaining_question": "Actual historical similarity and normalization were not established from notebook configuration; no current default substituted."
+    },
+    {
+      "id": "RAG-07",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "Retrieval Model: paragraph after pipeline",
+      "summary": "Condensed the retrieval/generation distinction and retained the correctness caveat and diagnostic table.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "RAG-08",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "Two Implementations: post-table paragraph",
+      "summary": "Described hosted API access versus a model running in a GPU Colab session, without a privacy guarantee.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "RAG-09",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "Indexing Parameters: framing sentences",
+      "summary": "Removed parameter-framing filler while preserving historical values and each parameter's explanation.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "RAG-10",
+      "original_classification": "VERIFY FIRST — P0",
+      "status": "scoped_conservatively",
+      "changed_paths": [
+        "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "Indexing Parameters: numerical settings",
+      "summary": "Labeled January 2025 settings, linked historical notebook snapshots, and retained pinned model/library settings without inventing chunk units.",
+      "evidence": [
+        {
+          "id": "RAGNB",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/2025_01_15_James_Verbus_Brown_AI_Winter_School_Open_AI.ipynb",
+          "locator": "Zero-based cells 8 pins, 38 chunking/gpt-4o-mini, 40 index, 42 top-k 5; saved 53–55 before insertion, 58 insertion, 59 answer, 60 metadata, 61 passages. Huang file: 20200501_Huang_PhD_thesis_Brown_physics_2019_submit_to_Brown_Repo_v5.pdf; metadata pp.77–78."
+        },
+        {
+          "id": "LLAMANB",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/2025_01_15_James_Verbus_Brown_AI_Winter_School_LLaMa.ipynb",
+          "locator": "Cells 8 pins and 39 chunking/BAAI/bge-small-en-v1.5 FastEmbedEmbedding; historical meta-llama/Meta-Llama-3.1-8B-Instruct in GPU Colab. No execution."
+        }
+      ],
+      "remaining_question": "Token-versus-character units and implicit hosted embedding/index defaults were not verified in the pinned dependency implementation. These remain unstated."
+    },
+    {
+      "id": "RAG-11",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "What We Inspected: introduction",
+      "summary": "Introduced metadata/source_nodes inspection directly and retained all three failure modes.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "RAG-12",
+      "original_classification": "VERIFY FIRST — P0",
+      "status": "verified_edited",
+      "changed_paths": [
+        "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "What We Inspected: numerical examples",
+      "summary": "Used the saved 127Xe coverage correction as the observed example and labeled other numerical checks as checks.",
+      "evidence": [
+        {
+          "id": "RAGNB",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/2025_01_15_James_Verbus_Brown_AI_Winter_School_Open_AI.ipynb",
+          "locator": "Zero-based cells 8 pins, 38 chunking/gpt-4o-mini, 40 index, 42 top-k 5; saved 53–55 before insertion, 58 insertion, 59 answer, 60 metadata, 61 passages. Huang file: 20200501_Huang_PhD_thesis_Brown_physics_2019_submit_to_Brown_Repo_v5.pdf; metadata pp.77–78."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "RAG-13",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "Incremental Indexing: ending",
+      "summary": "Kept incremental insertion code and the actual addition of theses; removed unimplemented enterprise-maintenance claims.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "RAG-14",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md"
+      ],
+      "location": "Practical Standard and Materials introductions",
+      "summary": "Moved the unique diagnostic procedure earlier, preserved practical-standard and material anchors, and ended with saved evidence and concise materials.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "ONNX-01",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md"
+      ],
+      "location": "Opening two paragraphs",
+      "summary": "Merged the two announcements into the specified collaborative we-added opening.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "ONNX-02",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md"
+      ],
+      "location": "Description and Why ONNX",
+      "summary": "Used historical 2024 wording and the exact description while retaining the explicitly dated 2026 standard-IF scope note.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "ONNX-03",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md"
+      ],
+      "location": "Algorithm-history paragraph",
+      "summary": "Condensed algorithm history to one sentence with the original paper and engineering explanation.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "ONNX-04",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md"
+      ],
+      "location": "Why ONNX: deployment examples",
+      "summary": "Described the former Spark-loading constraint and labeled service/stream uses as possibilities.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "ONNX-05",
+      "original_classification": "VERIFY FIRST — P0",
+      "status": "verified_edited",
+      "changed_paths": [
+        "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md"
+      ],
+      "location": "Why ONNX and scoring introduction",
+      "summary": "Used compatible-runtime wording and limited concrete runtime evidence to Python ONNX Runtime and the inspected graph operators.",
+      "evidence": [
+        {
+          "id": "ONNX_CONTRACT",
+          "url": "https://github.com/linkedin/isolation-forest/blob/ae6efe58db52a705151420ed6adcd556498a352b/isolation-forest-onnx/src/isolationforestonnx/isolation_forest_converter.py#L116",
+          "locator": "Line 116: features, TensorProto.FLOAT, [None,numFeatures]. Graph uses TreeEnsembleRegressor in ai.onnx.ml; outputs at lines 130–131."
+        },
+        {
+          "id": "ONNX_ORIGINAL_TEST",
+          "url": "https://github.com/linkedin/isolation-forest/blob/ae6efe58db52a705151420ed6adcd556498a352b/isolation-forest-onnx/test/test_isolation_forest_converter.py#L71",
+          "locator": "Lines 71–120: float32 data, Python ONNX Runtime, AUROC versus expected values; distinct from later score comparison."
+        },
+        {
+          "id": "ONNX_INTEGRATION",
+          "url": "https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/isolation-forest-onnx/test/integration/test_isolation_forest_onnx_integration.py#L73",
+          "locator": "Lines 73–89: f0..f5 cast to float32, InferenceSession without an explicit provider, max absolute Spark/ONNX score difference <1e-5. Inspected, not run; explicitly dated March 2026 in post."
+        }
+      ],
+      "remaining_question": "No browser/edge/service deployment or specific execution provider verified. Python tests do not establish every backend."
+    },
+    {
+      "id": "ONNX-06",
+      "original_classification": "EDIT — P2",
+      "status": "verified_edited",
+      "changed_paths": [
+        "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md"
+      ],
+      "location": "Converter paragraph and sample",
+      "summary": "Kept both Python examples, documented model/metadata paths and the actual feature input contract, and moved Gradle history to the PR link.",
+      "evidence": [
+        {
+          "id": "ONNX_CONTRACT",
+          "url": "https://github.com/linkedin/isolation-forest/blob/ae6efe58db52a705151420ed6adcd556498a352b/isolation-forest-onnx/src/isolationforestonnx/isolation_forest_converter.py#L116",
+          "locator": "Line 116: features, TensorProto.FLOAT, [None,numFeatures]. Graph uses TreeEnsembleRegressor in ai.onnx.ml; outputs at lines 130–131."
+        },
+        {
+          "id": "ONNXPR",
+          "url": "https://github.com/linkedin/isolation-forest/pull/53",
+          "locator": "Merged 2024-09-03 at ae6efe58db52a705151420ed6adcd556498a352b; collaborative converter work and Scala/Python Gradle integration."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "ONNX-07",
+      "original_classification": "EDIT — P1",
+      "status": "verified_edited",
+      "changed_paths": [
+        "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md"
+      ],
+      "location": "Validated by Parity",
+      "summary": "Linked the exact later Spark/ONNX score-comparison test and distinguished it from original benchmark-AUROC tests.",
+      "evidence": [
+        {
+          "id": "ONNX_ORIGINAL_TEST",
+          "url": "https://github.com/linkedin/isolation-forest/blob/ae6efe58db52a705151420ed6adcd556498a352b/isolation-forest-onnx/test/test_isolation_forest_converter.py#L71",
+          "locator": "Lines 71–120: float32 data, Python ONNX Runtime, AUROC versus expected values; distinct from later score comparison."
+        },
+        {
+          "id": "ONNX_INTEGRATION",
+          "url": "https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/isolation-forest-onnx/test/integration/test_isolation_forest_onnx_integration.py#L73",
+          "locator": "Lines 73–89: f0..f5 cast to float32, InferenceSession without an explicit provider, max absolute Spark/ONNX score difference <1e-5. Inspected, not run; explicitly dated March 2026 in post."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "ONNX-08",
+      "original_classification": "VERIFY FIRST — P0",
+      "status": "verified_edited",
+      "changed_paths": [
+        "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md"
+      ],
+      "location": "Validated by Parity: numerical claim",
+      "summary": "Specified the verified float32 six-feature test input and maximum absolute score difference below 1e-5, without an all-input guarantee.",
+      "evidence": [
+        {
+          "id": "ONNX_INTEGRATION",
+          "url": "https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/isolation-forest-onnx/test/integration/test_isolation_forest_onnx_integration.py#L73",
+          "locator": "Lines 73–89: f0..f5 cast to float32, InferenceSession without an explicit provider, max absolute Spark/ONNX score difference <1e-5. Inspected, not run; explicitly dated March 2026 in post."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "ONNX-09",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md"
+      ],
+      "location": "Resources",
+      "summary": "Consolidated resources into one list, preserving the original announcement, background articles, repository, PR, and package.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "FACE24-01",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md"
+      ],
+      "location": "Description and opening framing",
+      "summary": "Used the exact description and scoped the opening to GAN/diffusion evaluations while preserving the landscape sentence.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "FACE24-02",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md"
+      ],
+      "location": "Opening: collaboration attribution",
+      "summary": "Retained LinkedIn/team/Farid credit and linked the coauthored paper's author list without adding a personal-contribution claim.",
+      "evidence": [
+        {
+          "id": "FACE24",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/porcile2024-finding-ai-generated-faces-in-the-wild.pdf",
+          "locator": "Accepted paper: authors p.1; Table 1 p.2; Section 2.6/Section 3 footnote 7 p.4; Table 2/Figure 3 p.5; Sections 4/4.1 p.6; Figure 5 p.7. Pages 5–6 rendered and inspected; complete extracted text read."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "FACE24-03",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md"
+      ],
+      "location": "One Classifier, Ten Engines: result paragraph",
+      "summary": "Reported held-out results directly and retained Midjourney's 19.4% result and mostly-slips-through phrase.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "FACE24-04",
+      "original_classification": "VERIFY FIRST — P0",
+      "status": "verified_edited",
+      "changed_paths": [
+        "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md"
+      ],
+      "location": "Held-out result aggregation",
+      "summary": "Cited Table 2's 84.5% and the 5,000-face four-engine evaluation; did not calculate an unweighted mean or invent the fourth rate.",
+      "evidence": [
+        {
+          "id": "FACE24",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/porcile2024-finding-ai-generated-faces-in-the-wild.pdf",
+          "locator": "Accepted paper: authors p.1; Table 1 p.2; Section 2.6/Section 3 footnote 7 p.4; Table 2/Figure 3 p.5; Sections 4/4.1 p.6; Figure 5 p.7. Pages 5–6 rendered and inspected; complete extracted text read."
+        }
+      ],
+      "remaining_question": "The paper supplies the 5,000-face held-out total but not the fourth illustrative rate or an unweighted mean of the three listed rates. No weights/rate inferred."
+    },
+    {
+      "id": "FACE24-05",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md"
+      ],
+      "location": "Held-out result: final clause",
+      "summary": "Identified retraining as a possible response and bounded the claim about future generators.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "FACE24-06",
+      "original_classification": "RETAIN — optional — P2",
+      "status": "optional_retained",
+      "changed_paths": [],
+      "location": "Built for the Wild: first paragraph",
+      "summary": "Preserved the entire vivid in-the-wild pipeline paragraph verbatim.",
+      "evidence": [],
+      "remaining_question": null,
+      "reviewed_paths": [
+        "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md"
+      ]
+    },
+    {
+      "id": "FACE24-07",
+      "original_classification": "EDIT — P0",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md"
+      ],
+      "location": "Description versus resolution-results paragraph",
+      "summary": "Distinguished the 512-trained model from separately resolution-matched models in the opening, caption, and results.",
+      "evidence": [
+        {
+          "id": "FACE24",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/porcile2024-finding-ai-generated-faces-in-the-wild.pdf",
+          "locator": "Accepted paper: authors p.1; Table 1 p.2; Section 2.6/Section 3 footnote 7 p.4; Table 2/Figure 3 p.5; Sections 4/4.1 p.6; Figure 5 p.7. Pages 5–6 rendered and inspected; complete extracted text read."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "FACE24-08",
+      "original_classification": "EDIT — P2",
+      "status": "verified_edited",
+      "changed_paths": [
+        "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md"
+      ],
+      "location": "Resolution and JPEG explanation",
+      "summary": "Attached the 0.5% FPR/training conditions and added only two JPEG operating points explicitly reported in Section 4.",
+      "evidence": [
+        {
+          "id": "FACE24",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/porcile2024-finding-ai-generated-faces-in-the-wild.pdf",
+          "locator": "Accepted paper: authors p.1; Table 1 p.2; Section 2.6/Section 3 footnote 7 p.4; Table 2/Figure 3 p.5; Sections 4/4.1 p.6; Figure 5 p.7. Pages 5–6 rendered and inspected; complete extracted text read."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "FACE24-09",
+      "original_classification": "EDIT — P0",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md"
+      ],
+      "location": "Face-specific section opening",
+      "summary": "Scoped the zero non-face detections to the evaluation and retained the real/synthetic training-data confound.",
+      "evidence": [
+        {
+          "id": "FACE24",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/porcile2024-finding-ai-generated-faces-in-the-wild.pdf",
+          "locator": "Accepted paper: authors p.1; Table 1 p.2; Section 2.6/Section 3 footnote 7 p.4; Table 2/Figure 3 p.5; Sections 4/4.1 p.6; Figure 5 p.7. Pages 5–6 rendered and inspected; complete extracted text read."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "FACE24-10",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md"
+      ],
+      "location": "Face-specific section heading and causal interpretation",
+      "summary": "Renamed the mechanism section with its original anchor and treated the evidence as a hypothesis.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "FACE24-11",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md"
+      ],
+      "location": "Explainability evidence selection",
+      "summary": "Qualified the attribution interpretation; added no unverified inversion result or processing guarantee.",
+      "evidence": [
+        {
+          "id": "FACE24",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/porcile2024-finding-ai-generated-faces-in-the-wild.pdf",
+          "locator": "Accepted paper: authors p.1; Table 1 p.2; Section 2.6/Section 3 footnote 7 p.4; Table 2/Figure 3 p.5; Sections 4/4.1 p.6; Figure 5 p.7. Pages 5–6 rendered and inspected; complete extracted text read."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "FACE24-12",
+      "original_classification": "EDIT — P0",
+      "status": "verified_edited",
+      "changed_paths": [
+        "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md"
+      ],
+      "location": "Temporal scope of the described detector",
+      "summary": "Added the verified Section 3 footnote-7 note about the older model having already been replaced.",
+      "evidence": [
+        {
+          "id": "FACE24",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/porcile2024-finding-ai-generated-faces-in-the-wild.pdf",
+          "locator": "Accepted paper: authors p.1; Table 1 p.2; Section 2.6/Section 3 footnote 7 p.4; Table 2/Figure 3 p.5; Sections 4/4.1 p.6; Figure 5 p.7. Pages 5–6 rendered and inspected; complete extracted text read."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "FACE23-01",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2023-06-20-detecting-ai-generated-profile-photos.md"
+      ],
+      "location": "Description and first paragraph",
+      "summary": "Used the exact StyleGAN description and opened with the 400-image averages plus concise fake-account motivation.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "FACE23-02",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2023-06-20-detecting-ai-generated-profile-photos.md"
+      ],
+      "location": "Second paragraph",
+      "summary": "Introduced compact embeddings and their evaluated scope, removing unsupported cost/auditability endorsement.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "FACE23-03",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2023-06-20-detecting-ai-generated-profile-photos.md"
+      ],
+      "location": "The Tell heading and opening",
+      "summary": "Renamed the alignment section with its old anchor and described the averages directly.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "FACE23-04",
+      "original_classification": "EDIT — P0",
+      "status": "verified_edited",
+      "changed_paths": [
+        "_posts/2023-06-20-detecting-ai-generated-profile-photos.md"
+      ],
+      "location": "Embedding explanation and result",
+      "summary": "Scoped 99.6% at 1% FPR to logistic regression on PCA embeddings in the StyleGAN evaluation.",
+      "evidence": [
+        {
+          "id": "FACE23",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/mundra2023-exposing-gan-generated-profile-photos-from-compact-embeddings.pdf",
+          "locator": "Accepted local paper: authors p.1; Figures 1–3; Section 3.1 pp.4–5; Table 1/Section 6 p.7, rendered and inspected. PCA+LR 99.6% at 1% FPR; the particular CNN baseline uses 3.3% FPR."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "FACE23-05",
+      "original_classification": "VERIFY FIRST — P0",
+      "status": "verified_edited",
+      "changed_paths": [
+        "_posts/2023-06-20-detecting-ai-generated-profile-photos.md"
+      ],
+      "location": "Result comparison with CNNs",
+      "summary": "Scoped the comparison to the paper's CNN baseline and noted its different 3.3% FPR, with Table 1 linked.",
+      "evidence": [
+        {
+          "id": "FACE23",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/mundra2023-exposing-gan-generated-profile-photos-from-compact-embeddings.pdf",
+          "locator": "Accepted local paper: authors p.1; Figures 1–3; Section 3.1 pp.4–5; Table 1/Section 6 p.7, rendered and inspected. PCA+LR 99.6% at 1% FPR; the particular CNN baseline uses 3.3% FPR."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "FACE23-06",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2023-06-20-detecting-ai-generated-profile-photos.md"
+      ],
+      "location": "Paragraph after detection result",
+      "summary": "Removed the repeated efficiency paragraph while retaining 128 dimensions, training quantities, reconstruction, and classification procedure.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "FACE23-07",
+      "original_classification": "VERIFY FIRST — P0",
+      "status": "scoped_conservatively",
+      "changed_paths": [
+        "_posts/2023-06-20-detecting-ai-generated-profile-photos.md"
+      ],
+      "location": "Generator Landscape",
+      "summary": "Removed the unverified prevalence claim and described the study's StyleGAN scope.",
+      "evidence": [
+        {
+          "id": "P23",
+          "url": "https://www.linkedin.com/blog/engineering/trust-and-safety/new-approaches-for-detecting-ai-generated-profile-photos",
+          "locator": "Sharing results: StyleGAN evaluation and Stable Diffusion limitation."
+        },
+        {
+          "id": "FACE23",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/mundra2023-exposing-gan-generated-profile-photos-from-compact-embeddings.pdf",
+          "locator": "Accepted local paper: authors p.1; Figures 1–3; Section 3.1 pp.4–5; Table 1/Section 6 p.7, rendered and inspected. PCA+LR 99.6% at 1% FPR; the particular CNN baseline uses 3.3% FPR."
+        }
+      ],
+      "remaining_question": "No contemporaneous prevalence measurement established; prevalence claim removed."
+    },
+    {
+      "id": "FACE23-08",
+      "original_classification": "EDIT — P0",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2023-06-20-detecting-ai-generated-profile-photos.md"
+      ],
+      "location": "Generalization discussion",
+      "summary": "Restored the Stable Diffusion failure early and retained the link to the different follow-up model.",
+      "evidence": [
+        {
+          "id": "P23",
+          "url": "https://www.linkedin.com/blog/engineering/trust-and-safety/new-approaches-for-detecting-ai-generated-profile-photos",
+          "locator": "Sharing results: StyleGAN evaluation and Stable Diffusion limitation."
+        },
+        {
+          "id": "FACE23",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/mundra2023-exposing-gan-generated-profile-photos-from-compact-embeddings.pdf",
+          "locator": "Accepted local paper: authors p.1; Figures 1–3; Section 3.1 pp.4–5; Table 1/Section 6 p.7, rendered and inspected. PCA+LR 99.6% at 1% FPR; the particular CNN baseline uses 3.3% FPR."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "FACE23-09",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2023-06-20-detecting-ai-generated-profile-photos.md"
+      ],
+      "location": "Introductory synthetic-image motivation",
+      "summary": "Used the bounded newly-generated-face reverse-image-search sentence.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "FACE23-10",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2023-06-20-detecting-ai-generated-profile-photos.md"
+      ],
+      "location": "Collaboration paragraph and Resources",
+      "summary": "Retained team/Farid attribution, linked the author list, and grouped all paper/poster/engineering/coverage destinations compactly.",
+      "evidence": [
+        {
+          "id": "FACE23",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/mundra2023-exposing-gan-generated-profile-photos-from-compact-embeddings.pdf",
+          "locator": "Accepted local paper: authors p.1; Figures 1–3; Section 3.1 pp.4–5; Table 1/Section 6 p.7, rendered and inspected. PCA+LR 99.6% at 1% FPR; the particular CNN baseline uses 3.3% FPR."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "SEQ-01",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md"
+      ],
+      "location": "Description and first two paragraphs",
+      "summary": "Opened with the low-volume scrapers, preserved Beibei Wang's credit, and described sequence features as complementary.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "SEQ-02",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md"
+      ],
+      "location": "The Modeling Problem: opening and constraints",
+      "summary": "Condensed the automation/sequence motivation and retained label scarcity, class imbalance, and adversarial adaptation.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "SEQ-03",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md"
+      ],
+      "location": "From Requests to Tokens: first paragraph",
+      "summary": "Described the ordered requests around profile views directly.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "SEQ-04",
+      "original_classification": "VERIFY FIRST — P0",
+      "status": "scoped_conservatively",
+      "changed_paths": [
+        "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md"
+      ],
+      "location": "Frequency-ranked token IDs",
+      "summary": "Retained frequency-ordered categorical IDs and removed the assertion that the ordering imposes an embedding prior.",
+      "evidence": [
+        {
+          "id": "P21",
+          "url": "https://www.linkedin.com/blog/engineering/trust-and-safety/using-deep-learning-to-detect-abusive-sequences-of-member-activi",
+          "locator": "2021 coauthor line; Activity sequence data, Figures 1–4; Activity sequence model and Isolation Forest training-label paragraph."
+        }
+      ],
+      "remaining_question": "A production mechanism using frequency numerically or constraining embeddings was not established; the integer-frequency description alone is insufficient."
+    },
+    {
+      "id": "SEQ-05",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md"
+      ],
+      "location": "Legitimate-member and scraper captions",
+      "summary": "Scoped the captions to the pictured member and scraper, retaining request count and color/input meanings.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "SEQ-06",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md"
+      ],
+      "location": "Paragraph after scraper visualization",
+      "summary": "Explained which branch receives the displayed token sequence and which receives time gaps.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "SEQ-07",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md"
+      ],
+      "location": "Architecture: post-figure paragraph",
+      "summary": "Kept one ordered embedding/convolution/concatenation/LSTM explanation and shortened the caption.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "SEQ-08",
+      "original_classification": "VERIFY FIRST — P0",
+      "status": "scoped_conservatively",
+      "changed_paths": [
+        "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md"
+      ],
+      "location": "Labels From an Unsupervised Teacher",
+      "summary": "Preserved the Isolation Forest weak-label origin and removed an unsupported inference about escaping teacher bias.",
+      "evidence": [
+        {
+          "id": "P21",
+          "url": "https://www.linkedin.com/blog/engineering/trust-and-safety/using-deep-learning-to-detect-abusive-sequences-of-member-activi",
+          "locator": "2021 coauthor line; Activity sequence data, Figures 1–4; Activity sequence model and Isolation Forest training-label paragraph."
+        }
+      ],
+      "remaining_question": "No independent evaluation here establishes recall beyond the weak-label teacher or freedom from teacher bias."
+    },
+    {
+      "id": "SEQ-09",
+      "original_classification": "EDIT — P0",
+      "status": "verified_edited",
+      "changed_paths": [
+        "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md"
+      ],
+      "location": "Evaluation at Natural Class Balance",
+      "summary": "Tied the roughly thousandfold annotation to slide 34's plotted weak-label counts rather than a separation/production metric.",
+      "evidence": [
+        {
+          "id": "SEQFIG",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/images/activity-sequence-results.png",
+          "locator": "Local image visually inspected: slide 34; unbalanced out-of-time test; scraper groups labeled from Isolation Forest; ~1000x smaller non-scraper counts near high scores. No operating threshold/reviewed precision."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "SEQ-10",
+      "original_classification": "VERIFY FIRST — P0",
+      "status": "scoped_conservatively",
+      "changed_paths": [
+        "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md"
+      ],
+      "location": "Evaluation: operational conclusion",
+      "summary": "Removed the unsupported workflow false-positive implication while preserving documented production work.",
+      "evidence": [
+        {
+          "id": "P21",
+          "url": "https://www.linkedin.com/blog/engineering/trust-and-safety/using-deep-learning-to-detect-abusive-sequences-of-member-activi",
+          "locator": "2021 coauthor line; Activity sequence data, Figures 1–4; Activity sequence model and Isolation Forest training-label paragraph."
+        },
+        {
+          "id": "SEQFIG",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/images/activity-sequence-results.png",
+          "locator": "Local image visually inspected: slide 34; unbalanced out-of-time test; scraper groups labeled from Isolation Forest; ~1000x smaller non-scraper counts near high scores. No operating threshold/reviewed precision."
+        }
+      ],
+      "remaining_question": "No public operating threshold, reviewed precision/recall, or workflow burden measurement located in the inspected article/slide."
+    },
+    {
+      "id": "SEQ-11",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md"
+      ],
+      "location": "Embeddings and Coordinated Automation",
+      "summary": "Described embedding proximity as a lead for joint investigation, not proof of shared control or a script.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "IF19-01",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md"
+      ],
+      "location": "First paragraph",
+      "summary": "Changed the opening to a 2019 historical account while preserving publication date and later talk/update years.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "IF19-02",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md"
+      ],
+      "location": "First paragraph: final clause",
+      "summary": "Removed the post-promises clause and proceeded to the anti-abuse problem.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "IF19-03",
+      "original_classification": "EDIT — P0",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md"
+      ],
+      "location": "Why Unsupervised Learning Fits Anti-Abuse",
+      "summary": "Restored feature-separation conditions and distinguished training without labels from evaluation/adversarial-drift difficulties.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "IF19-04",
+      "original_classification": "VERIFY FIRST — P0",
+      "status": "scoped_conservatively",
+      "changed_paths": [
+        "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md"
+      ],
+      "location": "Algorithm advantages paragraph",
+      "summary": "Removed unqualified ranking, dimensionality, near-interactive runtime, and adoption claims; retained mechanism and distributed operation.",
+      "evidence": [
+        {
+          "id": "P19",
+          "url": "https://www.linkedin.com/blog/engineering/data-management/isolation-forest",
+          "locator": "2019 article: anti-abuse challenges, conditional feature separation, production use, and potential applications."
+        }
+      ],
+      "remaining_question": "Historical benchmark study and exact settings not independently audited. General ranking/runtime/adoption claims removed; no modern benchmark substituted."
+    },
+    {
+      "id": "IF19-05",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md"
+      ],
+      "location": "The Library: last sentence",
+      "summary": "Stated Maven availability directly and linked the documented dependency configuration.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "IF19-06",
+      "original_classification": "VERIFY FIRST — P2",
+      "status": "verified_edited",
+      "changed_paths": [
+        "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md"
+      ],
+      "location": "Scala usage example",
+      "summary": "Labeled the Scala code as an example, explained contamination's threshold role, and preserved all executable code/numbers.",
+      "evidence": [
+        {
+          "id": "EIF_README",
+          "url": "https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/README.md#performance-and-benchmarks",
+          "locator": "Endpoint comparisons: 13 datasets, 100 trees, 256 samples, 10 distinct-seed trials, standard errors. Model parameters section describes contamination/threshold semantics."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "IF19-07",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md"
+      ],
+      "location": "Catching Automation: first paragraph",
+      "summary": "Attributed the automation label to account review in the high-score region.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "IF19-08",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md"
+      ],
+      "location": "Automation-bursts interpretation",
+      "summary": "Described repeated bursts and reviewed accounts without a categorical claim about all human browsing.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "IF19-09",
+      "original_classification": "VERIFY FIRST — P0",
+      "status": "scoped_conservatively",
+      "changed_paths": [
+        "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md"
+      ],
+      "location": "Attack-day interpretation",
+      "summary": "Replaced the single-actor inference with consistency with coordinated automation.",
+      "evidence": [
+        {
+          "id": "P19",
+          "url": "https://www.linkedin.com/blog/engineering/data-management/isolation-forest",
+          "locator": "2019 article: anti-abuse challenges, conditional feature separation, production use, and potential applications."
+        }
+      ],
+      "remaining_question": "A documented investigation establishing one controlling actor for every pictured account was not located; coordination is described as consistency."
+    },
+    {
+      "id": "IF19-10",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md"
+      ],
+      "location": "Final attack-example paragraph",
+      "summary": "Scoped score/volume separation to the displayed attack.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "IF19-11",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md"
+      ],
+      "location": "Beyond Automation Detection",
+      "summary": "Kept two explicitly possible applications and linked the original discussion for others.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "LUX-01",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md"
+      ],
+      "location": "Opening cosmology paragraph",
+      "summary": "Led with the low-energy recoil measurement and retained apparatus/cosmology context in a background paragraph.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "LUX-02",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md"
+      ],
+      "location": "Thesis-contribution paragraph",
+      "summary": "Stated the existing design/operation/analysis roles and the double-scatter kinematic energy tag directly.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "LUX-03",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md"
+      ],
+      "location": "What Had to Be Calibrated: opening",
+      "summary": "Opened with charge/light yields near the search threshold and retained their role in the signal model.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "LUX-04",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md"
+      ],
+      "location": "Yield definitions: closing sentence",
+      "summary": "Explained uncertainty propagation into S1/S2 distributions directly.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "LUX-05",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md"
+      ],
+      "location": "Geometry section: simulation qualification",
+      "summary": "Specified simulation's acceptance/background/response role separately from double-scatter energy assignment.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "LUX-06",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md"
+      ],
+      "location": "Double/single-scatter section: final paragraph",
+      "summary": "Removed the recap while retaining resolved S2, overlapping S1, single-scatter light yield, and endpoint distinctions.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "LUX-07",
+      "original_classification": "VERIFY FIRST — P0",
+      "status": "verified_edited",
+      "changed_paths": [
+        "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md"
+      ],
+      "location": "Neutron-source spectrum paragraph",
+      "summary": "Restored the 95% accepted-event condition on the 6% simulated beam-energy interval and separated source time-of-flight characterization.",
+      "evidence": [
+        {
+          "id": "L17",
+          "url": "https://arxiv.org/pdf/1608.05309#page=4",
+          "locator": "Section 2, PDF p.4, Monte Carlo transport/fiducial-volume paragraph and Figure 1; downloaded, rendered, inspected. Separate source spectrum measurement is Section 4."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "LUX-08",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md"
+      ],
+      "location": "Beam imaged in detector: closing sentence",
+      "summary": "Scoped the visible beam to confirmation of position and alignment.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "LUX-09",
+      "original_classification": "EDIT — P0",
+      "status": "edited",
+      "changed_paths": [
+        "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md"
+      ],
+      "location": "Yield-results section heading",
+      "summary": "Renamed the yield section with its old anchor and retained the distinct charge/light lower bounds and full spans.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "LUX-10",
+      "original_classification": "VERIFY FIRST — P0",
+      "status": "scoped_conservatively",
+      "changed_paths": [
+        "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md"
+      ],
+      "location": "Yield endpoint values and WIMP-impact paragraph",
+      "summary": "Linked endpoint measurements/uncertainties and the reanalysis; retained existing values and assigned the sensitivity gain to the full reanalysis.",
+      "evidence": [
+        {
+          "id": "L16",
+          "url": "https://arxiv.org/pdf/1608.05381#page=17",
+          "locator": "Sections V.A–B pp.17–19, Tables V–VI/Figures 11–12, rendered and inspected. At 74 keVnr/180 V/cm: Ly=14.0 +0.3/-0.5(stat) +1.1/-2.7(sys) photons/keVnr; Qy=3.06 +0.05/-0.06(stat) +0.2/-0.4(sys) electrons/keVnr. Low-energy data: Tables I/III."
+        },
+        {
+          "id": "LUX_REANALYSIS",
+          "url": "https://arxiv.org/pdf/1512.03506",
+          "locator": "Abstract/intro and response discussion identify calibration, reconstruction, and background improvements. Exact sevenfold value at 7 GeV/c^2 not independently located."
+        }
+      ],
+      "remaining_question": "Endpoint values/uncertainties verified. Exact sevenfold sensitivity ratio at 7 GeV/c^2 not independently located in the reanalysis text or extracted defense slides. Existing author-reported value retained and scoped to the full reanalysis."
+    },
+    {
+      "id": "LUX-11",
+      "original_classification": "RETAIN — optional — P2",
+      "status": "optional_retained",
+      "changed_paths": [],
+      "location": "Carried into LZ: first sentence",
+      "summary": "Preserved the entire technique-outlived paragraph, including LZ adoption, role, and early-design qualifier.",
+      "evidence": [],
+      "remaining_question": null,
+      "reviewed_paths": [
+        "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md"
+      ]
+    },
+    {
+      "id": "LUX-12",
+      "original_classification": "EDIT — P0",
+      "status": "verified_edited",
+      "changed_paths": [
+        "_includes/site/lux-demo.html"
+      ],
+      "location": "_includes/site/lux-demo.html introduction and hint",
+      "summary": "Described the known-energy/mass/angle kinematic tag and labeled the interactive diagram illustrative.",
+      "evidence": [
+        {
+          "id": "LUX_CODE",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/js/lux-demo.js",
+          "locator": "Local angle/energy implementation read; unchanged conservation, endpoint, monotonicity, and geometry tests passed."
+        },
+        {
+          "id": "L17",
+          "url": "https://arxiv.org/pdf/1608.05309#page=4",
+          "locator": "Section 2, PDF p.4, Monte Carlo transport/fiducial-volume paragraph and Figure 1; downloaded, rendered, inspected. Separate source spectrum measurement is Section 4."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "DEMO-01",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "_includes/site/if-demo.html"
+      ],
+      "location": "IF demo introduction",
+      "summary": "Identified the browser IF/EIF component as an interactive JavaScript illustration.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "DEMO-02",
+      "original_classification": "VERIFY FIRST — P2",
+      "status": "verified_edited",
+      "changed_paths": [
+        "_includes/site/if-demo.html"
+      ],
+      "location": "IF demo sample-size sentence",
+      "summary": "Matched subsampling and normalization to actual dataset size and explained the fewer-than-two-points prompt.",
+      "evidence": [
+        {
+          "id": "IF_CODE",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/js/if-demo.js#L189",
+          "locator": "buildForest lines 189–216 uses min(256,n) and actual-subsample normalization; render lines 457–465 prompts and returns for n<2."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "DEMO-03",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "_includes/site/if-demo.html"
+      ],
+      "location": "IF demo instruction",
+      "summary": "Invited comparison of contours without promising a particular stochastic result.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "UTILITY-01",
+      "original_classification": "EDIT — P2",
+      "status": "edited",
+      "changed_paths": [
+        "archive.html"
+      ],
+      "location": "archive.html description",
+      "summary": "Used neutral archive metadata and preserved year/date navigation and noindex/sitemap settings.",
+      "evidence": [],
+      "remaining_question": null
+    },
+    {
+      "id": "UTILITY-02",
+      "original_classification": "VERIFY FIRST — P2",
+      "status": "verified_edited",
+      "changed_paths": [],
+      "location": "tags/categories rendered output versus current source",
+      "summary": "Checked freshly generated indexes against the unchanged post inventory and retained the removed summit's redirect.",
+      "evidence": [
+        {
+          "id": "BASELINE",
+          "url": "check_preservation.py",
+          "locator": "Executed against actual pre-edit working-tree snapshot: 43 HTML routes, 240 anchors, distinct destinations, figures, code/MathML, metadata identity, seven optional holds, fresh indexes/sitemap."
+        }
+      ],
+      "remaining_question": null,
+      "reviewed_paths": [
+        "archive.html"
+      ]
+    },
+    {
+      "id": "UTILITY-03",
+      "original_classification": "EDIT — P2",
+      "status": "already_satisfied",
+      "changed_paths": [],
+      "location": "404.html, redirects, feed and archival route policy",
+      "summary": "Preserved 404/redirect sources and targets, route set, canonical identity, and sitemap/noindex behavior.",
+      "evidence": [
+        {
+          "id": "BASELINE",
+          "url": "check_preservation.py",
+          "locator": "Executed against actual pre-edit working-tree snapshot: 43 HTML routes, 240 anchors, distinct destinations, figures, code/MathML, metadata identity, seven optional holds, fresh indexes/sitemap."
+        }
+      ],
+      "remaining_question": null,
+      "reviewed_paths": [
+        "archive.html"
+      ]
+    },
+    {
+      "id": "SOURCE-01",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "AGENTS.md",
+        "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+        "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md",
+        "_posts/2023-06-20-detecting-ai-generated-profile-photos.md",
+        "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md"
+      ],
+      "location": "Figure/caption source policy across posts",
+      "summary": "Added precise verified paper/figure/table locators where helpful and appended the preservation/attribution policy.",
+      "evidence": [
+        {
+          "id": "FACE23",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/mundra2023-exposing-gan-generated-profile-photos-from-compact-embeddings.pdf",
+          "locator": "Accepted local paper: authors p.1; Figures 1–3; Section 3.1 pp.4–5; Table 1/Section 6 p.7, rendered and inspected. PCA+LR 99.6% at 1% FPR; the particular CNN baseline uses 3.3% FPR."
+        },
+        {
+          "id": "FACE24",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/porcile2024-finding-ai-generated-faces-in-the-wild.pdf",
+          "locator": "Accepted paper: authors p.1; Table 1 p.2; Section 2.6/Section 3 footnote 7 p.4; Table 2/Figure 3 p.5; Sections 4/4.1 p.6; Figure 5 p.7. Pages 5–6 rendered and inspected; complete extracted text read."
+        },
+        {
+          "id": "L17",
+          "url": "https://arxiv.org/pdf/1608.05309#page=4",
+          "locator": "Section 2, PDF p.4, Monte Carlo transport/fiducial-volume paragraph and Figure 1; downloaded, rendered, inspected. Separate source spectrum measurement is Section 4."
+        },
+        {
+          "id": "L16",
+          "url": "https://arxiv.org/pdf/1608.05381#page=17",
+          "locator": "Sections V.A–B pp.17–19, Tables V–VI/Figures 11–12, rendered and inspected. At 74 keVnr/180 V/cm: Ly=14.0 +0.3/-0.5(stat) +1.1/-2.7(sys) photons/keVnr; Qy=3.06 +0.05/-0.06(stat) +0.2/-0.4(sys) electrons/keVnr. Low-energy data: Tables I/III."
+        },
+        {
+          "id": "P21",
+          "url": "https://www.linkedin.com/blog/engineering/trust-and-safety/using-deep-learning-to-detect-abusive-sequences-of-member-activi",
+          "locator": "2021 coauthor line; Activity sequence data, Figures 1–4; Activity sequence model and Isolation Forest training-label paragraph."
+        },
+        {
+          "id": "SEQFIG",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/images/activity-sequence-results.png",
+          "locator": "Local image visually inspected: slide 34; unbalanced out-of-time test; scraper groups labeled from Isolation Forest; ~1000x smaller non-scraper counts near high scores. No operating threshold/reviewed precision."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "SOURCE-02",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "AGENTS.md",
+        "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+        "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md",
+        "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md",
+        "_posts/2023-06-20-detecting-ai-generated-profile-photos.md",
+        "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md",
+        "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md",
+        "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+        "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md",
+        "_posts/2026-03-18-announcing-extended-isolation-forest-support.md"
+      ],
+      "location": "Retrospective additions and regenerated experiments",
+      "summary": "Dated eligible revisions, labeled later test evidence and saved examples, and appended the historical/reproduction policy.",
+      "evidence": [
+        {
+          "id": "RLNB",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/2026_01_09_James_Verbus_Brown_AI_Winter_School_RL_Orbital_Transfers.ipynb",
+          "locator": "Cells 10 ModeConfig/constants, 13 polar_components, 19 saved analytic baseline, 22 dv_val*et, 25 no fixed PPO seed, 30/33 saved policy reports, 37 custom setup, 38 report, 39 differing saved config. Reports IDs 1d980710/c2aeb61e; no new run."
+        },
+        {
+          "id": "RAGNB",
+          "url": "https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/2025_01_15_James_Verbus_Brown_AI_Winter_School_Open_AI.ipynb",
+          "locator": "Zero-based cells 8 pins, 38 chunking/gpt-4o-mini, 40 index, 42 top-k 5; saved 53–55 before insertion, 58 insertion, 59 answer, 60 metadata, 61 passages. Huang file: 20200501_Huang_PhD_thesis_Brown_physics_2019_submit_to_Brown_Repo_v5.pdf; metadata pp.77–78."
+        },
+        {
+          "id": "ONNX_INTEGRATION",
+          "url": "https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/isolation-forest-onnx/test/integration/test_isolation_forest_onnx_integration.py#L73",
+          "locator": "Lines 73–89: f0..f5 cast to float32, InferenceSession without an explicit provider, max absolute Spark/ONNX score difference <1e-5. Inspected, not run; explicitly dated March 2026 in post."
+        }
+      ],
+      "remaining_question": null
+    },
+    {
+      "id": "SOURCE-03",
+      "original_classification": "EDIT — P1",
+      "status": "edited",
+      "changed_paths": [
+        "AGENTS.md",
+        "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+        "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md",
+        "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md",
+        "_posts/2023-06-20-detecting-ai-generated-profile-photos.md",
+        "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md",
+        "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md",
+        "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+        "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md",
+        "_posts/2026-03-18-announcing-extended-isolation-forest-support.md"
+      ],
+      "location": "Editorial review procedure",
+      "summary": "Compared the eligible copy with original source accounts and documented contextual style review without claiming authorship detection or owner approval.",
+      "evidence": [
+        {
+          "id": "P19",
+          "url": "https://www.linkedin.com/blog/engineering/data-management/isolation-forest",
+          "locator": "2019 article: anti-abuse challenges, conditional feature separation, production use, and potential applications."
+        },
+        {
+          "id": "P21",
+          "url": "https://www.linkedin.com/blog/engineering/trust-and-safety/using-deep-learning-to-detect-abusive-sequences-of-member-activi",
+          "locator": "2021 coauthor line; Activity sequence data, Figures 1–4; Activity sequence model and Isolation Forest training-label paragraph."
+        },
+        {
+          "id": "P23",
+          "url": "https://www.linkedin.com/blog/engineering/trust-and-safety/new-approaches-for-detecting-ai-generated-profile-photos",
+          "locator": "Sharing results: StyleGAN evaluation and Stable Diffusion limitation."
+        },
+        {
+          "id": "L17",
+          "url": "https://arxiv.org/pdf/1608.05309#page=4",
+          "locator": "Section 2, PDF p.4, Monte Carlo transport/fiducial-volume paragraph and Figure 1; downloaded, rendered, inspected. Separate source spectrum measurement is Section 4."
+        }
+      ],
+      "remaining_question": null
+    }
+  ],
+  "pattern_families": [
+    {
+      "family": 1,
+      "status": "edited",
+      "disposition": "Removed EIF/RL purpose reversals. The optional FACE24 point-of-the-paper sentence remains."
+    },
+    {
+      "family": 2,
+      "status": "edited",
+      "disposition": "Removed the RL goal-is-not/goal-is ending; retained the experiment loop."
+    },
+    {
+      "family": 3,
+      "status": "edited",
+      "disposition": "Replaced EIF staged result contrasts with dataset wins/losses and removed causal overreach."
+    },
+    {
+      "family": 4,
+      "status": "absent",
+      "disposition": "No not-because/but-because construction found in eligible prose; no older wording recreated."
+    },
+    {
+      "family": 5,
+      "status": "edited",
+      "disposition": "Removed the sequence that-matters bridge; retained natural class balance and label context."
+    },
+    {
+      "family": 6,
+      "status": "edited",
+      "disposition": "Removed importance announcements; retained level-zero, endpoint, and retrieval distinctions."
+    },
+    {
+      "family": 7,
+      "status": "absent",
+      "disposition": "No main-takeaway construction or obsolete RAG Takeaway section introduced. Actual Practical Standard material merged with its anchor."
+    },
+    {
+      "family": 8,
+      "status": "edited",
+      "disposition": "Condensed neighboring mirrored conclusions in EIF/RAG/RL. Kept short/long path and source/scoring contrasts that explain mechanics."
+    },
+    {
+      "family": 9,
+      "status": "retained_for_reason",
+      "disposition": "Remaining rather-than contrasts distinguish measured/extrapolated energy, tree/full feature space, requested/incompatible sources, learned/assigned embeddings, and guide/performance report."
+    },
+    {
+      "family": 10,
+      "status": "retained_for_reason",
+      "disposition": "HOME-10 sentence retained verbatim; adjacent biography/hero repetition reduced."
+    },
+    {
+      "family": 11,
+      "status": "edited",
+      "disposition": "Shortened hero/card/video/article inventories; retained real datasets, architecture stages, parameters and diagnostics."
+    },
+    {
+      "family": 12,
+      "status": "edited",
+      "disposition": "Removed EIF gives-me-confidence conclusion and linked actual comparison scope."
+    },
+    {
+      "family": 13,
+      "status": "absent",
+      "disposition": "No especially-important construction remained; concrete threshold and resolution conditions retained."
+    },
+    {
+      "family": 14,
+      "status": "edited",
+      "disposition": "Removed practical-note/standard filler. Kept old practical-standard anchor and optional biography/interview wording."
+    },
+    {
+      "family": 15,
+      "status": "edited",
+      "disposition": "Removed empty useful introductions and endorsements, including the sequence grid introduction. Optional biography still says making systems useful."
+    },
+    {
+      "family": 16,
+      "status": "edited",
+      "disposition": "Condensed repeated process commentary. Retained AI assistance, references, uncertainty, source passages and test limits."
+    },
+    {
+      "family": 17,
+      "status": "edited",
+      "disposition": "Shortened eligible contact invitations; Castle contact text preserved."
+    }
+  ],
+  "checks": {
+    "build": "passed",
+    "if_demo": "passed: 30 checks",
+    "orbit_demo": "passed: 21 checks",
+    "lux_demo": "passed: 12 checks",
+    "post_og": "passed; output byte-identical to baseline",
+    "generated_site": "passed; output byte-identical to baseline",
+    "castle": "passed",
+    "preservation": "passed",
+    "git_diff_check": "passed",
+    "browser_visual_review": "not_run: agent.browsers.list returned []",
+    "notebook_execution": "not_run: outside editorial scope",
+    "remote_CI": "not_run: no push authorized",
+    "final_review_build": "passed from temporary source with BUNDLE_GEMFILE pointing to existing repository Gemfile; handoff/report excluded",
+    "report_integrity": "passed: exactly 154 unique IDs, 17 pattern families, seven optional holds"
+  },
+  "factual_value_or_formula_corrections": [],
+  "implementation_commit": "74b04dab034d407c60ad6c66501b8dfd305a25b9"
+}
