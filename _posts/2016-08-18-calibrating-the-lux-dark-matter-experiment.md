@@ -40,7 +40,7 @@ Nuclear recoil calibrations of liquid xenon detectors had typically inferred the
 
 The technique developed in this thesis does not use simulation to assign recoil energy to a double-scatter event. A collimated beam of quasi-monoenergetic 2.45 MeV neutrons from D-D fusion enters the active xenon volume. When one neutron scatters twice inside the TPC, the reconstructed positions of the two interaction vertices determine the outgoing neutron direction after the first scatter. Combined with the known incoming beam direction, that gives the lab scattering angle.
 
-The recoil energy then follows from non-relativistic two-body elastic scattering. The endpoint is fixed by the mass ratio alone:
+The recoil energy then follows from non-relativistic two-body elastic scattering. For a fixed incident neutron energy, the endpoint is set by the xenon and neutron masses:
 
 `E_r,max = E_n * 4 m_n M_Xe / (m_n + M_Xe)^2`
 
