@@ -46,6 +46,12 @@ There is a baseline of pre-existing checker behavior; never introduce NEW warnin
 - Pill-shaped controls must appear in the `:focus-visible { border-radius: 999px }` exception
   list (the global focus rule sets 6px corners).
 - No inline styles, no new dependencies, no frameworks.
+- The September 2026 redesign is scoped to `.academic`, added in `site/default.html` to
+  every page except Castle's existing URL. Its tokens follow `:root`; its component rules
+  precede the existing media blocks. Keep new styles in this scope. The original rules and
+  Castle's `loop54` stylesheet URL are retained to preserve its rendering; bump the current
+  version only in the non-Castle branch. Navigation labels and footer copy also retain Castle
+  through the shared `preserve_castle` exception. Do not add an opt-out to its source.
 
 ### Typography (two voices)
 - Running prose = Source Serif 4; UI chrome = Inter. Serif is applied via **direct-child
@@ -157,3 +163,20 @@ Each demo is one vanilla-JS IIFE in `assets/js/<name>-demo.js` plus an include i
 - Complete safe authorized edits without another approval conversation. Report the draft and
   evidence limits for James's eventual review; do not claim his approval of its voice. Keep the
   per-finding and pattern review in `scripts/editorial-review/`, excluded from generated content.
+
+## Academic redesign (September 7, 2026)
+
+- James approved an academic visual redesign with `AI and physics` below his name. The home
+  page contains a short biography, the existing LUX photograph and caption, four selected works,
+  and text navigation/contact links. Full writing, project, publication and talk collections
+  remain on their existing URLs. Selected home entries live in `_data/home.yml`.
+- This later authorization replaces the editorial pass's homepage metrics/common-thread and
+  visible footer holds. All other editorial holds and Castle's complete exclusion remain.
+  `_config.yml` retains the old tagline for Castle; the new home description supplies its own
+  structured data. Do not reintroduce the removed home sections or metrics to satisfy the old
+  editorial-only `check_preservation.py` script.
+- Save an actual baseline build before shared edits. Run the strict `check_castle.py` against
+  it, and compare Castle's browser rendering in light/dark and desktop/mobile when changing
+  CSS. Preserve post sources, figures, code, math, credits and AI-assistance disclosures.
+- Review screenshots and validation notes belong in `scripts/design-review/`, excluded from
+  Jekyll output. The four mobile navigation links stay visible without JavaScript.

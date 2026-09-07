@@ -1,7 +1,7 @@
 <footer class="the-footer">
   <div class="unit-inner unit-foot-inner">
     <p class="footer-meta">
-      <span class="footer-copyright">© {{ site.time | date: "%Y" }} <span class="footer-author">{{ site.author.name }}</span><span class="footer-tagline"> · {{ site.tagline }}</span></span>
+      <span class="footer-copyright">© {{ site.time | date: "%Y" }} <span class="footer-author">{{ site.author.name }}</span>{% if preserve_castle %}<span class="footer-tagline"> · {{ site.tagline }}</span>{% endif %}</span>
       <span class="footer-links">
         <a href="mailto:{{ site.author.email }}">Email</a>
         <a href="https://github.com/{{ site.author.github }}">GitHub</a>

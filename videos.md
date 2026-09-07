@@ -1,12 +1,13 @@
 ---
 layout: page
-title: Videos
+title: Talks
+permalink: /videos/
 description: "Talks, workshops, panels, and interviews."
 og_image: "/assets/images/social/2026-01-09-brown-physics-ai-winter-school-workshop-1200x630.jpg"
 og_image_alt: "Brown AI Winter School reinforcement learning workshop social preview image"
 og_image_width: 1200
 og_image_height: 630
-last_modified_at: 2026-09-06
+last_modified_at: 2026-09-07
 ---
 
 Talks, workshops, panels, and interviews.
