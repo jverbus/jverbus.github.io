@@ -1,13 +1,13 @@
 selected_work:
-  - area: Software
-    year: "2026"
+  - area: ML Engineering
+    year: "2019–2026"
     anchor: projects-heading
-    title: Extended isolation forest for Spark/Scala
-    url: /2026/03/18/announcing-extended-isolation-forest-support/
-    description: "Adding Extended Isolation Forest to the Spark/Scala library and comparing it with the reference implementation."
+    title: Isolation forest for Spark/Scala
+    url: /open-source/isolation-forest/
+    description: "Distributed unsupervised machine learning for anomaly detection with Isolation Forest and Extended Isolation Forest."
     links:
-      - label: Library project
-        url: /open-source/isolation-forest/
+      - label: EIF update
+        url: /2026/03/18/announcing-extended-isolation-forest-support/
       - label: Code
         url: https://github.com/linkedin/isolation-forest
 
@@ -16,14 +16,14 @@ selected_work:
     anchor: research-heading
     title: Finding AI-generated faces in the wild
     url: /2024/08/15/finding-ai-generated-faces-in-the-wild/
-    description: "Evaluating AI-generated-face detection on GAN and diffusion images, including generators withheld from training."
+    description: "Evaluating deep learning models for detecting AI-generated faces across GAN and diffusion engines, including generators withheld from training."
     context: CVPR Workshop on Media Forensics
 
   - area: AI Engineering
     year: "2021"
     title: Deep learning for abusive activity sequences
     url: /2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/
-    description: "Detecting low-volume scrapers from the order and timing of their requests."
+    description: "Using deep learning and learned request embeddings to detect low-volume scrapers from activity sequences and timing."
     context: LinkedIn Engineering
 
   - area: Physics

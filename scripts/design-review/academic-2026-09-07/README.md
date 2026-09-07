@@ -11,7 +11,7 @@ uses near-white, charcoal and blue, with a graphite dark mode.
 | --- | --- |
 | Identity | Name as the main heading, with “AI and physics” directly below it. Biography emphasizes AI for detecting bots and abusive automated activity, followed by the open-source library and Brown/LUX background. |
 | Homepage | Replaces the slogan, metric strip, route cards, repeated collection previews and contact button with an introduction and four work entries. Existing home fragment targets remain available. |
-| Selected work | `_data/home.yml` lists the 2026 Extended Isolation Forest article, generated-face detection (AI Research, 2024), activity-sequence detection (AI Engineering, 2021) and LUX calibration (Physics, 2016). All entries have a year, with concise provenance or library links in the main column. |
+| Selected work | `_data/home.yml` lists the isolation-forest library (ML Engineering, 2019–2026), generated-face detection (AI Research, 2024), activity-sequence detection (AI Engineering, 2021) and LUX calibration (Physics, 2016). All entries have dates, with concise provenance or resource links in the main column. |
 | Navigation | Writing, Projects, Publications and Talks are text links. All four remain visible on mobile without JavaScript. `/videos/` remains the Talks URL. |
 | Typography | Existing vendored Source Serif 4 and Inter, with aligned headings, comfortable reading text and subdued metadata. No new fonts or dependencies. |
 | Collections and posts | Open lists replace raised cards. Article headers, links, contact controls and footers use the quieter presentation. Tables, figures, equations, code and demos retain their substance and functionality. |
@@ -22,10 +22,10 @@ including Castle. All pages use stylesheet version `loop57`, the shared navigati
 global footer, and the same light/dark theme colors. The existing stylesheet structure
 is retained. Homepage structured data uses the new home description.
 
-The selected software entry points to the 2026 EIF article to show recent development.
-That article links to the original 2019 work; the biography and selected entry link directly
-to the library's project page, and the entry also links to its GitHub repository. Its
-displayed 2026 date belongs to the featured article, not to the library's creation.
+The ML Engineering entry links to the top-level `/open-source/isolation-forest/` project
+page. “EIF update” and “Code” remain secondary links. The displayed 2019–2026 range covers
+the documented 2019 open-source release and the 2026 EIF update; the title describes the
+whole library. Its summary emphasizes distributed unsupervised machine learning.
 
 This design implements the later approved homepage/footer changes. The prior editorial
 review's other optional holds remain unchanged: publication counts, interview copy, and
@@ -35,11 +35,12 @@ the protected face/LUX passages. Post sources and publication/talk data were not
 
 | Finding | Implementation |
 | --- | --- |
-| 1. Provenance and face-detection wording | Added “Library project” and “Code” links to the EIF entry. Added “CVPR Workshop on Media Forensics,” “LinkedIn Engineering,” and “Brown University · LUX” below the other descriptions. The venue and engineering source are present in `_data/publications.yml`; Brown/LUX is established in the biography and thesis record. The faces description now reads “Evaluating AI-generated-face detection on GAN and diffusion images, including generators withheld from training.” The underlying article is unchanged. |
+| 1. Provenance and face-detection wording | The library title links to its project page, with “EIF update” and “Code” links below. Added “CVPR Workshop on Media Forensics,” “LinkedIn Engineering,” and “Brown University · LUX” below the other descriptions. The venue and engineering source are present in `_data/publications.yml`; Brown/LUX is established in the biography and thesis record. The faces description specifies deep learning for detecting generated faces, retaining GAN/diffusion coverage and generators withheld from training. The underlying article is unchanged. |
 | 2. Recognizable linked titles | Selected-work and collection titles use the existing blue at rest, a darker/lighter accent on hover, and the existing visible focus outline. This also applies to Castle's entry. |
 | 3. Readable supporting text | Work and collection descriptions are 1rem (16px at the default root size), including Castle's entry; context, dates and categories remain smaller. The mobile photo caption is 0.8rem. Testing found that it extended beyond the viewport at 320px with 200% root text sizing; the photo row now wraps the caption below the image when needed. |
 | 4. Archive continuation | One ordinary “All writing →” link follows the four selected works and leads to `/posts/`. |
 | 5. Direct biography | The opening now begins “I was a Senior Staff Machine Learning Engineer at LinkedIn, where I built AI systems to detect bots and abusive automated activity.” The library follows in its own sentence; the Brown/LUX paragraph and existing links remain. |
+| Homepage ML emphasis | Changed “Software” to “ML Engineering,” restored the top-level library link, and revised the first three summaries to identify unsupervised machine learning, deep learning for generated-face detection, and learned request embeddings for scraper detection. The LUX entry is unchanged in both source data and rendered markup. |
 | Rendering and interaction review | Checked Chrome, Firefox and WebKit, including narrow widths, both themes, keyboard focus, enlarged text and the technical pages. Native Safari automation was unavailable; details below. |
 | Castle and scope | No Castle source, assets, content metadata, article copy or entry markup changed. No post source, collaborator credit, publication data, technical example or AI-assistance disclosure changed. The name, field label, photograph, four-work selection, fonts and palette are retained. |
 
@@ -81,6 +82,12 @@ The subsequent Castle UI correction uses an unchanged-tree baseline at
 `b73e65aad7958cb2fbebb9f5b785c942883368d7`, saved at `/private/tmp/castle-ui-20260907/`:
 200 tracked source files and hashes, the complete generated site, and Castle's manifest.
 
+The homepage ML-copy update uses the unchanged build at
+`339fd90bef4a6e9c39699f30daa213d0adfab68e`, saved at `/private/tmp/home-ml-20260907/`.
+Only the first three selected-work entries change. LUX's data and rendered entry, the
+rest of the homepage, and all 42 other HTML pages match this baseline. No template, CSS,
+post source, asset or other site data changed. Homepage screenshots are refreshed.
+
 - CI-config build and production build both succeed. The production validator also passes
   with `--require-absolute-site-urls`.
 - `check_generated_site.py` output is byte-identical to the baseline. All 43 HTML routes
@@ -97,7 +104,7 @@ The subsequent Castle UI correction uses an unchanged-tree baseline at
   Its Writing entry uses the same title color and description size as other entries.
 - All ten complete rendered article subtrees match the baseline, including their headers,
   body copy, figures, equations, code, collaborator credits and AI-assistance disclosures.
-  All 42 non-Castle HTML bodies are unchanged from the Castle UI correction baseline.
+  All 42 non-homepage HTML pages are unchanged from the homepage ML-copy baseline.
 - Browser review: Chrome 152 covers nine pages at desktop 1440×1080 and mobile 390×844,
   in light and dark modes (36 combinations). Firefox 155 and Playwright WebKit 26.6 each
   cover the homepage, Writing, Publications, Projects, Talks, EIF, LUX and orbital-transfer
@@ -110,6 +117,9 @@ The subsequent Castle UI correction uses an unchanged-tree baseline at
   [macOS's Option-Tab link-navigation shortcut](https://support.apple.com/en-euro/guide/safari/cpsh003/mac).
 - Castle additionally passes checks for keyboard navigation, visible navigation without
   JavaScript at 320/760/768px, and 200% root text sizing in all three engines.
+- The ML-copy update has 13 refreshed homepage views across Chrome, Firefox and WebKit,
+  covering desktop/mobile and both themes, plus Firefox at 320px with enlarged text.
+  No overflow or missing images was found.
 - Seventeen additional checks cover visible navigation without JavaScript at 320/760/768
   pixels, hidden demo fallbacks, keyboard skip/navigation focus, light/dark text contrast,
   and white print output while the system is in dark mode.
