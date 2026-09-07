@@ -1,18 +1,19 @@
 selected_work:
   - area: Software
+    year: "2026"
     anchor: projects-heading
-    title: Spark/Scala isolation forest
-    url: /open-source/isolation-forest/
-    description: "Distributed Isolation Forest and Extended Isolation Forest for Spark, with ONNX export for standard Isolation Forest models."
+    title: Extended isolation forest for Spark/Scala
+    url: /2026/03/18/announcing-extended-isolation-forest-support/
+    description: "Adding Extended Isolation Forest to the Spark/Scala library and comparing it with the reference implementation."
 
-  - area: Research
+  - area: AI Research
     year: "2024"
     anchor: research-heading
     title: Finding AI-generated faces in the wild
     url: /2024/08/15/finding-ai-generated-faces-in-the-wild/
     description: "Testing a face detector on GAN and diffusion models, including generators withheld from training."
 
-  - area: Engineering
+  - area: AI Engineering
     year: "2021"
     title: Deep learning for abusive activity sequences
     url: /2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/

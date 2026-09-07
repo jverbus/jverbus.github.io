@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Home
-description: "James Verbus: AI and physics. Work on machine learning, anomaly detection, and the LUX dark matter experiment."
+description: "James Verbus: AI and physics. Work on AI for abuse detection, anomaly detection, and the LUX dark matter experiment."
 last_modified_at: 2026-09-07
 hide_title: true
 ---
@@ -11,7 +11,7 @@ hide_title: true
     <h1 id="profile-name">James Verbus</h1>
     <p class="profile-field">AI and physics</p>
     <div class="profile-bio" id="throughline-heading">
-      <p>At LinkedIn, most recently as a Senior Staff Machine Learning Engineer, I built detection systems for Trust and created the open-source <a href="{{ '/open-source/isolation-forest/' | relative_url }}">Spark/Scala isolation-forest library</a>.</p>
+      <p>At LinkedIn, most recently as a Senior Staff Machine Learning Engineer, I created AI systems to detect bots and abusive automated activity, and developed the open-source <a href="{{ '/open-source/isolation-forest/' | relative_url }}">Spark/Scala isolation-forest library</a>.</p>
       <p>Before that, I earned my Ph.D. in physics at Brown, working on calibration of the <a href="{{ '/2016/08/18/calibrating-the-lux-dark-matter-experiment/' | relative_url }}">LUX dark matter detector</a>.</p>
     </div>
     <nav class="profile-links" id="contact" aria-label="Contact and profiles">

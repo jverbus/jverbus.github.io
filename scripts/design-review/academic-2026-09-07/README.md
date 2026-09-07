@@ -9,9 +9,9 @@ uses near-white, charcoal and blue, with a graphite dark mode.
 
 | Area | Result |
 | --- | --- |
-| Identity | Name as the main heading, with “AI and physics” directly below it. Biography uses the existing LinkedIn and Brown/LUX background. |
+| Identity | Name as the main heading, with “AI and physics” directly below it. Biography emphasizes AI for detecting bots and abusive automated activity, followed by the open-source library and Brown/LUX background. |
 | Homepage | Replaces the slogan, metric strip, route cards, repeated collection previews and contact button with an introduction and four work entries. Existing home fragment targets remain available. |
-| Selected work | `_data/home.yml` lists isolation forest, generated-face detection, activity-sequence detection and LUX calibration. Descriptions reuse existing technical copy. |
+| Selected work | `_data/home.yml` lists the 2026 Extended Isolation Forest article, generated-face detection (AI Research, 2024), activity-sequence detection (AI Engineering, 2021) and LUX calibration (Physics, 2016). All entries have a year. Descriptions reuse existing technical copy. |
 | Navigation | Writing, Projects, Publications and Talks are text links. All four remain visible on mobile without JavaScript. `/videos/` remains the Talks URL. |
 | Typography | Existing vendored Source Serif 4 and Inter, with aligned headings, comfortable reading text and subdued metadata. No new fonts or dependencies. |
 | Collections and posts | Open lists replace raised cards. Article headers, links, contact controls and footers use the quieter presentation. Tables, figures, MathML, code and demos retain their substance and functionality. |
@@ -22,6 +22,11 @@ The original CSS rules remain intact in the same stylesheet; this intentional ad
 approach preserves Castle's appearance. Other pages use `loop55`. Homepage structured
 data uses the new home description. The old configuration tagline remains available for
 Castle's original footer.
+
+The selected software entry points to the 2026 EIF article to show recent development.
+That article links to the original 2019 work; the biography still links directly to the
+library's project page. Its displayed 2026 date belongs to the featured article, not to
+the library's creation.
 
 This design implements the later approved homepage/footer changes. The prior editorial
 review's other optional holds remain unchanged: publication counts, interview copy, and
