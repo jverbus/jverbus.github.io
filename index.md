@@ -11,7 +11,7 @@ hide_title: true
     <h1 id="profile-name">James Verbus</h1>
     <p class="profile-field">AI and physics</p>
     <div class="profile-bio" id="throughline-heading">
-      <p>I was a Senior Staff Machine Learning Engineer at LinkedIn, where I built AI systems to detect bots and abusive automated activity. I also developed the open-source <a href="{{ '/open-source/isolation-forest/' | relative_url }}">Spark/Scala isolation-forest library</a>.</p>
+      <p>I have ten years of experience in machine learning and AI, including building models to detect bots and abusive automation. I also developed the open-source <a href="{{ '/open-source/isolation-forest/' | relative_url }}">Spark/Scala isolation-forest library</a>.</p>
       <p>Before that, I earned my Ph.D. in physics at Brown, working on calibration of the <a href="{{ '/2016/08/18/calibrating-the-lux-dark-matter-experiment/' | relative_url }}">LUX dark matter detector</a>.</p>
     </div>
     <nav class="profile-links" id="contact" aria-label="Contact and profiles">
