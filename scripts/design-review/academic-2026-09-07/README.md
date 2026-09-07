@@ -15,13 +15,12 @@ uses near-white, charcoal and blue, with a graphite dark mode.
 | Navigation | Writing, Projects, Publications and Talks are text links. All four remain visible on mobile without JavaScript. `/videos/` remains the Talks URL. |
 | Typography | Existing vendored Source Serif 4 and Inter, with aligned headings, comfortable reading text and subdued metadata. No new fonts or dependencies. |
 | Collections and posts | Open lists replace raised cards. Article headers, links, contact controls and footers use the quieter presentation. Tables, figures, equations, code and demos retain their substance and functionality. |
-| Castle | Existing source, assets, rendered page/head and its own index/feed entries are preserved. The shared URL exception keeps its original navigation, footer, theme metadata and `loop54` stylesheet URL. |
+| Castle | Uses the same academic UI as every other article. Its source, front matter, assets, complete rendered article, content metadata and index/feed entries remain unchanged. |
 
-The new styles are scoped to `.academic`, which is added outside Castle's source.
-The original CSS rules remain intact in the same stylesheet; this intentional additive
-approach preserves Castle's appearance. Other pages use `loop56`. Homepage structured
-data uses the new home description. The old configuration tagline remains available for
-Castle's original footer.
+The styles are scoped to `.academic`, which the shared template adds to every page,
+including Castle. All pages use stylesheet version `loop57`, the shared navigation and
+global footer, and the same light/dark theme colors. The existing stylesheet structure
+is retained. Homepage structured data uses the new home description.
 
 The selected software entry points to the 2026 EIF article to show recent development.
 That article links to the original 2019 work; the biography and selected entry link directly
@@ -37,12 +36,32 @@ the protected face/LUX passages. Post sources and publication/talk data were not
 | Finding | Implementation |
 | --- | --- |
 | 1. Provenance and face-detection wording | Added “Library project” and “Code” links to the EIF entry. Added “CVPR Workshop on Media Forensics,” “LinkedIn Engineering,” and “Brown University · LUX” below the other descriptions. The venue and engineering source are present in `_data/publications.yml`; Brown/LUX is established in the biography and thesis record. The faces description now reads “Evaluating AI-generated-face detection on GAN and diffusion images, including generators withheld from training.” The underlying article is unchanged. |
-| 2. Recognizable linked titles | Selected-work and collection titles use the existing blue at rest, a darker/lighter accent on hover, and the existing visible focus outline. Castle's own collection entry retains its previous colors through an exact-URL CSS exception. |
-| 3. Readable supporting text | Work and collection descriptions are 1rem (16px at the default root size); context, dates and categories remain smaller. Castle's description retains 0.92rem through a shared CSS exception. The mobile photo caption is 0.8rem. Testing found that it extended beyond the viewport at 320px with 200% root text sizing; the photo row now wraps the caption below the image when needed. |
+| 2. Recognizable linked titles | Selected-work and collection titles use the existing blue at rest, a darker/lighter accent on hover, and the existing visible focus outline. This also applies to Castle's entry. |
+| 3. Readable supporting text | Work and collection descriptions are 1rem (16px at the default root size), including Castle's entry; context, dates and categories remain smaller. The mobile photo caption is 0.8rem. Testing found that it extended beyond the viewport at 320px with 200% root text sizing; the photo row now wraps the caption below the image when needed. |
 | 4. Archive continuation | One ordinary “All writing →” link follows the four selected works and leads to `/posts/`. |
 | 5. Direct biography | The opening now begins “I was a Senior Staff Machine Learning Engineer at LinkedIn, where I built AI systems to detect bots and abusive automated activity.” The library follows in its own sentence; the Brown/LUX paragraph and existing links remain. |
 | Rendering and interaction review | Checked Chrome, Firefox and WebKit, including narrow widths, both themes, keyboard focus, enlarged text and the technical pages. Native Safari automation was unavailable; details below. |
-| Castle and scope | No Castle source, assets, metadata, copy or entry markup changed. No post source, collaborator credit, publication data, technical example or AI-assistance disclosure changed. The name, field label, photograph, four-work selection, fonts and palette are retained. |
+| Castle and scope | No Castle source, assets, content metadata, article copy or entry markup changed. No post source, collaborator credit, publication data, technical example or AI-assistance disclosure changed. The name, field label, photograph, four-work selection, fonts and palette are retained. |
+
+## Castle UI clarification
+
+James clarified that Castle's **text** must remain unchanged while its **UI** must match
+the rest of the site. Removed the visual exceptions in the shared default template, head,
+navigation, global footer and stylesheet. Castle now has the same article typography,
+spacing, colors and controls; its collection entry uses the same blue title and 16px
+description as the other entries. No change was made to the Castle post file.
+
+The complete rendered article remains identical, including the title, dates, description,
+body, figures, code, contact wording and post navigation. The article date/contact-copy
+exceptions remain in the shared post templates to preserve that text. In the head, only
+the browser theme colors and stylesheet cache version change; title, description,
+canonical/OG data and structured data remain identical.
+
+`AGENTS.md` now reflects this distinction. The preservation checker has an explicit
+`--allow-shared-ui` mode that compares the entire article, content metadata, source/asset
+hashes and card/feed/index entries. It allows only theme-color values and the CSS cache
+version in the head. Its default whole-page comparison remains available for historical
+checks; ten regression tests cover both modes and the protected content.
 
 ## Preservation and validation
 
@@ -55,8 +74,12 @@ The finishing pass has a second immutable baseline at
 `1619449eee8c3fd9c1c189746684f30ebb94c188`, saved at
 `/private/tmp/academic-refinement-20260907/`: 197 tracked source files and their actual
 hashes, the complete unchanged CI-config build, and Castle's source/asset manifest.
-Only `index.md`, `_data/home.yml`, the shared stylesheet and its cache version change in
-this pass, alongside these excluded review artifacts.
+That pass changed `index.md`, `_data/home.yml`, the shared stylesheet and its cache
+version, alongside these excluded review artifacts.
+
+The subsequent Castle UI correction uses an unchanged-tree baseline at
+`b73e65aad7958cb2fbebb9f5b785c942883368d7`, saved at `/private/tmp/castle-ui-20260907/`:
+200 tracked source files and hashes, the complete generated site, and Castle's manifest.
 
 - CI-config build and production build both succeed. The production validator also passes
   with `--require-absolute-site-urls`.
@@ -64,16 +87,17 @@ this pass, alongside these excluded review artifacts.
   remain; the homepage retains its old section fragment IDs.
 - `check_post_og.py`: all 10 posts pass. All 32 JSON-LD blocks parse.
 - Demo tests: 30 isolation-forest, 21 orbital-transfer and 12 LUX checks pass (63 total).
-- `check_castle.py`: source, seven local assets, complete page/head and 20 entries across
-  12 files match. The preservation checker's five regression tests pass.
-- The final Castle comparison uses the same browser navigation sequence as the baseline:
-  all 184 elements have identical computed styles in desktop/mobile and light/dark modes,
-  and all four corresponding viewport screenshots are byte-identical.
-- Castle's Writing entry also has identical computed styles before and after the finishing
-  pass, at rest and on hover, in Chrome, Firefox and WebKit across both sizes and themes.
+- `check_castle.py --allow-shared-ui`: source, seven local assets, the complete article,
+  content metadata and 20 entries across 12 files match. All ten checker regression tests
+  pass, including rejection of article text, code whitespace, image, title, description
+  and date changes. The old whole-page and screenshot equality requirement is superseded
+  by James's instruction to share the UI.
+- Castle's article styles, navigation and global footer match the shared presentation
+  used by LUX in Chrome, Firefox and WebKit at desktop/mobile sizes in both themes.
+  Its Writing entry uses the same title color and description size as other entries.
 - All ten complete rendered article subtrees match the baseline, including their headers,
   body copy, figures, equations, code, collaborator credits and AI-assistance disclosures.
-  All 42 non-homepage HTML bodies are unchanged from the finishing-pass baseline.
+  All 42 non-Castle HTML bodies are unchanged from the Castle UI correction baseline.
 - Browser review: Chrome 152 covers nine pages at desktop 1440×1080 and mobile 390×844,
   in light and dark modes (36 combinations). Firefox 155 and Playwright WebKit 26.6 each
   cover the homepage, Writing, Publications, Projects, Talks, EIF, LUX and orbital-transfer
@@ -84,6 +108,8 @@ this pass, alongside these excluded review artifacts.
   also checks the blue title/hover states and visible keyboard focus on all four work
   titles, both software links and “All writing.” Chrome/Firefox use Tab; WebKit uses
   [macOS's Option-Tab link-navigation shortcut](https://support.apple.com/en-euro/guide/safari/cpsh003/mac).
+- Castle additionally passes checks for keyboard navigation, visible navigation without
+  JavaScript at 320/760/768px, and 200% root text sizing in all three engines.
 - Seventeen additional checks cover visible navigation without JavaScript at 320/760/768
   pixels, hidden demo fallbacks, keyboard skip/navigation focus, light/dark text contrast,
   and white print output while the system is in dark mode.
@@ -113,5 +139,8 @@ complete page; all were captured from local builds using the same viewport sizes
 
 [Firefox mobile](home-firefox-mobile.png) · [WebKit mobile, dark mode](home-webkit-mobile-dark.png) ·
 [Firefox at 320px with enlarged text](home-firefox-320-enlarged.png)
+
+[Castle desktop](castle-desktop.png) · [Castle mobile](castle-mobile.png) ·
+[Castle desktop, dark mode](castle-desktop-dark.png) · [Castle mobile, dark mode](castle-mobile-dark.png)
 
 ![New desktop homepage](home-after-desktop.png)

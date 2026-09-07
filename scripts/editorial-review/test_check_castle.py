@@ -1,4 +1,4 @@
-"""Regression tests for Castle-specific feed and sitemap preservation.
+"""Regression tests for Castle page, metadata, feed and sitemap preservation.
 
 Run: python3 scripts/editorial-review/test_check_castle.py
 """
@@ -8,7 +8,7 @@ import tempfile
 import unittest
 import xml.etree.ElementTree as ET
 
-from check_castle import ROUTE, castle_entries
+from check_castle import ROUTE, Document, castle_entries, compare_page
 
 
 CASTLE_URL = "https://jverbus.github.io" + ROUTE
@@ -20,6 +20,65 @@ RSS = f"""<rss version="2.0"><channel><title>Site feed</title>
 <item><title>Another article</title><link>{OTHER_URL}</link>
 <description>Other copy.</description><pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate></item>
 </channel></rss>"""
+
+PAGE = """<!DOCTYPE html><html><head><title>Castle</title>
+<meta name="description" content="Original Castle description.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f3ea">
+<link rel="stylesheet" href="/assets/css/modern.css?v=loop54">
+<script type="application/ld+json">{"headline":"Castle","datePublished":"2016-10-07"}</script>
+</head><body><header>Videos</header><article class="unit-article layout-post">
+<h1>Castle</h1><p>Original Castle copy.</p><pre><code>line one\n  line two</code></pre>
+<img src="/castle.png" alt="Original figure"><aside>Original contact copy.</aside>
+</article><footer>Old site tagline</footer></body></html>"""
+
+
+class CastlePageTests(unittest.TestCase):
+    def compare(self, after, allow_shared_ui=True):
+        compare_page(Document(PAGE), Document(after), allow_shared_ui)
+
+    def test_shared_ui_changes_are_allowed_only_in_explicit_mode(self):
+        after = PAGE.replace('<body>', '<body class="academic">').replace(
+            '<header>Videos</header>', '<header>Talks</header>').replace(
+            'Old site tagline', 'Shared footer').replace('#f7f3ea', '#fcfcfa').replace(
+            'loop54', 'loop57')
+        self.compare(after)
+        with self.assertRaisesRegex(AssertionError, 'Castle page changed'):
+            self.compare(after, allow_shared_ui=False)
+
+    def test_article_text_markup_code_and_credit_changes_are_rejected(self):
+        for original, replacement in [
+            ('Original Castle copy.', 'Rewritten Castle copy.'),
+            ('<h1>Castle</h1>', '<h1>New title</h1>'),
+            ('  line two', 'line two'),
+            ('/castle.png', '/replacement.png'),
+            ('Original figure', 'Changed figure credit'),
+            ('Original contact copy.', 'Rewritten contact copy.'),
+        ]:
+            with self.subTest(original=original), self.assertRaisesRegex(
+                    AssertionError, 'Castle article changed'):
+                self.compare(PAGE.replace(original, replacement))
+
+    def test_nonpresentation_metadata_changes_are_rejected(self):
+        for original, replacement in [
+            ('<title>Castle</title>', '<title>Different title</title>'),
+            ('Original Castle description.', 'Changed description.'),
+            ('2016-10-07', '2026-09-07'),
+            ('/assets/css/modern.css', 'https://other.example/assets/css/modern.css'),
+            ('(prefers-color-scheme: light)', '(prefers-color-scheme: dark)'),
+        ]:
+            with self.subTest(original=original), self.assertRaisesRegex(
+                    AssertionError, 'Castle metadata changed'):
+                self.compare(PAGE.replace(original, replacement))
+
+    def test_required_article_and_head_cannot_be_removed(self):
+        for original, replacement in [('layout-post', 'layout-page'), ('head>', 'missing-head>')]:
+            with self.subTest(original=original), self.assertRaisesRegex(
+                    AssertionError, 'Expected exactly one Castle'):
+                self.compare(PAGE.replace(original, replacement))
+
+    def test_metadata_elements_cannot_be_removed(self):
+        with self.assertRaisesRegex(AssertionError, 'Castle metadata changed'):
+            self.compare(PAGE.replace('<link rel="stylesheet" href="/assets/css/modern.css?v=loop54">', ''))
 
 
 class CastleXmlTests(unittest.TestCase):

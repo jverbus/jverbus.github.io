@@ -1,15 +1,19 @@
 """Compare Castle against an immutable pre-edit working-tree build.
 
-Usage: python3 scripts/editorial-review/check_castle.py BASELINE_DIR [SITE_DIR]
+Usage: python3 scripts/editorial-review/check_castle.py BASELINE_DIR [SITE_DIR] [--allow-shared-ui]
 Only whitespace-only HTML text nodes outside pre/code/script/style are ignored.
+The shared-UI mode permits page chrome and styling changes while preserving the complete
+article subtree, metadata (except theme colors and the CSS cache version), and entries.
 """
 
+import argparse
 import hashlib
 from html.parser import HTMLParser
 import json
 from pathlib import Path
+import re
 import subprocess
-import sys
+from urllib.parse import urlsplit
 import xml.etree.ElementTree as ET
 
 
@@ -78,6 +82,41 @@ class Document(HTMLParser):
         self.current.children.append(Node("declaration", [("text", decl)]))
 
 
+def content_and_metadata(doc):
+    articles = [n for n in doc.nodes if n.tag == "article" and
+                "layout-post" in dict(n.attrs).get("class", "").split()]
+    assert len(articles) == 1, "Expected exactly one Castle article"
+    heads = [n for n in doc.nodes if n.tag == "head"]
+    assert len(heads) == 1, "Expected exactly one Castle head"
+    metadata = heads[0].normalized()
+    for node in metadata[2]:
+        if not isinstance(node, list):
+            continue
+        tag, attributes, _ = node
+        attrs = dict(attributes)
+        if tag == "meta" and attrs.get("name") == "theme-color":
+            node[1] = [(key, "SHARED_THEME_COLOR" if key == "content" else value)
+                       for key, value in attributes]
+        elif (tag == "link" and "stylesheet" in attrs.get("rel", "").split() and
+              urlsplit(attrs.get("href", "")).path == "/assets/css/modern.css"):
+            node[1] = [(key, re.sub(r"([?&]v=)loop\d+(?=&|$)", r"\1SHARED_CSS_VERSION", value)
+                       if key == "href" else value) for key, value in attributes]
+    return articles[0].normalized(), metadata
+
+
+def compare_page(old, new, allow_shared_ui=False):
+    if allow_shared_ui:
+        old_article, old_metadata = content_and_metadata(old)
+        new_article, new_metadata = content_and_metadata(new)
+        assert old_article == new_article, "Castle article changed"
+        assert old_metadata == new_metadata, "Castle metadata changed"
+    else:
+        assert old.root.normalized() == new.root.normalized(), "Castle page changed"
+        assert [n.normalized() for n in old.nodes if n.tag == "head"] == [
+            n.normalized() for n in new.nodes if n.tag == "head"
+        ], "Castle head metadata changed"
+
+
 def castle_entries(site):
     entries = {}
     for path in sorted(site.rglob("*.html")):
@@ -117,8 +156,13 @@ def castle_entries(site):
 
 
 def main():
-    baseline = Path(sys.argv[1])
-    site = Path(sys.argv[2] if len(sys.argv) > 2 else "_site")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("baseline", type=Path)
+    parser.add_argument("site", type=Path, nargs="?", default=Path("_site"))
+    parser.add_argument("--allow-shared-ui", action="store_true",
+                        help="Allow shared presentation changes; preserve article, metadata and entries")
+    args = parser.parse_args()
+    baseline, site = args.baseline, args.site
     hashes = json.loads((baseline / "castle_hashes.json").read_text())
     for path, expected in hashes.items():
         subprocess.run(["cmp", str(baseline / "source" / path), path], check=True)
@@ -126,13 +170,11 @@ def main():
     page = ROUTE.strip("/") + "/index.html"
     old = Document((baseline / "rendered" / page).read_text())
     new = Document((site / page).read_text())
-    assert old.root.normalized() == new.root.normalized(), "Castle page changed"
-    assert [n.normalized() for n in old.nodes if n.tag == "head"] == [
-        n.normalized() for n in new.nodes if n.tag == "head"
-    ], "Castle head metadata changed"
+    compare_page(old, new, args.allow_shared_ui)
     before, after = castle_entries(baseline / "rendered"), castle_entries(site)
     assert before == after, "Castle card/feed/index entries changed"
-    print(f"Castle preserved: source, {len(hashes) - 1} local assets, complete page/head, "
+    scope = "complete article and metadata" if args.allow_shared_ui else "complete page/head"
+    print(f"Castle preserved: source, {len(hashes) - 1} local assets, {scope}, "
           f"{sum(map(len, before.values()))} entries in {len(before)} files.")
 
 

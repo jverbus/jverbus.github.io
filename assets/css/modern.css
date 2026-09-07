@@ -127,8 +127,7 @@
   --max-readable: 68ch;
 }
 
-/* Academic palette. The original tokens/rules remain intact for Castle;
- * site/default.html opts every other page into this presentation. */
+/* Shared academic palette. site/default.html applies it to every page. */
 .academic {
   --bg: #fcfcfa;
   --surface: #fff;
@@ -2408,7 +2407,7 @@ h3:hover .heading-anchor,
 }
 
 /* Academic presentation: text links, open lists, and a compact personal homepage.
- * Scope every rule to .academic so Castle keeps its complete original rendering. */
+ * Scope every rule to .academic, the shared presentation for every page. */
 body.academic {
   background: var(--bg);
 }
@@ -2762,19 +2761,6 @@ body.academic {
 .academic .post-list-description {
   line-height: 1.65;
   font-size: 1rem;
-}
-
-/* Preserve Castle's own entry without changing its source or rendered markup. */
-.academic .post-list-title a[href$="/2016/10/07/insight-castle-compromised-account-detection/"] {
-  color: var(--heading);
-}
-
-.academic .post-list-title a[href$="/2016/10/07/insight-castle-compromised-account-detection/"]:hover {
-  color: var(--accent);
-}
-
-.academic .post-list-item:has(.post-list-title a[href$="/2016/10/07/insight-castle-compromised-account-detection/"]) .post-list-description {
-  font-size: 0.92rem;
 }
 
 .academic .post-list-summary {

@@ -1,7 +1,7 @@
-{% assign preserve_castle = false %}{% if page.url == '/2016/10/07/insight-castle-compromised-account-detection/' %}{% assign preserve_castle = true %}{% endif %}<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 {% include site/head.html %}
-{% capture body_classes %}layout-{{ page.layout | default: 'page' }} page-{{ page.title | default: 'site' | slugify }}{% if page.url == '/' or page.url == '/index.html' %} page-home{% endif %}{% if page.math %} has-math{% endif %}{% unless preserve_castle %} academic{% endunless %}{% endcapture %}
+{% capture body_classes %}layout-{{ page.layout | default: 'page' }} page-{{ page.title | default: 'site' | slugify }}{% if page.url == '/' or page.url == '/index.html' %} page-home{% endif %}{% if page.math %} has-math{% endif %} academic{% endcapture %}
 <body class="{{ body_classes | split: ' ' | uniq | join: ' ' }}">
 
 <a class="skip-link" href="#main-content">Skip to main content</a>
