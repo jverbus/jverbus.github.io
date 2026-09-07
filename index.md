@@ -11,7 +11,7 @@ hide_title: true
     <h1 id="profile-name">James Verbus</h1>
     <p class="profile-field">AI and physics</p>
     <div class="profile-bio" id="throughline-heading">
-      <p>At LinkedIn, most recently as a Senior Staff Machine Learning Engineer, I created AI systems to detect bots and abusive automated activity, and developed the open-source <a href="{{ '/open-source/isolation-forest/' | relative_url }}">Spark/Scala isolation-forest library</a>.</p>
+      <p>I was a Senior Staff Machine Learning Engineer at LinkedIn, where I built AI systems to detect bots and abusive automated activity. I also developed the open-source <a href="{{ '/open-source/isolation-forest/' | relative_url }}">Spark/Scala isolation-forest library</a>.</p>
       <p>Before that, I earned my Ph.D. in physics at Brown, working on calibration of the <a href="{{ '/2016/08/18/calibrating-the-lux-dark-matter-experiment/' | relative_url }}">LUX dark matter detector</a>.</p>
     </div>
     <nav class="profile-links" id="contact" aria-label="Contact and profiles">
@@ -40,8 +40,17 @@ hide_title: true
       <div class="work-copy">
         <h3><a href="{{ work.url | relative_url }}">{{ work.title }}</a></h3>
         <p>{{ work.description }}</p>
+        {% if work.context %}<p class="work-context">{{ work.context | escape }}</p>{% endif %}
+        {% if work.links %}
+        <ul class="work-links">
+          {% for link in work.links %}
+          <li><a href="{% if link.url contains '://' %}{{ link.url | escape }}{% else %}{{ link.url | relative_url | escape }}{% endif %}">{{ link.label | escape }}</a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
       </div>
     </li>
     {% endfor %}
   </ul>
+  <p class="work-archive"><a href="{{ '/posts/' | relative_url }}">All writing <span aria-hidden="true">&rarr;</span></a></p>
 </section>

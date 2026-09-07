@@ -2675,19 +2675,49 @@ body.academic {
 
 .academic .work-copy h3 a,
 .academic .post-list-title a {
-  color: var(--heading);
+  color: var(--accent);
 }
 
 .academic .work-copy h3 a:hover,
 .academic .post-list-title a:hover {
-  color: var(--accent);
+  color: var(--accent-hover);
 }
 
 .academic .work-copy > p {
   margin: 0;
   color: var(--text-muted);
-  font-size: 0.92rem;
+  font-size: 1rem;
   line-height: 1.6;
+}
+
+.academic .work-copy > .work-context {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.academic .work-copy .work-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1rem;
+  list-style: none;
+  margin: 0.3rem 0 0;
+  padding: 0;
+  font-size: 0.85rem;
+}
+
+.academic .work-links li {
+  margin: 0;
+}
+
+.academic .work-links a {
+  display: inline-block;
+  padding: 0.2rem 0;
+}
+
+.academic .work-archive {
+  margin: 1rem 0 0;
+  font-size: 1rem;
 }
 
 .academic .post-list {
@@ -2731,6 +2761,19 @@ body.academic {
 
 .academic .post-list-description {
   line-height: 1.65;
+  font-size: 1rem;
+}
+
+/* Preserve Castle's own entry without changing its source or rendered markup. */
+.academic .post-list-title a[href$="/2016/10/07/insight-castle-compromised-account-detection/"] {
+  color: var(--heading);
+}
+
+.academic .post-list-title a[href$="/2016/10/07/insight-castle-compromised-account-detection/"]:hover {
+  color: var(--accent);
+}
+
+.academic .post-list-item:has(.post-list-title a[href$="/2016/10/07/insight-castle-compromised-account-detection/"]) .post-list-description {
   font-size: 0.92rem;
 }
 
@@ -2889,6 +2932,7 @@ body.academic {
 
   .academic .profile-photo {
     display: flex;
+    flex-wrap: wrap;
     align-items: end;
     gap: 1rem;
   }
@@ -2901,7 +2945,7 @@ body.academic {
   .academic .profile-photo figcaption {
     margin: 0;
     max-width: 18ch;
-    font-size: 0.72rem;
+    font-size: 0.8rem;
   }
 
   .academic .selected-work {

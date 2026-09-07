@@ -5,22 +5,30 @@ selected_work:
     title: Extended isolation forest for Spark/Scala
     url: /2026/03/18/announcing-extended-isolation-forest-support/
     description: "Adding Extended Isolation Forest to the Spark/Scala library and comparing it with the reference implementation."
+    links:
+      - label: Library project
+        url: /open-source/isolation-forest/
+      - label: Code
+        url: https://github.com/linkedin/isolation-forest
 
   - area: AI Research
     year: "2024"
     anchor: research-heading
     title: Finding AI-generated faces in the wild
     url: /2024/08/15/finding-ai-generated-faces-in-the-wild/
-    description: "Testing a face detector on GAN and diffusion models, including generators withheld from training."
+    description: "Evaluating AI-generated-face detection on GAN and diffusion images, including generators withheld from training."
+    context: CVPR Workshop on Media Forensics
 
   - area: AI Engineering
     year: "2021"
     title: Deep learning for abusive activity sequences
     url: /2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/
     description: "Detecting low-volume scrapers from the order and timing of their requests."
+    context: LinkedIn Engineering
 
   - area: Physics
     year: "2016"
     title: Calibrating the LUX dark matter experiment
     url: /2016/08/18/calibrating-the-lux-dark-matter-experiment/
     description: "Measuring the charge and light response of liquid xenon to low-energy nuclear recoils using D-D neutron scattering in LUX."
+    context: Brown University · LUX
