@@ -46,6 +46,11 @@ There is a baseline of pre-existing checker behavior; never introduce NEW warnin
 - Pill-shaped controls must appear in the `:focus-visible { border-radius: 999px }` exception
   list (the global focus rule sets 6px corners).
 - No inline styles, no new dependencies, no frameworks.
+- The September 2026 redesign is scoped to `.academic`, added in `site/default.html` to
+  every page, including Castle. Its tokens follow `:root`; its component rules precede the
+  existing media blocks. Keep new styles in this scope and bump the shared stylesheet
+  version. Castle uses the same UI, navigation and global footer as the rest of the site;
+  its article content remains protected. Do not add a visual opt-out to its source.
 
 ### Typography (two voices)
 - Running prose = Source Serif 4; UI chrome = Inter. Serif is applied via **direct-child
@@ -117,13 +122,17 @@ Each demo is one vanilla-JS IIFE in `assets/js/<name>-demo.js` plus an include i
   their supporting home/Writing/project/publication/video/archive copy and data; post
   header/contact and demo explanations; and these guardrails/review records. Linked papers,
   notebooks, slides, assets, demo algorithms, and other repositories are read-only evidence.
-- **Castle is excluded, directly and indirectly.** Preserve its source, front matter, local
-  assets, complete rendered page/head/contact/footer, and its own card/feed/index entries.
-  Before shared edits, save an actual unchanged-tree build and source/asset hashes outside
-  the repository. Compare after each shared change and at completion. An exception must use
-  Castle's existing URL outside its source; never add an opt-out field or relax preservation
-  checks. DOM comparison may ignore only inter-element formatting whitespace. If no baseline
-  can be verified, defer the risky shared change and report it.
+- **Castle is excluded from editorial changes, directly and indirectly.** Preserve its
+  source, front matter, local assets, complete rendered article (including title, dates,
+  contact copy and post navigation), content metadata, and its own card/feed/index entries.
+  James clarified that its UI must match the rest of the site: shared styling, navigation,
+  global footer, browser theme colors and stylesheet cache version may change. Before shared
+  edits, save an actual unchanged-tree build and source/asset hashes outside the repository.
+  Compare after shared changes and at completion with `check_castle.py --allow-shared-ui`;
+  this mode still compares the complete article and metadata, allowing only theme colors
+  and the CSS cache version in the head. Default mode retains the historical whole-page
+  check. DOM comparison may ignore only inter-element formatting whitespace. Never edit
+  Castle's source to implement a shared UI change.
 - Write from the specific problem, mechanism, observation, or limitation. Consolidate repeated
   explanations, keeping technical substance, equations, MathML, code, numbers, units, datasets,
   failures, figures, credits, AI-assistance disclosures, formal titles, distinct resource links,
@@ -157,3 +166,21 @@ Each demo is one vanilla-JS IIFE in `assets/js/<name>-demo.js` plus an include i
 - Complete safe authorized edits without another approval conversation. Report the draft and
   evidence limits for James's eventual review; do not claim his approval of its voice. Keep the
   per-finding and pattern review in `scripts/editorial-review/`, excluded from generated content.
+
+## Academic redesign (September 7, 2026)
+
+- James approved an academic visual redesign with `AI and physics` below his name. The home
+  page contains a short biography, the existing LUX photograph and caption, four selected works,
+  and text navigation/contact links. Full writing, project, publication and talk collections
+  remain on their existing URLs. Selected home entries live in `_data/home.yml`.
+- This later authorization replaces the editorial pass's homepage metrics/common-thread and
+  visible footer holds. All other editorial holds remain. James's subsequent clarification
+  keeps Castle's text protected while applying the same UI as the rest of the site. The new
+  home description supplies its own structured data. Do not reintroduce removed sections,
+  metrics or Castle styling exceptions to satisfy historical editorial-only checks.
+- Save an actual baseline build before shared edits. Run `check_castle.py BASELINE_DIR
+  --allow-shared-ui` against it, and check Castle's shared design in light/dark and
+  desktop/mobile when changing CSS. Preserve post sources, figures, code, math, credits and
+  AI-assistance disclosures.
+- Review screenshots and validation notes belong in `scripts/design-review/`, excluded from
+  Jekyll output. The four mobile navigation links stay visible without JavaScript.

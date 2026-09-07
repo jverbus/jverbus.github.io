@@ -21,7 +21,7 @@
           {% endif %}
 
           <li class="{{ item.id }}{% if is_active %} active{% endif %}">
-            <a href="{{ item.url | relative_url }}"{% if is_active %} aria-current="page"{% endif %}>{{ item.label }}</a>
+            <a href="{{ item.url | relative_url }}"{% if is_active %} aria-current="page"{% endif %}{% if item.id == 'videos' and page.url == '/' %} id="talks-heading"{% endif %}>{% if item.id == 'videos' %}Talks{% else %}{{ item.label }}{% endif %}</a>
           </li>
         {% endfor %}
       </ul>

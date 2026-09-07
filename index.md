@@ -1,235 +1,56 @@
 ---
 layout: page
 title: Home
-description: "James Verbus: machine learning engineer, physicist, and author of the Spark/Scala isolation-forest library."
-last_modified_at: 2026-09-06
+description: "James Verbus: AI and physics. Work on AI for abuse detection, anomaly detection, and the LUX dark matter experiment."
+last_modified_at: 2026-09-07
 hide_title: true
 ---
 
-<section class="home-hero" id="about">
-  <div class="home-hero-grid">
-    <div class="home-hero-copy">
-      <p class="home-eyebrow">James Verbus</p>
-      <h1 class="home-hero-headline">AI systems for<br><span class="home-hero-headline-muted">adversarial settings.</span></h1>
-      <p class="home-lede home-lede-primary">At LinkedIn, I worked on automation detection and AI-generated profile photos, and built the Spark/Scala isolation-forest library.</p>
-      <div class="home-hero-actions" aria-label="Primary links">
-        <a class="cta-button" href="{{ '/posts/' | relative_url }}">Read posts</a>
-        <a class="secondary-button" href="#start-here">Representative work <span aria-hidden="true">&darr;</span></a>
-      </div>
+<section class="profile" id="about" aria-labelledby="profile-name">
+  <div class="profile-copy">
+    <h1 id="profile-name">James Verbus</h1>
+    <p class="profile-field">AI and physics</p>
+    <div class="profile-bio" id="throughline-heading">
+      <p>I was a Senior Staff Machine Learning Engineer at LinkedIn, where I built AI systems to detect bots and abusive automated activity. I also developed the open-source <a href="{{ '/open-source/isolation-forest/' | relative_url }}">Spark/Scala isolation-forest library</a>.</p>
+      <p>Before that, I earned my Ph.D. in physics at Brown, working on calibration of the <a href="{{ '/2016/08/18/calibrating-the-lux-dark-matter-experiment/' | relative_url }}">LUX dark matter detector</a>.</p>
     </div>
+    <nav class="profile-links" id="contact" aria-label="Contact and profiles">
+      <ul id="conversations-heading">
+        <li><a href="mailto:james.verbus@gmail.com">Email</a></li>
+        <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ">Google Scholar</a></li>
+        <li><a href="https://github.com/jverbus">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/jamesverbus/">LinkedIn</a></li>
+        <li><a href="https://orcid.org/0000-0002-5812-022X">ORCID</a></li>
+        <li><a href="https://x.com/JamesVerbus">X</a></li>
+      </ul>
+    </nav>
+  </div>
+  <figure class="profile-photo">
+    <img src="{{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }}" srcset="{{ '/assets/images/jverbus_lux_detector-400.jpg' | relative_url }} 400w, {{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }} 800w" sizes="(max-width: 760px) 160px, 232px" alt="James Verbus working on the LUX dark matter detector" width="800" height="800" loading="eager" decoding="async" fetchpriority="high">
+    <figcaption>LUX dark matter detector, Sanford Underground Research Facility.</figcaption>
+  </figure>
+</section>
 
-    <div class="home-hero-media">
-      <figure class="home-hero-photo">
-        <img src="{{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }}" srcset="{{ '/assets/images/jverbus_lux_detector-400.jpg' | relative_url }} 400w, {{ '/assets/images/jverbus_lux_detector.jpg' | relative_url }} 800w" sizes="(max-width: 760px) calc(100vw - 2rem), 420px" alt="James Verbus working on the LUX dark matter detector" width="800" height="800" loading="eager" decoding="async" fetchpriority="high">
-        <figcaption>LUX dark matter detector, Sanford Underground Research Facility.</figcaption>
-      </figure>
-
-      <div class="home-contact" id="contact" aria-label="Contact links">
-        <ul class="contact-list">
-          <li><a href="mailto:james.verbus@gmail.com">{% include site/icons/email.svg %} Email</a></li>
-          <li><a href="https://github.com/jverbus">{% include site/icons/github.svg %} GitHub</a></li>
-          <li><a href="https://www.linkedin.com/in/jamesverbus/">{% include site/icons/linkedin.svg %} LinkedIn</a></li>
-          <li><a href="https://x.com/JamesVerbus">{% include site/icons/x.svg %} X</a></li>
-          <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ">{% include site/icons/google-scholar.svg %} Google Scholar</a></li>
-          <li><a href="https://orcid.org/0000-0002-5812-022X">{% include site/icons/orcid.svg %} ORCID</a></li>
+<section class="selected-work" id="start-here" aria-labelledby="start-here-heading">
+  <h2 id="start-here-heading">Selected work</h2>
+  <ul class="work-list">
+    {% for work in site.data.home.selected_work %}
+    <li{% if work.anchor %} id="{{ work.anchor }}"{% endif %}>
+      <p class="work-meta">{{ work.area }}{% if work.year %}<span>{{ work.year }}</span>{% endif %}</p>
+      <div class="work-copy">
+        <h3><a href="{{ work.url | relative_url }}">{{ work.title }}</a></h3>
+        <p>{{ work.description }}</p>
+        {% if work.context %}<p class="work-context">{{ work.context | escape }}</p>{% endif %}
+        {% if work.links %}
+        <ul class="work-links">
+          {% for link in work.links %}
+          <li><a href="{% if link.url contains '://' %}{{ link.url | escape }}{% else %}{{ link.url | relative_url | escape }}{% endif %}">{{ link.label | escape }}</a></li>
+          {% endfor %}
         </ul>
+        {% endif %}
       </div>
-    </div>
-  </div>
-
-  <ul class="proof-grid" aria-label="Career highlights">
-    <li><a href="{{ '/2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/' | relative_url }}"><strong>10 yrs</strong><span>LinkedIn Trust AI</span></a></li>
-    <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ"><strong>30+</strong><span>papers</span></a></li>
-    <li><a href="https://scholar.google.com/citations?user=_ksEziAAAAAJ"><strong>10k+</strong><span>citations</span></a></li>
-    <li><a href="{{ '/publications/#patents' | relative_url }}"><strong>3</strong><span>patents</span></a></li>
-    <li><a href="https://github.com/linkedin/isolation-forest"><strong>250+</strong><span>GitHub stars</span></a></li>
+    </li>
+    {% endfor %}
   </ul>
-
-  <nav class="home-route-grid" aria-label="Primary work areas">
-    <a class="home-route-card" href="{{ '/posts/' | relative_url }}">
-      <span class="home-route-kicker">Detection Systems</span>
-      <strong>Technical posts on abuse detection</strong>
-      <span>Read field notes and case studies.</span>
-    </a>
-    <a class="home-route-card" href="{{ '/publications/' | relative_url }}">
-      <span class="home-route-kicker">Research</span>
-      <strong>Papers, patents, and my physics thesis</strong>
-      <span>Browse posters and engineering writeups, too.</span>
-    </a>
-    <a class="home-route-card" href="{{ '/videos/' | relative_url }}">
-      <span class="home-route-kicker">Talks / Projects</span>
-      <strong>Workshop recordings, talks, and demos</strong>
-      <span>Watch or try them yourself.</span>
-    </a>
-  </nav>
-
-</section>
-
-<section class="home-section home-start" id="start-here" aria-labelledby="start-here-heading">
-  <div class="section-heading">
-    <p class="section-kicker">What I work on</p>
-    <h2 id="start-here-heading">Representative work</h2>
-  </div>
-  <div class="home-start-grid" role="list">
-    <article class="home-start-card" role="listitem">
-      <p class="home-start-label">Sequence modeling</p>
-      <h3><a href="{{ '/2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/' | relative_url }}">Deep learning for abusive activity sequences</a></h3>
-      <p>Detecting low-volume scrapers from the order and timing of their requests.</p>
-    </article>
-    <article class="home-start-card" role="listitem">
-      <p class="home-start-label">Research</p>
-      <h3><a href="{{ '/2024/08/15/finding-ai-generated-faces-in-the-wild/' | relative_url }}">Finding AI-generated faces in the wild</a></h3>
-      <p>Testing a face detector on GAN and diffusion models, including generators withheld from training.</p>
-    </article>
-    <article class="home-start-card" role="listitem">
-      <p class="home-start-label">Workshop</p>
-      <h3><a href="{{ '/2026/01/09/brown-physics-ai-winter-school-workshop/' | relative_url }}">Reinforcement learning for orbital transfers</a></h3>
-      <p>Training PPO policies for orbital transfers and comparing them with the Hohmann solution.</p>
-    </article>
-    <article class="home-start-card" role="listitem">
-      <p class="home-start-label">Open source anomaly detection</p>
-      <h3><a href="{{ '/open-source/isolation-forest/' | relative_url }}">Open-source Spark/Scala isolation-forest library</a></h3>
-      <p>How random partitions identify unusual account activity, and how to distribute training and scoring in Spark.</p>
-    </article>
-  </div>
-  <p class="home-archive-link"><a href="{{ '/posts/' | relative_url }}">View all writing</a></p>
-</section>
-
-<section class="home-section home-throughline" aria-labelledby="throughline-heading">
-  <div class="section-heading">
-    <p class="section-kicker">Career</p>
-    <h2 id="throughline-heading">Background</h2>
-  </div>
-  <div class="home-throughline-copy">
-    <p>At LinkedIn, most recently as a Senior Staff Machine Learning Engineer, I built production detection systems for Trust. I created and open-sourced the Spark/Scala isolation-forest library and led AI productivity work for Trust engineering teams.</p>
-    <p>Before LinkedIn, I earned my Ph.D. in physics at Brown working on <a href="{{ '/2016/08/18/calibrating-the-lux-dark-matter-experiment/' | relative_url }}">LUX</a>, one of the world's most sensitive dark-matter detectors. The common thread is practical measurement: extracting weak signals from noisy data, checking uncertainty, and making systems useful when ground truth is incomplete.</p>
-  </div>
-</section>
-
-<section class="home-section" aria-labelledby="projects-heading">
-  <div class="section-heading">
-    <h2 id="projects-heading">Projects</h2>
-  </div>
-  <div class="post-list" role="list">
-    {% for item in site.data.projects.items limit:1 %}
-      {% include site/card.html
-        card_clickable='on'
-        card_class='project-list-item'
-        image=item.image
-        image_alt=item.image_alt
-        image_class='project-list-thumb'
-        content_class='project-list-content'
-        image_width=item.image_width
-        image_height=item.image_height
-        date=item.label
-        title=item.title
-        url=item.url
-        description=item.description
-      %}
-    {% endfor %}
-  </div>
-  <p class="home-archive-link"><a href="{{ '/open-source/' | relative_url }}">View projects</a></p>
-</section>
-
-<section class="home-section" aria-labelledby="research-heading">
-  <div class="section-heading">
-    <h2 id="research-heading">Research / Publications</h2>
-  </div>
-  <div class="post-list publication-list" role="list">
-    {% assign selected_publications_section = site.data.publications.sections | first %}
-    {% assign selected_publications = selected_publications_section.items %}
-    {% for item in selected_publications limit:2 %}
-      {% include site/card.html
-        card_clickable='on'
-        card_class='publication-list-item'
-        date=item.date
-        title=item.title
-        url=item.url
-        authors=item.authors
-        venue=item.venue
-        links=item.links
-      %}
-    {% endfor %}
-    {% assign patents_section = site.data.publications.sections | where: "title", "Patents" | first %}
-    {% assign patent_items = patents_section.items | where: "title", "Deep Learning to Detect Abusive Sequences of User Activity in Online Network" %}
-    {% assign item = patent_items | first %}
-    {% include site/card.html
-      card_clickable='on'
-      card_class='publication-list-item'
-      date=item.date
-      title=item.title
-      url=item.url
-      authors=item.authors
-      meta=item.meta
-      links=item.links
-    %}
-  </div>
-  <p class="home-archive-link"><a href="{{ '/publications/' | relative_url }}">View publications</a></p>
-</section>
-
-<section class="home-section" aria-labelledby="talks-heading">
-  <div class="section-heading">
-    <h2 id="talks-heading">Talks / Videos</h2>
-  </div>
-  <div class="post-list" role="list">
-    {% assign selected_talks_section = site.data.videos.sections | first %}
-    {% assign llm_talk = selected_talks_section.items | where: "date", "2025" | first %}
-    {% include site/card.html
-      card_class='video-list-item'
-      image=llm_talk.image
-      image_alt=llm_talk.image_alt
-      image_class='video-list-thumb'
-      content_class='video-list-content'
-      date=llm_talk.date
-      title=llm_talk.title
-      url=llm_talk.url
-      link_target='_blank'
-      link_rel='noopener'
-      summary=llm_talk.summary
-      venue=llm_talk.venue
-      links=llm_talk.links
-    %}
-    {% assign panels_section = site.data.videos.sections | where: "title", "Panels" | first %}
-    {% assign sxsw_panel = panels_section.items | first %}
-    {% include site/card.html
-      card_class='video-list-item'
-      image=sxsw_panel.image
-      image_alt=sxsw_panel.image_alt
-      image_class='video-list-thumb'
-      content_class='video-list-content'
-      date=sxsw_panel.date
-      title=sxsw_panel.title
-      url=sxsw_panel.url
-      link_target='_blank'
-      link_rel='noopener'
-      summary=sxsw_panel.summary
-      venue=sxsw_panel.venue
-      links=sxsw_panel.links
-    %}
-    {% assign abuse_talk = selected_talks_section.items | where: "date", "2019" | first %}
-    {% include site/card.html
-      card_class='video-list-item'
-      image=abuse_talk.image
-      image_alt=abuse_talk.image_alt
-      image_class='video-list-thumb'
-      content_class='video-list-content'
-      date=abuse_talk.date
-      title=abuse_talk.title
-      url=abuse_talk.url
-      link_target='_blank'
-      link_rel='noopener'
-      summary=abuse_talk.summary
-      venue=abuse_talk.venue
-      links=abuse_talk.links
-    %}
-  </div>
-  <p class="home-archive-link"><a href="{{ '/videos/' | relative_url }}">View videos</a></p>
-</section>
-
-<section class="home-section" aria-labelledby="conversations-heading">
-  <div class="section-heading">
-    <h2 id="conversations-heading">Contact</h2>
-  </div>
-  <p>Questions or corrections? Email me.</p>
-  <p><a class="cta-button" href="mailto:james.verbus@gmail.com">Email me</a></p>
+  <p class="work-archive"><a href="{{ '/posts/' | relative_url }}">All writing <span aria-hidden="true">&rarr;</span></a></p>
 </section>
