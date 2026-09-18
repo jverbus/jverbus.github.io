@@ -118,11 +118,11 @@
       if (statusEl) {
         var note;
         if (er < 1) {
-          note = "Sub-keV recoil — the regime this calibration unlocked.";
+          note = "Recoil energy below 1 keV.";
         } else if (er < 10) {
-          note = "Few-keV recoil — the heart of the WIMP-search region.";
+          note = "Recoil energy between 1 and 10 keV.";
         } else if (er > 65) {
-          note = "Near the 74 keV kinematic endpoint — a full backscatter.";
+          note = "Near the 74 keV maximum recoil energy.";
         } else {
           note = "Mid-range nuclear recoil.";
         }

@@ -2,7 +2,7 @@
 layout: post
 title: "Reinforcement Learning for Orbital Transfers at the 2026 AI Winter School (Brown University)"
 date: 2026-01-09
-last_modified_at: 2026-09-06
+last_modified_at: 2026-09-17
 description: "Training PPO policies for orbital transfers and comparing their trajectories and delta-v with a Hohmann baseline."
 og_image: "/assets/images/2026-ai-winter-school-banner.png"
 og_image_alt: "2026 AI Winter School banner from the Brown University Department of Physics"
@@ -27,13 +27,13 @@ related:
 
 At the 2026 AI Winter School, hosted by the Center for the Fundamental Physics of the Universe at Brown University, I led a 2.5-hour hands-on workshop on reinforcement learning for orbital transfers.
 
-I used a two-body transfer with a known analytic solution so we could compare learned policies with a baseline. This article is a workshop guide to training and inspecting policies, rather than a performance report. The [notebook](#code) contains the environment, training procedure, and saved example outputs for running that comparison.
+I used a two-body transfer with a known analytic solution so we could compare learned policies with the Hohmann baseline. The [notebook](#code) contains the environment, training procedure, and example outputs.
 
 ## Control Problem
 
 The notebook used nondimensional two-body dynamics: unit gravitational parameter, an initial circular orbit at radius 1, and a target circular orbit at radius 1.6. I call those radii <span class="math-inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>r</mi><mn>1</mn></msub></math></span> and <span class="math-inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>r</mi><mn>2</mn></msub></math></span> below. The model omitted drag, finite-duration thrust, J2 perturbations, third bodies, attitude dynamics, and mass depletion. Control was a tangential impulse applied once per simulation step.
 
-Here the arrowed r denotes the spacecraft position vector; the plain r denotes its scalar radius. The state evolves under central gravity:
+Between impulses, the spacecraft position and velocity evolve under central gravity:
 
 <div class="math-display" aria-label="Central gravity dynamics">
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -108,7 +108,7 @@ For a circular target orbit, the target specific energy and angular momentum are
 </math>
 </div>
 
-The RL environment did not need to know the absolute orbital angle. The observation vector used normalized radius, radial velocity, tangential velocity, angular-momentum error, energy error, and previous action. Removing angle makes the policy rotationally symmetric: the same local orbital state should produce the same control decision anywhere around the planet.
+The observation vector contains normalized radius, radial velocity, tangential velocity, angular-momentum error, energy error, and the previous action. It omits the absolute orbital angle, so rotating an otherwise identical state does not change the policy input.
 
 ## Hohmann Benchmark
 
@@ -191,7 +191,7 @@ The two burns and transfer time are:
 </math>
 </div>
 
-The policy comparison uses total Δv, circularization error, and burn history against this baseline.
+The comparisons use total Δv, circularization error, and burn history.
 
 <img src="{{ '/assets/images/rl-orbital-hohmann-trajectory.png' | relative_url }}" alt="Hohmann transfer trajectory: the transfer ellipse touching the inner start orbit and the outer target orbit" width="708" height="711" loading="lazy" decoding="async">
 
@@ -201,7 +201,7 @@ The policy comparison uses total Δv, circularization error, and burn history ag
 
 *Radius history, the two impulses, and accumulated Δv for the simulated Hohmann transfer.*
 
-The finite-timestep simulation does not land exactly on `r2`: the second burn fires on the first step at or after the computed transfer time. In the notebook's saved baseline, the final radius is 1.5999 against the theoretical 1.6000, with a timestep of 0.00050; total Δv agrees at the displayed precision of 0.2066. This residual precedes policy training and reflects the numerical implementation of the analytic plan.
+The second Hohmann burn is applied on the first simulation step at or after the analytic transfer time. With a timestep of 0.00050, the saved baseline ends at radius 1.5999 rather than 1.6000, and total Δv agrees with the analytic value to the displayed precision of 0.2066.
 
 {% include site/orbit-demo.html %}
 
@@ -256,23 +256,24 @@ with shaping approximately proportional to:
 </math>
 </div>
 
-Then the environment subtracted fuel and ignition/switching penalties, added a one-time success bonus on first entry into the tolerance region, and added a holding reward for staying there. PPO was trained with observation/reward normalization during training, frozen normalization statistics during evaluation, and deterministic policy rollout for diagnostics.
+The reward also included fuel and ignition/switching penalties, a one-time bonus on first entry into the success region, and a reward for remaining there. PPO training used observation and reward normalization. Evaluation used frozen normalization statistics and deterministic policy actions.
 
 ## Failure modes to inspect
 {: #what-the-diagnostics-caught }
 
-The notebook compared policies using trajectory, radius history, radial velocity, thrust impulses, cumulative Δv, number of burns or active-thrust steps, closest-to-target statistics, and the mission report against the Hohmann ideal.
+For each policy, the notebook plots the trajectory, radius, radial velocity, thrust impulses, and cumulative Δv. Its mission report includes the burn count or active-thrust steps and closest-to-target statistics for comparison with the Hohmann transfer.
 
-When inspecting a run, check for these possible failure modes:
+These diagnostics can reveal several failure modes:
 
-- **Discrete control:** small fixed impulses can reach the target with many prograde/retrograde corrections. The orbit may satisfy the tolerance band while wasting Δv.
-- **Continuous control:** throttle control is more expressive, but it can learn micro-thrusting: almost continuous small corrections that keep the error low while hiding poor fuel efficiency.
-- **Tolerance exploitation:** a policy that stops inside a loose tolerance band on an elliptical orbit has not met the same endpoint conditions as the Hohmann transfer. Its Δv is therefore not directly comparable to the ideal circular-to-circular transfer.
-- **Final-state ambiguity:** final radius alone is misleading for eccentric orbits. Closest approach, radial-velocity history, angular momentum, and thrust history are needed to interpret what the policy actually learned.
+- **Repeated corrections:** A discrete policy may reach the target through many small prograde and retrograde impulses, satisfying the orbit tolerances while using excessive Δv.
+- **Continuous small impulses:** A continuous policy may keep orbital errors small by applying throttle almost continuously. The accumulated Δv reveals the cost of these corrections.
+- **Loose success tolerances:** A policy can enter the success region while remaining on an elliptical orbit. Compare its Δv with the Hohmann transfer only after checking the final-orbit conditions.
+- **Radius alone:** An eccentric orbit can cross the target radius without circularizing. Radial velocity, angular momentum, closest approach, and thrust history help distinguish these trajectories.
 
-## Experiment Loop
+## Changing the training configuration
+{: #experiment-loop }
 
-The final section exposes these parameters through `ModeConfig`:
+The final section configures the following parameters through `ModeConfig`:
 
 - `dv_mag`: control authority per step
 - `fuel_cost_penalty`: cost of using Δv
@@ -291,7 +292,7 @@ change one parameter or design choice
 rerun
 ```
 
-The [saved notebook](https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/2026_01_09_James_Verbus_Brown_AI_Winter_School_RL_Orbital_Transfers.ipynb) includes discrete and continuous policy reports, but does not fix a training seed. Its final custom experiment also has a saved configuration printout that differs from the displayed setup. Those outputs illustrate the diagnostics; they do not supply a reproducible comparison of parameter choices.
+**Notebook note:** The [final custom experiment](https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/2026_01_09_James_Verbus_Brown_AI_Winter_School_RL_Orbital_Transfers.ipynb) has a saved configuration printout that differs from the settings in its setup cell. Rerun the experiment to regenerate consistent output, and set a training seed before comparing parameter choices. The saved discrete and continuous policy reports remain available as examples.
 
 ## Materials
 

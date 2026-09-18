@@ -1,0 +1,76 @@
+PASS  c(0) = 0
+PASS  c(1) = 0
+PASS  c(2) = 1
+PASS  c(256) matches formula  [10.24477]
+PASS  c monotone: c(64) < c(128) < c(256)
+PASS  EIF scores deterministic for fixed seed
+PASS  different seed changes the forest
+PASS  IF scores in (0, 1)
+PASS  IF outlier scores far above inlier  [inlier 0.408 vs outlier 0.774]
+PASS  IF outlier above 0.5 threshold  [0.774]
+PASS  EIF scores in (0, 1)
+PASS  EIF outlier scores far above inlier  [inlier 0.394 vs outlier 0.721]
+PASS  EIF outlier above 0.5 threshold  [0.721]
+PASS  EIF ring scores more rotation-invariant than IF  [IF angular std 0.0439 vs EIF 0.0133]
+PASS  diagonal blob: both models score off-axis probe higher  [IF gap 0.1386, EIF gap 0.1867]
+PASS  diagonal blob: EIF separates on/off-axis better than IF  [IF gap 0.1386 vs EIF gap 0.1867]
+PASS  two-blobs: EIF scores ghost regions higher than IF  [mean EIF-IF ghost gap 0.0776]
+PASS  scoreGrid matches forest.score exactly  [max diff 2.22e-16]
+PASS  IF and EIF panel grids differ  [mean |IF-EIF| 0.0366]
+PASS  color range ordered and within score bounds  [0.449 .. 0.772]
+PASS  percentile stretch narrower than raw min/max  [stretched 0.323 vs raw 0.377]
+PASS  IF with a single tree scores in (0, 1)
+PASS  EIF with a single tree scores in (0, 1)
+PASS  preset 'blob' has 256 in-range points
+PASS  preset 'blob' reproducible per seed, fresh per reseed
+PASS  preset 'two-blobs' has 256 in-range points
+PASS  preset 'two-blobs' reproducible per seed, fresh per reseed
+PASS  preset 'sinusoid' has 256 in-range points
+PASS  preset 'sinusoid' reproducible per seed, fresh per reseed
+PASS  full retrain + 2x grid scoring under 500 ms  [59.9 ms]
+
+All checks passed.
+PASS  Hohmann dv1 matches hand calc  [0.109400]
+PASS  Hohmann dv2 matches hand calc  [0.097194]
+PASS  Hohmann transfer time matches hand calc  [4.656557]
+PASS  Hohmann total in expected range  [0.206595]
+PASS  energy conserved over 20 orbits (rel err < 1e-4)  [1.85e-6]
+PASS  angular momentum conserved over 20 orbits (rel err < 1e-9)  [1.50e-14]
+PASS  circular orbit radius deviation < 1e-5  [8.00e-6]
+PASS  orbit closes after one period (< 2*DT)  [7.81e-4]
+PASS  circular elements: a = r, e = 0  [a 1.600000, e 0.0e+0]
+PASS  autopilot circularizes near r2 (|a-1.6| < 0.5%)  [a 1.6000]
+PASS  autopilot eccentricity small (e < 0.01)  [e 0.00044]
+PASS  autopilot delta-v equals analytic total exactly  [0.206595]
+PASS  timing quirk: residual eccentricity nonzero but tiny  [4.45e-4]
+PASS  autopilot meets the demo's success thresholds
+PASS  greedy reaches the success band (|a-1.6|/1.6 < 2%, e < 0.025)  [a 1.5789, e 0.0212]
+PASS  greedy arrives within the demo's patience (t < 150)  [arrived t 48.5]
+PASS  greedy costs more delta-v than Hohmann  [greedy 0.2520 vs Hohmann 0.2066]
+PASS  greedy chatters (>= 15 burns vs Hohmann's 2)  [63 burns]
+PASS  greedy delta-v bookkeeping exact
+PASS  strong retrograde burn reaches crash radius
+PASS  prograde impulse adds exactly its magnitude to speed  [0.020000]
+
+All checks passed.
+PASS  E_r + E_n' = E_n at every degree (rel err < 1e-9)  [5.57e-16]
+PASS  forward scattering deposits nothing
+PASS  backscatter endpoint matches the published ~74 keV  [74.15 keV]
+PASS  endpoint equals E_n * 4mM/(m+M)^2
+PASS  recoil energy monotonic in scattering angle
+PASS  small angles reach below the 0.7 keV analysis threshold  [E_r(8°) = 0.366 keV]
+PASS  ~13° gives ~1 keV (sub-keV boundary)  [E_r(13.3°) = 1.009 keV]
+PASS  forward geometry gives 0°
+PASS  perpendicular geometry gives 90°
+PASS  diagonal geometry gives 45°
+PASS  backward geometry gives 180°
+PASS  angle ignores up/down mirror (magnitude only)
+
+All checks passed.
+
+OG metadata validation passed for 10 post(s).
+..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.012s
+
+OK

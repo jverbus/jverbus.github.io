@@ -144,10 +144,18 @@ Each demo is one vanilla-JS IIFE in `assets/js/<name>-demo.js` plus an include i
   immutable code/test links for implementation behavior. Keep photo/collaboration credit and
   experimental qualifiers. A missing source calls for a conservative scope or an unresolved
   question in the excluded review report, not an invented counterclaim or a public TODO.
-  Shorter copy must not turn benchmark agreement into universal correctness, weak labels into
-  independent production metrics, similarity into common control, or possible uses into shipped
-  deployments. Compare voice with the original engineering articles and physics methods paper;
-  Castle may be read as a reference but never included in task-generating style searches.
+  Shorter copy must preserve the actual scope of each result: the evaluated population, labels,
+  model configuration, threshold, units, uncertainty and date where relevant. State those
+  conditions within the method or result. Do not append stock sentences denying universal
+  correctness, production validity, shared control, or guarantees when the article makes no such
+  claim. Missing audit evidence belongs in the excluded review report; it is not an author
+  admission that the work was never done or recorded. Use James Verbus’s supplied 2016 Ph.D.
+  thesis as the primary voice reference, particularly §§2.2, 2.3.5, 5.2–5.5, and 6.1.3. Follow its
+  direct descriptions of procedures, causal explanations, measured results, and concrete
+  uncertainty sources. Use I for documented individual contributions and we for collaborative
+  work. Do not copy dissertation-length roadmaps, invent anecdotes, insert slang, or enforce
+  uniformly short sentences. Original engineering articles are secondary references. Castle may be
+  read as a reference but must never be edited or included in task-generating style searches.
 - Review these 17 pattern families in context, using an explicit eligible-file allowlist:
   (1) point-is-not/point-is framing; (2) goal-is-not/goal-is framing; (3) result-is-not/result-is
   framing; (4) not-because/but-because; (5) that/this-matters transitions; (6) importance or
@@ -158,11 +166,18 @@ Each demo is one vanilla-JS IIFE in `assets/js/<name>-demo.js` plus an include i
   validation/robustness commentary; (17) generic contact invitations. Keep necessary technical
   contrasts, meaningful lists, the request/language analogy, and natural short sentences.
   Record edited, retained-for-reason, or absent; do not chase zero matches, deletion percentages,
-  or AI-detector scores. These are editorial judgments, not authorship proofs.
-- Preserve the seven optional holds: homepage metrics and common-thread sentence, global
-  tagline/footer, AI Innovators interview summary, publication/citation counts, the face article's
-  vivid pipeline paragraph, and the LUX/LZ transition. Also retain "the generative landscape did
-  not hold still" and "mostly slips through" while qualifying their surrounding claims.
+  or AI-detector scores. These are editorial judgments, not authorship proofs. Also review
+  source-as-narrator wording (“the slide does not specify,” “the paper reports this limitation
+  directly”), unsupported audit-to-author admissions, repeated hypothetical disclaimers, headings
+  that advertise a lesson, and dynamic demo status text. For each retained caveat, identify the
+  concrete reader misunderstanding it prevents and ensure that the same scope is not already
+  stated nearby.
+- The thesis-grounded voice revision supersedes the former wording holds for the AI Innovators
+  summary, the face article’s vivid pipeline paragraph, “the generative landscape did not hold
+  still,” “mostly slips through,” and the LUX/LZ transition. Apply the explicitly enumerated edits
+  in the current voice brief. Keep publication/citation counts unchanged in this pass. The
+  approved academic redesign remains in place; do not restore the old homepage metrics,
+  common-thread paragraph, or visible tagline. Castle remains excluded from all editorial edits.
 - Complete safe authorized edits without another approval conversation. Report the draft and
   evidence limits for James's eventual review; do not claim his approval of its voice. Keep the
   per-finding and pattern review in `scripts/editorial-review/`, excluded from generated content.
@@ -174,7 +189,8 @@ Each demo is one vanilla-JS IIFE in `assets/js/<name>-demo.js` plus an include i
   and text navigation/contact links. Full writing, project, publication and talk collections
   remain on their existing URLs. Selected home entries live in `_data/home.yml`.
 - This later authorization replaces the editorial pass's homepage metrics/common-thread and
-  visible footer holds. All other editorial holds remain. James's subsequent clarification
+  visible footer holds. Apply the current thesis-grounded editorial instructions to copy; Castle
+  protection and the approved academic design remain unchanged. James's subsequent clarification
   keeps Castle's text protected while applying the same UI as the rest of the site. The new
   home description supplies its own structured data. Do not reintroduce removed sections,
   metrics or Castle styling exceptions to satisfy historical editorial-only checks.

@@ -2,7 +2,7 @@
 layout: post
 title: "Exploring LLMs and RAG at the 2025 AI Winter School (Brown University)"
 date: 2025-02-10
-last_modified_at: 2026-09-06
+last_modified_at: 2026-09-17
 description: "A workshop on querying physics papers with LLMs and checking the answers against retrieved source passages."
 og_image: "/assets/images/social/2025-02-10-brown-physics-ai-winter-school-workshop-1200x630.jpg"
 og_image_alt: "2025 AI Winter School banner from the Brown University Department of Physics"
@@ -26,19 +26,12 @@ related:
 
 At the 2025 AI Winter School, hosted by the Center for the Fundamental Physics of the Universe at Brown University, I led a 2.5-hour hands-on workshop on using large language models with physics-specific source material.
 
-Participants compared direct model answers with answers generated from passages retrieved from LUX papers and Brown theses.
+Participants compared direct model answers with answers generated from retrieved passages. We used LUX calibration papers and Brown Particle Astrophysics theses, asking about the D-D neutron energy, the electric fields used in yield measurements, and the energy and origin of low-energy `127Xe` calibration events.
 
-The corpus covered LUX dark matter calibrations and Brown Particle Astrophysics theses. We asked about the mean D-D neutron energy, the electric fields used in LUX yield measurements, and the origin and energy of low-energy `127Xe` calibration events. The [saved `127Xe` example below](#a-saved-corpus-coverage-example) shows what changed when the relevant thesis was added.
+## Checking numerical answers
+{: #the-scientific-problem }
 
-## The Scientific Problem
-
-For a numerical answer, I wanted the source location, units, and stated uncertainty. The checks were:
-
-- which document was used
-- which page or text region contained the answer
-- whether the retrieved passage actually supports the claim
-- whether the model preserved units, qualifiers, and uncertainty language
-- whether the answer came from the requested source rather than adjacent but incompatible material
+For numerical answers, we checked the source passage, units, measurement conditions, and stated uncertainty. Page references made it possible to compare the answer with the original document.
 
 ## Retrieval Model
 
@@ -51,28 +44,26 @@ The RAG system in the notebooks used a standard dense-retrieval pipeline:
 5. retrieve the top-ranked chunks by vector similarity
 6. pass those chunks, plus the question, to the LLM
 
-As a conceptual example, cosine similarity can rank a question against document chunks:
+For example, a dense retriever can rank a question `q` against a document chunk `c_i` using cosine similarity:
 
 ```text
 score(q, c_i) = cos(embed(q), embed(c_i))
 ```
 
-This equation illustrates dense retrieval; it does not specify the notebook index's similarity implementation. Retrieval does not guarantee a correct answer: parsing or ranking can omit the right passage, and the generator can misread a passage that was retrieved.
-
 ## Two Implementations
 
-The workshop used two parallel Colab notebooks so participants could see the same workflow with different model-serving assumptions.
+We provided two Colab notebooks: one used a hosted API, and the other ran an open-weight model in the Colab runtime.
 
-| Path | Model setup | Retrieval setup | Role in the workshop |
-| --- | --- | --- | --- |
-| **Hosted API** | `gpt-4o-mini` through the OpenAI API | LlamaIndex document loading, chunking, embeddings, vector indexing, and query engine | Fast path for prototyping and comparing model answers against retrieved evidence |
-| **Open model** | `meta-llama/Meta-Llama-3.1-8B-Instruct` through Hugging Face in a GPU-backed Colab runtime | LlamaIndex with `BAAI/bge-small-en-v1.5` embeddings for vector search | Running the model and configuring its tokenizer and embeddings in the Colab session |
+| Model | Execution | Retrieval |
+| --- | --- | --- |
+| `gpt-4o-mini` | OpenAI API | LlamaIndex document loading, chunking, embeddings, vector index, and query engine |
+| `meta-llama/Meta-Llama-3.1-8B-Instruct` | Hugging Face model in a GPU-backed Colab runtime | LlamaIndex with `BAAI/bge-small-en-v1.5` embeddings |
 
 The hosted path required API access. The Llama model ran in a GPU-backed Colab session with the notebook's dependencies, Hugging Face model access, and enough GPU memory.
 
 ## Indexing Parameters
 
-**Workshop settings, January 2025.** Both [historical notebooks](#jupyter-notebooks) pinned `llama-index==0.12.3` and used:
+The January 2025 [notebooks](#jupyter-notebooks) pinned `llama-index==0.12.3` and used the following settings:
 
 ```python
 Settings.chunk_size = 1000
@@ -82,35 +73,32 @@ query_engine = index.as_query_engine(similarity_top_k=5)
 response = query_engine.query(question)
 ```
 
-- **Chunk size:** larger chunks preserve more local context, but make retrieval less selective and consume more prompt budget.
-- **Chunk overlap:** overlap reduces boundary artifacts, especially when a definition, figure caption, or table explanation straddles a chunk boundary.
-- **Embedding model:** the embedding model defines the retrieval geometry. It determines which passages are "near" the question before the LLM sees anything.
-- **Top-k retrieval:** increasing `similarity_top_k` improves recall only if the relevant chunks are somewhere near the top of the ranking; it also adds more irrelevant text for the generator to reconcile.
+- **Chunk size:** Larger chunks preserve more surrounding text but use more of the prompt and make individual matches less specific.
+- **Chunk overlap:** Overlap retains context when a definition or explanation crosses a chunk boundary.
+- **Embedding model:** The embeddings determine which chunks are ranked near a question.
+- **Top-k retrieval:** Increasing `similarity_top_k` includes more candidate passages, at the cost of a longer prompt and potentially more irrelevant text.
 
-PDF extraction can separate tables, equations, captions, units, and paragraph references. A chunk that is reasonable for prose may be too small for a table and its caption, while a chunk that preserves a table may be too broad for precise nearest-neighbor retrieval.
+PDF extraction may separate a table from its caption or detach units from the associated values. Chunk boundaries can compound the problem by splitting a definition from the passage that uses it.
 
-## What We Inspected
+## Inspecting retrieved passages
+{: #what-we-inspected }
 
-Inspect `response.metadata` and `response.source_nodes` to see the retrieved evidence:
+The `response.metadata` and `response.source_nodes` fields identify the retrieved documents and passages:
 
 ```python
 response.metadata
 response.source_nodes
 ```
 
-That output lets the user separate three different failure modes:
+The retrieved passages help distinguish three sources of error:
 
-| Failure mode | What it looks like | What to check |
+| Source of error | Description | Check |
 | --- | --- | --- |
-| Missing corpus coverage | The answer is generic or absent because the relevant paper/thesis was never indexed | Directory contents, document parser output, index construction |
-| Retrieval failure | The answer uses source text, but from the wrong document, page, calibration, or energy range | `source_nodes`, page metadata, chunk text, similarity ranking |
-| Generation failure | The right passage was retrieved, but the model changed a number, dropped a unit, or over-compressed a caveat | Source passage against final answer, especially numerical claims |
-
-Checks for other answers include whether "about 2.45 MeV" preserves the source's measured neutron energy and statistical/systematic uncertainties, whether a recoil endpoint retains `keVnr`, and whether neutron-source rates and S1/S2 signal sizes retain their measurement conditions. These are checks to apply, not a list of observed model failures.
+| Missing document | The relevant paper or thesis is absent from the index. | Loaded documents and index contents |
+| Retrieval | The relevant text is indexed, but the returned passages do not contain the answer. | `source_nodes`, page metadata, chunk text, and ranking |
+| Answer generation | A retrieved passage contains the answer, but the model changes a value, unit, or qualification. | The generated answer against the passage |
 
 <div id="practical-standard" aria-hidden="true"></div>
-
-Compare the answer with its source chunks, including units, assumptions, and uncertainties. If the trace is wrong, revise the corpus, chunking, embedding model, or prompt and query again.
 
 ## Incremental Indexing
 
@@ -122,15 +110,16 @@ new_nodes = SimpleNodeParser().get_nodes_from_documents(new_documents)
 index.insert_nodes(new_nodes)
 ```
 
-### A saved corpus-coverage example
+### Adding the missing thesis
+{: #a-saved-corpus-coverage-example }
 
-The [hosted-API notebook's saved outputs](https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/2025_01_15_James_Verbus_Brown_AI_Winter_School_Open_AI.ipynb) record the same question before and after the thesis insertion:
+The [hosted-API notebook](https://github.com/jverbus/jverbus.github.io/blob/05561bf052e4e3639ec245c9cdbeee61e02fb585/assets/files/2025_01_15_James_Verbus_Brown_AI_Winter_School_Open_AI.ipynb) includes answers to the same question before and after the theses were added:
 
 > How low in energy was the ER response measured using 127Xe? Where did the 127Xe come from?
 
 Before insertion, the retrieved passages came from the D-D papers. One discussed cosmogenic `131mXe`; the generated answer substituted that isotope and did not identify the `127Xe` threshold. After insertion, the saved answer reported a lowest energy deposition of **186 eV** and attributed the `127Xe` to cosmogenic activation while the xenon was above ground.
 
-The new retrieval trace includes the Huang thesis, pages 77–78 in the notebook metadata. The page-78 passage describes the calibration as “reaching all the way down to the observation of 186 eV energy deposition”; the page-77 passage attributes the isotope to cosmogenic activation before the xenon was moved underground. These are passages saved in `response.source_nodes`, so the answer's energy, units, and origin can be checked against the retrieved text. Adding the thesis gave the retriever the passage containing the 186 eV result and the isotope's origin.
+After insertion, `response.source_nodes` included passages from the Huang thesis on pages 77–78, as numbered in the notebook metadata. Those passages give the 186 eV energy deposition and attribute the isotope to cosmogenic activation before the xenon was moved underground.
 
 ## Materials
 

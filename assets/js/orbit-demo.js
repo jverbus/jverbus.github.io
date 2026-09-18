@@ -300,9 +300,7 @@
         sim.arrived = true;
         var efficiency = (100 * plan.total) / Math.max(sim.dvUsed, plan.total);
         setStatus(
-          "Target orbit reached with Δv " + fmt(sim.dvUsed) +
-          " — Hohmann needs " + fmt(plan.total) +
-          " (" + fmt(efficiency, 0) + "% efficiency)."
+          "Target-orbit tolerances reached with Δv " + fmt(sim.dvUsed) + ". Hohmann Δv: " + fmt(plan.total) + "."
         );
       }
     }
@@ -614,7 +612,7 @@
     var greedyButton = root.querySelector('button[data-action="greedy"]');
     if (greedyButton) {
       greedyButton.addEventListener("click", function () {
-        reset("Greedy controller engaged — it gets there. Watch the thrust history.");
+        reset("Greedy controller running. Compare its burn history and total Δv with the Hohmann transfer.");
         sim.greedy = { nextControl: 0 };
         setRunning(true);
       });

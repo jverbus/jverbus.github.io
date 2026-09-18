@@ -1,0 +1,17 @@
+{
+  "directory": "/private/tmp/voice-revision-baseline-_ywx81eb",
+  "commit": "bc3a93eaeebafa035c9b3073485c862376187a75",
+  "branch": "voice-revision-2026-09-17",
+  "implementation_date": "2026-09-17",
+  "tracked_files": 204,
+  "castle_hashes": {
+    "_posts/2016-10-07-insight-castle-compromised-account-detection.md": "dcad716bcb594c3f3b1413ce0a1e3bd98bad13d307fb114ce043e7e2757bd4ba",
+    "assets/files/James_Verbus_FinalDemo.pdf": "77de183c4d8599e5242290621ccb18fce7d226f5f18428890acc06792b52789b",
+    "assets/images/castle_distance_between_events.png": "2b96377df44ad16831a7f22e853760db890d0fbae25e1e3bf63b32d0296366b3",
+    "assets/images/castle_neg_log_likelihood.png": "1a3490a938d1419075bc442a0a2d637e26bce8454dde6419545d80f442c3057a",
+    "assets/images/castle_roc_curve.png": "1b6a94ef64184b3a25f7097d64bb1ce2e8137bb88411e3fa8b39d6d1e8a8814a",
+    "assets/images/castle_time_since_last_action_days.png": "00c217ed2d04947ca9cd27a1bdc7e1055141e6452f8e40b7f6a3d5c462955d7c",
+    "assets/images/castle_time_since_last_action_seconds.png": "71b38dc0e2a3cec3bba08f7fa86dcc80fc4421707f2fb038dafa8c94b2073b89",
+    "assets/images/social/2016-10-07-insight-castle-compromised-account-detection-1200x630.jpg": "7af65710a5ed0355ce8de39832c0a6fa8c03b79329cd6cc139d1228f24f7ad99"
+  }
+}

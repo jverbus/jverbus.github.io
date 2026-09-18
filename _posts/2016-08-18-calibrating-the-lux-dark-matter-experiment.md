@@ -2,7 +2,7 @@
 layout: post
 title: "Calibrating the LUX Dark Matter Experiment"
 description: "Measuring the charge and light response of liquid xenon to low-energy nuclear recoils using D-D neutron scattering in LUX."
-last_modified_at: 2026-09-06
+last_modified_at: 2026-09-17
 og_image: "/assets/images/social/2016-08-18-calibrating-the-lux-dark-matter-experiment-1200x630.jpg"
 og_image_alt: "Calibrating the LUX Dark Matter Experiment"
 og_image_width: 1200
@@ -13,38 +13,40 @@ related:
   - /2025/02/10/brown-physics-ai-winter-school-workshop/
 ---
 
-For my [Ph.D. thesis](https://repository.library.brown.edu/studio/item/bdr:674209/), I led the experimental design, underground operations, and analysis to measure LUX's low-energy nuclear-recoil response. This absolute, in situ calibration measured recoils at the detector's operating field and geometry, with a double-scatter energy scale set by neutron scattering kinematics rather than extrapolated from external measurements.
+For my [Ph.D. thesis](https://repository.library.brown.edu/studio/item/bdr:674209/), I led the LUX D-D nuclear recoil calibration program, including the experimental design, underground operations, and analysis. We measured the charge and light yields in the detector itself, using neutron scattering kinematics to determine the recoil-energy scale.
 
-Dark matter constitutes about 85% of the matter in the universe. The [Large Underground Xenon (LUX)](https://lux.brown.edu/LUX_dark_matter/Home.html) experiment searched for Weakly Interacting Massive Particles (WIMPs), a leading class of dark matter candidates, with a dual-phase liquid xenon time projection chamber (TPC). It contained 370 kg of xenon, 250 kg of it active, and operated on the 4850-foot level at the Sanford Underground Research Facility in Lead, South Dakota. At the time of this work, dark matter had not been directly observed, and LUX set the strongest limits over most of the WIMP mass range.
+Dark matter constitutes about 85% of the matter in the universe. The [Large Underground Xenon (LUX)](https://lux.brown.edu/LUX_dark_matter/Home.html) experiment searched for Weakly Interacting Massive Particles (WIMPs) using a dual-phase liquid xenon time projection chamber (TPC). The detector contained 370 kg of xenon, including a 250 kg active volume, and operated at the 4850-foot level of the Sanford Underground Research Facility in Lead, South Dakota. At the time of this work, LUX had set the strongest exclusion limits over most of the WIMP mass range.
 
-A WIMP would reveal itself as a nuclear recoil: a xenon nucleus kicked by an incoming particle. In LUX, that recoil produces prompt scintillation light (S1) and delayed ionization charge (S2). Turning those signals into a WIMP sensitivity curve requires a signal model for how many photons and electrons liquid xenon produces per keV of recoil energy, especially near threshold where low-mass WIMP spectra are steepest.
+A WIMP interaction would produce a recoiling xenon nucleus. The recoil produces prompt scintillation light (S1) and ionization electrons. The electrons drift to the liquid surface, are extracted into the gas, and produce secondary scintillation (S2). Predicting the detector response requires measurements of the photons and electrons produced per keV of recoil energy, particularly near the detection threshold.
 
 ![Neutron generator outside of the LUX water tank]({{ '/assets/images/jverbus_neutron_generator_outside_lux.jpg' | relative_url }}){: width="504" height="672" }
 
 *With the deuterium-deuterium (D-D) neutron generator used for the calibration, outside the LUX water shield.*
 
-## What Had to Be Calibrated
+## Charge and light yields
+{: #what-had-to-be-calibrated }
 
-We needed the charge and light yields at recoil energies near the search threshold. LUX already had neutron calibration data, but the small S1 and S2 signals at low energies left the low-mass WIMP interpretation particularly sensitive to assumptions about detector response.
+The low-mass WIMP sensitivity depended strongly on the detector response near threshold, where the expected S1 and S2 signals are small.
 
-Two response functions matter:
+We measured two response functions:
 
-- the ionization yield, Qy, measured in extracted electrons per keV of nuclear recoil energy
-- the scintillation yield, Ly, measured in produced photons per keV of nuclear recoil energy
+- The ionization yield, Qy, in electrons escaping recombination per keV of nuclear recoil energy.
+- The scintillation yield, Ly, in photons produced per keV of nuclear recoil energy.
 
-Those quantities define the mapping from nuclear recoil energy to the observed S1 and S2 distributions. Uncertainty in these yields propagates into the predicted S1/S2 signal distributions.
+These yields determine the predicted S1 and S2 distributions for a given nuclear recoil energy, and their uncertainties propagate into the detector-response model.
 
-## Geometry as the Energy Scale
+## Reconstructing recoil energy from scattering geometry
+{: #geometry-as-the-energy-scale }
 
-Nuclear recoil calibrations of liquid xenon detectors had typically inferred the energy scale by comparing observed spectra against simulation, or by transferring measurements made in smaller external test setups. Both approaches accumulate systematic uncertainty precisely where the dark matter question is most delicate: at the lowest recoil energies.
+Earlier nuclear recoil calibrations inferred the energy scale by fitting simulated spectra to data, or used measurements from smaller external detectors. The first approach depends on modeling the neutron spectrum and scattering in passive material; the second requires transferring the measured response to the dark matter detector.
 
-The technique developed in this thesis does not use simulation to assign recoil energy to a double-scatter event. A collimated beam of quasi-monoenergetic 2.45 MeV neutrons from D-D fusion enters the active xenon volume. When one neutron scatters twice inside the TPC, the reconstructed positions of the two interaction vertices determine the outgoing neutron direction after the first scatter. Combined with the known incoming beam direction, that gives the lab scattering angle.
+A collimated beam of quasi-monoenergetic 2.45 MeV neutrons from D-D fusion enters the active xenon volume. For a neutron that scatters twice, the reconstructed interaction positions determine its direction after the first scatter. The angle between that direction and the incident beam gives the laboratory scattering angle and hence the energy transferred to the first xenon nucleus.
 
 The recoil energy then follows from non-relativistic two-body elastic scattering. For a fixed incident neutron energy, the endpoint is set by the xenon and neutron masses:
 
 `E_r,max = E_n * 4 m_n M_Xe / (m_n + M_Xe)^2`
 
-For 2.45 MeV neutrons on xenon, that endpoint is about 74 keV. Smaller lab scattering angles map to lower recoil energies; a 1 keV xenon recoil corresponds to a scattering angle of roughly 13 degrees. That is why this was a geometry problem as much as a detector-response problem: centimeter-scale vertex reconstruction sets the recoil-energy resolution near threshold.
+For 2.45 MeV neutrons on xenon, the maximum recoil energy is about 74 keV. A 1 keV recoil corresponds to a laboratory scattering angle of roughly 13 degrees. At these small angles, centimeter-scale uncertainties in the interaction positions limit the recoil-energy resolution.
 
 Simulation was used for acceptance, backgrounds and detector response, but not to assign the double-scatter recoil energy.
 
@@ -54,17 +56,18 @@ Simulation was used for acceptance, backgrounds and detector response, but not t
 
 {% include site/lux-demo.html %}
 
-## Why Double and Single Scatters Both Matter
+## Double- and single-scatter measurements
+{: #why-double-and-single-scatters-both-matter }
 
-Double-scatter events provide the cleanest energy tag. The two S2 pulses are separated in drift time when the vertices have different depths, so the ionization signal from the first vertex can be measured against a kinematically reconstructed recoil energy. That gives the low-energy Qy measurement directly.
+For double-scatter events with sufficient separation in depth, the two S2 pulses are resolved in drift time. The ionization signal from the first vertex can then be paired with its kinematically reconstructed energy to measure Qy.
 
-The light channel is more difficult. In liquid xenon, the prompt scintillation pulses from two neutron scatters typically overlap in time, so the S1 contribution from each vertex is not cleanly separated event by event. The low-energy Ly analysis therefore used single-scatter events in the beam, with the energy scale constrained by the measured charge yield and response model. A complementary endpoint analysis used the sharp 74 keV maximum recoil feature in single-scatter S1 and S2 spectra to extend both Ly and Qy to the top of the D-D recoil range.
+The S1 pulses from the two interactions usually overlap, so the light yield was measured using single-scatter events. Their energy scale was constrained by the measured charge yield and detector-response model. A separate endpoint analysis used the 74 keV cutoff in the single-scatter S1 and S2 spectra to measure Ly and Qy at the maximum recoil energy.
 
 ## A Neutron Beam Through the Water Shield
 
-The neutron source was an Adelphi Technology DD108 generator. Before deployment, its output was characterized with a time-of-flight measurement at Brown University, confirming a quasi-monoenergetic spectrum near 2.45 MeV. Separately, Monte Carlo neutron-transport studies of a realistic setup found that, after fiducial-volume cuts along the beam projection, 95% of accepted events were produced by neutrons with energies within 6% of their source energy. This accepted-event estimate is described in [Section 2 of the methods paper](https://arxiv.org/pdf/1608.05309#page=4); it is distinct from the time-of-flight source measurement.
+We characterized the Adelphi Technology DD108 neutron generator at Brown using a time-of-flight measurement, which confirmed a quasi-monoenergetic spectrum near 2.45 MeV. Monte Carlo neutron-transport studies showed that, after fiducial-volume cuts along the beam projection, [95% of accepted events were produced by neutrons within 6% of their energy at the source](https://arxiv.org/pdf/1608.05309#page=4).
 
-At SURF, the generator was positioned outside the water tank shielding LUX, 8 m in diameter, and neutrons were delivered through an air-filled conduit that crosses the water to the detector cryostat, defining a collimated beam through the active xenon volume. The conduit was installed and aligned with the detector before the tank was filled.
+At SURF, the generator was positioned outside the 8 m-diameter water tank shielding LUX. An air-filled conduit through the water provided a collimated neutron path to the detector cryostat. The conduit was installed and aligned before the tank was filled.
 
 <img src="{{ '/assets/images/lux-water-tank-conduit.jpg' | relative_url }}" alt="Interior of the empty LUX water tank with the titanium cryostat suspended at center and the neutron conduit hanging horizontally at right" width="970" height="646" loading="lazy" decoding="async">
 
@@ -74,7 +77,7 @@ At SURF, the generator was positioned outside the water tank shielding LUX, 8 m 
 
 *The calibration configuration. Neutrons enter through a conduit spanning the water shield; for double-scatter events, the photomultiplier hit patterns provide the transverse vertex positions and the drift times provide depth, together determining the scattering angle. (Figure from my Ph.D. thesis.)*
 
-The beam is directly visible in the calibration data. Plotting single-scatter event positions recorded during generator operation reveals a horizontal band of interactions crossing the xenon volume, with a bright region of scattering shine where the beam enters. The band of interactions confirmed the beam's position and alignment.
+The single-scatter event positions show the neutron beam as a horizontal band crossing the xenon volume. Scattering in passive detector material produces the brighter region near the beam entrance. These data confirmed the beam position and alignment.
 
 <img src="{{ '/assets/images/lux-dd-neutron-beam-data.jpg' | relative_url }}" alt="Distribution of single-scatter events in drift time versus position along the beam direction, showing a horizontal band of neutron interactions crossing the detector" width="1665" height="983" loading="lazy" decoding="async">
 
@@ -83,11 +86,11 @@ The beam is directly visible in the calibration data. Plotting single-scatter ev
 ## Charge and light yields near threshold
 {: #signal-yields-measured-below-1-kev }
 
-The ionization yield was measured from double-scatter events for recoils of 0.7 to 24 keV. The scintillation yield was measured from single-scatter data at low energies, with its energy scale anchored by the charge-yield measurement. A complementary endpoint analysis extended both channels to the kinematically fixed 74 keV maximum recoil energy.
+The low-energy measurements covered 0.7 to 24 keV for charge and reached 1.1 keV for light. The endpoint analysis provided measurements of both yields at 74 keV.
 
-The final calibrated spans were 0.7 to 74 keV for charge and 1.1 to 74 keV for light, at LUX's average drift field of 180 V/cm. The charge result reached a factor of five lower in energy than prior scattering-angle-derived measurements, and the light result reached a factor of three lower. At the 74 keV endpoint, the measured yields were about 3.06 electrons/keV and 14.0 photons/keV. The [calibration paper](https://arxiv.org/pdf/1608.05381#page=17) gives the endpoint measurements with statistical and systematic uncertainties in Sections V.A–B and Tables V–VI; Tables I and III give the low-energy results.
+At an average drift field of 180 V/cm, the measurements spanned 0.7 to 74 keV for charge and 1.1 to 74 keV for light. These results extended the charge and light measurements to energies lower by factors of five and three, respectively, than prior scattering-angle measurements. The yields at the 74 keV endpoint were approximately 3.06 electrons/keV and 14.0 photons/keV. The statistical and systematic uncertainties are reported in the [calibration paper](https://arxiv.org/pdf/1608.05381#page=17), Sections V.A–B and Tables V–VI; Tables I and III contain the low-energy results.
 
-Over roughly two orders of magnitude in recoil energy, the measured yields were consistent with a Lindhard-based description of energy partition in nuclear recoils. The data showed measurable ionization and scintillation at recoil energies of order 1 keV, directly in the detector that produced the WIMP result.
+The measured yields were consistent with a Lindhard-based description of energy partition over roughly two orders of magnitude in recoil energy.
 
 <img src="{{ '/assets/images/lux-dd-yield-results.png' | relative_url }}" alt="Measured charge and light yields for nuclear recoils in LUX as a function of recoil energy with Lindhard model fits, and the corresponding detection efficiencies" width="1384" height="1466" loading="lazy" decoding="async">
 
@@ -95,19 +98,20 @@ Over roughly two orders of magnitude in recoil energy, the measured yields were 
 
 ## Impact on the WIMP Search
 
-These yields fed into the [2016 reanalysis of the LUX WIMP search exposure](https://arxiv.org/abs/1512.03506) through a Lindhard-based NEST signal model fit to the D-D calibration data. The reanalysis incorporated this calibration alongside improvements to event reconstruction and background modeling. Its sensitivity to a 7 GeV/c^2 WIMP improved by a factor of seven, sharpening the disagreement between the LUX results and claims of low-mass WIMP signals reported by other experiments. That gain describes the reanalysis as a whole.
+The [2016 reanalysis of the LUX WIMP search](https://arxiv.org/abs/1512.03506) used a Lindhard-based NEST signal model fit to the D-D calibration data, together with improvements to event reconstruction and background modeling. Sensitivity to a 7 GeV/c^2 WIMP improved by a factor of seven, increasing the tension with low-mass WIMP signal claims from other experiments ([thesis §9.3, printed p.228 / PDF p.252](https://repository.library.brown.edu/studio/item/bdr:674209/)).
 
-The same calibration also matters for coherent elastic neutrino-nucleus scattering from solar boron-8 neutrinos. The maximum recoil energy from that source in xenon is about 3.7 keV, so the relevant signal region sits inside the energy range that the D-D calibration constrained.
+The calibration also covers the nuclear recoil energies expected from coherent elastic scattering of solar boron-8 neutrinos. Their maximum recoil energy in xenon is about 3.7 keV.
 
 <img src="{{ '/assets/images/lux-wimp-limits-2016.png' | relative_url }}" alt="Upper limits on the spin-independent WIMP-nucleon cross section versus WIMP mass, comparing the 2016 LUX result against the 2014 result and contemporaneous experiments" width="1385" height="952" loading="lazy" decoding="async">
 
 *Ninety percent confidence upper limits on the spin-independent WIMP-nucleon cross section: the 2016 LUX reanalysis incorporating this calibration (black), the 2014 LUX result (gray), and contemporaneous experiments. (Figure reproduced in my Ph.D. thesis from the LUX Collaboration result, Phys. Rev. Lett. 116, 161301 (2016).)*
 
-## Carried into LZ
+## D-D calibration for LZ
+{: #carried-into-lz }
 
-The technique outlived the experiment it was built for. D-D calibration became a central element of the LZ calibration program, the 10-tonne successor to LUX constructed within the same water shield, and I served as the L3 manager for the D-D calibration program during LZ's early design phase.
+D-D calibration was included in the design of LZ, the 10-tonne successor to LUX within the same water shield. I served as L3 manager for the D-D calibration program during the early design phase.
 
-The thesis also laid out the next technical step: a quasi-monoenergetic 272 keV neutron source produced by reflecting D-D neutrons from deuterium. The lower source energy gives an 8 keV recoil endpoint in xenon and improves the angle lever arm at threshold. A 1 keV recoil from a 272 keV neutron corresponds to about 41 degrees instead of about 13 degrees for a 2.45 MeV neutron, reducing the fractional impact of vertex-position uncertainty on the reconstructed energy.
+We also proposed a quasi-monoenergetic 272 keV neutron source produced by backscattering D-D neutrons from deuterium. The lower neutron energy gives an 8 keV recoil endpoint in xenon. A 1 keV recoil corresponds to about 41 degrees, compared with about 13 degrees for a 2.45 MeV neutron, reducing the fractional uncertainty in recoil energy from vertex-position reconstruction.
 
 <img src="{{ '/assets/images/lz-detector-cutout.jpg' | relative_url }}" alt="Cutout view of the LZ detector solid model inside the water tank, with the two D-D neutron calibration conduits visible" width="1534" height="969" loading="lazy" decoding="async">
 

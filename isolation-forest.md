@@ -7,7 +7,7 @@ og_image: "/assets/images/social/2026-03-18-announcing-extended-isolation-forest
 og_image_alt: "Extended Isolation Forest support for the open-source isolation-forest library"
 og_image_width: 1200
 og_image_height: 630
-last_modified_at: 2026-09-06
+last_modified_at: 2026-09-17
 ---
 
 <div class="project-hero">
@@ -21,7 +21,7 @@ last_modified_at: 2026-09-06
   </div>
 </div>
 
-`linkedin/isolation-forest` is a distributed Scala/Spark isolation forest implementation I built at LinkedIn and open sourced for large-scale unsupervised anomaly detection. EIF support was added in March 2026.
+I built `linkedin/isolation-forest` at LinkedIn for distributed anomaly detection in Spark. Extended Isolation Forest support was added in March 2026.
 
 <div class="post-list" role="list">
   {% for item in site.data.open_source.core_items %}

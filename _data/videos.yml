@@ -14,7 +14,7 @@ sections:
         image_alt: "Workshop video thumbnail for reinforcement learning orbital transfer presentation"
         summary: "A 2.5-hour workshop on training PPO policies for orbital transfers and checking their trajectories and fuel use against a Hohmann baseline."
         links:
-          - label: "Workshop guide and syllabus"
+          - label: "Workshop notes and materials"
             url: "/2026/01/09/brown-physics-ai-winter-school-workshop/"
         venue: "AI Winter School 2026, Center for the Fundamental Physics of the Universe at Brown University."
 
@@ -24,7 +24,7 @@ sections:
         url: "https://www.youtube.com/watch?v=3Ra9vuHEh7U&list=PL21yWP3gTVmo7gfqS1y0GSeB5ypla8kvi&index=5"
         image: "https://i.ytimg.com/vi/3Ra9vuHEh7U/hqdefault.jpg"
         image_alt: "Workshop video thumbnail for LLM and RAG workshop"
-        summary: "A 2.5 hour interactive workshop at the 2025 AI Winter School, hosted by the Center for the Fundamental Physics of the Universe at Brown University."
+        summary: "A 2.5-hour workshop on using LLMs and retrieval-augmented generation with physics papers."
         details: "We queried LUX papers and Brown theses using a hosted model and a Llama model running in Colab, then inspected the retrieved passages."
         venue: "AI Winter School 2025, Center for the Fundamental Physics of the Universe at Brown University."
 
@@ -33,16 +33,16 @@ sections:
         url: "https://www.youtube.com/watch?v=4iX2agE3YWE"
         image: "https://i.ytimg.com/vi/4iX2agE3YWE/hqdefault.jpg"
         image_alt: "YouTube video thumbnail for abusive activity sequence modeling talk"
-        summary: "A production sequence model for detecting logged-in profile scrapers from request paths and timing, including early results."
-        venue: "Scale Exchange recording hosted on YouTube."
+        summary: "A production model for detecting profile scrapers from request sequences and timing."
+        venue: "Scale Exchange."
 
       - date: "2020"
         title: "Preventing Abuse Using Unsupervised Learning"
         url: "https://www.youtube.com/watch?v=sFRrFWYNAUI"
         image: "https://i.ytimg.com/vi/sFRrFWYNAUI/hqdefault.jpg"
         image_alt: "YouTube video thumbnail for unsupervised abuse detection"
-        summary: "A presentation on applying isolation forests and unsupervised ML to prevent abuse at production scale."
-        venue: "Spark+AI Summit 2020 (recording hosted on YouTube)."
+        summary: "Using Isolation Forest to detect automated account activity at LinkedIn."
+        venue: "Spark+AI Summit 2020."
 
       - date: "2019"
         title: "Fighting Abuse @Scale: Preventing Abuse Using Unsupervised Learning"
@@ -87,11 +87,11 @@ sections:
         url: "https://youtu.be/xlSmLXQFtto"
         image: "https://i.ytimg.com/vi/xlSmLXQFtto/hqdefault.jpg"
         image_alt: "Interview thumbnail for AI Innovators episode"
-        summary: "Interview on applied AI engineering, platform trust, and building practical ML systems at scale."
+        summary: "An interview about machine learning engineering and platform trust."
 
       - date: "2022"
         title: "The Data Scientist Show #035: Detect Online Abuse with AI"
         url: "https://youtu.be/A2csYeOnV98"
         image: "https://i.ytimg.com/vi/A2csYeOnV98/hqdefault.jpg"
         image_alt: "Podcast interview thumbnail for The Data Scientist Show"
-        summary: "Conversation about online abuse detection, machine learning in production, and the path from physics research to staff-level ML engineering."
+        summary: "A conversation about online abuse detection and my move from physics research to machine learning engineering."

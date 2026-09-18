@@ -2,7 +2,7 @@
 layout: post
 title: "Using deep learning to detect abusive sequences of member activity"
 description: "Detecting logged-in profile scrapers from the order and timing of their requests."
-last_modified_at: 2026-09-06
+last_modified_at: 2026-09-17
 og_image: "/assets/images/social/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity-1200x630.jpg"
 og_image_alt: "Using deep learning to detect abusive sequences of member activity"
 og_image_width: 1200
@@ -17,11 +17,12 @@ related:
 
 One logged-in profile scraper we studied at LinkedIn viewed roughly seventy distinct profiles in a day with randomized delays. Another viewed profiles in short bursts and deliberately revisited profiles it had already seen. Their activity volumes could plausibly have been human; request counts alone gave us little separation.
 
-I built a production deep learning model with my colleague Beibei Wang to use the order and timing of requests as a complementary representation. The [original coauthored engineering article](https://www.linkedin.com/blog/engineering/trust-and-safety/using-deep-learning-to-detect-abusive-sequences-of-member-activi) describes the work; a recorded talk is linked under [Resources](#resources).
+Beibei Wang and I developed a production deep learning model to detect profile scrapers from the order and timing of their requests. We described the model in our [LinkedIn Engineering article](https://www.linkedin.com/blog/engineering/trust-and-safety/using-deep-learning-to-detect-abusive-sequences-of-member-activi).
 
-## The Modeling Problem
+## Problem and input data
+{: #the-modeling-problem }
 
-Automation used for fake accounts, account takeovers, API abuse, and scraping can leave repeatable request sequences. Logged-in profile scraping was our first production use case: we modeled request types, ordering, repetition, and timing, including activity across site surfaces. Labels were imperfect, scraping was rare relative to normal activity, and attackers could adapt to visible defenses.
+Request sequences can help identify automation used for fake accounts, account takeovers, API abuse, and scraping. Our first production application was logged-in profile scraping.
 
 ## From Requests to Tokens
 
@@ -29,11 +30,11 @@ We modeled the ordered requests from an account, including the requests around e
 
 <img src="{{ '/assets/images/activity-sequence-construction.png' | relative_url }}" alt="Bursts of profile views on a distinct-profile-identifier versus time plot, expanded into a colored sequence of request types over time with the time between requests captured" width="1024" height="538" loading="lazy" decoding="async">
 
-*A mock burst of profile views, expanded into the full request sequence around it. The model also consumes the time gap between consecutive requests. (Figure from my LinkedIn Engineering blog post.)*
+*A mock burst of profile views and the request sequence surrounding it. The time gaps between requests are supplied to the model separately. (Figure from my LinkedIn Engineering blog post.)*
 
 The pipeline canonicalizes raw request paths into standardized path tokens, then assigns integer IDs in global request-frequency order: common requests get small IDs and rare requests get large IDs. These IDs index learned request-path embeddings.
 
-Timing is kept as a parallel signal. For each adjacent pair of requests, the model receives the elapsed time between them. In NLP terms, the request-path stream is the sentence, the standardized paths are tokens, and the inter-request delays are a second channel that tells the model how the sentence was paced.
+The standardized request paths form a sequence of tokens, analogous to the words in a sentence. The elapsed time between each pair of requests is supplied as a second input.
 
 ## What the Model Sees
 
@@ -41,7 +42,7 @@ The grid shows 200 consecutive requests, twenty per row, colored by how common e
 
 <img src="{{ '/assets/images/activity-sequence-legit-member.png' | relative_url }}" alt="Grid of 200 encoded requests from a legitimate member showing varied colors and heterogeneous patterns" width="900" height="368" loading="lazy" decoding="async">
 
-*The first two hundred requests from this legitimate member, colored by request-path frequency, show a varied mix of request types. (Figure 2 from our LinkedIn Engineering article.)*
+*Request-path tokens for 200 consecutive requests from a legitimate member, colored by request frequency. (Figure 2 from our LinkedIn Engineering article.)*
 
 And here is a scraper:
 
@@ -49,11 +50,12 @@ And here is a scraper:
 
 *The same visualization for this scraper is dominated by common request types, with little variation. (Figure 3 from our LinkedIn Engineering article.)*
 
-The grid displays the ordered token IDs that feed the request-path branch. Inter-request time gaps enter through a separate branch and are not shown in these grids.
+The grids show request order and type; the separate timing input is not shown.
 
-## Architecture: Local Motifs, Timing, Memory
+## Model architecture
+{: #architecture-local-motifs-timing-memory }
 
-The model is a supervised sequence classifier with two input branches. The request-path branch starts with learned embeddings over the frequency-ranked path tokens. Those embeddings let the model learn a dense representation of request types from the abuse-detection objective rather than from manually assigned semantics. One-dimensional convolutions then detect local motifs: short subsequences that may be suspicious wherever they appear in the stream.
+The classifier has separate request-path and timing branches. The request-path branch begins with embeddings learned during supervised training. One-dimensional convolutions identify short subsequences within the embedded request stream.
 
 The timing branch processes the inter-request time gaps. After the path and timing representations are concatenated, an LSTM models longer-range dependencies across the account's activity window. A final dense layer produces an abuse score.
 
@@ -61,29 +63,29 @@ The timing branch processes the inter-request time gaps. After the path and timi
 
 *Request-path and timing branches of the sequence classifier. (Figure 4 from our LinkedIn Engineering article.)*
 
-## Labels From an Unsupervised Teacher
+## Training labels
+{: #labels-from-an-unsupervised-teacher }
 
-Supervised sequence models need labels, and scraping does not come with clean ground truth. The labels for this model came from a different production signal: the [isolation forest]({{ '/2019/08/13/open-source-isolation-forest-spark-scala/' | relative_url }}) outlier-detection approach we used for automation detection. Those labels could be augmented with examples from known historical attacks.
-
-The labels came from Isolation Forest, so this evaluation does not independently measure detection of attacks that the labeling model missed.
+We used the production [Isolation Forest]({{ '/2019/08/13/open-source-isolation-forest-spark-scala/' | relative_url }}) model to generate weak labels for the sequence classifier. Examples from known historical attacks could also be added to the training data.
 
 ## Evaluation at Natural Class Balance
 
-The initial proof-of-concept model was evaluated out of time, on data from well after the training period, at the natural class balance. The slide plots the labeled populations without balancing a rare-abuse sample.
+We evaluated the initial proof-of-concept model on data collected well after the training period, retaining the natural class balance.
 
 <img src="{{ '/assets/images/activity-sequence-results.png' | relative_url }}" alt="Slide showing LSTM score distributions on an unbalanced out-of-time test dataset, with non-scrapers concentrated at low scores and scrapers concentrated in the high-score tail" width="1920" height="1080" loading="lazy" decoding="async">
 
-*Out-of-time labeled score distributions at natural class balance. The scraper groups are labeled by Isolation Forest, including a group with high Isolation Forest scores. (Slide 34 from my Scale AI talk.)*
+*Score distributions for the out-of-time test set. The scraper labels came from Isolation Forest; the figure also distinguishes accounts with high Isolation Forest scores. (Slide 34 from my Scale AI talk.)*
 
-In the high-score bins highlighted on the slide, plotted non-scraper counts are roughly a thousand times smaller than scraper counts. This comparison uses Isolation-Forest-derived labels. The slide does not specify a decision threshold or reviewed production precision or recall.
+In the highlighted high-score bins, accounts labeled as scrapers outnumbered accounts labeled as non-scrapers by roughly 1,000 to 1.
 
-## Embeddings and Coordinated Automation
+## Activity sequence embeddings
+{: #embeddings-and-coordinated-automation }
 
-The model also produces activity sequence embeddings. Nearby sequence embeddings can help identify accounts worth investigating together. Similar request patterns are an investigative lead; they do not by themselves prove shared control or use of a particular script.
+The model also produces activity sequence embeddings that can be used to group accounts with similar request patterns for investigation.
 
 <img src="{{ '/assets/images/activity-sequence-embeddings.png' | relative_url }}" alt="Slide showing a two-dimensional projection of activity sequence embeddings, with non-scrapers, scrapers, and high-score scrapers forming visible clusters" width="1920" height="1080" loading="lazy" decoding="async">
 
-*A two-dimensional projection of activity sequence embeddings, colored by the displayed non-scraper and scraper label groups. Proximity represents behavioral resemblance. (Slide from my Scale AI talk.)*
+*A two-dimensional projection of activity sequence embeddings, colored by the non-scraper and scraper label groups. (Slide from my Scale AI talk.)*
 
 The embeddings can also serve as features for downstream outlier-detection models, replacing hand-engineered activity summaries with learned representations of the sequence.
 
