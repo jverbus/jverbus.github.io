@@ -6,7 +6,7 @@ og_image: "/assets/images/social/2024-08-15-finding-ai-generated-faces-in-the-wi
 og_image_alt: "Finding AI-Generated Faces in the Wild"
 og_image_width: 1200
 og_image_height: 630
-last_modified_at: 2026-09-17
+last_modified_at: 2026-09-18
 categories: ["AI and Machine Learning"]
 tags: [LinkedIn, machine learning, AI, Generative AI, deepfake]
 related:
@@ -29,14 +29,16 @@ We trained and evaluated the model on 18 datasets containing 120,000 real Linked
 
 *Representative AI-generated images from the ten synthesis engines used for training and evaluation. Some engines contribute faces only; others contribute both faces and non-face images. (Figure 2 of the paper; dataset counts in Table 1.)*
 
+## Model and detection results
+
+Images were resized to 512 pixels and passed through a frozen EfficientNet-B1 backbone. We trained the scoring layers, which contained 6.8 million parameters.
+
 At a false positive rate of 0.5%, the classifier detected 98% of synthetic faces from generators represented in training. Detection was 84.5% on the [held-out evaluation of 5,000 faces from four generators]({{ '/assets/files/porcile2024-finding-ai-generated-faces-in-the-wild.pdf' | relative_url }}#page=5). Results varied by generator: 99.5% for EG3D, 95.4% for generated.photos, and 19.4% for Midjourney.
 
 ## Resolution and JPEG compression
 {: #built-for-the-wild }
 
 Profile photos are resized and JPEG-compressed during upload and processing. We tested how these changes affected detection.
-
-Images were resized to 512 pixels and passed through a frozen EfficientNet-B1 backbone. We trained 6.8 million parameters in the scoring layers using a mixture of uncompressed and JPEG-compressed images.
 
 <img src="{{ '/assets/images/ai-faces-wild-robustness.png' | relative_url }}" alt="Two plots showing true positive rate versus image resolution and versus JPEG quality, with resolution-matched training maintaining high accuracy at small sizes" width="656" height="706" loading="lazy" decoding="async">
 

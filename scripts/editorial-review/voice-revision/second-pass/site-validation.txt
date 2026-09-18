@@ -1,0 +1,14 @@
+Final rendered checks — 2026-09-18
+
+$ python3 scripts/check_generated_site.py _site
+Generated site validation passed.
+Exit status: 0
+
+$ python3 scripts/editorial-review/check_castle.py /private/tmp/voice-revision-baseline-_ywx81eb
+Castle preserved: source, 7 local assets, complete page/head, 20 entries in 12 files.
+Exit status: 0
+
+$ python3 scripts/editorial-review/voice-revision/check_preservation.py /private/tmp/voice-revision-baseline-_ywx81eb
+Preserved scope, nine front matters/code blocks, 43 HTML routes, 242 old anchors, distinct destinations, figures, MathML, canonical/OG identity, and the current academic design.
+Parsed 32 JSON-LD blocks; verified nine updated headers/descriptions, person references, sitemap/taxonomy, and isolated demo scripts: {'if': ['2026/03/18/announcing-extended-isolation-forest-support/index.html'], 'orbit': ['2026/01/09/brown-physics-ai-winter-school-workshop/index.html'], 'lux': ['2016/08/18/calibrating-the-lux-dark-matter-experiment/index.html']}.
+Exit status: 0

@@ -1,0 +1,226 @@
+{
+  "date": "2026-09-18",
+  "scheme": "light",
+  "height": 1000,
+  "report": [
+    {
+      "name": "desktop-lux-caption",
+      "width": 1280,
+      "scrollWidth": 1265,
+      "light": true,
+      "title": "Calibrating the LUX Dark Matter Experiment | James Verbus",
+      "text": "The interior of the LUX water tank before filling. The titanium cryostat hangs at center. The neutron conduit is suspended at lower right, out of line with the detector for WIMP-search operation. (Photograph courtesy of the Sanford Underground Research Facility; from my dissertation defense slides.)",
+      "followingText": "",
+      "targetHeight": 94.1875,
+      "modelHeadingCount": 0,
+      "missingFragments": [],
+      "tables": []
+    },
+    {
+      "name": "desktop-lux-results",
+      "width": 1280,
+      "scrollWidth": 1265,
+      "light": true,
+      "title": "Calibrating the LUX Dark Matter Experiment | James Verbus",
+      "text": "Charge and light yields near threshold#",
+      "followingText": "At LUX’s average drift field of 180 V/cm, the charge-yield measurements covered 0.7 to 24 keV, with an additional measurement at 74 keV. The light-yield measurements spanned 1.1 to 74 keV. The lowest measured charge and light energies were lower by factors of five and three, respectively, than previous scattering-angle measurements.",
+      "targetHeight": 30.703125,
+      "modelHeadingCount": 0,
+      "missingFragments": [],
+      "tables": []
+    },
+    {
+      "name": "desktop-face-model-results",
+      "width": 1280,
+      "scrollWidth": 1265,
+      "light": true,
+      "title": "Finding AI-Generated Faces in the Wild | James Verbus",
+      "text": "Model and detection results#",
+      "followingText": "Images were resized to 512 pixels and passed through a frozen EfficientNet-B1 backbone. We trained the scoring layers, which contained 6.8 million parameters.",
+      "targetHeight": 30.703125,
+      "modelHeadingCount": 1,
+      "missingFragments": [],
+      "tables": []
+    },
+    {
+      "name": "desktop-rag-model-table",
+      "width": 1280,
+      "scrollWidth": 1265,
+      "light": true,
+      "title": "Exploring LLMs and RAG at the 2025 AI Winter School (Brown University) | James Verbus",
+      "text": "Model\tExecution\tRetrieval\ngpt-4o-mini\tOpenAI API\tLlamaIndex document loading, chunking, embeddings, vector index, and query engine\nmeta-llama/Meta-Llama-3.1-8B-Instruct\tHugging Face model in a GPU-backed Colab runtime\tLlamaIndex with BAAI/bge-small-en-v1.5 embeddings",
+      "targetHeight": 238.71875,
+      "modelHeadingCount": 0,
+      "missingFragments": [],
+      "tables": [
+        {
+          "width": 684.375,
+          "scrollWidth": 684,
+          "clientWidth": 684
+        },
+        {
+          "width": 684.375,
+          "scrollWidth": 684,
+          "clientWidth": 684
+        }
+      ]
+    },
+    {
+      "name": "desktop-rag-error-table",
+      "width": 1280,
+      "scrollWidth": 1265,
+      "light": true,
+      "title": "Exploring LLMs and RAG at the 2025 AI Winter School (Brown University) | James Verbus",
+      "text": "Source of error\tDescription\tCheck\nMissing document\tThe relevant paper or thesis is absent from the index.\tLoaded documents and index contents\nRetrieval\tThe relevant text is indexed, but the returned passages do not contain the answer.\tsource_nodes, page metadata, chunk text, and ranking\nAnswer generation\tA retrieved passage contains the answer, but the model changes a value, unit, or qualification.\tThe generated answer against the passage",
+      "targetHeight": 335.6875,
+      "modelHeadingCount": 0,
+      "missingFragments": [],
+      "tables": [
+        {
+          "width": 684.375,
+          "scrollWidth": 684,
+          "clientWidth": 684
+        },
+        {
+          "width": 684.375,
+          "scrollWidth": 684,
+          "clientWidth": 684
+        }
+      ]
+    },
+    {
+      "name": "desktop-rag-isotope-example",
+      "width": 1280,
+      "scrollWidth": 1265,
+      "light": true,
+      "title": "Exploring LLMs and RAG at the 2025 AI Winter School (Brown University) | James Verbus",
+      "text": "Adding the missing thesis#",
+      "followingText": "The hosted-API notebook includes answers to the same question before and after the theses were added:",
+      "targetHeight": 22.640625,
+      "modelHeadingCount": 0,
+      "missingFragments": [],
+      "tables": [
+        {
+          "width": 684.375,
+          "scrollWidth": 684,
+          "clientWidth": 684
+        },
+        {
+          "width": 684.375,
+          "scrollWidth": 684,
+          "clientWidth": 684
+        }
+      ]
+    },
+    {
+      "name": "mobile-lux-caption",
+      "width": 390,
+      "scrollWidth": 390,
+      "light": true,
+      "title": "Calibrating the LUX Dark Matter Experiment | James Verbus",
+      "text": "The interior of the LUX water tank before filling. The titanium cryostat hangs at center. The neutron conduit is suspended at lower right, out of line with the detector for WIMP-search operation. (Photograph courtesy of the Sanford Underground Research Facility; from my dissertation defense slides.)",
+      "followingText": "",
+      "targetHeight": 164.828125,
+      "modelHeadingCount": 0,
+      "missingFragments": [],
+      "tables": []
+    },
+    {
+      "name": "mobile-lux-results",
+      "width": 390,
+      "scrollWidth": 390,
+      "light": true,
+      "title": "Calibrating the LUX Dark Matter Experiment | James Verbus",
+      "text": "Charge and light yields near threshold#",
+      "followingText": "At LUX’s average drift field of 180 V/cm, the charge-yield measurements covered 0.7 to 24 keV, with an additional measurement at 74 keV. The light-yield measurements spanned 1.1 to 74 keV. The lowest measured charge and light energies were lower by factors of five and three, respectively, than previous scattering-angle measurements.",
+      "targetHeight": 61.40625,
+      "modelHeadingCount": 0,
+      "missingFragments": [],
+      "tables": []
+    },
+    {
+      "name": "mobile-face-model-results",
+      "width": 390,
+      "scrollWidth": 390,
+      "light": true,
+      "title": "Finding AI-Generated Faces in the Wild | James Verbus",
+      "text": "Model and detection results#",
+      "followingText": "Images were resized to 512 pixels and passed through a frozen EfficientNet-B1 backbone. We trained the scoring layers, which contained 6.8 million parameters.",
+      "targetHeight": 61.40625,
+      "modelHeadingCount": 1,
+      "missingFragments": [],
+      "tables": []
+    },
+    {
+      "name": "mobile-rag-model-table",
+      "width": 390,
+      "scrollWidth": 390,
+      "light": true,
+      "title": "Exploring LLMs and RAG at the 2025 AI Winter School (Brown University) | James Verbus",
+      "text": "Model\tExecution\tRetrieval\ngpt-4o-mini\tOpenAI API\tLlamaIndex document loading, chunking, embeddings, vector index, and query engine\nmeta-llama/Meta-Llama-3.1-8B-Instruct\tHugging Face model in a GPU-backed Colab runtime\tLlamaIndex with BAAI/bge-small-en-v1.5 embeddings",
+      "targetHeight": 469.0625,
+      "modelHeadingCount": 0,
+      "missingFragments": [],
+      "tables": [
+        {
+          "width": 348,
+          "scrollWidth": 348,
+          "clientWidth": 348
+        },
+        {
+          "width": 358.578125,
+          "scrollWidth": 359,
+          "clientWidth": 359
+        }
+      ]
+    },
+    {
+      "name": "mobile-rag-error-table",
+      "width": 390,
+      "scrollWidth": 390,
+      "light": true,
+      "title": "Exploring LLMs and RAG at the 2025 AI Winter School (Brown University) | James Verbus",
+      "text": "Source of error\tDescription\tCheck\nMissing document\tThe relevant paper or thesis is absent from the index.\tLoaded documents and index contents\nRetrieval\tThe relevant text is indexed, but the returned passages do not contain the answer.\tsource_nodes, page metadata, chunk text, and ranking\nAnswer generation\tA retrieved passage contains the answer, but the model changes a value, unit, or qualification.\tThe generated answer against the passage",
+      "targetHeight": 668.40625,
+      "modelHeadingCount": 0,
+      "missingFragments": [],
+      "tables": [
+        {
+          "width": 348,
+          "scrollWidth": 348,
+          "clientWidth": 348
+        },
+        {
+          "width": 358.578125,
+          "scrollWidth": 359,
+          "clientWidth": 359
+        }
+      ]
+    },
+    {
+      "name": "mobile-rag-isotope-example",
+      "width": 390,
+      "scrollWidth": 390,
+      "light": true,
+      "title": "Exploring LLMs and RAG at the 2025 AI Winter School (Brown University) | James Verbus",
+      "text": "Adding the missing thesis#",
+      "followingText": "The hosted-API notebook includes answers to the same question before and after the theses were added:",
+      "targetHeight": 22.640625,
+      "modelHeadingCount": 0,
+      "missingFragments": [],
+      "tables": [
+        {
+          "width": 348,
+          "scrollWidth": 348,
+          "clientWidth": 348
+        },
+        {
+          "width": 358.578125,
+          "scrollWidth": 359,
+          "clientWidth": 359
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

@@ -2,7 +2,7 @@
 layout: post
 title: "Calibrating the LUX Dark Matter Experiment"
 description: "Measuring the charge and light response of liquid xenon to low-energy nuclear recoils using D-D neutron scattering in LUX."
-last_modified_at: 2026-09-17
+last_modified_at: 2026-09-18
 og_image: "/assets/images/social/2016-08-18-calibrating-the-lux-dark-matter-experiment-1200x630.jpg"
 og_image_alt: "Calibrating the LUX Dark Matter Experiment"
 og_image_width: 1200
@@ -48,7 +48,7 @@ The recoil energy then follows from non-relativistic two-body elastic scattering
 
 For 2.45 MeV neutrons on xenon, the maximum recoil energy is about 74 keV. A 1 keV recoil corresponds to a laboratory scattering angle of roughly 13 degrees. At these small angles, centimeter-scale uncertainties in the interaction positions limit the recoil-energy resolution.
 
-Simulation was used for acceptance, backgrounds and detector response, but not to assign the double-scatter recoil energy.
+We used simulation to estimate acceptance, backgrounds, and detector response, and to correct the mean recoil energy in each charge-yield analysis bin for position-reconstruction bias ([thesis §5.2](https://repository.library.brown.edu/studio/item/bdr:674209/)).
 
 <img src="{{ '/assets/images/lux-dd-technique-schematic.png' | relative_url }}" alt="Schematic of a dual-phase time projection chamber with a collimated mono-energetic neutron beam scattering twice in the liquid target, defining a scattering angle" width="1366" height="954" loading="lazy" decoding="async">
 
@@ -71,7 +71,7 @@ At SURF, the generator was positioned outside the 8 m-diameter water tank shield
 
 <img src="{{ '/assets/images/lux-water-tank-conduit.jpg' | relative_url }}" alt="Interior of the empty LUX water tank with the titanium cryostat suspended at center and the neutron conduit hanging horizontally at right" width="970" height="646" loading="lazy" decoding="async">
 
-*The interior of the LUX water tank before filling. The titanium cryostat hangs at center; the neutron conduit is suspended at right, in line with the future beam path. (Photograph courtesy of the Sanford Underground Research Facility; from my dissertation defense slides.)*
+*The interior of the LUX water tank before filling. The titanium cryostat hangs at center. The neutron conduit is suspended at lower right, out of line with the detector for WIMP-search operation. (Photograph courtesy of the Sanford Underground Research Facility; from my dissertation defense slides.)*
 
 <img src="{{ '/assets/images/lux-dd-setup-diagram.jpg' | relative_url }}" alt="Conceptual diagram of the LUX D-D calibration: neutrons travel through a conduit across the water tank into the TPC, where a double scatter is reconstructed from PMT hit patterns and drift times" width="1310" height="1259" loading="lazy" decoding="async">
 
@@ -86,9 +86,9 @@ The single-scatter event positions show the neutron beam as a horizontal band cr
 ## Charge and light yields near threshold
 {: #signal-yields-measured-below-1-kev }
 
-The low-energy measurements covered 0.7 to 24 keV for charge and reached 1.1 keV for light. The endpoint analysis provided measurements of both yields at 74 keV.
+At LUX’s average drift field of 180 V/cm, the charge-yield measurements covered 0.7 to 24 keV, with an additional measurement at 74 keV. The light-yield measurements spanned 1.1 to 74 keV. The lowest measured charge and light energies were lower by factors of five and three, respectively, than previous scattering-angle measurements.
 
-At an average drift field of 180 V/cm, the measurements spanned 0.7 to 74 keV for charge and 1.1 to 74 keV for light. These results extended the charge and light measurements to energies lower by factors of five and three, respectively, than prior scattering-angle measurements. The yields at the 74 keV endpoint were approximately 3.06 electrons/keV and 14.0 photons/keV. The statistical and systematic uncertainties are reported in the [calibration paper](https://arxiv.org/pdf/1608.05381#page=17), Sections V.A–B and Tables V–VI; Tables I and III contain the low-energy results.
+At 74 keV, the yields were approximately 3.06 electrons/keV and 14.0 photons/keV. The statistical and systematic uncertainties are reported in the [calibration paper](https://arxiv.org/pdf/1608.05381#page=17), Sections V.A–B and Tables V–VI; Tables I and III contain the low-energy results.
 
 The measured yields were consistent with a Lindhard-based description of energy partition over roughly two orders of magnitude in recoil energy.
 

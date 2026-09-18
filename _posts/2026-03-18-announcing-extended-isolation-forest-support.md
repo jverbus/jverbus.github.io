@@ -2,7 +2,7 @@
 layout: post
 title: "Extended Isolation Forest for Distributed Spark/Scala Anomaly Detection"
 description: "Adding Extended Isolation Forest to the Spark/Scala library and comparing it with the reference implementation."
-last_modified_at: 2026-09-17
+last_modified_at: 2026-09-18
 og_image: "/assets/images/social/2026-03-18-announcing-extended-isolation-forest-support-1200x630.jpg"
 og_image_alt: "Extended Isolation Forest for distributed Spark/Scala anomaly detection"
 og_image_width: 1200
@@ -128,7 +128,7 @@ I also ran a separate local edge-case study covering hyperparameter sweeps, cont
 
 The new code implements hyperplane generation, storage, and node scoring within the existing Spark ML interfaces.
 
-**Sparse hyperplane representation.** Each EIF split stores only the active coordinates of the random hyperplane: feature indices, weights, and offset. Dense normal vectors are not materialized. Model size and per-node scoring cost therefore scale with `extensionLevel + 1`, not with the full input dimensionality. With `extensionLevel = 3`, a node evaluates a four-term dot product.
+**Sparse hyperplane representation.** Each EIF split stores only the active coordinates of the random hyperplane: feature indices, weights, and offset. Dense normal vectors are not materialized. The storage and dot-product cost of each split scale with `extensionLevel + 1`. With `extensionLevel = 3`, a node evaluates a four-term dot product.
 
 **Spark ML integration.** EIF uses the same Spark ML `Estimator` / `Model` contract as standard Isolation Forest. It works in Spark ML `Pipeline`s and follows the same distributed model persistence pattern.
 

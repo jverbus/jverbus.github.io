@@ -2,7 +2,7 @@
 layout: post
 title: "Exploring LLMs and RAG at the 2025 AI Winter School (Brown University)"
 date: 2025-02-10
-last_modified_at: 2026-09-17
+last_modified_at: 2026-09-18
 description: "A workshop on querying physics papers with LLMs and checking the answers against retrieved source passages."
 og_image: "/assets/images/social/2025-02-10-brown-physics-ai-winter-school-workshop-1200x630.jpg"
 og_image_alt: "2025 AI Winter School banner from the Brown University Department of Physics"
@@ -58,8 +58,6 @@ We provided two Colab notebooks: one used a hosted API, and the other ran an ope
 | --- | --- | --- |
 | `gpt-4o-mini` | OpenAI API | LlamaIndex document loading, chunking, embeddings, vector index, and query engine |
 | `meta-llama/Meta-Llama-3.1-8B-Instruct` | Hugging Face model in a GPU-backed Colab runtime | LlamaIndex with `BAAI/bge-small-en-v1.5` embeddings |
-
-The hosted path required API access. The Llama model ran in a GPU-backed Colab session with the notebook's dependencies, Hugging Face model access, and enough GPU memory.
 
 ## Indexing Parameters
 
@@ -117,9 +115,9 @@ The [hosted-API notebook](https://github.com/jverbus/jverbus.github.io/blob/0556
 
 > How low in energy was the ER response measured using 127Xe? Where did the 127Xe come from?
 
-Before insertion, the retrieved passages came from the D-D papers. One discussed cosmogenic `131mXe`; the generated answer substituted that isotope and did not identify the `127Xe` threshold. After insertion, the saved answer reported a lowest energy deposition of **186 eV** and attributed the `127Xe` to cosmogenic activation while the xenon was above ground.
+Before the theses were added, the retrieved D-D passages included a discussion of cosmogenic `131mXe`. The model answered about that isotope and did not identify the `127Xe` threshold.
 
-After insertion, `response.source_nodes` included passages from the Huang thesis on pages 77–78, as numbered in the notebook metadata. Those passages give the 186 eV energy deposition and attribute the isotope to cosmogenic activation before the xenon was moved underground.
+After the theses were added, `response.source_nodes` included the relevant passages from the Huang thesis (pages 77–78 in the notebook metadata). The answer reported an energy deposition of **186 eV** and attributed the `127Xe` to cosmogenic activation while the xenon was above ground.
 
 ## Materials
 

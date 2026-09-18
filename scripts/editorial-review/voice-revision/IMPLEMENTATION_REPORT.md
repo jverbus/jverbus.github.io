@@ -88,3 +88,53 @@ The in-app Browser returned no available browser. Used installed headless Chrome
 Inspected the selected-work copy, both revised RAG tables, all three demo introductions, orbit's greedy and actual Hohmann-arrival messages, and LUX's 1–10 keV, below-1-keV, and near-74-keV messages. The LUX messages were reached by dragging the actual vertices. The EIF benchmark table retains its existing horizontal scrolling container on mobile; the document itself stays within the 390px viewport. Demo controls wrap, canvases render independently, and paragraphs remain legible. Early capture-position problems from smooth scrolling were corrected before retaining the final captures. No rendering defect required a design change.
 
 All required local checks were run. Remote CI was not run because the branch was not pushed. External scientific experiments were not rerun, as required by the brief. This is an implemented draft for the owner's review, not a claim that the owner has approved the voice.
+
+## Second pass — September 18, 2026
+
+Applied all nine focused amendments on `voice-revision-2026-09-17`, starting from the exact reviewed head `94a0dc73ac7c65aed709010b86001443fa51ebd8`. There were no intervening author changes to reconcile. Read the branch's current `AGENTS.md` before editing. This section records the second pass; the September 17 report above and its original 166-item disposition files are retained as historical records. The first-pass branch was subsequently pushed at the owner's request.
+
+The [second-pass disposition log](second-pass/DISPOSITIONS.md) records SECOND-01 through SECOND-09 individually. The changes affect five articles: LUX's caption, simulation correction, and measurement-range paragraphs; IF19's averaging explanation; EIF's per-split cost statement; FACE24's model/results order; and the RAG isotope example and duplicate runtime paragraph. SECOND-01 supersedes a sentence supplied by the previous brief; it does not correct an implementation error in that pass. No further site-wide rewrite was performed.
+
+Read all five complete revised articles for flow; the focused moves and merges required no additional transition repairs. An independent diff review confirmed the requested wording, deletion, heading placement, and preserved resource destinations, headings, figures, code, MathML, tables, and scientific qualifications. The targeted runtime paragraph was deleted without replacement. The actionable RL note about the saved configuration mismatch and training seed remains unchanged.
+
+### Dates and preservation
+
+The actual local edit date was September 18, 2026 (PDT). Only LUX, IF19, FACE24, RAG, and EIF advance to `last_modified_at: 2026-09-18`. The checker now records an explicit expected date for each of the nine article paths and uses that same map for source front matter and rendered update times. The other four articles retain `2026-09-17`; original publication dates and all other front matter remain fixed. Homepage, Talks, project-page, and Castle dates are unchanged. No unrelated checker assertion was removed or relaxed.
+
+Continued using the actual original baseline at `/private/tmp/voice-revision-baseline-_ywx81eb`, not the reviewed branch as a substitute. Its 204 source files match both the saved SHA-256 manifest and their Git blobs at pinned master `bc3a93eaeebafa035c9b3073485c862376187a75`. The original rendered site is present, so baseline reconstruction was unnecessary.
+
+The strict Castle comparison passes against that baseline: source, seven assets, complete rendered page/head, and all 20 entries across 12 generated files remain unchanged. A separate byte comparison confirms the complete rendered Castle HTML is identical. Its source blob is still `7db7159ae8574cdf005cf18cd55afac2df3c2486`.
+
+All 43 HTML routes and 242 original IDs remain, with no duplicate IDs. The new FACE24 heading has exactly one `model-and-detection-results` ID; the three specified old FACE24 IDs still resolve. All 32 JSON-LD blocks parse. The cumulative checker still enforces the original baseline's resource destinations, code, figures, MathML, metadata, design, cache versions, and precisely the first pass's five authorized JavaScript display changes. Separately, the second-pass diff confirms every JavaScript file, CSS, shared layout/navigation/footer, font, asset, notebook, PDF, dependency, configuration, cache version, homepage, Talks page, project page, and other article source equals the reviewed head. See [scope-audit.txt](second-pass/scope-audit.txt).
+
+### Local validation
+
+| Check run on September 18 | Result |
+| --- | --- |
+| `bundle exec jekyll build --config _config.yml,_config.ci.yml` | Passed; no Bundler bypass needed |
+| `node scripts/test_if_demo.js` | 30 checks passed |
+| `node scripts/test_orbit_demo.js` | 21 checks passed |
+| `node scripts/test_lux_demo.js` | 12 checks passed |
+| `python3 scripts/check_post_og.py` | Passed for 10 posts |
+| `python3 scripts/check_generated_site.py _site` | Passed |
+| `python3 scripts/editorial-review/test_check_castle.py` | 10 regression tests passed |
+| `python3 scripts/editorial-review/check_castle.py /private/tmp/voice-revision-baseline-_ywx81eb` | Passed in strict mode |
+| `python3 scripts/editorial-review/voice-revision/check_preservation.py /private/tmp/voice-revision-baseline-_ywx81eb` | Passed against the original unchanged-master baseline |
+| `git diff --check` | Passed |
+| Review-file exclusion | The brief and review directories are absent from generated content |
+
+The demo/metadata/regression-test console output is in [second-pass/test-results.txt](second-pass/test-results.txt). No new generated-site warnings were introduced. An optional supplemental audit initially could not import `bs4`; it was rewritten using Python's standard-library HTML parser and then passed. No dependency was installed or changed.
+
+### Browser review
+
+The in-app Browser listed no available browser. Used installed headless Chrome against the locally built site in explicitly emulated **light mode**, at **1280×1000** and **390×1000**. Visually inspected 12 captures covering the LUX water-tank caption and measurement results, FACE24's model/results section and transition to resolution/compression, and both RAG tables plus the isotope example at each size. The text is legible and the target prose is unclipped. The mobile RAG error table retains its horizontal scrolling container; the page itself stays within the 390px viewport. Existing long code blocks scroll within their containers. No design adjustment was needed.
+
+[second-pass/screenshots/rendering.json](second-pass/screenshots/rendering.json) records the light-mode check, viewport/document widths, target text, unique FACE24 heading, resolved local fragments, and zero browser script exceptions. The 12 PNGs are stored beside it, separately from the first pass's dark-mode captures. The cumulative preservation check covers every old ID; browser DOM checks also found no unresolved local fragments on the three inspected articles. These are local browser observations, separate from CI or owner approval.
+
+### Evidence limits and review boundary
+
+The corrections use the source passages and exact replacements supplied with the second-pass request: the thesis's Figure 2.10 and §5.2, the immutable `ExtendedUtils.scala` representation/loops, and the face paper's architecture and separate evaluation conditions. The LUX simulation sentence reuses the article's thesis URL with the permitted §5.2 locator. No new full-thesis audit, experiment, saved-output reproduction, external library change, or measurement is claimed.
+
+No new source-dependent question remains for these nine amendments. The earlier excluded note about the separate EIF study's unavailable full script/configuration remains unresolved; the RL notebook's specific saved-configuration and seed note remains in the article. Neither was changed or rerun.
+
+The existing feature branch is the owner's GitHub review destination. No PR, merge, or site publication is part of this pass. Remote CI is separate from the successful local checks: the checked-in workflows run on pull requests and pushes to `master` (with a scheduled Link Check), so a feature-branch update does not trigger those workflows. No remote CI pass is claimed.

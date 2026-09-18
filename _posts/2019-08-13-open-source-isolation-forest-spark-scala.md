@@ -2,7 +2,7 @@
 layout: post
 title: "Open Source: Spark/Scala Isolation Forest Library"
 description: "Why we built a distributed Isolation Forest implementation for detecting unusual account activity at LinkedIn."
-last_modified_at: 2026-09-17
+last_modified_at: 2026-09-18
 og_image: "/assets/images/social/2019-08-13-open-source-isolation-forest-spark-scala-1200x630.jpg"
 og_image_alt: "Open Source: Spark/Scala Isolation Forest Library"
 og_image_width: 1200
@@ -28,7 +28,7 @@ The activity of an individual abusive account can also resemble ordinary browsin
 
 The Isolation Forest algorithm, introduced by [Liu, Ting, and Zhou in 2008](https://doi.org/10.1109/ICDM.2008.17), builds an ensemble of random binary trees. Each tree is trained on a subsample. At each node, a feature and a split value within its observed range are selected at random. Splitting continues until a point is isolated or the height limit is reached.
 
-Outliers typically require fewer random splits to isolate than points in dense regions of the feature space. In a two-dimensional example from one of my talks, isolating an inlier took 11 splits, while isolating an outlier took 5. The anomaly score is derived from the average path length across the ensemble; averaging over many random trees reduces variation between individual trees.
+Outliers typically require fewer random splits to isolate than points in dense regions of the feature space. In a two-dimensional example from one of my talks, isolating an inlier took 11 splits, while isolating an outlier took 5. The anomaly score is derived from the mean path length across the ensemble. Averaging over many random trees reduces the sampling variance of that estimate.
 
 <img src="{{ '/assets/images/isolation-forest-tree.png' | relative_url }}" alt="Diagram of an isolation tree where an outlier reaches a leaf in few splits near the root while an inlier requires a much deeper path" width="1024" height="611" loading="lazy" decoding="async">
 

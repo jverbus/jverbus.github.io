@@ -21,6 +21,21 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from check_castle import Document, Node
 
 
+# SECOND-09: only the five articles edited in the September 18 second pass
+# receive a new modification date. Expectations are independent of source data.
+EXPECTED_MODIFIED_DATES = {
+    '_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md': '2026-09-18',
+    '_posts/2019-08-13-open-source-isolation-forest-spark-scala.md': '2026-09-18',
+    '_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md': '2026-09-17',
+    '_posts/2023-06-20-detecting-ai-generated-profile-photos.md': '2026-09-17',
+    '_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md': '2026-09-18',
+    '_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md': '2026-09-17',
+    '_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md': '2026-09-18',
+    '_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md': '2026-09-17',
+    '_posts/2026-03-18-announcing-extended-isolation-forest-support.md': '2026-09-18',
+}
+
+
 def values(doc, tag, attr):
     return {dict(n.attrs)[attr] for n in doc.nodes
             if n.tag == tag and attr in dict(n.attrs)}
@@ -45,6 +60,7 @@ def main():
     originals = json.loads((baseline / 'tracked_hashes.json').read_text())
     posts = sorted(p for p in source.glob('_posts/*.md') if 'castle' not in p.name)
     assert len(posts) == 9
+    assert {str(p.relative_to(source)) for p in posts} == set(EXPECTED_MODIFIED_DATES)
     allowed = {str(p.relative_to(source)) for p in posts} | {
         'AGENTS.md', 'index.md', 'isolation-forest.md', 'videos.md',
         '_config.yml', '_data/home.yml', '_data/open_source.yml', '_data/videos.yml',
@@ -59,7 +75,10 @@ def main():
         front = lambda s: re.sub(r'^(description|last_modified_at):.*\n', '',
                                 s.split('---', 2)[1], flags=re.M)
         assert front(old) == front(new), f'Protected front matter: {p.name}'
-        assert 'last_modified_at: 2026-09-17' in new
+        expected_date = EXPECTED_MODIFIED_DATES[str(p.relative_to(source))]
+        modified = re.search(r'^last_modified_at: (\d{4}-\d{2}-\d{2})$',
+                             new.split('---', 2)[1], re.M)
+        assert modified and modified[1] == expected_date, (p.name, 'last_modified_at', expected_date)
         for block in re.findall(r'^```[^\n]*\n.*?^```', old, re.M | re.S):
             assert block in new, f'Code/equation block: {p.name}'
     agents = ' '.join(Path('AGENTS.md').read_text().split())
@@ -129,7 +148,8 @@ def main():
         assert 'Originally published' in text and 'Updated' in text and 'min read' in text, (rel, text)
         times = [n for n in doc.nodes if n.tag == 'time']
         assert any(dict(n.attrs).get('datetime', '').startswith(date) for n in times)
-        assert any(dict(n.attrs).get('datetime', '').startswith('2026-09-17') for n in times)
+        assert any(dict(n.attrs).get('datetime', '').startswith(EXPECTED_MODIFIED_DATES[rel])
+                   for n in times), (rel, 'rendered update date', EXPECTED_MODIFIED_DATES[rel])
         desc = re.search(r'^description: "(.*)"$', Path(rel).read_text(), re.M)[1]
         for attr, key in [('name', 'description'), ('property', 'og:description')]:
             assert dict(select(doc, 'meta', attr, key)[0].attrs)['content'] == desc, (rel, key)

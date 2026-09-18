@@ -1,0 +1,6 @@
+Second-pass scope audit — 2026-09-18
+PASS: tracked second-pass changes limited to five articles and authorized review tooling/records.
+PASS: Castle source blob 7db7159ae8574cdf005cf18cd55afac2df3c2486 and complete rendered page byte-identical to original baseline.
+PASS: FACE24 model-and-detection-results appears once; all three preserved section IDs resolve.
+PASS: review directory and supplied brief absent from generated site.
+PASS: all JavaScript, CSS, shared UI, cache versions, config, assets, homepage, Talks, projects, and other post sources equal the reviewed head.
