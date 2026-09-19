@@ -2,13 +2,11 @@
 <div class="lux-demo" data-lux-demo hidden>
   <h2 class="if-demo-title" id="kinematics-live-heading">Try it: the kinematics behind the energy scale</h2>
   <p class="if-demo-intro">
-    Drag the two scatter vertices of a double-scatter event. The beam
-    direction and the line between the vertices set the scattering angle
-    &theta; of the first interaction. For this double-scatter energy tag,
-    the known incident neutron energy and measured angle determine the
-    recoil energy kinematically, using the neutron and xenon masses.
-    Small angles reach below 1 keV; a full backscatter pins the 74 keV
-    endpoint. This diagram is illustrative, not a full detector-response model.
+    Drag the two interaction vertices to change the neutron scattering angle. The
+    diagram calculates recoil energy from the angle and the 2.45 MeV incident neutron
+    energy using two-body elastic scattering kinematics. Small angles correspond to
+    recoil energies below 1 keV; a 180-degree backscatter gives the maximum energy of
+    about 74 keV.
   </p>
   <div class="if-demo-panels">
     <figure>
@@ -25,6 +23,6 @@
   </div>
   <p class="lux-demo-status" data-lux-status role="status"></p>
   <p class="lux-demo-readout" data-lux-readout aria-hidden="true"></p>
-  <p class="if-demo-hint">Drag scatter 1 along the beam line and scatter 2 anywhere in the volume &middot; the marker on the curve follows your event &middot; the energy tag uses the measured angle and known incident energy.</p>
+  <p class="if-demo-hint">Drag scatter 1 along the beam line and scatter 2 within the volume. The marker on the curve follows the selected geometry.</p>
 </div>
-<script src="{{ '/assets/js/lux-demo.js' | relative_url }}?v=1" defer></script>
+<script src="{{ '/assets/js/lux-demo.js' | relative_url }}?v=2" defer></script>

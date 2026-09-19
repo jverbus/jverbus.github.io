@@ -2,7 +2,7 @@
 layout: post
 title: "Extended Isolation Forest for Distributed Spark/Scala Anomaly Detection"
 description: "Adding Extended Isolation Forest to the Spark/Scala library and comparing it with the reference implementation."
-last_modified_at: 2026-09-06
+last_modified_at: 2026-09-18
 og_image: "/assets/images/social/2026-03-18-announcing-extended-isolation-forest-support-1200x630.jpg"
 og_image_alt: "Extended Isolation Forest for distributed Spark/Scala anomaly detection"
 og_image_width: 1200
@@ -14,7 +14,7 @@ related:
   - /2024/09/23/announcing-onnx-support-in-isolation-forest/
 ---
 
-I added **Extended Isolation Forest (EIF)** to LinkedIn's open-source Spark/Scala `isolation-forest` library. EIF keeps the same isolation-score idea as standard Isolation Forest, but changes the split geometry: instead of partitioning one feature at a time, it partitions with random hyperplanes.
+I added **Extended Isolation Forest (EIF)** to LinkedIn’s open-source Spark/Scala `isolation-forest` library. EIF uses the same path-length anomaly score as standard Isolation Forest, with random-hyperplane splits in place of single-feature splits.
 
 <p>
   <a href="https://github.com/linkedin/isolation-forest" aria-label="Open isolation-forest on GitHub">
@@ -22,9 +22,9 @@ I added **Extended Isolation Forest (EIF)** to LinkedIn's open-source Spark/Scal
   </a>
 </p>
 
-I originally created and open-sourced this Spark/Scala implementation in 2019. The [original engineering article](https://www.linkedin.com/blog/engineering/data-management/isolation-forest) describes its production use across several abuse-detection areas at LinkedIn. The library supports distributed training and scoring, Spark ML pipeline integration, model persistence, and ONNX export for standard Isolation Forest. EIF landed in [PR #79](https://github.com/linkedin/isolation-forest/pull/79) on March 18, 2026, was introduced in `v4.1.0`, and is available in the [`isolation-forest` repository](https://github.com/linkedin/isolation-forest).
+I created and open-sourced the [Spark/Scala implementation](https://github.com/linkedin/isolation-forest) in 2019 for [abuse detection at LinkedIn](https://www.linkedin.com/blog/engineering/data-management/isolation-forest). The library supports distributed training and scoring, Spark ML pipelines, saved models, and ONNX export for standard Isolation Forest. EIF was merged in [PR #79](https://github.com/linkedin/isolation-forest/pull/79) on March 18, 2026 and released in `v4.1.0`.
 
-The change is additive. Existing standard Isolation Forest APIs, Spark ML pipelines, saved-model loading, and standard-IF ONNX export behavior remain backward-compatible. The release also tightens validation for edge cases such as empty ensembles, too-small `maxSamples` values, and feature vectors whose dimension does not match the model's training dimension.
+Existing standard Isolation Forest APIs, Spark ML pipelines, saved-model loading, and ONNX export remain backward-compatible. The release also adds validation for empty ensembles, too-small `maxSamples` values, and feature vectors whose dimension differs from the training data.
 
 ## The Scoring Model
 
@@ -42,7 +42,7 @@ where `h(x)` is path length, `E[h(x)]` is the ensemble-average path length, `psi
 
 Standard Isolation Forest builds each tree with axis-aligned splits: choose one feature, choose a split value inside that feature's observed range, and send the point left or right based on that coordinate.
 
-That works well in many settings, but it gives the score map a directional bias. In two dimensions, the artifacts are visible as rectangular bands and ghost-like regions where similarly unusual points receive inconsistent scores. The problem is most obvious when features are correlated or when the data distribution is rotated relative to the coordinate axes.
+Axis-aligned splits introduce directional structure into the score map. In two dimensions, similarly unusual points can receive different scores in rectangular bands around the data. These artifacts are particularly apparent for correlated features or distributions rotated relative to the coordinate axes.
 
 ## How EIF Changes the Split
 
@@ -60,13 +60,14 @@ The main parameter is `extensionLevel`, which controls how many coordinates part
 - **`extensionLevel = numFeatures - 1`**: all coordinates can be non-zero, giving fully extended hyperplanes.
 - **Intermediate values**: provide a continuum between the two.
 
-Concretely, on a 10-feature dataset, `extensionLevel = 3` means each split uses 4 non-zero coordinates in its hyperplane normal vector. `extensionLevel = 9` means each split can use all 10 features.
+On a dataset with 10 features, `extensionLevel = 3` selects 4 non-zero coordinates for each split’s normal vector; `extensionLevel = 9` permits all 10.
 
-In the implementation, the valid range is based on the resolved feature subspace for each tree. If `maxFeatures` restricts each tree to a subset of features, `extensionLevel` is interpreted relative to that subspace rather than the original input dimensionality.
+When `maxFeatures` selects a subset of features for a tree, `extensionLevel` is defined within that subset. Its maximum value is one less than the number of features available to the tree.
 
-`extensionLevel = 0` is close to standard Isolation Forest, but is not identical. Standard IF retries when it samples a constant feature; EIF follows the reference EIF split semantics, which matters when comparing it with the original Python and C++ implementations.
+At `extensionLevel = 0`, each EIF split uses one coordinate, but the implementation still follows the EIF reference algorithm. Standard IF retries when it selects a constant feature; the implementations also differ in intercept sampling and random-number consumption.
 
-## Seeing the Difference
+## Synthetic-data comparisons
+{: #seeing-the-difference }
 
 These library-generated heatmaps compare standard Isolation Forest (left) with fully extended EIF (right) on three synthetic datasets.
 
@@ -96,11 +97,9 @@ I benchmarked three configurations across 13 standard outlier-detection datasets
 
 I compared the results against the original Liu et al. Isolation Forest paper and the reference Python EIF implementation from Hariri et al. All experiments used 100 trees, 256 samples per tree, and 10 trials with distinct random seeds.
 
-These benchmarks compare the standard IF, axis-aligned EIF, and fully extended EIF endpoints against published and reference results.
+In a [separate sweep on Ionosphere](https://github.com/linkedin/isolation-forest/pull/79), AUROC increased from about **0.86** at `extensionLevel = 0` to about **0.91** at full extension, with intermediate levels improving along the way.
 
-I have not yet systematically benchmarked intermediate extension levels across all 13 datasets, but I did run a targeted sweep on Ionosphere. The [saved study output in PR #79](https://github.com/linkedin/isolation-forest/pull/79) reports AUROC increasing from about **0.86** at `extensionLevel = 0` to about **0.91** at full extension, with intermediate values improving along the way.
-
-Fully extended EIF improved Ionosphere and Satellite, had similar AUROC on Arrhythmia and Cardio, and performed worse on Mulcross and HTTP. The comparisons vary by dataset; isolating the effects of dimensionality or axis alignment would require a controlled experiment.
+Fully extended EIF improved Ionosphere and Satellite, had similar AUROC on Arrhythmia and Cardio, and performed worse on Mulcross and HTTP.
 
 | Dataset | Dim | Standard IF AUROC | Standard IF AUPRC | Fully extended EIF AUROC | Fully extended EIF AUPRC |
 |---|---:|---:|---:|---:|---:|
@@ -111,40 +110,40 @@ Fully extended EIF improved Ionosphere and Satellite, had similar AUROC on Arrhy
 | Mulcross | 4 | 0.99 | 0.85 | 0.94 | 0.44 |
 | HTTP (KDDCUP99) | 3 | 0.9997 | 0.93 | 0.994 | 0.38 |
 
-The [full benchmark table](https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/README.md#performance-and-benchmarks) includes AUROC/AUPRC, standard errors, comparisons with Liu et al., and comparisons with the reference Python EIF implementation at both extension endpoints. Agreement on these datasets is one check on the implementation, alongside the edge-case tests below.
+The [full benchmark table](https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/README.md#performance-and-benchmarks) includes AUROC, AUPRC, standard errors, and comparisons with Liu et al. and the reference Python EIF implementation at both extension endpoints.
 
-## Validating AI-Produced Code With Evidence
+## Implementation and validation
+{: #validating-ai-produced-code-with-evidence }
 
-An early implementation retried degenerate splits to avoid empty partitions. Benchmark mismatches exposed the difference from the EIF reference implementation, which allows zero-size leaves. Much of this implementation was AI-assisted; I used the [heatmaps](#seeing-the-difference), [reference comparisons](#benchmark-results), and edge-case tests to investigate generated code, then reviewed the code paths behind mismatches.
+Much of the implementation was AI-assisted. I compared the generated code with the EIF reference implementation using [heatmaps](#seeing-the-difference), [benchmark results](#benchmark-results), and edge-case tests. An early version retried degenerate splits to avoid empty partitions, while the reference implementation allowed zero-size leaves. The benchmark mismatch exposed this difference.
 
-Another example was persistence. Spark 4.x save/load validation exposed a precision mismatch in the Avro-backed model representation: hyperplane weights did not round-trip at full double precision.
+Spark 4.x save/load tests exposed another problem: the Avro-backed representation did not preserve the hyperplane weights at full double precision.
 
-A third example was `extensionLevel = 0`. It produces axis-aligned EIF splits, but it is not identical to standard Isolation Forest. The split direction is similar, but retry behavior, intercept sampling, and random-number consumption differ. The benchmark and edge-case comparisons made that distinction visible.
+The checked-in tests cover training and scoring, parameter validation, persistence, and saved-model structure. They also exercise zero contamination, sparse hyperplane invariants, zero-size leaves, feature-dimension checks, and constant-feature cases.
 
-The checked-in tests covered the parts that visual inspection cannot: training and scoring, parameter validation, persistence, zero contamination, saved-model structure, sparse hyperplane invariants, zero-size leaves, feature-dimension validation, and constant-feature edge cases.
+I also ran a separate local edge-case study covering hyperparameter sweeps, contamination behavior, seed reproducibility, save/load equality, low-dimensional data, constant and all-constant features, and tiny datasets. All **61** checks passed; the saved output is linked in [PR #79](https://github.com/linkedin/isolation-forest/pull/79).
 
-I also ran a separate local edge-case study outside the checked-in test suite and main benchmark table. It covered hyperparameter sweeps, contamination behavior, seed reproducibility, save/load equality, low-dimensional data, constant-feature data, all-constant data, and tiny datasets. The [saved output in PR #79](https://github.com/linkedin/isolation-forest/pull/79) reports **61 / 61** checks passed. That output records the study result; reproducing the full study also requires its script and complete configuration.
+## Spark implementation
+{: #implementation-highlights }
 
-## Implementation Highlights
+The new code implements hyperplane generation, storage, and node scoring within the existing Spark ML interfaces.
 
-The EIF implementation keeps the public Spark ML surface aligned with standard Isolation Forest, while isolating the new behavior to split generation, split representation, and node scoring.
-
-**Sparse hyperplane representation.** Each EIF split stores only the active coordinates of the random hyperplane: feature indices, weights, and offset. Dense normal vectors are not materialized. Model size and per-node scoring cost therefore scale with `extensionLevel + 1`, not with the full input dimensionality. With `extensionLevel = 3`, a node evaluates a four-term dot product.
+**Sparse hyperplane representation.** Each EIF split stores only the active coordinates of the random hyperplane: feature indices, weights, and offset. Dense normal vectors are not materialized. The storage and dot-product cost of each split scale with `extensionLevel + 1`. With `extensionLevel = 3`, a node evaluates a four-term dot product.
 
 **Spark ML integration.** EIF uses the same Spark ML `Estimator` / `Model` contract as standard Isolation Forest. It works in Spark ML `Pipeline`s and follows the same distributed model persistence pattern.
 
-**Persistence across Spark versions.** The [persisted schema](https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/isolation-forest/src/main/scala/com/linkedin/relevance/isolationforest/extended/ExtendedIsolationForestModelReadWrite.scala) stores hyperplane weights as floats and offsets as doubles. [Scoring](https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/isolation-forest/src/main/scala/com/linkedin/relevance/isolationforest/extended/ExtendedUtils.scala) multiplies float weights and feature values and accumulates the terms in a double. The [round-trip tests](https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/isolation-forest/src/test/scala/com/linkedin/relevance/isolationforest/extended/ExtendedIsolationForestModelWriteReadTest.scala) compare saved and loaded tree parameters and predictions on their test data.
+**Model persistence.** [Saved models](https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/isolation-forest/src/main/scala/com/linkedin/relevance/isolationforest/extended/ExtendedIsolationForestModelReadWrite.scala) store hyperplane weights as floats and offsets as doubles. [Scoring](https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/isolation-forest/src/main/scala/com/linkedin/relevance/isolationforest/extended/ExtendedUtils.scala) multiplies the float weights and feature values and accumulates the terms in a double. [Round-trip tests](https://github.com/linkedin/isolation-forest/blob/9de37cdcd0a1e8c9892f3ce9cfcd5da2f165cf3d/isolation-forest/src/test/scala/com/linkedin/relevance/isolationforest/extended/ExtendedIsolationForestModelWriteReadTest.scala) compare the saved and loaded tree parameters and predictions.
 
 ## Choosing between IF and EIF
 
-Compare **standard Isolation Forest** and **EIF** on your data, and tune `extensionLevel` when using EIF. Correlated features or axis-aligned score artifacts are reasons to try EIF; full extension (`extensionLevel = numFeatures - 1`) is a reference point, and intermediate levels may perform better. Use standard IF when ONNX export is required.
+Compare **standard Isolation Forest** with **EIF** on your data and tune `extensionLevel`. Full extension uses all features available to each tree; when every input feature is available, this corresponds to `extensionLevel = numFeatures - 1`. Intermediate levels may perform better. Use standard IF when ONNX export is required.
 
 ## Code and benchmarks
 {: #getting-started }
 
 <div id="resources" aria-hidden="true"></div>
 
-The library's artifacts are published to Maven Central. Documentation, examples, and reproduction instructions are linked below.
+The library’s artifacts are published to Maven Central.
 
 - [isolation-forest repository](https://github.com/linkedin/isolation-forest)
 - [Merged EIF PR #79](https://github.com/linkedin/isolation-forest/pull/79)

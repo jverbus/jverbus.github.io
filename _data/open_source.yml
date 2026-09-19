@@ -7,12 +7,12 @@ core_items:
   - date: "Artifacts"
     title: "Maven Central: com.linkedin:isolation-forest"
     url: "https://repo.maven.apache.org/maven2/com/linkedin/isolation-forest/"
-    description: "Published artifacts for integrating the library into JVM-based data pipelines."
+    description: "Library releases for Spark/Scala applications."
 
   - date: "Artifacts"
     title: "PyPI: isolation-forest-onnx"
     url: "https://pypi.org/project/isolation-forest-onnx/"
-    description: "Python package for exporting standard Isolation Forest models for inference with a compatible ONNX runtime."
+    description: "Python converter for standard Isolation Forest models saved by the Spark library."
 
 major_updates:
   - date: "Mar 18, 2026"
@@ -28,7 +28,7 @@ major_updates:
   - date: "Aug 13, 2019"
     title: "Open Source: Spark/Scala Isolation Forest Library"
     url: "/2019/08/13/open-source-isolation-forest-spark-scala/"
-    description: "Original project announcement and context on anti-abuse production use cases."
+    description: "The 2019 release and its use for automation detection at LinkedIn."
 
 external_writing:
   - date: "LinkedIn Engineering"
@@ -46,7 +46,7 @@ video_links:
     title: "Spark+AI Summit: Preventing Abuse Using Unsupervised Learning"
     url: "https://www.youtube.com/watch?v=sFRrFWYNAUI"
     description: >-
-      Using the Spark/Scala Isolation Forest library to detect unusual account activity without abuse labels for training. <a href="https://github.com/linkedin/isolation-forest">Library</a>.
+      Detecting unusual account activity with the Spark/Scala Isolation Forest library, trained without labeled examples. <a href="https://github.com/linkedin/isolation-forest">Library</a>.
 
   - date: "2019"
     title: "Fighting Abuse @Scale: Preventing Abuse Using Unsupervised Learning"

@@ -1,0 +1,1330 @@
+[
+  {
+    "id": "VOICE-RULES-01",
+    "status": "edited",
+    "file": "AGENTS.md",
+    "location": "AGENTS.md:175",
+    "reason": "Applied before article edits; VOICE-RULES-01 also updates the later academic-redesign holds sentence.",
+    "line": 175
+  },
+  {
+    "id": "VOICE-RULES-02",
+    "status": "edited",
+    "file": "AGENTS.md",
+    "location": "AGENTS.md:147",
+    "reason": "Applied before article edits; VOICE-RULES-01 also updates the later academic-redesign holds sentence.",
+    "line": 147
+  },
+  {
+    "id": "VOICE-RULES-03",
+    "status": "edited",
+    "file": "AGENTS.md",
+    "location": "AGENTS.md:152",
+    "reason": "Applied before article edits; VOICE-RULES-01 also updates the later academic-redesign holds sentence.",
+    "line": 152
+  },
+  {
+    "id": "VOICE-RULES-04",
+    "status": "edited",
+    "file": "AGENTS.md",
+    "location": "AGENTS.md:168",
+    "reason": "Applied before article edits; VOICE-RULES-01 also updates the later academic-redesign holds sentence.",
+    "line": 168
+  },
+  {
+    "id": "VOICE-SEQ-01",
+    "status": "edited",
+    "file": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md",
+    "location": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md:20",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 20
+  },
+  {
+    "id": "VOICE-SEQ-02",
+    "status": "edited",
+    "file": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md",
+    "location": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md:22",
+    "reason": "Applied the specified heading replacement and retained the original heading ID.",
+    "line": 22
+  },
+  {
+    "id": "VOICE-SEQ-03",
+    "status": "edited",
+    "file": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md",
+    "location": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md:25",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 25
+  },
+  {
+    "id": "VOICE-SEQ-04",
+    "status": "edited",
+    "file": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md",
+    "location": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md:33",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 33
+  },
+  {
+    "id": "VOICE-SEQ-05",
+    "status": "edited",
+    "file": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md",
+    "location": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md:37",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 37
+  },
+  {
+    "id": "VOICE-SEQ-06",
+    "status": "edited",
+    "file": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md",
+    "location": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md:45",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 45
+  },
+  {
+    "id": "VOICE-SEQ-07",
+    "status": "edited",
+    "file": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md",
+    "location": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md:53",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 53
+  },
+  {
+    "id": "VOICE-SEQ-08",
+    "status": "edited",
+    "file": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md",
+    "location": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md:55",
+    "reason": "Applied the specified heading replacement and retained the original heading ID.",
+    "line": 55
+  },
+  {
+    "id": "VOICE-SEQ-09",
+    "status": "edited",
+    "file": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md",
+    "location": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md:58",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 58
+  },
+  {
+    "id": "VOICE-SEQ-10",
+    "status": "edited",
+    "file": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md",
+    "location": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md:66",
+    "reason": "Applied the specified heading replacement and retained the original heading ID.",
+    "line": 66
+  },
+  {
+    "id": "VOICE-SEQ-11",
+    "status": "edited",
+    "file": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md",
+    "location": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md:69",
+    "reason": "Merged the weak-label method into the specified replacement and deleted the reviewer verdict; preserved the Isolation Forest link.",
+    "line": 69
+  },
+  {
+    "id": "VOICE-SEQ-12",
+    "status": "edited",
+    "file": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md",
+    "location": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md:73",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 73
+  },
+  {
+    "id": "VOICE-SEQ-13",
+    "status": "edited",
+    "file": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md",
+    "location": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md:77",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 77
+  },
+  {
+    "id": "VOICE-SEQ-14",
+    "status": "edited",
+    "file": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md",
+    "location": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md:79",
+    "reason": "Applied the count comparison and deleted the targeted threshold/production-metrics disclaimer without a replacement disclaimer.",
+    "line": 79
+  },
+  {
+    "id": "VOICE-SEQ-15",
+    "status": "edited",
+    "file": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md",
+    "location": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md:81",
+    "reason": "Applied the specified heading replacement and retained the original heading ID.",
+    "line": 81
+  },
+  {
+    "id": "VOICE-SEQ-16",
+    "status": "edited",
+    "file": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md",
+    "location": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md:84",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 84
+  },
+  {
+    "id": "VOICE-SEQ-17",
+    "status": "edited",
+    "file": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md",
+    "location": "_posts/2021-09-02-using-deep-learning-to-detect-abusive-sequences-of-member-activity.md:88",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 88
+  },
+  {
+    "id": "VOICE-LUX-01",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:16",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 16
+  },
+  {
+    "id": "VOICE-LUX-02",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:18",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 18
+  },
+  {
+    "id": "VOICE-LUX-03",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:20",
+    "reason": "Applied the specified S2 terminology correction describing secondary scintillation; result values unchanged.",
+    "line": 20
+  },
+  {
+    "id": "VOICE-LUX-04",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:26",
+    "reason": "Applied the specified heading replacement and retained the original heading ID.",
+    "line": 26
+  },
+  {
+    "id": "VOICE-LUX-05",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:29",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 29
+  },
+  {
+    "id": "VOICE-LUX-06",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:31",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 31
+  },
+  {
+    "id": "VOICE-LUX-07",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:33",
+    "reason": "Applied the specified Qy definition and list formatting; Qy refers to electrons escaping recombination, with extraction efficiency corrected.",
+    "line": 33
+  },
+  {
+    "id": "VOICE-LUX-08",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:36",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 36
+  },
+  {
+    "id": "VOICE-LUX-09",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:38",
+    "reason": "Applied the specified heading replacement and retained the original heading ID.",
+    "line": 38
+  },
+  {
+    "id": "VOICE-LUX-10",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:41",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 41
+  },
+  {
+    "id": "VOICE-LUX-11",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:43",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 43
+  },
+  {
+    "id": "VOICE-LUX-12",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:49",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 49
+  },
+  {
+    "id": "VOICE-LUX-13",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:59",
+    "reason": "Applied the specified heading replacement and retained the original heading ID.",
+    "line": 59
+  },
+  {
+    "id": "VOICE-LUX-14",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:62",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 62
+  },
+  {
+    "id": "VOICE-LUX-15",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:64",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 64
+  },
+  {
+    "id": "VOICE-LUX-16",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:68",
+    "reason": "Applied the replacement, retaining the methods-paper section 2 URL on the 95%/6% statement.",
+    "line": 68
+  },
+  {
+    "id": "VOICE-LUX-17",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:70",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 70
+  },
+  {
+    "id": "VOICE-LUX-18",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:80",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 80
+  },
+  {
+    "id": "VOICE-LUX-19",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:89",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 89
+  },
+  {
+    "id": "VOICE-LUX-20",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:91",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 91
+  },
+  {
+    "id": "VOICE-LUX-21",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:93",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 93
+  },
+  {
+    "id": "VOICE-LUX-22",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:101",
+    "reason": "Applied the replacement, preserved the reanalysis URL, and added the supplied thesis section 9.3 printed p.228 / PDF p.252 locator to resolve the factor-seven source question.",
+    "line": 101
+  },
+  {
+    "id": "VOICE-LUX-23",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:103",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 103
+  },
+  {
+    "id": "VOICE-LUX-24",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:109",
+    "reason": "Applied the specified heading replacement and retained the original heading ID.",
+    "line": 109
+  },
+  {
+    "id": "VOICE-LUX-25",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:112",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 112
+  },
+  {
+    "id": "VOICE-LUX-26",
+    "status": "edited",
+    "file": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md",
+    "location": "_posts/2016-08-18-calibrating-the-lux-dark-matter-experiment.md:114",
+    "reason": "Applied the specified proposal wording. Existing post has no Casey Rhyne credit to preserve; all existing collaborator and figure credits remain unchanged.",
+    "line": 114
+  },
+  {
+    "id": "VOICE-IF19-01",
+    "status": "edited",
+    "file": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md",
+    "location": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md:20",
+    "reason": "Applied the specified heading replacement and retained the original heading ID.",
+    "line": 20
+  },
+  {
+    "id": "VOICE-IF19-02",
+    "status": "edited",
+    "file": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md",
+    "location": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md:20",
+    "reason": "Deleted the targeted text without a replacement disclaimer. Deleted the explicitly targeted sentence without replacement.",
+    "line": 20
+  },
+  {
+    "id": "VOICE-IF19-03",
+    "status": "edited",
+    "file": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md",
+    "location": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md:23",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 23
+  },
+  {
+    "id": "VOICE-IF19-04",
+    "status": "edited",
+    "file": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md",
+    "location": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md:31",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 31
+  },
+  {
+    "id": "VOICE-IF19-05",
+    "status": "edited",
+    "file": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md",
+    "location": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md:35",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 35
+  },
+  {
+    "id": "VOICE-IF19-06",
+    "status": "edited",
+    "file": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md",
+    "location": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md:37",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 37
+  },
+  {
+    "id": "VOICE-IF19-07",
+    "status": "edited",
+    "file": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md",
+    "location": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md:43",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 43
+  },
+  {
+    "id": "VOICE-IF19-08",
+    "status": "edited",
+    "file": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md",
+    "location": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md:61",
+    "reason": "Applied the specified heading replacement and retained the original heading ID.",
+    "line": 61
+  },
+  {
+    "id": "VOICE-IF19-09",
+    "status": "edited",
+    "file": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md",
+    "location": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md:64",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 64
+  },
+  {
+    "id": "VOICE-IF19-10",
+    "status": "edited",
+    "file": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md",
+    "location": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md:74",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 74
+  },
+  {
+    "id": "VOICE-IF19-11",
+    "status": "edited",
+    "file": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md",
+    "location": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md:86",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 86
+  },
+  {
+    "id": "VOICE-IF19-12",
+    "status": "edited",
+    "file": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md",
+    "location": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md:90",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 90
+  },
+  {
+    "id": "VOICE-IF19-13",
+    "status": "edited",
+    "file": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md",
+    "location": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md:94",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 94
+  },
+  {
+    "id": "VOICE-IF19-14",
+    "status": "edited",
+    "file": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md",
+    "location": "_posts/2019-08-13-open-source-isolation-forest-spark-scala.md:29",
+    "reason": "Applied the specified replacement; preserved surrounding content and markup.",
+    "line": 29
+  },
+  {
+    "id": "VOICE-FACE23-01",
+    "status": "edited",
+    "file": "_posts/2023-06-20-detecting-ai-generated-profile-photos.md",
+    "location": "_posts/2023-06-20-detecting-ai-generated-profile-photos.md:4",
+    "reason": "Removes the formulaic promise to cover “the limits of that approach”; the limitation belongs beside the result, not in every summary.",
+    "line": 4
+  },
+  {
+    "id": "VOICE-FACE23-02",
+    "status": "edited",
+    "file": "_posts/2023-06-20-detecting-ai-generated-profile-photos.md",
+    "location": "_posts/2023-06-20-detecting-ai-generated-profile-photos.md:17",
+    "reason": "Keeps the concrete opening observation and threat model, removing the repeated “used ... used” wording.",
+    "line": 17
+  },
+  {
+    "id": "VOICE-FACE23-03",
+    "status": "edited",
+    "file": "_posts/2023-06-20-detecting-ai-generated-profile-photos.md",
+    "location": "_posts/2023-06-20-detecting-ai-generated-profile-photos.md:19",
+    "reason": "Uses a direct account of collaboration and publication. Removes “coauthored” as source-narration and the early duplicate of the Stable Diffusion limitation.",
+    "line": 19
+  },
+  {
+    "id": "VOICE-FACE23-04",
+    "status": "edited",
+    "file": "_posts/2023-06-20-detecting-ai-generated-profile-photos.md",
+    "location": "_posts/2023-06-20-detecting-ai-generated-profile-photos.md:30",
+    "reason": "Removes the “instead of a heavy classifier” sales contrast. Preserve the old heading anchor.",
+    "line": 30
+  },
+  {
+    "id": "VOICE-FACE23-05",
+    "status": "edited",
+    "file": "_posts/2023-06-20-detecting-ai-generated-profile-photos.md",
+    "location": "_posts/2023-06-20-detecting-ai-generated-profile-photos.md:33",
+    "reason": "States the training procedure and observed result without abstract regularity language or repeated evaluation hedges.",
+    "line": 33
+  },
+  {
+    "id": "VOICE-FACE23-06",
+    "status": "edited",
+    "file": "_posts/2023-06-20-detecting-ai-generated-profile-photos.md",
+    "location": "_posts/2023-06-20-detecting-ai-generated-profile-photos.md:39",
+    "reason": "Retains the classifier distinction, operating points and comparator condition while deleting the prose catalogue of where the paper explains itself.",
+    "line": 39
+  },
+  {
+    "id": "VOICE-FACE23-07",
+    "status": "edited",
+    "file": "_posts/2023-06-20-detecting-ai-generated-profile-photos.md",
+    "location": "_posts/2023-06-20-detecting-ai-generated-profile-photos.md:41",
+    "reason": "Replaces “The Generator Landscape” with the actual evaluation question.",
+    "line": 41
+  },
+  {
+    "id": "VOICE-FACE23-08",
+    "status": "edited",
+    "file": "_posts/2023-06-20-detecting-ai-generated-profile-photos.md",
+    "location": "_posts/2023-06-20-detecting-ai-generated-profile-photos.md:48",
+    "reason": "Deletes “The original engineering article reports this limitation directly” and the repeated statement that the study focused on StyleGAN.",
+    "line": 48
+  },
+  {
+    "id": "VOICE-FACE24-01",
+    "status": "edited",
+    "file": "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md",
+    "location": "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md:17",
+    "reason": "Deletes the staged “generative landscape did not hold still” transition. Moves the upload-processing discussion to the dedicated section below.",
+    "line": 17
+  },
+  {
+    "id": "VOICE-FACE24-02",
+    "status": "edited",
+    "file": "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md",
+    "location": "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md:19",
+    "reason": "Replaces a front-loaded paper-title construction and the compressed “separately resolution-matched” phrase with an explicit description.",
+    "line": 19
+  },
+  {
+    "id": "VOICE-FACE24-03",
+    "status": "edited",
+    "file": "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md",
+    "location": "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md:23",
+    "reason": "Avoids a slogan-like “One Classifier, Ten Engines” heading when the post also discusses separately trained resolution-matched models.",
+    "line": 23
+  },
+  {
+    "id": "VOICE-FACE24-04",
+    "status": "edited",
+    "file": "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md",
+    "location": "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md:32",
+    "reason": "Reports the results directly. Removes “mostly slips through” and the unsupported, generic suggestion to add new engines to training.",
+    "line": 32
+  },
+  {
+    "id": "VOICE-FACE24-05",
+    "status": "edited",
+    "file": "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md",
+    "location": "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md:34",
+    "reason": "Replaces the promotional “Built for the Wild” heading.",
+    "line": 34
+  },
+  {
+    "id": "VOICE-FACE24-06",
+    "status": "edited",
+    "file": "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md",
+    "location": "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md:37",
+    "reason": "Deletes the point-of-the-paper declaration, pristine-originals contrast and “detectors ... tend to die” flourish.",
+    "line": 37
+  },
+  {
+    "id": "VOICE-FACE24-07",
+    "status": "edited",
+    "file": "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md",
+    "location": "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md:39",
+    "reason": "Removes the judgment that the architecture is straightforward and states the training arrangement.",
+    "line": 39
+  },
+  {
+    "id": "VOICE-FACE24-08",
+    "status": "edited",
+    "file": "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md",
+    "location": "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md:45",
+    "reason": "Keeps the essential experimental conditions while replacing “stayed around 90%” and narration about what Section 4 reports.",
+    "line": 45
+  },
+  {
+    "id": "VOICE-FACE24-09",
+    "status": "edited",
+    "file": "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md",
+    "location": "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md:47",
+    "reason": "Uses a descriptive research heading. The interpretation remains qualified in the body.",
+    "line": 47
+  },
+  {
+    "id": "VOICE-FACE24-10",
+    "status": "edited",
+    "file": "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md",
+    "location": "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md:56",
+    "reason": "Replaces the indirect wording about an interpretation being harder to isolate with the specific confound.",
+    "line": 56
+  },
+  {
+    "id": "VOICE-FACE24-11",
+    "status": "edited",
+    "file": "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md",
+    "location": "_posts/2024-08-15-finding-ai-generated-faces-in-the-wild.md:26",
+    "reason": "Replaces “trained and evaluated against,” “plus another,” and “the GAN side” with a direct dataset description.",
+    "line": 26
+  },
+  {
+    "id": "VOICE-ONNX-01",
+    "status": "edited",
+    "file": "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md",
+    "location": "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md:21",
+    "reason": "Replaces prose describing what a linked article explains with the actual historical information.",
+    "line": 21
+  },
+  {
+    "id": "VOICE-ONNX-02",
+    "status": "edited",
+    "file": "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md",
+    "location": "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md:23",
+    "reason": "Deleted the targeted text without a replacement disclaimer. The section repeats the opening benefit, then adds hypothetical deployments and a runtime-support warning that is already addressed in the input/runtime section.",
+    "line": 23
+  },
+  {
+    "id": "VOICE-ONNX-03",
+    "status": "edited",
+    "file": "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md",
+    "location": "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md:36",
+    "reason": "States the actual model input and compatibility requirement without an “input contract” abstraction or open-ended admonition to check things.",
+    "line": 36
+  },
+  {
+    "id": "VOICE-ONNX-04",
+    "status": "edited",
+    "file": "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md",
+    "location": "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md:46",
+    "reason": "Drops the redundant “as the README specifies” clause.",
+    "line": 46
+  },
+  {
+    "id": "VOICE-ONNX-05",
+    "status": "edited",
+    "file": "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md",
+    "location": "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md:51",
+    "reason": "Preserves concrete test scope and chronology, removing the awkward “later ... present in the revision” construction.",
+    "line": 51
+  },
+  {
+    "id": "VOICE-ONNX-06",
+    "status": "edited",
+    "file": "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md",
+    "location": "_posts/2024-09-23-announcing-onnx-support-in-isolation-forest.md:53",
+    "reason": "Replaces the generic “Scope” heading with the specific unsupported model family.",
+    "line": 53
+  },
+  {
+    "id": "VOICE-RAG-01",
+    "status": "edited",
+    "file": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md:29",
+    "reason": "Merged the corpus and question introductions; preserved isotope formatting.",
+    "line": 29
+  },
+  {
+    "id": "VOICE-RAG-02",
+    "status": "edited",
+    "file": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md:31",
+    "reason": "Renamed the heading and retained #the-scientific-problem.",
+    "line": 31
+  },
+  {
+    "id": "VOICE-RAG-03",
+    "status": "edited",
+    "file": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md:34",
+    "reason": "Replaced the overlapping review bullets with the specified workshop checks.",
+    "line": 34
+  },
+  {
+    "id": "VOICE-RAG-04",
+    "status": "edited",
+    "file": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md:47",
+    "reason": "Introduced the existing cosine equation as an example; kept the equation byte-identical.",
+    "line": 47
+  },
+  {
+    "id": "VOICE-RAG-05",
+    "status": "edited",
+    "file": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md:53",
+    "reason": "Deleted the targeted text without a replacement disclaimer. Deleted both the equation-implementation disclaimer and the generic correctness warning without replacement.",
+    "line": 53
+  },
+  {
+    "id": "VOICE-RAG-06",
+    "status": "edited",
+    "file": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md:55",
+    "reason": "Specified the hosted and Colab execution paths.",
+    "line": 55
+  },
+  {
+    "id": "VOICE-RAG-07",
+    "status": "edited",
+    "file": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md:57",
+    "reason": "Restored the specified three-column table and code-formatted model identifiers; kept access requirements.",
+    "line": 57
+  },
+  {
+    "id": "VOICE-RAG-08",
+    "status": "edited",
+    "file": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md:66",
+    "reason": "Kept the January 2025 environment, notebook link, version, and settings.",
+    "line": 66
+  },
+  {
+    "id": "VOICE-RAG-09",
+    "status": "edited",
+    "file": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md:76",
+    "reason": "Applied the four parameter tradeoffs as a Markdown list with the parameter identifier in code.",
+    "line": 76
+  },
+  {
+    "id": "VOICE-RAG-10",
+    "status": "edited",
+    "file": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md:81",
+    "reason": "Applied the concrete potential PDF/chunk-boundary failure mechanisms.",
+    "line": 81
+  },
+  {
+    "id": "VOICE-RAG-11",
+    "status": "edited",
+    "file": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md:83",
+    "reason": "Renamed the heading and retained #what-we-inspected.",
+    "line": 83
+  },
+  {
+    "id": "VOICE-RAG-12",
+    "status": "edited",
+    "file": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md:86",
+    "reason": "Named the retrieved document/passage fields and left the code block unchanged.",
+    "line": 86
+  },
+  {
+    "id": "VOICE-RAG-13",
+    "status": "edited",
+    "file": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md:93",
+    "reason": "Applied the direct introduction to the three error categories.",
+    "line": 93
+  },
+  {
+    "id": "VOICE-RAG-14",
+    "status": "edited",
+    "file": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md:95",
+    "reason": "Applied the specified diagnostic table, preserving all three error categories and code formatting.",
+    "line": 95
+  },
+  {
+    "id": "VOICE-RAG-15",
+    "status": "edited",
+    "file": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md:101",
+    "reason": "Deleted the targeted text without a replacement disclaimer. Deleted the hypothetical checklist and its disclaimer without replacement.",
+    "line": 101
+  },
+  {
+    "id": "VOICE-RAG-16",
+    "status": "edited",
+    "file": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md:101",
+    "reason": "Deleted the targeted text without a replacement disclaimer. Deleted the generic repeat-the-query instructions without replacement; retained #practical-standard and indexing code.",
+    "line": 101
+  },
+  {
+    "id": "VOICE-RAG-17",
+    "status": "edited",
+    "file": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md:113",
+    "reason": "Renamed the example heading and retained #a-saved-corpus-coverage-example.",
+    "line": 113
+  },
+  {
+    "id": "VOICE-RAG-18",
+    "status": "edited",
+    "file": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md:116",
+    "reason": "Kept the immutable notebook URL and question verbatim in the specified introduction.",
+    "line": 116
+  },
+  {
+    "id": "VOICE-RAG-19",
+    "status": "edited",
+    "file": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2025-02-10-brown-physics-ai-winter-school-workshop.md:122",
+    "reason": "Kept Huang attribution, pages 77-78, 186 eV, and cosmogenic origin; retained the prior wrong and corrected answers.",
+    "line": 122
+  },
+  {
+    "id": "VOICE-RL-01",
+    "status": "edited",
+    "file": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md:30",
+    "reason": "Deleted the guide/performance-report classification and retained the notebook link and Hohmann scope.",
+    "line": 30
+  },
+  {
+    "id": "VOICE-RL-02",
+    "status": "edited",
+    "file": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md:36",
+    "reason": "Specified between-impulse dynamics and left all MathML unchanged.",
+    "line": 36
+  },
+  {
+    "id": "VOICE-RL-03",
+    "status": "edited",
+    "file": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md:111",
+    "reason": "Kept the complete observation vector and described the rotationally identical input directly.",
+    "line": 111
+  },
+  {
+    "id": "VOICE-RL-04",
+    "status": "edited",
+    "file": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md:194",
+    "reason": "Removed the repeated baseline phrase.",
+    "line": 194
+  },
+  {
+    "id": "VOICE-RL-05",
+    "status": "edited",
+    "file": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md:204",
+    "reason": "Kept timestep 0.00050, radii 1.5999 and 1.6000, delta-v 0.2066, and saved-baseline provenance.",
+    "line": 204
+  },
+  {
+    "id": "VOICE-RL-06",
+    "status": "edited",
+    "file": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md:264",
+    "reason": "Separated the actual plot outputs from mission-report outputs.",
+    "line": 264
+  },
+  {
+    "id": "VOICE-RL-07",
+    "status": "edited",
+    "file": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md:266",
+    "reason": "Kept the failure list framed as possible diagnostic patterns.",
+    "line": 266
+  },
+  {
+    "id": "VOICE-RL-08",
+    "status": "edited",
+    "file": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md:268",
+    "reason": "Applied the four specified failure diagnostics as a list, retaining circularization and endpoint conditions.",
+    "line": 268
+  },
+  {
+    "id": "VOICE-RL-09",
+    "status": "edited",
+    "file": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md:273",
+    "reason": "Renamed the heading and retained #experiment-loop.",
+    "line": 273
+  },
+  {
+    "id": "VOICE-RL-10",
+    "status": "edited",
+    "file": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md:276",
+    "reason": "Applied the direct configuration wording and kept every parameter and description.",
+    "line": 276
+  },
+  {
+    "id": "VOICE-RL-11",
+    "status": "edited",
+    "file": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md:295",
+    "reason": "Placed the actionable output/seed note immediately before Materials with the immutable notebook URL.",
+    "line": 295
+  },
+  {
+    "id": "VOICE-RL-12",
+    "status": "edited",
+    "file": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md",
+    "location": "_posts/2026-01-09-brown-physics-ai-winter-school-workshop.md:259",
+    "reason": "Kept all reward terms, training normalization, frozen evaluation normalization, and deterministic actions.",
+    "line": 259
+  },
+  {
+    "id": "VOICE-EIF-01",
+    "status": "edited",
+    "file": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+    "location": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md:17",
+    "reason": "Names the unchanged score and changed mechanism, replacing the vague isolation-score idea.",
+    "line": 17
+  },
+  {
+    "id": "VOICE-EIF-02",
+    "status": "edited",
+    "file": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+    "location": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md:25",
+    "reason": "Removes the narrator describing the original engineering article and the repeated statement that the library is in its repository.",
+    "line": 25
+  },
+  {
+    "id": "VOICE-EIF-03",
+    "status": "edited",
+    "file": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+    "location": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md:27",
+    "reason": "Deletes “The change is additive” and tightens the actual compatibility/validation statement.",
+    "line": 27
+  },
+  {
+    "id": "VOICE-EIF-04",
+    "status": "edited",
+    "file": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+    "location": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md:45",
+    "reason": "Replaces “works well in many settings” and ghost-like imagery with the geometric effect being discussed.",
+    "line": 45
+  },
+  {
+    "id": "VOICE-EIF-05",
+    "status": "edited",
+    "file": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+    "location": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md:63",
+    "reason": "Drops the empty “Concretely” signpost while retaining the numerical example.",
+    "line": 63
+  },
+  {
+    "id": "VOICE-EIF-06",
+    "status": "edited",
+    "file": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+    "location": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md:67",
+    "reason": "Combines the level-zero explanation with the concrete details currently repeated in the validation section.",
+    "line": 67
+  },
+  {
+    "id": "VOICE-EIF-07",
+    "status": "edited",
+    "file": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+    "location": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md:69",
+    "reason": "Uses a descriptive heading rather than a visual-reveal phrase.",
+    "line": 69
+  },
+  {
+    "id": "VOICE-EIF-08",
+    "status": "edited",
+    "file": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+    "location": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md:100",
+    "reason": "Deleted the targeted text without a replacement disclaimer. This sentence restates the immediately preceding configuration list and reference-comparison paragraph.",
+    "line": 100
+  },
+  {
+    "id": "VOICE-EIF-09",
+    "status": "edited",
+    "file": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+    "location": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md:100",
+    "reason": "States the one intermediate-level study actually performed rather than leading with the benchmark work not performed.",
+    "line": 100
+  },
+  {
+    "id": "VOICE-EIF-10",
+    "status": "edited",
+    "file": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+    "location": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md:102",
+    "reason": "Deletes the unsolicited controlled-experiment disclaimer. The remaining sentence reports outcomes by dataset without assigning a cause.",
+    "line": 102
+  },
+  {
+    "id": "VOICE-EIF-11",
+    "status": "edited",
+    "file": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+    "location": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md:113",
+    "reason": "Removes the validation-moral sentence about agreement being one check alongside edge cases.",
+    "line": 113
+  },
+  {
+    "id": "VOICE-EIF-12",
+    "status": "edited",
+    "file": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+    "location": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md:115",
+    "reason": "Replaces “Validating AI-Produced Code With Evidence” with a descriptive technical heading; the disclosure remains in the body.",
+    "line": 115
+  },
+  {
+    "id": "VOICE-EIF-13",
+    "status": "edited",
+    "file": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+    "location": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md:118",
+    "reason": "Makes the author’s procedure and specific failure the substance of the paragraph, without a general lesson about evidence.",
+    "line": 118
+  },
+  {
+    "id": "VOICE-EIF-14",
+    "status": "edited",
+    "file": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+    "location": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md:120",
+    "reason": "Replaces “Another example was persistence” with the specific failing operation.",
+    "line": 120
+  },
+  {
+    "id": "VOICE-EIF-15",
+    "status": "edited",
+    "file": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+    "location": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md:122",
+    "reason": "Deleted the targeted text without a replacement disclaimer. The level-zero distinction is already explained next to extensionLevel. Move its technical details there rather than staging it as a third validation example.",
+    "line": 122
+  },
+  {
+    "id": "VOICE-EIF-16",
+    "status": "edited",
+    "file": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+    "location": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md:122",
+    "reason": "Keeps the test coverage while deleting the rhetorical comparison with what visual inspection cannot do.",
+    "line": 122
+  },
+  {
+    "id": "VOICE-EIF-17",
+    "status": "edited",
+    "file": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+    "location": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md:124",
+    "reason": "Deletes the public audit language that an output merely records a result and that reproducing a study requires its script/configuration. The full local-study script/configuration remains unavailable in the reviewed materials; this is recorded here only, without inferring that it was not created or recorded.",
+    "line": 124
+  },
+  {
+    "id": "VOICE-EIF-18",
+    "status": "edited",
+    "file": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+    "location": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md:126",
+    "reason": "Replaces a promotional highlights heading.",
+    "line": 126
+  },
+  {
+    "id": "VOICE-EIF-19",
+    "status": "edited",
+    "file": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+    "location": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md:129",
+    "reason": "Replaces the abstract public-surface alignment sentence with the actual boundaries of the implementation.",
+    "line": 129
+  },
+  {
+    "id": "VOICE-EIF-20",
+    "status": "edited",
+    "file": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+    "location": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md:135",
+    "reason": "Removes repeated implementation-as-source narration without changing the data representation or test statement.",
+    "line": 135
+  },
+  {
+    "id": "VOICE-EIF-21",
+    "status": "edited",
+    "file": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+    "location": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md:146",
+    "reason": "Removes the generic sentence announcing that documentation and examples are linked below.",
+    "line": 146
+  },
+  {
+    "id": "VOICE-EIF-22",
+    "status": "edited",
+    "file": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+    "location": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md:65",
+    "reason": "Replaces resolved-feature-subspace phrasing with the concrete parameter relationship.",
+    "line": 65
+  },
+  {
+    "id": "VOICE-EIF-23",
+    "status": "edited",
+    "file": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md",
+    "location": "_posts/2026-03-18-announcing-extended-isolation-forest-support.md:139",
+    "reason": "Removes another generic reason-to-try sentence and makes the full-extension formula consistent with the preceding maxFeatures explanation.",
+    "line": 139
+  },
+  {
+    "id": "VOICE-HOME-01",
+    "status": "edited",
+    "file": "_data/home.yml",
+    "location": "_data/home.yml:7",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 7
+  },
+  {
+    "id": "VOICE-HOME-02",
+    "status": "edited",
+    "file": "_data/home.yml",
+    "location": "_data/home.yml:19",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 19
+  },
+  {
+    "id": "VOICE-HOME-03",
+    "status": "edited",
+    "file": "_data/home.yml",
+    "location": "_data/home.yml:26",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 26
+  },
+  {
+    "id": "VOICE-PROJECT-01",
+    "status": "edited",
+    "file": "isolation-forest.md",
+    "location": "isolation-forest.md:24",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 24
+  },
+  {
+    "id": "VOICE-PROJECT-02",
+    "status": "edited",
+    "file": "_data/open_source.yml",
+    "location": "_data/open_source.yml:10",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 10
+  },
+  {
+    "id": "VOICE-PROJECT-03",
+    "status": "edited",
+    "file": "_data/open_source.yml",
+    "location": "_data/open_source.yml:15",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 15
+  },
+  {
+    "id": "VOICE-PROJECT-04",
+    "status": "edited",
+    "file": "_data/open_source.yml",
+    "location": "_data/open_source.yml:31",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 31
+  },
+  {
+    "id": "VOICE-PROJECT-05",
+    "status": "edited",
+    "file": "_data/open_source.yml",
+    "location": "_data/open_source.yml:49",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 49
+  },
+  {
+    "id": "VOICE-TALKS-01",
+    "status": "edited",
+    "file": "_data/videos.yml",
+    "location": "_data/videos.yml:17",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 17
+  },
+  {
+    "id": "VOICE-TALKS-02",
+    "status": "edited",
+    "file": "_data/videos.yml",
+    "location": "_data/videos.yml:27",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 27
+  },
+  {
+    "id": "VOICE-TALKS-03",
+    "status": "edited",
+    "file": "_data/videos.yml",
+    "location": "_data/videos.yml:36",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 36
+  },
+  {
+    "id": "VOICE-TALKS-04",
+    "status": "edited",
+    "file": "_data/videos.yml",
+    "location": "_data/videos.yml:37",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 37
+  },
+  {
+    "id": "VOICE-TALKS-05",
+    "status": "edited",
+    "file": "_data/videos.yml",
+    "location": "_data/videos.yml:44",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 44
+  },
+  {
+    "id": "VOICE-TALKS-06",
+    "status": "edited",
+    "file": "_data/videos.yml",
+    "location": "_data/videos.yml:45",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 45
+  },
+  {
+    "id": "VOICE-TALKS-07",
+    "status": "edited",
+    "file": "_data/videos.yml",
+    "location": "_data/videos.yml:90",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 90
+  },
+  {
+    "id": "VOICE-TALKS-08",
+    "status": "edited",
+    "file": "_data/videos.yml",
+    "location": "_data/videos.yml:97",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 97
+  },
+  {
+    "id": "VOICE-DEMO-01",
+    "status": "edited",
+    "file": "_includes/site/if-demo.html",
+    "location": "_includes/site/if-demo.html:5",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 5
+  },
+  {
+    "id": "VOICE-DEMO-02",
+    "status": "edited",
+    "file": "_includes/site/lux-demo.html",
+    "location": "_includes/site/lux-demo.html:5",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 5
+  },
+  {
+    "id": "VOICE-DEMO-03",
+    "status": "edited",
+    "file": "_includes/site/lux-demo.html",
+    "location": "_includes/site/lux-demo.html:26",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 26
+  },
+  {
+    "id": "VOICE-DEMO-04",
+    "status": "edited",
+    "file": "assets/js/lux-demo.js",
+    "location": "assets/js/lux-demo.js:121",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 121
+  },
+  {
+    "id": "VOICE-DEMO-05",
+    "status": "edited",
+    "file": "assets/js/lux-demo.js",
+    "location": "assets/js/lux-demo.js:123",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 123
+  },
+  {
+    "id": "VOICE-DEMO-06",
+    "status": "edited",
+    "file": "assets/js/lux-demo.js",
+    "location": "assets/js/lux-demo.js:125",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 125
+  },
+  {
+    "id": "VOICE-DEMO-07",
+    "status": "edited",
+    "file": "_includes/site/orbit-demo.html",
+    "location": "_includes/site/orbit-demo.html:5",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 5
+  },
+  {
+    "id": "VOICE-DEMO-08",
+    "status": "edited",
+    "file": "_includes/site/orbit-demo.html",
+    "location": "_includes/site/orbit-demo.html:28",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 28
+  },
+  {
+    "id": "VOICE-DEMO-09",
+    "status": "edited",
+    "file": "assets/js/orbit-demo.js",
+    "location": "assets/js/orbit-demo.js:615",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 615
+  },
+  {
+    "id": "VOICE-DEMO-10",
+    "status": "edited",
+    "file": "assets/js/orbit-demo.js",
+    "location": "assets/js/orbit-demo.js:303",
+    "reason": "Applied the specified replacement; preserved surrounding fields, links, controls, and behavior.",
+    "line": 303
+  }
+]

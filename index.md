@@ -2,7 +2,7 @@
 layout: page
 title: Home
 description: "James Verbus: AI and physics. Work on AI for abuse detection, anomaly detection, and the LUX dark matter experiment."
-last_modified_at: 2026-09-07
+last_modified_at: 2026-09-17
 hide_title: true
 ---
 

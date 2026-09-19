@@ -5,6 +5,7 @@ exclude:
   - ".rbenv-version"
   - "README.md"
   - "AGENTS.md"
+  - "CODEX_VOICE_REVISION_BRIEF.md"
   - "CLAUDE.md"
   - "Rakefile"
   - "Gemfile"

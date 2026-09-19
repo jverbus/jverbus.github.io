@@ -4,7 +4,7 @@ selected_work:
     anchor: projects-heading
     title: Isolation forest for Spark/Scala
     url: /open-source/isolation-forest/
-    description: "Distributed unsupervised machine learning for anomaly detection with Isolation Forest and Extended Isolation Forest."
+    description: "Distributed training and scoring with Isolation Forest and Extended Isolation Forest."
     links:
       - label: EIF update
         url: /2026/03/18/announcing-extended-isolation-forest-support/
@@ -16,14 +16,14 @@ selected_work:
     anchor: research-heading
     title: Finding AI-generated faces in the wild
     url: /2024/08/15/finding-ai-generated-faces-in-the-wild/
-    description: "Evaluating deep learning models for detecting AI-generated faces across GAN and diffusion engines, including generators withheld from training."
+    description: "Detecting synthetic faces from GAN and diffusion generators, including generators withheld from training."
     context: CVPR Workshop on Media Forensics
 
   - area: AI Engineering
     year: "2021"
     title: Deep learning for abusive activity sequences
     url: /2021/09/02/using-deep-learning-to-detect-abusive-sequences-of-member-activity/
-    description: "Using deep learning and learned request embeddings to detect low-volume scrapers from activity sequences and timing."
+    description: "Detecting low-volume scrapers from the order and timing of their requests."
     context: LinkedIn Engineering
 
   - area: Physics
