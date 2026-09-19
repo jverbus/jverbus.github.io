@@ -521,21 +521,21 @@
       var x = state.probe.x * canvas.width;
       var y = state.probe.y * canvas.height;
       var scale = canvas.width / (canvas.getBoundingClientRect().width || canvas.width);
-      var radius = 7 * scale;
+      var radius = 5 * scale;
       // Two strokes keep the linked marker legible over every heatmap color.
-      ["#0f172a", "#ffffff"].forEach(function (color, index) {
+      ["rgba(15, 23, 42, 0.75)", "rgba(255, 255, 255, 0.95)"].forEach(function (color, index) {
         ctx.strokeStyle = color;
-        ctx.lineWidth = (index === 0 ? 4 : 2) * scale;
+        ctx.lineWidth = (index === 0 ? 2.5 : 1.2) * scale;
         ctx.beginPath();
         ctx.arc(x, y, radius, 0, 2 * Math.PI);
-        ctx.moveTo(x - radius - 5 * scale, y);
-        ctx.lineTo(x - radius + 2 * scale, y);
-        ctx.moveTo(x + radius - 2 * scale, y);
-        ctx.lineTo(x + radius + 5 * scale, y);
-        ctx.moveTo(x, y - radius - 5 * scale);
-        ctx.lineTo(x, y - radius + 2 * scale);
-        ctx.moveTo(x, y + radius - 2 * scale);
-        ctx.lineTo(x, y + radius + 5 * scale);
+        ctx.moveTo(x - radius - 3 * scale, y);
+        ctx.lineTo(x - radius - scale, y);
+        ctx.moveTo(x + radius + scale, y);
+        ctx.lineTo(x + radius + 3 * scale, y);
+        ctx.moveTo(x, y - radius - 3 * scale);
+        ctx.lineTo(x, y - radius - scale);
+        ctx.moveTo(x, y + radius + scale);
+        ctx.lineTo(x, y + radius + 3 * scale);
         ctx.stroke();
       });
     }

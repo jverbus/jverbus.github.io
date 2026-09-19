@@ -8,12 +8,18 @@
     </figure>
     <div class="orbit-demo-panel">
       <div class="orbit-demo-controls">
-        <button type="button" class="demo-btn" data-action="hohmann">Hohmann</button>
-        <button type="button" class="demo-btn" data-action="greedy">Greedy</button>
-        <button type="button" class="demo-btn" data-action="prograde">Speed up</button>
-        <button type="button" class="demo-btn" data-action="retrograde">Slow down</button>
-        <button type="button" class="demo-btn" data-action="pause" aria-pressed="false">Pause</button>
-        <button type="button" class="demo-btn" data-action="reset">Reset</button>
+        <div class="orbit-demo-pair">
+          <button type="button" class="demo-btn demo-btn-primary" data-action="hohmann">Hohmann</button>
+          <button type="button" class="demo-btn" data-action="greedy">Greedy</button>
+        </div>
+        <div class="orbit-demo-pair">
+          <button type="button" class="demo-btn" data-action="prograde">Speed up</button>
+          <button type="button" class="demo-btn" data-action="retrograde">Slow down</button>
+        </div>
+        <div class="orbit-demo-pair">
+          <button type="button" class="demo-btn demo-btn-quiet" data-action="pause" aria-pressed="false">Pause</button>
+          <button type="button" class="demo-btn demo-btn-quiet" data-action="reset">Reset</button>
+        </div>
       </div>
       <p class="orbit-demo-status" data-orbit-status role="status"></p>
     </div>
@@ -24,4 +30,4 @@
     <p>This two-body model uses normalized units with GM = 1 and orbit radii 1 and 1.6. Browser burns follow or oppose velocity, including its radial component; the PPO notebook applies burns along the local orbital tangent. Hohmann and Greedy here are analytical and feedback controllers.</p>
   </details>
 </div>
-<script src="{{ '/assets/js/orbit-demo.js' | relative_url }}?v=8" defer></script>
+<script src="{{ '/assets/js/orbit-demo.js' | relative_url }}?v=9" defer></script>

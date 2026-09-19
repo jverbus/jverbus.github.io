@@ -128,6 +128,9 @@
       colors.surfaceMuted =
         cs.getPropertyValue("--surface-muted").trim() || "#f3f6fb";
       colors.accent = cs.getPropertyValue("--accent").trim() || "#1f6feb";
+      colors.canvas = cs.getPropertyValue("--demo-canvas").trim() || colors.surfaceMuted;
+      colors.ink = cs.getPropertyValue("--demo-ink").trim() || colors.accent;
+      colors.highlight = cs.getPropertyValue("--demo-highlight").trim() || "#e6b85c";
     }
 
     function fitCanvas(canvas, ctx) {
@@ -176,8 +179,6 @@
 
     /* ---- detector view ---- */
 
-    var SPACE_BG = "#0c1426";
-
     function toPx(p) {
       var pixel = detectorToCanvas(p, tpcSize.width, tpcSize.height);
       return [pixel.x, pixel.y];
@@ -187,19 +188,21 @@
       var ctx = tpcCtx;
       var w = tpcSize.width;
       var h = tpcSize.height;
-      ctx.fillStyle = SPACE_BG;
+      ctx.fillStyle = colors.canvas;
       ctx.fillRect(0, 0, w, h);
 
       // liquid xenon volume
       var view = detectorViewport(w, h);
       var inset = 0.12 * view.scale;
-      ctx.strokeStyle = "rgba(148, 163, 184, 0.6)";
+      ctx.strokeStyle = colors.border;
       ctx.lineWidth = Math.max(1, w / 480);
       ctx.strokeRect(view.left + inset, view.top + inset,
         DETECTOR_WIDTH * view.scale - 2 * inset, DETECTOR_HEIGHT * view.scale - 2 * inset);
-      ctx.fillStyle = "rgba(96, 165, 250, 0.06)";
+      ctx.fillStyle = colors.ink;
+      ctx.globalAlpha = 0.035;
       ctx.fillRect(view.left + inset, view.top + inset,
         DETECTOR_WIDTH * view.scale - 2 * inset, DETECTOR_HEIGHT * view.scale - 2 * inset);
+      ctx.globalAlpha = 1;
 
       var p1 = toPx(state.v1);
       var p2 = toPx(state.v2);
@@ -207,16 +210,18 @@
       // incoming beam: dashed from the left wall to vertex 1
       ctx.beginPath();
       ctx.setLineDash([6, 5]);
-      ctx.strokeStyle = "rgba(253, 224, 71, 0.75)";
+      ctx.strokeStyle = colors.ink;
+      ctx.globalAlpha = 0.65;
       ctx.lineWidth = Math.max(1.2, w / 420);
       ctx.moveTo(view.left, p1[1]);
       ctx.lineTo(p1[0], p1[1]);
       ctx.stroke();
+      ctx.globalAlpha = 1;
       ctx.setLineDash([]);
 
       // The first-scatter direction is reconstructed from the two vertices.
       ctx.beginPath();
-      ctx.strokeStyle = "rgba(125, 211, 252, 0.9)";
+      ctx.strokeStyle = colors.ink;
       ctx.moveTo(p1[0], p1[1]);
       ctx.lineTo(p2[0], p2[1]);
       ctx.stroke();
@@ -228,24 +233,26 @@
       var sweep = Math.atan2(dy, dx); // signed screen angle of the new leg
       var arcR = Math.min(0.09 * w, len * 0.55);
       ctx.beginPath();
-      ctx.strokeStyle = "rgba(253, 224, 71, 0.9)";
+      ctx.strokeStyle = colors.ink;
       ctx.arc(p1[0], p1[1], arcR, 0, sweep, sweep < 0);
       ctx.stroke();
 
       // vertices: scatter flashes with draggable handles
       [p1, p2].forEach(function (p, i) {
         ctx.beginPath();
-        ctx.fillStyle = "rgba(125, 211, 252, 0.25)";
+        ctx.fillStyle = colors.ink;
+        ctx.globalAlpha = 0.16;
         ctx.arc(p[0], p[1], Math.max(9, w / 38), 0, 2 * Math.PI);
         ctx.fill();
+        ctx.globalAlpha = 1;
         ctx.beginPath();
-        ctx.fillStyle = "#fde68a";
-        ctx.strokeStyle = "rgba(12, 20, 38, 0.9)";
+        ctx.fillStyle = colors.highlight;
+        ctx.strokeStyle = "#273544";
         ctx.lineWidth = Math.max(1, w / 600);
         ctx.arc(p[0], p[1], Math.max(5, w / 80), 0, 2 * Math.PI);
         ctx.fill();
         ctx.stroke();
-        ctx.fillStyle = "rgba(232, 240, 255, 0.9)";
+        ctx.fillStyle = colors.muted;
         ctx.font = "600 11px Inter, sans-serif";
         var labelLeft = p[0] > w - 28;
         var labelBelow = p[1] < 28;
@@ -264,16 +271,21 @@
         var pulseX = onIncoming ? view.left + distance : p1[0] + dx * fraction;
         var pulseY = onIncoming ? p1[1] : p1[1] + dy * fraction;
         ctx.beginPath();
-        ctx.fillStyle = "#ffffff";
+        ctx.fillStyle = colors.highlight;
+        ctx.strokeStyle = "#273544";
+        ctx.lineWidth = 1;
         ctx.arc(pulseX, pulseY, 4, 0, 2 * Math.PI);
         ctx.fill();
+        ctx.stroke();
         var flash = 1 - Math.abs(distance - incomingLength) / Math.max(20, w * 0.13);
         if (flash > 0) {
           ctx.beginPath();
-          ctx.strokeStyle = "rgba(253, 230, 138, " + flash + ")";
+          ctx.strokeStyle = colors.ink;
+          ctx.globalAlpha = flash;
           ctx.lineWidth = 2;
           ctx.arc(p1[0], p1[1], 9 + (1 - flash) * 12, 0, 2 * Math.PI);
           ctx.stroke();
+          ctx.globalAlpha = 1;
         }
       }
     }
@@ -298,12 +310,14 @@
       var plotH = plot.bottom - plot.top;
       function yFor(er) { return plot.top + chartY(er, plotH); }
       function xFor(theta) { return plot.left + theta / Math.PI * plotW; }
-      ctx.fillStyle = colors.surfaceMuted;
+      ctx.fillStyle = colors.canvas;
       ctx.fillRect(0, 0, w, h);
 
       // sub-keV band
-      ctx.fillStyle = "rgba(96, 165, 250, 0.14)";
+      ctx.fillStyle = colors.ink;
+      ctx.globalAlpha = 0.09;
       ctx.fillRect(plot.left, yFor(1), plotW, plot.bottom - yFor(1));
+      ctx.globalAlpha = 1;
 
       ctx.font = "500 11px Inter, sans-serif";
       ctx.fillStyle = colors.muted;
@@ -338,7 +352,7 @@
 
       // E_r(theta) curve
       ctx.beginPath();
-      ctx.strokeStyle = colors.accent;
+      ctx.strokeStyle = colors.ink;
       ctx.lineWidth = Math.max(1.2, w / 480);
       var started = false;
       for (var i = 0; i <= 240; i++) {
@@ -362,8 +376,8 @@
       var mx = xFor(theta);
       var my = yFor(erNow);
       ctx.beginPath();
-      ctx.fillStyle = "#fde68a";
-      ctx.strokeStyle = "rgba(12, 20, 38, 0.9)";
+      ctx.fillStyle = colors.highlight;
+      ctx.strokeStyle = "#273544";
       ctx.lineWidth = 1.2;
       if (erNow < LOG_MIN) {
         ctx.moveTo(mx, my + 3);

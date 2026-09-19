@@ -471,8 +471,8 @@ for (const name of ["blob", "two-blobs", "sinusoid"]) {
   const openingWrites = rasterWrites;
   left.emit("pointermove", { clientX: 160, clientY: 120 });
   flush();
-  const linkedLeft = left.context.arcs.filter((arc) => arc.radius === 7);
-  const linkedRight = right.context.arcs.filter((arc) => arc.radius === 7);
+  const linkedLeft = left.context.arcs.filter((arc) => arc.radius === 5);
+  const linkedRight = right.context.arcs.filter((arc) => arc.radius === 5);
   check("inspection moves a linked marker on both panels without repainting heatmap pixels",
     rasterWrites === openingWrites && linkedLeft[0].x === 160 && linkedRight[0].x === 160 &&
     linkedLeft[0].y === 120 && linkedRight[0].y === 120);
@@ -494,7 +494,7 @@ for (const name of ["blob", "two-blobs", "sinusoid"]) {
   flush();
   check("touch page-scroll cancellation changes neither points nor the linked cursor",
     left.context.arcs.filter((arc) => arc.radius === 2).length === 0 &&
-    left.context.arcs.some((arc) => arc.radius === 7 && arc.x === 160 && arc.y === 120));
+    left.context.arcs.some((arc) => arc.radius === 5 && arc.x === 160 && arc.y === 120));
   left.emit("pointerdown", { pointerType: "touch" });
   left.emit("pointerup", { pointerType: "touch" });
   flush();
@@ -526,7 +526,7 @@ for (const name of ["blob", "two-blobs", "sinusoid"]) {
   left.emit("keydown", { key: "ArrowRight" });
   flush();
   check("keyboard probe stays visible on an empty map before placing a point",
-    left.context.arcs.some((arc) => arc.radius === 7 && Math.abs(arc.x - 243.2) < 1e-9));
+    left.context.arcs.some((arc) => arc.radius === 5 && Math.abs(arc.x - 243.2) < 1e-9));
   left.emit("keydown", { key: "Enter" });
   left.emit("keydown", { key: " " });
   flush();

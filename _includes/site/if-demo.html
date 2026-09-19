@@ -7,19 +7,19 @@
       <button type="button" class="demo-btn if-demo-btn" data-preset="blob" aria-pressed="false">Single blob</button>
       <button type="button" class="demo-btn if-demo-btn is-active" data-preset="two-blobs" aria-pressed="true">Two blobs</button>
       <button type="button" class="demo-btn if-demo-btn" data-preset="sinusoid" aria-pressed="false">Sinusoid</button>
-      <button type="button" class="demo-btn if-demo-btn" data-action="clear">Clear</button>
+      <button type="button" class="demo-btn if-demo-btn demo-btn-quiet" data-action="clear">Clear</button>
     </div>
   </div>
   <p class="sr-only" id="if-demo-hint">Use arrow keys to move the linked cursor, Enter or Space to add a point, and Delete or Backspace to erase nearby points. With a mouse, drag to add points or hold Shift to erase.</p>
   <p class="sr-only" data-if-announcement aria-live="polite" aria-atomic="true"></p>
   <div class="if-demo-panels">
     <figure>
+      <figcaption>Standard <span>Isolation Forest</span></figcaption>
       <canvas class="if-demo-canvas" data-panel="if" role="img" tabindex="0" aria-label="Standard Isolation Forest score map. Brighter regions look more unusual." aria-describedby="if-demo-hint"></canvas>
-      <figcaption>Standard Isolation Forest</figcaption>
     </figure>
     <figure>
+      <figcaption>Extended <span>Isolation Forest</span></figcaption>
       <canvas class="if-demo-canvas" data-panel="eif" role="img" tabindex="0" aria-label="Extended Isolation Forest score map. Brighter regions look more unusual." aria-describedby="if-demo-hint"></canvas>
-      <figcaption>Extended Isolation Forest</figcaption>
     </figure>
   </div>
   <div class="if-demo-scale">
@@ -32,4 +32,4 @@
     <p>Both maps use the same points. Standard Isolation Forest makes axis-aligned splits; Extended Isolation Forest uses angled splits. A shared color scale adjusts after training.</p>
   </details>
 </div>
-<script src="{{ '/assets/js/if-demo.js' | relative_url }}?v=9" defer></script>
+<script src="{{ '/assets/js/if-demo.js' | relative_url }}?v=10" defer></script>

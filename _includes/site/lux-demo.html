@@ -5,32 +5,30 @@
     Drag the dots to see how scattering changes the recoil energy.
   </p>
   <div class="lux-demo-layout">
-    <div class="lux-demo-detector">
-      <figure>
-        <canvas class="lux-demo-tpc" data-lux="tpc" role="img" aria-label="Side view of the time projection chamber: a neutron beam enters from the left and scatters at two vertices. Use the angle control below as an alternative to dragging."></canvas>
-        <figcaption>Neutron scattering in xenon</figcaption>
-      </figure>
+    <figure class="lux-demo-detector">
+      <canvas class="lux-demo-tpc" data-lux="tpc" role="img" aria-label="Side view of the time projection chamber: a neutron beam enters from the left and scatters at two vertices. Use the angle control below as an alternative to dragging."></canvas>
+      <figcaption>Neutron scattering in xenon</figcaption>
+    </figure>
+    <div class="lux-demo-controls">
       <p class="lux-demo-primary demo-readout" data-lux-readout>
         <span>Recoil energy <strong class="lux-demo-primary-value" data-lux-energy-value></strong></span>
       </p>
-      <div class="lux-demo-controls">
-        <label class="lux-demo-angle">Scattering angle
-          <input type="range" min="0" max="180" step="0.1" value="13.3" data-lux-angle aria-label="Scattering angle in degrees">
-        </label>
-        <div class="lux-demo-actions">
-          <button type="button" class="demo-btn" data-action="reset">Reset</button>
-        </div>
+      <label class="lux-demo-angle">Scattering angle
+        <input type="range" min="0" max="180" step="0.1" value="13.3" data-lux-angle aria-label="Scattering angle in degrees">
+      </label>
+      <div class="lux-demo-actions">
+        <button type="button" class="demo-btn" data-action="reset">Reset</button>
       </div>
-      <p class="lux-demo-status sr-only" data-lux-status role="status" aria-atomic="true"></p>
     </div>
-    <figure>
+    <figure class="lux-demo-plot">
       <canvas class="lux-demo-chart" data-lux="chart" role="img" aria-label="Nuclear recoil energy versus scattering angle on a log scale. The current event is marked, including an indicator for energies below the plotted range."></canvas>
       <figcaption>Scattering angle &rarr; recoil energy</figcaption>
     </figure>
   </div>
+  <p class="lux-demo-status sr-only" data-lux-status role="status" aria-atomic="true"></p>
   <details class="lux-demo-model demo-notes">
     <summary>Scattering model</summary>
     <p>Recoil energy at scatter 1 follows non-relativistic two-body elastic scattering for 2.45 MeV neutrons and the average natural-xenon mass. The slider sets the laboratory scattering angle. Reset replays the path with illustrative timing.</p>
   </details>
 </div>
-<script src="{{ '/assets/js/lux-demo.js' | relative_url }}?v=6" defer></script>
+<script src="{{ '/assets/js/lux-demo.js' | relative_url }}?v=7" defer></script>

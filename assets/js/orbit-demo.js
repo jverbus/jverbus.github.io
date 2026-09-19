@@ -348,9 +348,17 @@
 
       // planet
       var c = worldToMap(0, 0, canvas);
+      var planetRadius = CRASH_RADIUS * mapScale;
+      var planetFill = ctx.createRadialGradient(
+        c[0] - planetRadius * 0.35, c[1] - planetRadius * 0.35, planetRadius * 0.1,
+        c[0], c[1], planetRadius
+      );
+      planetFill.addColorStop(0, "#b4c9e6");
+      planetFill.addColorStop(0.6, "#7ea4d8");
+      planetFill.addColorStop(1, "#42638b");
       ctx.beginPath();
-      ctx.fillStyle = "#7ea4d8";
-      ctx.arc(c[0], c[1], CRASH_RADIUS * mapScale, 0, 2 * Math.PI);
+      ctx.fillStyle = planetFill;
+      ctx.arc(c[0], c[1], planetRadius, 0, 2 * Math.PI);
       ctx.fill();
 
       // trail
@@ -376,13 +384,27 @@
         ctx.arc(sp[0], sp[1], (7 + burnAge * 25) * canvas.width / 400, 0, 2 * Math.PI);
         ctx.stroke();
       }
+      // Keep the craft legible at the same CSS size on every screen density.
+      var pixelRatio = Math.min(2, window.devicePixelRatio || 1);
+      ctx.save();
+      ctx.translate(sp[0], sp[1]);
+      ctx.rotate(Math.atan2(-sim.state.vy, sim.state.vx));
       ctx.beginPath();
+      ctx.moveTo(8.5 * pixelRatio, 0);
+      ctx.lineTo(-5.5 * pixelRatio, 5.5 * pixelRatio);
+      ctx.lineTo(-2 * pixelRatio, 0);
+      ctx.lineTo(-5.5 * pixelRatio, -5.5 * pixelRatio);
+      ctx.closePath();
       ctx.fillStyle = "#fde68a";
-      ctx.strokeStyle = "rgba(12, 20, 38, 0.9)";
-      ctx.lineWidth = Math.max(1, canvas.width / 800);
-      ctx.arc(sp[0], sp[1], Math.max(3, canvas.width / 170), 0, 2 * Math.PI);
+      ctx.strokeStyle = "#0c1426";
+      ctx.lineWidth = 1.3 * pixelRatio;
+      ctx.lineJoin = "round";
+      ctx.shadowColor = "rgba(253, 230, 138, 0.35)";
+      ctx.shadowBlur = 3 * pixelRatio;
       ctx.fill();
+      ctx.shadowBlur = 0;
       ctx.stroke();
+      ctx.restore();
     }
 
     function draw() {
