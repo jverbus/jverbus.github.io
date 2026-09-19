@@ -1,43 +1,58 @@
 <div id="try-it-live" aria-hidden="true"></div>
 <div class="if-demo" data-if-demo data-seed="20260318" hidden>
-  <h2 class="if-demo-title" id="try-it-live-heading">Try it: retrain both models live</h2>
+  <h2 class="if-demo-title" id="try-it-live-heading">Try it: compare the same point</h2>
   <p class="if-demo-intro">
-    These JavaScript implementations train standard Isolation Forest on the left and
-    fully extended EIF on the right using the same points. Each tree uses a subsample of
-    up to 256 points, with path-length normalization based on the actual subsample size.
-    Add points to compare the resulting score maps.
+    Start at the marked empty corner beside the two clusters. Move across either map
+    to compare its anomaly scores, or add points and watch both models retrain.
   </p>
   <div class="if-demo-toolbar">
     <div class="if-demo-group" role="group" aria-label="Preset datasets">
-      <button type="button" class="if-demo-btn is-active" data-preset="blob">Single blob</button>
-      <button type="button" class="if-demo-btn" data-preset="two-blobs">Two blobs</button>
-      <button type="button" class="if-demo-btn" data-preset="sinusoid">Sinusoid</button>
+      <button type="button" class="demo-btn if-demo-btn" data-preset="blob" aria-pressed="false">Single blob</button>
+      <button type="button" class="demo-btn if-demo-btn is-active" data-preset="two-blobs" aria-pressed="true">Two blobs</button>
+      <button type="button" class="demo-btn if-demo-btn" data-preset="sinusoid" aria-pressed="false">Sinusoid</button>
     </div>
     <div class="if-demo-group">
       <label class="if-demo-trees">Trees
         <input type="range" min="1" max="300" step="1" value="100" aria-label="Number of trees">
-        <output aria-hidden="true">100</output>
+        <output data-tree-count aria-hidden="true">100</output>
       </label>
-      <button type="button" class="if-demo-btn" data-action="reroll" title="Retrain both forests with a new random seed">Retrain</button>
-      <button type="button" class="if-demo-btn" data-action="clear">Clear</button>
+      <button type="button" class="demo-btn if-demo-btn" data-action="reroll" title="Retrain both forests with a new random seed">Retrain</button>
+      <button type="button" class="demo-btn if-demo-btn" data-action="clear">Clear</button>
     </div>
   </div>
+  <div class="if-demo-group if-demo-tools" role="group" aria-label="Map tool">
+    <button type="button" class="demo-btn if-demo-btn is-active" data-tool="inspect" aria-pressed="true">Inspect</button>
+    <button type="button" class="demo-btn if-demo-btn" data-tool="add" aria-pressed="false">Add</button>
+    <button type="button" class="demo-btn if-demo-btn" data-tool="erase" aria-pressed="false">Erase</button>
+  </div>
+  <div class="demo-readout if-demo-readout" id="if-demo-readout">
+    <span>Standard IF <strong data-score-if>&mdash;</strong></span>
+    <span>Extended IF <strong data-score-eif>&mdash;</strong></span>
+    <span data-probe-context>Marked point: empty corner beside the clusters</span>
+  </div>
+  <p class="sr-only" data-if-announcement aria-live="polite" aria-atomic="true"></p>
   <div class="if-demo-panels">
     <figure>
-      <canvas class="if-demo-canvas" data-panel="if" role="img" aria-label="Interactive anomaly-score heatmap for standard Isolation Forest with axis-aligned splits. Brighter regions score more anomalous."></canvas>
+      <canvas class="if-demo-canvas" data-panel="if" role="img" tabindex="0" aria-label="Standard Isolation Forest score map. Brighter regions score more anomalous." aria-describedby="if-demo-hint if-demo-readout"></canvas>
       <figcaption>Standard Isolation Forest &middot; axis-aligned splits</figcaption>
     </figure>
     <figure>
-      <canvas class="if-demo-canvas" data-panel="eif" role="img" aria-label="Interactive anomaly-score heatmap for Extended Isolation Forest with random hyperplane splits. Brighter regions score more anomalous."></canvas>
+      <canvas class="if-demo-canvas" data-panel="eif" role="img" tabindex="0" aria-label="Extended Isolation Forest score map. Brighter regions score more anomalous." aria-describedby="if-demo-hint if-demo-readout"></canvas>
       <figcaption>Extended Isolation Forest &middot; random hyperplanes</figcaption>
     </figure>
   </div>
   <div class="if-demo-scale">
     <span class="if-demo-scale-name">Anomaly score</span>
-    <span class="if-demo-scale-value">Low</span>
+    <span class="if-demo-scale-value" data-scale-low>&mdash;</span>
     <span class="if-demo-scale-bar" aria-hidden="true"></span>
-    <span class="if-demo-scale-value">High</span>
+    <span class="if-demo-scale-value" data-scale-high>&mdash;</span>
   </div>
-  <p class="if-demo-hint">Click or drag on either panel to add points &middot; shift-click to erase &middot; both models retrain on every change.</p>
+  <p class="if-demo-scale-note">Shared color scale; its endpoints adjust after training.</p>
+  <p class="if-demo-hint" id="if-demo-hint">Hover or tap to inspect. Choose Add or Erase to edit; drag with a mouse or tap on touch screens. Keyboard: focus either map, use arrow keys to move, then Enter to apply the selected tool.</p>
+  <details class="demo-notes if-demo-details">
+    <summary>Model and color-scale details</summary>
+    <p>These JavaScript implementations train standard Isolation Forest on the left and fully extended EIF on the right using the same points. Each tree uses a subsample of up to 256 points, with path-length normalization based on the actual subsample size. Higher scores indicate more anomalous points.</p>
+    <p>The shared color scale uses estimated 2nd and 98th percentiles of both score maps, widened when scores are nearly equal, with a nonlinear color ramp to reveal low-score structure. Scores outside those endpoints use the end colors; the numeric probe always shows the original score.</p>
+  </details>
 </div>
-<script src="{{ '/assets/js/if-demo.js' | relative_url }}?v=5" defer></script>
+<script src="{{ '/assets/js/if-demo.js' | relative_url }}?v=8" defer></script>

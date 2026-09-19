@@ -347,5 +347,212 @@ for (const name of ["blob", "two-blobs", "sinusoid"]) {
     ms.toFixed(1) + " ms");
 }
 
+/* ---- cached comparison: inspecting is independent of training ---- */
+
+{
+  const seed = 20260318;
+  const data = demo.makePreset("two-blobs", seed + 7);
+  const model = demo.createComparison({ trees: 100, seed });
+  model.setData(data.xs, data.ys);
+  const grid = model.grid(16, 12);
+  const marked = model.score(0.24, 0.26);
+  check("opening marked empty corner exposes IF ghost region",
+    marked[1] > marked[0] + 0.02,
+    "IF " + marked[0].toFixed(3) + " vs EIF " + marked[1].toFixed(3));
+  for (let i = 0; i < 20; i++) model.score(i / 20, 0.6);
+  model.setTrees(100);
+  model.setSeed(seed);
+  check("probe reads and unchanged options reuse the scored grid",
+    model.grid(16, 12) === grid);
+  model.grid(8, 6);
+  check("coarse preview preserves the cached full-resolution grid",
+    model.grid(16, 12) === grid);
+  model.setSeed(seed + 5);
+  const rerolled = model.grid(16, 12);
+  check("new seed invalidates the grid and changes scores",
+    rerolled !== grid && rerolled.ifScores.some((s, i) => s !== grid.ifScores[i]));
+  model.setTrees(20);
+  const fewer = model.grid(16, 12);
+  check("tree count invalidates both cached maps",
+    fewer !== rerolled && fewer.eifScores.some((s, i) => s !== rerolled.eifScores[i]));
+  model.setData([0.3], [0.4]);
+  check("a one-point dataset has no misleading score or stale heatmap",
+    model.grid(16, 12) === null && model.score(0.3, 0.4) === null);
+  model.setData([0.3, 0.7], [0.4, 0.6]);
+  check("adding the second point produces finite scores",
+    model.score(0.5, 0.5).every(Number.isFinite));
+}
+
+/* ---- real widget event handlers, with a small dependency-free DOM stub ---- */
+
+{
+  const fs = require("fs");
+  const path = require("path");
+  const vm = require("vm");
+  class Element {
+    constructor(attrs = {}) {
+      this.attrs = attrs;
+      this.events = {};
+      this.textContent = "";
+      this.classList = { toggle() {} };
+    }
+    addEventListener(name, fn) { (this.events[name] ||= []).push(fn); }
+    getAttribute(name) { return this.attrs[name] || null; }
+    setAttribute(name, value) { this.attrs[name] = value; }
+    emit(name, extra = {}) {
+      const event = { button: 0, pointerId: 1, pointerType: "mouse", clientX: 80,
+        clientY: 60, shiftKey: false, preventDefault() {}, ...extra };
+      for (const fn of this.events[name] || []) fn(event);
+    }
+    focus() {}
+    setPointerCapture() {}
+  }
+  let rasterWrites = 0;
+  class Canvas extends Element {
+    constructor() {
+      super();
+      this.width = 320;
+      this.height = 240;
+      this.context = {
+        arcs: [], labels: [],
+        createImageData: (w, h) => ({ data: new Uint8ClampedArray(w * h * 4) }),
+        putImageData() { rasterWrites++; },
+        clearRect() { this.arcs = []; this.labels = []; },
+        arc(x, y, radius) { this.arcs.push({ x, y, radius }); },
+        fillText(text) { this.labels.push(text); },
+        beginPath() {}, moveTo() {}, lineTo() {}, fill() {}, stroke() {},
+        fillRect() {}, drawImage() {}
+      };
+    }
+    getContext() { return this.context; }
+    getBoundingClientRect() { return { left: 0, top: 0, width: 320, height: 240 }; }
+  }
+  const left = new Canvas();
+  const right = new Canvas();
+  const slider = new Element();
+  slider.value = "5";
+  const presets = ["blob", "two-blobs", "sinusoid"].map((name) =>
+    new Element({ "data-preset": name, "aria-pressed": String(name === "two-blobs") }));
+  const tools = ["inspect", "add", "erase"].map((name) =>
+    new Element({ "data-tool": name, "aria-pressed": String(name === "inspect") }));
+  const nodes = {
+    'canvas[data-panel="if"]': left, 'canvas[data-panel="eif"]': right,
+    'input[type="range"]': slider,
+    'button[data-action="clear"]': new Element(),
+    'button[data-action="reroll"]': new Element()
+  };
+  for (const name of ["score-if", "score-eif", "probe-context", "scale-low", "scale-high",
+    "if-announcement", "tree-count"]) nodes["[data-" + name + "]"] = new Element();
+  const root = new Element({ "data-seed": "20260318" });
+  root.hidden = true;
+  root.querySelector = (selector) => nodes[selector] || null;
+  root.querySelectorAll = (selector) => selector === "button[data-preset]" ? presets : tools;
+  const timers = new Map();
+  let nextTimer = 0;
+  const frames = [];
+  const browser = new Element();
+  browser.devicePixelRatio = 1;
+  browser.requestAnimationFrame = (callback) => frames.push(callback);
+  browser.setTimeout = (callback) => { timers.set(++nextTimer, callback); return nextTimer; };
+  browser.clearTimeout = (id) => timers.delete(id);
+  function flush() {
+    let turns = 0;
+    while ((timers.size || frames.length) && turns++ < 20) {
+      const scheduled = [...timers.values()];
+      timers.clear();
+      scheduled.forEach((callback) => callback());
+      frames.splice(0).forEach((callback) => callback());
+    }
+    if (turns >= 20) throw new Error("Widget did not settle");
+  }
+  vm.runInNewContext(fs.readFileSync(path.join(__dirname, "../assets/js/if-demo.js"), "utf8"), {
+    window: browser,
+    document: { readyState: "complete", querySelectorAll: () => [root],
+      createElement: () => new Canvas() },
+    getComputedStyle: () => ({ getPropertyValue: () => "" })
+  });
+  // Exercise the actual slider handlers while keeping UI regression checks fast.
+  slider.emit("input");
+  slider.emit("change");
+  flush();
+  check("widget opens with a numeric shared scale", !root.hidden &&
+    Number(nodes["[data-scale-high]"].textContent) > Number(nodes["[data-scale-low]"].textContent));
+  const openingWrites = rasterWrites;
+  left.emit("pointermove", { clientX: 160, clientY: 120 });
+  flush();
+  const linkedLeft = left.context.arcs.filter((arc) => arc.radius === 7);
+  const linkedRight = right.context.arcs.filter((arc) => arc.radius === 7);
+  check("inspection moves a linked marker on both panels without repainting heatmap pixels",
+    rasterWrites === openingWrites && linkedLeft[0].x === 160 && linkedRight[0].x === 160 &&
+    linkedLeft[0].y === 120 && linkedRight[0].y === 120);
+  browser.emit("resize");
+  flush();
+  check("resize reuses the heatmap raster", rasterWrites === openingWrites);
+  browser.emit("pageshow", { persisted: true });
+  flush();
+  check("back-forward restoration repaints both possibly evicted panel bitmaps",
+    rasterWrites === openingWrites + 2);
+  nodes['button[data-action="clear"]'].emit("click");
+  flush();
+  tools[1].emit("click");
+  check("selected editing tool is exposed to assistive technology",
+    tools[1].getAttribute("aria-pressed") === "true" &&
+    tools[0].getAttribute("aria-pressed") === "false");
+  left.emit("pointerdown", { pointerType: "touch" });
+  flush();
+  check("touch-down alone does not edit data",
+    left.context.arcs.filter((arc) => arc.radius === 2).length === 0);
+  left.emit("pointermove", { pointerType: "touch", clientY: 110 });
+  left.emit("pointercancel", { pointerType: "touch" });
+  flush();
+  check("touch page-scroll cancellation does not add a point",
+    left.context.arcs.filter((arc) => arc.radius === 2).length === 0);
+  left.emit("pointerdown", { pointerType: "touch" });
+  left.emit("pointerup", { pointerType: "touch" });
+  flush();
+  check("completed touch tap visibly paints the first point and requests one more",
+    left.context.arcs.filter((arc) => arc.radius === 2).length === 1 &&
+    left.context.labels.includes("Add one more point to train") &&
+    nodes["[data-score-if]"].textContent === "\u2014");
+  left.emit("keydown", { key: "ArrowRight" });
+  left.emit("keydown", { key: "Enter" });
+  flush();
+  check("keyboard can place the second point and start training",
+    left.context.arcs.filter((arc) => arc.radius === 2).length === 2 &&
+    Number.isFinite(Number(nodes["[data-score-if]"].textContent)));
+  tools[0].emit("click");
+  left.emit("pointerdown", { pointerType: "touch", clientX: 240 });
+  left.emit("pointerup", { pointerType: "touch", clientX: 240 });
+  flush();
+  check("Inspect touch tap does not change training points",
+    left.context.arcs.filter((arc) => arc.radius === 2).length === 2);
+  tools[2].emit("click");
+  left.emit("pointerdown", { pointerType: "touch" });
+  left.emit("pointerup", { pointerType: "touch" });
+  flush();
+  check("touch Erase removes points without a modifier key",
+    left.context.arcs.filter((arc) => arc.radius === 2).length === 0 &&
+    nodes["[data-score-if]"].textContent === "\u2014");
+  left.emit("keydown", { key: "ArrowRight" });
+  flush();
+  check("keyboard probe stays visible on an empty map before placing a point",
+    left.context.arcs.some((arc) => arc.radius === 7 && Math.abs(arc.x - 83.2) < 1e-9));
+  tools[1].emit("click");
+  left.emit("pointerdown");
+  flush();
+  browser.emit("blur");
+  left.emit("pointermove", { clientX: 240, clientY: 180, buttons: 0 });
+  flush();
+  check("window blur ends Add gesture before an unpressed pointer returns",
+    left.context.arcs.filter((arc) => arc.radius === 2).length === 1);
+  left.emit("pointerdown", { clientX: 240, clientY: 180 });
+  flush();
+  browser.emit("pagehide");
+  left.emit("pointermove", { clientX: 160, clientY: 120, buttons: 0 });
+  flush();
+  check("pagehide ends Add gesture even without pointerup or pointercancel",
+    left.context.arcs.filter((arc) => arc.radius === 2).length === 2);
+}
+
 console.log(failures === 0 ? "\nAll checks passed." : "\n" + failures + " FAILURES");
 process.exit(failures === 0 ? 0 : 1);

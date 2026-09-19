@@ -18,6 +18,9 @@
   var M_NEUTRON = 1.008665; // u
   var M_XENON = 131.293; // u, natural xenon average
   var MU = M_NEUTRON / M_XENON;
+  var DETECTOR_WIDTH = 4;
+  var DETECTOR_HEIGHT = 3;
+  var BEAM_Y = 1.38;
 
   /* ---------------- kinematics core ---------------- */
 
@@ -51,6 +54,45 @@
     return Math.acos(Math.max(-1, Math.min(1, dx / len)));
   }
 
+  // The model uses equal units on both axes. A shared, isotropic projection
+  // preserves its angles even if the CSS box or device pixel ratio changes.
+  function detectorViewport(width, height) {
+    var scale = Math.min(width / DETECTOR_WIDTH, height / DETECTOR_HEIGHT);
+    return {
+      scale: scale,
+      left: (width - DETECTOR_WIDTH * scale) / 2,
+      top: (height - DETECTOR_HEIGHT * scale) / 2
+    };
+  }
+
+  function detectorToCanvas(point, width, height) {
+    var view = detectorViewport(width, height);
+    return { x: view.left + point.x * view.scale, y: view.top + point.y * view.scale };
+  }
+
+  function canvasToDetector(point, width, height) {
+    var view = detectorViewport(width, height);
+    return { x: (point.x - view.left) / view.scale, y: (point.y - view.top) / view.scale };
+  }
+
+  function angleForRecoil(energy) {
+    var low = 0;
+    var high = Math.PI;
+    for (var i = 0; i < 60; i++) {
+      var middle = (low + high) / 2;
+      if (recoilEnergy(middle) < energy) low = middle;
+      else high = middle;
+    }
+    return (low + high) / 2;
+  }
+
+  function geometryForAngle(theta) {
+    return {
+      v1: { x: DETECTOR_WIDTH / 2, y: BEAM_Y },
+      v2: { x: DETECTOR_WIDTH / 2 + 1.1 * Math.cos(theta), y: BEAM_Y + 1.1 * Math.sin(theta) }
+    };
+  }
+
   /* ---------------- demo widget ---------------- */
 
   function initDemo(root) {
@@ -61,20 +103,20 @@
     var chartCtx = chartCanvas.getContext("2d");
     if (!tpcCtx || !chartCtx) return false;
 
-    var BEAM_Y = 0.46; // beam height in detector coordinates [0,1]
-    var MARGIN = 0.07; // vertex clamp margin inside the TPC
-    var MIN_SEP = 0.05; // minimum vertex separation
-
-    var DEFAULTS = {
-      v1: { x: 0.32, y: BEAM_Y },
-      v2: { x: 0.66, y: 0.62 }
-    };
+    var MARGIN = 0.22;
+    var MIN_SEP = 0.15;
+    var DEFAULTS = geometryForAngle(angleForRecoil(1));
 
     var state = {
       v1: { x: DEFAULTS.v1.x, y: DEFAULTS.v1.y },
       v2: { x: DEFAULTS.v2.x, y: DEFAULTS.v2.y },
-      pending: false
+      frame: null,
+      animation: null,
+      visible: true
     };
+    var tpcSize;
+    var chartSize;
+    var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
 
     var colors = {};
 
@@ -88,45 +130,49 @@
       colors.accent = cs.getPropertyValue("--accent").trim() || "#1f6feb";
     }
 
-    function fitCanvas(canvas) {
-      var rect = canvas.getBoundingClientRect();
-      if (rect.width === 0) return;
+    function fitCanvas(canvas, ctx) {
+      var width = canvas.clientWidth;
+      var height = canvas.clientHeight;
+      if (width === 0 || height === 0) return null;
       var dpr = Math.min(2, window.devicePixelRatio || 1);
-      var w = Math.round(rect.width * dpr);
-      var h = Math.round(rect.height * dpr);
+      var w = Math.round(width * dpr);
+      var h = Math.round(height * dpr);
       if (canvas.width !== w || canvas.height !== h) {
         canvas.width = w;
         canvas.height = h;
       }
+      ctx.setTransform(w / width, 0, 0, h / height, 0, 0);
+      return { width: width, height: height };
     }
 
     /* ---- readouts ---- */
 
-    var readoutEl = root.querySelector("[data-lux-readout]");
+    var angleEl = root.querySelector("[data-lux-angle-value]");
+    var energyEl = root.querySelector("[data-lux-energy-value]");
+    var angleInput = root.querySelector("[data-lux-angle]");
     var statusEl = root.querySelector("[data-lux-status]");
+
+    function energyText(er) {
+      if (er > 0 && er < 0.005) return "<0.01 keV";
+      return (er < 10 ? er.toFixed(2) : er.toFixed(1)) + " keV";
+    }
+
+    function announce(prefix) {
+      if (!statusEl) return;
+      var theta = scatteringAngle(state.v1, state.v2);
+      statusEl.textContent = prefix + (theta * 180 / Math.PI).toFixed(1) +
+        " degrees; first recoil " + energyText(recoilEnergy(theta)) + ".";
+    }
 
     function updateText() {
       var theta = scatteringAngle(state.v1, state.v2);
       var er = recoilEnergy(theta);
       var deg = (theta * 180) / Math.PI;
-      if (readoutEl) {
-        readoutEl.textContent =
-          "θ = " + deg.toFixed(1) + "° · first recoil Eᵣ = " +
-          (er < 10 ? er.toFixed(2) : er.toFixed(1)) +
-          " keV · scattered neutron " + (EN_KEV - er).toFixed(0) + " keV";
-      }
-      if (statusEl) {
-        var note;
-        if (er < 1) {
-          note = "Recoil energy below 1 keV.";
-        } else if (er < 10) {
-          note = "Recoil energy between 1 and 10 keV.";
-        } else if (er > 65) {
-          note = "Near the 74 keV maximum recoil energy.";
-        } else {
-          note = "Mid-range nuclear recoil.";
-        }
-        statusEl.textContent = note;
+      if (angleEl) angleEl.textContent = deg.toFixed(1) + "°";
+      if (energyEl) energyEl.textContent = energyText(er);
+      if (angleInput) {
+        angleInput.value = deg.toFixed(1);
+        angleInput.setAttribute("aria-valuetext", deg.toFixed(1) + " degrees; first recoil " + energyText(er));
       }
     }
 
@@ -134,40 +180,43 @@
 
     var SPACE_BG = "#0c1426";
 
-    function toPx(p, canvas) {
-      return [p.x * canvas.width, p.y * canvas.height];
+    function toPx(p) {
+      var pixel = detectorToCanvas(p, tpcSize.width, tpcSize.height);
+      return [pixel.x, pixel.y];
     }
 
     function drawTpc() {
-      var canvas = tpcCanvas;
       var ctx = tpcCtx;
-      var w = canvas.width;
-      var h = canvas.height;
+      var w = tpcSize.width;
+      var h = tpcSize.height;
       ctx.fillStyle = SPACE_BG;
       ctx.fillRect(0, 0, w, h);
 
       // liquid xenon volume
-      var inset = 0.035 * w;
+      var view = detectorViewport(w, h);
+      var inset = 0.12 * view.scale;
       ctx.strokeStyle = "rgba(148, 163, 184, 0.6)";
       ctx.lineWidth = Math.max(1, w / 480);
-      ctx.strokeRect(inset, inset, w - 2 * inset, h - 2 * inset);
+      ctx.strokeRect(view.left + inset, view.top + inset,
+        DETECTOR_WIDTH * view.scale - 2 * inset, DETECTOR_HEIGHT * view.scale - 2 * inset);
       ctx.fillStyle = "rgba(96, 165, 250, 0.06)";
-      ctx.fillRect(inset, inset, w - 2 * inset, h - 2 * inset);
+      ctx.fillRect(view.left + inset, view.top + inset,
+        DETECTOR_WIDTH * view.scale - 2 * inset, DETECTOR_HEIGHT * view.scale - 2 * inset);
 
-      var p1 = toPx(state.v1, canvas);
-      var p2 = toPx(state.v2, canvas);
+      var p1 = toPx(state.v1);
+      var p2 = toPx(state.v2);
 
       // incoming beam: dashed from the left wall to vertex 1
       ctx.beginPath();
       ctx.setLineDash([6, 5]);
       ctx.strokeStyle = "rgba(253, 224, 71, 0.75)";
       ctx.lineWidth = Math.max(1.2, w / 420);
-      ctx.moveTo(0, BEAM_Y * h);
+      ctx.moveTo(view.left, p1[1]);
       ctx.lineTo(p1[0], p1[1]);
       ctx.stroke();
       ctx.setLineDash([]);
 
-      // scattered path: vertex 1 -> vertex 2, then a short fading tail
+      // The first-scatter direction is reconstructed from the two vertices.
       ctx.beginPath();
       ctx.strokeStyle = "rgba(125, 211, 252, 0.9)";
       ctx.moveTo(p1[0], p1[1]);
@@ -176,14 +225,8 @@
       var dx = p2[0] - p1[0];
       var dy = p2[1] - p1[1];
       var len = Math.hypot(dx, dy) || 1;
-      ctx.beginPath();
-      ctx.strokeStyle = "rgba(125, 211, 252, 0.25)";
-      ctx.moveTo(p2[0], p2[1]);
-      ctx.lineTo(p2[0] + (dx / len) * 0.1 * w, p2[1] + (dy / len) * 0.1 * w);
-      ctx.stroke();
 
       // scattering angle arc at vertex 1
-      var theta = scatteringAngle(state.v1, state.v2);
       var sweep = Math.atan2(dy, dx); // signed screen angle of the new leg
       var arcR = Math.min(0.09 * w, len * 0.55);
       ctx.beginPath();
@@ -192,7 +235,7 @@
       ctx.stroke();
       var labelAngle = sweep / 2;
       ctx.fillStyle = "rgba(253, 224, 71, 0.95)";
-      ctx.font = "600 " + Math.max(11, Math.round(w / 34)) + "px Inter, sans-serif";
+      ctx.font = "600 13px Inter, sans-serif";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillText(
@@ -215,12 +258,36 @@
         ctx.fill();
         ctx.stroke();
         ctx.fillStyle = "rgba(232, 240, 255, 0.9)";
-        ctx.font = "600 " + Math.max(10, Math.round(w / 40)) + "px Inter, sans-serif";
-        ctx.textAlign = "left";
-        ctx.textBaseline = "bottom";
+        ctx.font = "600 11px Inter, sans-serif";
+        var labelLeft = p[0] > w - 72;
+        var labelBelow = p[1] < 28;
+        ctx.textAlign = labelLeft ? "right" : "left";
+        ctx.textBaseline = labelBelow ? "top" : "bottom";
         ctx.fillText(i === 0 ? "scatter 1" : "scatter 2",
-          p[0] + 0.025 * w, p[1] - 0.02 * w);
+          p[0] + (labelLeft ? -10 : 10), p[1] + (labelBelow ? 10 : -10));
       });
+
+      if (state.animation) {
+        var progress = Math.min(1, state.animation.elapsed / 1100);
+        var incomingLength = p1[0] - view.left;
+        var distance = progress * (incomingLength + len);
+        var onIncoming = distance <= incomingLength;
+        var fraction = Math.max(0, (distance - incomingLength) / len);
+        var pulseX = onIncoming ? view.left + distance : p1[0] + dx * fraction;
+        var pulseY = onIncoming ? p1[1] : p1[1] + dy * fraction;
+        ctx.beginPath();
+        ctx.fillStyle = "#ffffff";
+        ctx.arc(pulseX, pulseY, 4, 0, 2 * Math.PI);
+        ctx.fill();
+        var flash = 1 - Math.abs(distance - incomingLength) / Math.max(20, w * 0.13);
+        if (flash > 0) {
+          ctx.beginPath();
+          ctx.strokeStyle = "rgba(253, 230, 138, " + flash + ")";
+          ctx.lineWidth = 2;
+          ctx.arc(p1[0], p1[1], 9 + (1 - flash) * 12, 0, 2 * Math.PI);
+          ctx.stroke();
+        }
+      }
     }
 
     /* ---- kinematic curve ---- */
@@ -235,43 +302,50 @@
     }
 
     function drawChart() {
-      var canvas = chartCanvas;
       var ctx = chartCtx;
-      var w = canvas.width;
-      var h = canvas.height;
+      var w = chartSize.width;
+      var h = chartSize.height;
+      var plot = { left: 40, top: 25, right: w - 16, bottom: h - 32 };
+      var plotW = plot.right - plot.left;
+      var plotH = plot.bottom - plot.top;
+      function yFor(er) { return plot.top + chartY(er, plotH); }
+      function xFor(theta) { return plot.left + theta / Math.PI * plotW; }
       ctx.fillStyle = colors.surfaceMuted;
       ctx.fillRect(0, 0, w, h);
 
       // sub-keV band
       ctx.fillStyle = "rgba(96, 165, 250, 0.14)";
-      ctx.fillRect(0, chartY(1, h), w, h - chartY(1, h));
+      ctx.fillRect(plot.left, yFor(1), plotW, plot.bottom - yFor(1));
 
-      var fontPx = Math.max(10, Math.round(w / 42));
-      ctx.font = "500 " + fontPx + "px Inter, sans-serif";
+      ctx.font = "500 11px Inter, sans-serif";
+      ctx.fillStyle = colors.muted;
+      ctx.textAlign = "left";
+      ctx.textBaseline = "top";
+      ctx.fillText("keV", 8, 5);
 
       // log gridlines
       [0.1, 1, 10, 100].forEach(function (level) {
-        var y = chartY(level, h);
+        var y = yFor(level);
         ctx.strokeStyle = colors.border;
         ctx.lineWidth = 1;
         ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(w, y);
+        ctx.moveTo(plot.left, y);
+        ctx.lineTo(plot.right, y);
         ctx.stroke();
         ctx.fillStyle = colors.muted;
-        ctx.textAlign = "left";
-        ctx.textBaseline = "bottom";
-        ctx.fillText(level + " keV", 6, y - 2);
+        ctx.textAlign = "right";
+        ctx.textBaseline = "middle";
+        ctx.fillText(String(level), plot.left - 8, y);
       });
 
       // angle ticks
       ctx.fillStyle = colors.muted;
       ctx.textBaseline = "top";
-      [[0, "0°", "left"], [90, "90°", "center"], [180, "180°", "right"]]
+      [[0, "0°"], [90, "90°"], [180, "180°"]]
         .forEach(function (tick) {
-          var x = (tick[0] / 180) * w;
-          ctx.textAlign = tick[2];
-          ctx.fillText(tick[1], x + (tick[0] === 0 ? 4 : tick[0] === 180 ? -4 : 0), 4);
+          var x = xFor(tick[0] * Math.PI / 180);
+          ctx.textAlign = "center";
+          ctx.fillText(tick[1], x, plot.bottom + 9);
         });
 
       // E_r(theta) curve
@@ -283,8 +357,8 @@
         var th = (Math.PI * i) / 240;
         var er = recoilEnergy(th);
         if (er < LOG_MIN) continue;
-        var x = (th / Math.PI) * w;
-        var y = chartY(er, h);
+        var x = xFor(th);
+        var y = yFor(er);
         if (!started) {
           ctx.moveTo(x, y);
           started = true;
@@ -297,47 +371,81 @@
       // current event marker
       var theta = scatteringAngle(state.v1, state.v2);
       var erNow = recoilEnergy(theta);
-      if (erNow >= LOG_MIN) {
-        var mx = (theta / Math.PI) * w;
-        var my = chartY(erNow, h);
-        ctx.beginPath();
-        ctx.fillStyle = "#fde68a";
-        ctx.strokeStyle = "rgba(12, 20, 38, 0.9)";
-        ctx.lineWidth = Math.max(1, w / 600);
-        ctx.arc(mx, my, Math.max(4, w / 90), 0, 2 * Math.PI);
-        ctx.fill();
-        ctx.stroke();
+      var mx = xFor(theta);
+      var my = yFor(erNow);
+      ctx.beginPath();
+      ctx.fillStyle = "#fde68a";
+      ctx.strokeStyle = "rgba(12, 20, 38, 0.9)";
+      ctx.lineWidth = 1.2;
+      if (erNow < LOG_MIN) {
+        ctx.moveTo(mx, my + 3);
+        ctx.lineTo(mx - 5, my - 6);
+        ctx.lineTo(mx + 5, my - 6);
+        ctx.closePath();
+      } else {
+        ctx.arc(mx, my, 4.5, 0, 2 * Math.PI);
+      }
+      ctx.fill();
+      ctx.stroke();
+      if (erNow < LOG_MIN) {
+        ctx.fillStyle = colors.text;
+        ctx.textAlign = "left";
+        ctx.textBaseline = "bottom";
+        ctx.fillText(erNow === 0 ? "0 keV" : "<0.1 keV", mx + 10, my - 5);
       }
     }
 
-    function render() {
-      state.pending = false;
-      fitCanvas(tpcCanvas);
-      fitCanvas(chartCanvas);
+    function render(now) {
+      state.frame = null;
+      tpcSize = fitCanvas(tpcCanvas, tpcCtx);
+      chartSize = fitCanvas(chartCanvas, chartCtx);
+      if (!tpcSize || !chartSize) {
+        state.animation = null;
+        return;
+      }
+      if (state.animation) {
+        state.animation.elapsed = now - state.animation.started;
+        if (state.animation.elapsed >= 1100) state.animation = null;
+      }
       drawTpc();
       drawChart();
-      updateText();
+      if (state.animation && state.visible && !document.hidden) schedule();
     }
 
     function schedule() {
-      if (state.pending) return;
-      state.pending = true;
-      window.requestAnimationFrame(render);
+      if (state.frame !== null) return;
+      state.frame = window.requestAnimationFrame(render);
+    }
+
+    function stopAnimation() {
+      state.animation = null;
+      if (state.frame !== null) window.cancelAnimationFrame(state.frame);
+      state.frame = null;
+    }
+
+    function chooseAngle(theta, replay) {
+      stopAnimation();
+      var geometry = geometryForAngle(theta);
+      state.v1 = geometry.v1;
+      state.v2 = geometry.v2;
+      if (replay && state.visible && !document.hidden && !(reducedMotion && reducedMotion.matches)) {
+        state.animation = { started: window.performance.now(), elapsed: 0 };
+      }
+      updateText();
+      schedule();
     }
 
     /* ---- dragging ---- */
 
     function eventPoint(event) {
       var rect = tpcCanvas.getBoundingClientRect();
-      return {
-        x: (event.clientX - rect.left) / rect.width,
-        y: (event.clientY - rect.top) / rect.height
-      };
+      return canvasToDetector({ x: event.clientX - rect.left - tpcCanvas.clientLeft,
+        y: event.clientY - rect.top - tpcCanvas.clientTop }, tpcCanvas.clientWidth, tpcCanvas.clientHeight);
     }
 
     function clampVertex(which, p) {
-      var x = Math.max(MARGIN, Math.min(1 - MARGIN, p.x));
-      var y = Math.max(MARGIN, Math.min(1 - MARGIN, p.y));
+      var x = Math.max(MARGIN, Math.min(DETECTOR_WIDTH - MARGIN, p.x));
+      var y = Math.max(MARGIN, Math.min(DETECTOR_HEIGHT - MARGIN, p.y));
       if (which === "v1") {
         // first scatter sits on the beam line
         return { x: x, y: BEAM_Y };
@@ -350,20 +458,28 @@
     }
 
     var dragging = null;
+    var dragChanged = false;
+    var activePointer = null;
 
     tpcCanvas.addEventListener("pointerdown", function (event) {
+      if (!event.isPrimary || (event.pointerType === "mouse" && event.button !== 0)) return;
       var p = eventPoint(event);
       var d1 = Math.hypot(p.x - state.v1.x, p.y - state.v1.y);
       var d2 = Math.hypot(p.x - state.v2.x, p.y - state.v2.y);
       var pick = d1 < d2 ? "v1" : "v2";
-      if (Math.min(d1, d2) > 0.16) return;
+      var hitRadius = 26 / detectorViewport(tpcCanvas.clientWidth, tpcCanvas.clientHeight).scale;
+      if (Math.min(d1, d2) > hitRadius) return;
+      stopAnimation();
+      schedule();
       dragging = pick;
+      dragChanged = false;
+      activePointer = event.pointerId;
       tpcCanvas.setPointerCapture(event.pointerId);
       event.preventDefault();
     });
 
     tpcCanvas.addEventListener("pointermove", function (event) {
-      if (!dragging) return;
+      if (!dragging || event.pointerId !== activePointer) return;
       var next = clampVertex(dragging, eventPoint(event));
       var other = dragging === "v1" ? state.v2 : state.v1;
       if (!farEnough(dragging === "v1" ? next : other,
@@ -371,21 +487,44 @@
         return;
       }
       state[dragging] = next;
+      dragChanged = true;
+      updateText();
       schedule();
     });
 
-    var stopDrag = function () {
+    var stopDrag = function (event) {
+      if (event && event.pointerId !== activePointer) return;
+      if (dragChanged) announce("Geometry changed: ");
       dragging = null;
+      activePointer = null;
+      dragChanged = false;
     };
     tpcCanvas.addEventListener("pointerup", stopDrag);
     tpcCanvas.addEventListener("pointercancel", stopDrag);
+    tpcCanvas.addEventListener("lostpointercapture", stopDrag);
+
+    if (angleInput) {
+      angleInput.addEventListener("input", function () {
+        chooseAngle(Number(angleInput.value) * Math.PI / 180, false);
+      });
+      angleInput.addEventListener("change", function () { announce("Angle selected: "); });
+    }
+
+    root.querySelectorAll("[data-lux-preset]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var name = button.getAttribute("data-lux-preset");
+        var theta = name === "subkev" ? 8 * Math.PI / 180 :
+          name === "maximum" ? Math.PI : angleForRecoil(1);
+        chooseAngle(theta, true);
+        announce(button.textContent + " example: ");
+      });
+    });
 
     var resetButton = root.querySelector('button[data-action="reset"]');
     if (resetButton) {
       resetButton.addEventListener("click", function () {
-        state.v1 = { x: DEFAULTS.v1.x, y: DEFAULTS.v1.y };
-        state.v2 = { x: DEFAULTS.v2.x, y: DEFAULTS.v2.y };
-        schedule();
+        chooseAngle(angleForRecoil(1), false);
+        announce("Reset: ");
       });
     }
 
@@ -401,9 +540,32 @@
         });
       }
     }
+    if (reducedMotion && reducedMotion.addEventListener) {
+      reducedMotion.addEventListener("change", function () {
+        if (reducedMotion.matches) {
+          stopAnimation();
+          schedule();
+        }
+      });
+    }
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) stopAnimation();
+      else schedule();
+    });
+    window.addEventListener("pagehide", function () {
+      stopAnimation();
+      stopDrag();
+    });
     window.addEventListener("pageshow", function (event) {
       if (event.persisted) schedule();
     });
+    if (typeof IntersectionObserver !== "undefined") {
+      new IntersectionObserver(function (entries) {
+        state.visible = entries[0].isIntersecting;
+        if (!state.visible) stopAnimation();
+        else schedule();
+      }).observe(root);
+    }
     if (typeof ResizeObserver !== "undefined") {
       new ResizeObserver(schedule).observe(root);
     } else {
@@ -411,6 +573,7 @@
     }
 
     root.hidden = false;
+    updateText();
     schedule();
     return true;
   }
@@ -420,9 +583,15 @@
   var api = {
     EN_KEV: EN_KEV,
     MU: MU,
+    DETECTOR_WIDTH: DETECTOR_WIDTH,
+    DETECTOR_HEIGHT: DETECTOR_HEIGHT,
     recoilEnergy: recoilEnergy,
     scatteredNeutronEnergy: scatteredNeutronEnergy,
-    scatteringAngle: scatteringAngle
+    scatteringAngle: scatteringAngle,
+    detectorToCanvas: detectorToCanvas,
+    canvasToDetector: canvasToDetector,
+    geometryForAngle: geometryForAngle,
+    angleForRecoil: angleForRecoil
   };
 
   if (typeof module !== "undefined" && module.exports) {
@@ -432,10 +601,33 @@
   if (typeof document !== "undefined") {
     var boot = function () {
       document.querySelectorAll("[data-lux-demo]").forEach(function (root) {
+        function initialize() {
+          try {
+            if (!initDemo(root)) root.hidden = true;
+          } catch (error) {
+            root.hidden = true;
+          }
+        }
+        // Reserve the complete enhanced layout at boot. Revealing it only when
+        // the zero-height anchor intersects lets browser scroll anchoring move
+        // the newly inserted detector above the viewport.
         try {
-          initDemo(root);
+          var tpc = root.querySelector('canvas[data-lux="tpc"]');
+          var chart = root.querySelector('canvas[data-lux="chart"]');
+          if (!tpc || !chart || !tpc.getContext("2d") || !chart.getContext("2d")) return;
         } catch (error) {
-          root.hidden = true;
+          return;
+        }
+        root.hidden = false;
+        if (typeof IntersectionObserver !== "undefined") {
+          var observer = new IntersectionObserver(function (entries) {
+            if (!entries[0].isIntersecting) return;
+            observer.disconnect();
+            initialize();
+          }, { rootMargin: "300px 0px" });
+          observer.observe(root);
+        } else {
+          initialize();
         }
       });
     };

@@ -87,5 +87,64 @@ function check(name, condition, detail) {
       deg({ x: 0.5, y: 0.5 }, { x: 0.7, y: 0.7 })) < 1e-12);
 }
 
+/* ---- plotted geometry uses the same physical angle at every aspect ratio ---- */
+
+{
+  const v1 = { x: 1.28, y: 1.38 };
+  const v2 = { x: 2.64, y: 1.86 };
+  // Independent regression value: the former normalized-square calculation
+  // gave 25.20 degrees while the 4:3 picture showed 19.44 degrees.
+  const expected = Math.atan2(0.48, 1.36);
+  check("4:3 detector coordinates give the visible 19.44 degree angle",
+    Math.abs(lux.scatteringAngle(v1, v2) - expected) < 1e-12);
+
+  let maxAngleError = 0;
+  let maxRoundTripError = 0;
+  for (const [width, height] of [[400, 300], [800, 600], [307, 230], [600, 300], [300, 600]]) {
+    for (const degrees of [0, 0.1, 8, 13.3, 45, 90, 135, 179.9, 180]) {
+      const theta = degrees * Math.PI / 180;
+      const geometry = lux.geometryForAngle(theta);
+      const p1 = lux.detectorToCanvas(geometry.v1, width, height);
+      const p2 = lux.detectorToCanvas(geometry.v2, width, height);
+      // atan2 from rendered points is independent of the model's acos route.
+      const visibleAngle = Math.abs(Math.atan2(p2.y - p1.y, p2.x - p1.x));
+      maxAngleError = Math.max(maxAngleError, Math.abs(visibleAngle - theta));
+      const recovered = lux.canvasToDetector(p2, width, height);
+      maxRoundTripError = Math.max(maxRoundTripError,
+        Math.hypot(recovered.x - geometry.v2.x, recovered.y - geometry.v2.y));
+    }
+  }
+  check("visible angle is invariant under aspect ratio and resolution changes",
+    maxAngleError < 1e-12, maxAngleError.toExponential(2));
+  check("pointer inverse recovers detector geometry after resizing and letterboxing",
+    maxRoundTripError < 1e-12, maxRoundTripError.toExponential(2));
+}
+
+/* ---- native angle control spans the full physical range within the volume ---- */
+
+{
+  let contained = true;
+  let accurate = true;
+  for (let degrees = 0; degrees <= 180; degrees += 0.5) {
+    const theta = degrees * Math.PI / 180;
+    const { v1, v2 } = lux.geometryForAngle(theta);
+    contained = contained && [v1, v2].every(p =>
+      p.x > 0 && p.x < lux.DETECTOR_WIDTH && p.y > 0 && p.y < lux.DETECTOR_HEIGHT);
+    accurate = accurate && Math.abs(lux.scatteringAngle(v1, v2) - theta) < 1e-12;
+  }
+  check("all slider angles keep both scatters inside the detector", contained);
+  check("slider geometry reproduces every requested angle including 0 and 180 degrees", accurate);
+
+  let maxEnergyError = 0;
+  for (const energy of [0, 0.001, 0.1, 0.366, 1, 10, 65, lux.recoilEnergy(Math.PI)]) {
+    const theta = lux.angleForRecoil(energy);
+    // Check the inverse via the independent outgoing-neutron energy formula.
+    const independentRecoil = lux.EN_KEV - lux.scatteredNeutronEnergy(theta);
+    maxEnergyError = Math.max(maxEnergyError, Math.abs(independentRecoil - energy));
+  }
+  check("energy presets agree with independent neutron energy loss",
+    maxEnergyError < 1e-9, maxEnergyError.toExponential(2) + " keV");
+}
+
 console.log(failures === 0 ? "\nAll checks passed." : "\n" + failures + " FAILURES");
 process.exit(failures === 0 ? 0 : 1);

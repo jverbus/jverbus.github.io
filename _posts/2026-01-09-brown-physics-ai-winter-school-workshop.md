@@ -2,7 +2,7 @@
 layout: post
 title: "Reinforcement Learning for Orbital Transfers at the 2026 AI Winter School (Brown University)"
 date: 2026-01-09
-last_modified_at: 2026-09-17
+last_modified_at: 2026-09-18
 description: "Training PPO policies for orbital transfers and comparing their trajectories and delta-v with a Hohmann baseline."
 og_image: "/assets/images/2026-ai-winter-school-banner.png"
 og_image_alt: "2026 AI Winter School banner from the Brown University Department of Physics"

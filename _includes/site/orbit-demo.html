@@ -2,45 +2,56 @@
 <div class="orbit-demo" data-orbit-demo hidden>
   <h2 class="if-demo-title" id="fly-it-live-heading">Try it: fly the transfer yourself</h2>
   <p class="if-demo-intro">
-    Use the burn controls to transfer from the circular orbit at r&#8321; = 1 to a
-    circular orbit at r&#8322; = 1.6. Run Hohmann executes the two-burn solution, with
-    &Delta;v &asymp; 0.207; Run Greedy uses a feedback controller. Compare their burn
-    histories and accumulated &Delta;v.
-  </p>
-  <p class="if-demo-intro">
-    This browser simulator applies impulses along or opposite the velocity, which can
-    include a radial component. The PPO notebook instead applies impulses along the
-    local orbital tangent. PPO training and policy rollouts are provided in the
-    notebook.
+    Watch the two-burn Hohmann transfer, compare Greedy, then try your own burns.
+    Keep the whole orbit inside the blue target band using as little &Delta;v as possible.
   </p>
   <div class="orbit-demo-layout">
     <figure>
-      <canvas class="orbit-demo-map" data-orbit="map" role="img" aria-label="Orbit view: a planet at the center, dashed start and target orbits, the analytic Hohmann transfer ellipse, and the ship with its trail."></canvas>
-      <figcaption>Orbit view &middot; dotted arc: Hohmann transfer</figcaption>
+      <canvas class="orbit-demo-map" data-orbit="map" role="img" aria-label="Orbit view: blue target band, yellow dotted Hohmann transfer, green predicted coast orbit with near and far points, and the spacecraft trail. Current numerical state follows the controls."></canvas>
+      <figcaption>Green: predicted coast &middot; yellow dots: Hohmann</figcaption>
     </figure>
     <div class="orbit-demo-panel">
       <div class="orbit-demo-controls">
+        <button type="button" class="demo-btn" data-action="hohmann" title="Execute the analytic burn-coast-burn plan in the simulator">Run Hohmann</button>
+        <button type="button" class="demo-btn" data-action="greedy" title="Run the greedy feedback controller and compare its thrust history and &#916;v with the Hohmann transfer.">Run Greedy</button>
         <button type="button" class="demo-btn" data-action="prograde">&#9650; Prograde</button>
         <button type="button" class="demo-btn" data-action="retrograde">&#9660; Retrograde</button>
         <button type="button" class="demo-btn" data-action="pause" aria-pressed="false">Pause</button>
-        <button type="button" class="demo-btn" data-action="reset">Reset</button>
-        <button type="button" class="demo-btn" data-action="hohmann" title="Execute the analytic burn-coast-burn plan in the simulator">Run Hohmann</button>
-        <button type="button" class="demo-btn" data-action="greedy" title="Run the greedy feedback controller and compare its thrust history and &#916;v with the Hohmann transfer.">Run Greedy</button>
+        <button type="button" class="demo-btn" data-action="reset">Reset flight</button>
       </div>
+      <p class="orbit-demo-phase" data-orbit-phase></p>
       <p class="orbit-demo-status" data-orbit-status role="status"></p>
-      <p class="orbit-demo-readout" data-orbit-readout aria-hidden="true"></p>
+      <dl class="orbit-demo-readout" aria-label="Current orbit">
+        <div><dt>Near radius</dt><dd data-orbit-value="near">1.000</dd></div>
+        <div><dt>Far radius</dt><dd data-orbit-value="far">1.000</dd></div>
+        <div><dt>&Delta;v used</dt><dd data-orbit-value="dv">0.000</dd></div>
+        <div><dt>Simulation t</dt><dd data-orbit-value="time">0.0</dd></div>
+      </dl>
     </div>
     <div class="orbit-demo-charts">
       <figure>
-        <canvas class="orbit-demo-chart" data-orbit="radius" role="img" aria-label="Radius versus time, with the target radius band shaded."></canvas>
-        <figcaption>Radius vs. time &middot; band: target</figcaption>
+        <canvas class="orbit-demo-chart" data-orbit="radius" role="img" aria-label="Complete radius history versus normalized simulation time, with the target radius band shaded. Near and far radius are given in the current orbit readout."></canvas>
+        <figcaption>Radius &middot; blue band: 1.568–1.632</figcaption>
       </figure>
       <figure>
-        <canvas class="orbit-demo-chart" data-orbit="thrust" role="img" aria-label="History of thrust impulses; upward stems are prograde, downward stems are retrograde."></canvas>
-        <figcaption>Thrust history &middot; &uarr; prograde &middot; &darr; retrograde</figcaption>
+        <canvas class="orbit-demo-chart" data-orbit="thrust" role="img" aria-label="Complete burn history versus normalized simulation time; upward stems are prograde, downward stems are retrograde. The completed flights table gives total delta-v and burn count."></canvas>
+        <figcaption>Burn &Delta;v &middot; &uarr; prograde &middot; &darr; retrograde</figcaption>
       </figure>
     </div>
   </div>
-  <p class="if-demo-hint">Hold a burn button to keep firing &middot; prograde is along your velocity &middot; compare your impulses and &Delta;v with the two-burn Hohmann plan.</p>
+  <div class="orbit-demo-results table-scroll" data-orbit-results-wrap tabindex="0" role="region" aria-label="Completed flights" hidden>
+    <table class="orbit-demo-results-table">
+      <caption>Completed flights</caption>
+      <thead><tr><th scope="col">Flight</th><th scope="col">&Delta;v</th><th scope="col">Burns</th><th scope="col">Simulation t</th><th scope="col">Near–far radius</th></tr></thead>
+      <tbody data-orbit-results></tbody>
+    </table>
+  </div>
+  <p class="if-demo-hint">Hold a burn button to keep firing. Watch the green coast orbit change with each burn. Reset flight keeps completed comparisons.</p>
+  <details class="demo-notes orbit-demo-notes">
+    <summary>Model and controls</summary>
+    <p>The start radius is 1 and the target radius is 1.6. Distance, velocity and simulation time are normalized with GM = 1. Success requires both the near point (periapsis) and far point (apoapsis) to lie between 1.568 and 1.632, so a thrust-free orbit remains inside the target band.</p>
+    <p>Hohmann applies two impulses with total &Delta;v &asymp; 0.207. Greedy adjusts the orbit using small feedback impulses and plays at 4&times; speed. A manual burn takes over the current flight; its total includes any earlier automated burns. Tap a burn button or use Enter or Space for one impulse; hold with a pointer for repeated impulses.</p>
+    <p>This browser simulator applies impulses along or opposite the velocity, which can include a radial component. The PPO notebook instead applies impulses along the local orbital tangent. PPO training and policy rollouts are provided in the notebook.</p>
+  </details>
 </div>
-<script src="{{ '/assets/js/orbit-demo.js' | relative_url }}?v=5" defer></script>
+<script src="{{ '/assets/js/orbit-demo.js' | relative_url }}?v=7" defer></script>

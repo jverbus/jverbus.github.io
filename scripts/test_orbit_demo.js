@@ -112,7 +112,7 @@ function check(name, condition, detail) {
   check("timing quirk: residual eccentricity nonzero but tiny",
     el.e > 0 && el.e < 0.01, el.e.toExponential(2));
   check("autopilot meets the demo's success thresholds",
-    Math.abs(el.a - 1.6) / 1.6 < 0.02 && el.e < 0.025);
+    orbit.inTargetOrbit(result.state, 1.6));
 }
 
 /* ---- greedy controller: reaches the target, wastefully ---- */
@@ -121,8 +121,8 @@ function check(name, condition, detail) {
   const plan = orbit.hohmann(1, 1.6);
   const g = orbit.simulateGreedy(1, 1.6, orbit.DT);
   const el = g.elements;
-  check("greedy reaches the success band (|a-1.6|/1.6 < 2%, e < 0.025)",
-    Math.abs(el.a - 1.6) / 1.6 < 0.02 && el.e < 0.025,
+  check("greedy reaches a coast orbit wholly inside the displayed target band",
+    orbit.inTargetOrbit(g.state, 1.6),
     "a " + el.a.toFixed(4) + ", e " + el.e.toFixed(4));
   check("greedy arrives within the demo's patience (t < 150)",
     g.arrivedAt !== null && g.arrivedAt < 150,
@@ -134,6 +134,83 @@ function check(name, condition, detail) {
     g.burnCount >= 15, g.burnCount + " burns");
   check("greedy delta-v bookkeeping exact",
     Math.abs(g.totalDv - g.burnCount * orbit.GREEDY_IMPULSE) < 1e-12);
+}
+
+/* ---- predicted apsides agree with the transfer and numerical coast ---- */
+
+{
+  const s = orbit.makeState(1);
+  orbit.applyImpulse(s, 1, orbit.hohmann(1, 1.6).dv1);
+  const b = orbit.orbitBounds(s);
+  check("predicted transfer apsides are the two circular-orbit radii",
+    Math.abs(b.near - 1) < 1e-12 && Math.abs(b.far - 1.6) < 1e-12);
+  const theta = Math.PI / 3;
+  const rotated = { x: Math.cos(theta), y: Math.sin(theta),
+    vx: -s.vy * Math.sin(theta), vy: s.vy * Math.cos(theta), t: 0 };
+  const rb = orbit.orbitBounds(rotated);
+  check("predicted periapsis direction rotates with the physical state",
+    Math.abs(rb.angle - theta) < 1e-12 && Math.abs(rb.far - b.far) < 1e-12);
+  const smallE = 0.0004;
+  const nearRadius = 1.6 * (1 - smallE);
+  const nearSpeed = Math.sqrt(2 / nearRadius - 1 / 1.6);
+  const nearlyCircular = { x: nearRadius * Math.cos(theta), y: nearRadius * Math.sin(theta),
+    vx: -nearSpeed * Math.sin(theta), vy: nearSpeed * Math.cos(theta), t: 0 };
+  check("small but resolved eccentricity keeps its physical apsis direction",
+    Math.abs(orbit.orbitBounds(nearlyCircular).angle - theta) < 1e-10);
+  let near = Infinity;
+  let far = 0;
+  const period = 2 * Math.PI * Math.sqrt(b.a ** 3);
+  while (s.t < period) {
+    orbit.step(s, orbit.DT);
+    const radius = Math.hypot(s.x, s.y);
+    near = Math.min(near, radius);
+    far = Math.max(far, radius);
+  }
+  check("numerical coast reaches the predicted near and far radii",
+    Math.abs(near - b.near) < 2e-5 && Math.abs(far - b.far) < 2e-5,
+    near.toFixed(6) + "–" + far.toFixed(6));
+}
+
+/* ---- success means a full thrust-free coast stays inside the shown band ---- */
+
+for (const [name, result] of [
+  ["Hohmann", orbit.simulateHohmann(1, 1.6, orbit.DT)],
+  ["Greedy", orbit.simulateGreedy(1, 1.6, orbit.DT)]
+]) {
+  const s = { ...result.state };
+  const a = orbit.orbitElements(s).a;
+  const end = s.t + 4 * Math.PI * Math.sqrt(a ** 3);
+  let near = Infinity;
+  let far = 0;
+  while (s.t < end) {
+    orbit.step(s, orbit.DT);
+    const radius = Math.hypot(s.x, s.y);
+    near = Math.min(near, radius);
+    far = Math.max(far, radius);
+  }
+  check(name + " stays in the visible ±2% radius band for two coast orbits",
+    near >= 1.568 && far <= 1.632,
+    near.toFixed(6) + "–" + far.toFixed(6));
+}
+
+{
+  // This orbit passed the old separate a/e checks but leaves the drawn band.
+  const a = 1.5788651159010214;
+  const e = 0.02119984837046591;
+  const r = a * (1 - e);
+  const s = { x: r, y: 0, vx: 0, vy: Math.sqrt(2 / r - 1 / a), t: 0 };
+  check("old nominal success with out-of-band periapsis is rejected",
+    Math.abs(a - 1.6) / 1.6 < 0.02 && e < 0.025 && !orbit.inTargetOrbit(s, 1.6));
+  const target = orbit.makeState(1.6);
+  orbit.applyImpulse(target, 1, 0.04);
+  const departed = !orbit.inTargetOrbit(target, 1.6);
+  orbit.applyImpulse(target, -1, 0.04);
+  check("manual departure and corrective burn can leave and reenter success",
+    departed && orbit.inTargetOrbit(target, 1.6));
+  const escaped = orbit.makeState(1);
+  orbit.applyImpulse(escaped, 1, 0.5);
+  check("unbound orbit has no finite far point and cannot complete",
+    orbit.orbitBounds(escaped).far === Infinity && !orbit.inTargetOrbit(escaped, 1.6));
 }
 
 /* ---- retrograde burns crash into the planet ---- */

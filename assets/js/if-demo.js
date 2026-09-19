@@ -261,6 +261,68 @@
     return [lo, hi];
   }
 
+  // Data/model changes invalidate training; moving a probe, resizing, and
+  // switching themes reuse both forests and each previously scored grid.
+  function createComparison(options) {
+    var xs = [];
+    var ys = [];
+    var trees = options.trees;
+    var seed = options.seed;
+    var forests = null;
+    var grids = {};
+
+    function invalidate() {
+      forests = null;
+      grids = {};
+    }
+
+    function getForests() {
+      if (xs.length < 2) return null;
+      if (!forests) {
+        forests = [
+          buildForest(xs, ys, { trees: trees, seed: seed, extended: false }),
+          buildForest(xs, ys, { trees: trees, seed: seed + 1, extended: true })
+        ];
+      }
+      return forests;
+    }
+
+    return {
+      setData: function (nextXs, nextYs) {
+        xs = nextXs;
+        ys = nextYs;
+        invalidate();
+      },
+      setTrees: function (count) {
+        if (count !== trees) {
+          trees = count;
+          invalidate();
+        }
+      },
+      setSeed: function (nextSeed) {
+        if (nextSeed !== seed) {
+          seed = nextSeed;
+          invalidate();
+        }
+      },
+      score: function (x, y) {
+        var models = getForests();
+        return models ? [models[0].score(x, y), models[1].score(x, y)] : null;
+      },
+      grid: function (width, height) {
+        var models = getForests();
+        if (!models) return null;
+        var key = width + "x" + height;
+        if (!grids[key]) {
+          var a = scoreGrid(models[0], width, height);
+          var b = scoreGrid(models[1], width, height);
+          grids[key] = { ifScores: a, eifScores: b, range: computeColorRange(a, b) };
+        }
+        return grids[key];
+      }
+    };
+  }
+
   /* ---------------- preset datasets ---------------- */
 
   function clamp01(v, lo, hi) {
@@ -338,7 +400,7 @@
       var off = document.createElement("canvas");
       var offCtx = off.getContext("2d");
       if (!offCtx) return null;
-      return { canvas: canvas, ctx: ctx, off: off, offCtx: offCtx, image: null };
+      return { canvas: canvas, ctx: ctx, off: off, offCtx: offCtx, image: null, grid: null };
     }
 
     var ifPanel = makePanel(root.querySelector('canvas[data-panel="if"]'));
@@ -362,8 +424,21 @@
       trees: 100,
       forestSeed: baseSeed,
       pending: false,
-      coarse: false
+      coarse: false,
+      tool: "inspect",
+      preset: "two-blobs",
+      probe: { x: 0.24, y: 0.26 },
+      markedExample: true
     };
+    var comparison = createComparison({ trees: state.trees, seed: state.forestSeed });
+    var trainingTimer = null;
+    var announcementTimer = null;
+    var scoreIf = root.querySelector("[data-score-if]");
+    var scoreEif = root.querySelector("[data-score-eif]");
+    var probeContext = root.querySelector("[data-probe-context]");
+    var scaleLow = root.querySelector("[data-scale-low]");
+    var scaleHigh = root.querySelector("[data-scale-high]");
+    var announcement = root.querySelector("[data-if-announcement]");
 
     var started = false;
 
@@ -380,7 +455,10 @@
       var data = makePreset(name, dataSeed);
       state.xs = data.xs;
       state.ys = data.ys;
-      schedule();
+      state.preset = name;
+      state.probe = name === "two-blobs" ? { x: 0.24, y: 0.26 } : { x: 0.5, y: 0.5 };
+      state.markedExample = name === "two-blobs";
+      updateData();
     }
 
     function styleColor(prop, fallback) {
@@ -404,23 +482,32 @@
     function paintPanel(panel, grid, lo, hi) {
       var ctx = panel.ctx;
       var canvas = panel.canvas;
-      var range = Math.max(1e-6, hi - lo);
-      var px = panel.image.data;
-      for (var i = 0; i < grid.length; i++) {
-        var t = Math.max(0, Math.min(1, (grid[i] - lo) / range));
-        t = Math.pow(t, DISPLAY_GAMMA);
-        var k = 3 * Math.max(0, Math.min(255, Math.round(t * 255)));
-        px[i * 4] = lut[k];
-        px[i * 4 + 1] = lut[k + 1];
-        px[i * 4 + 2] = lut[k + 2];
-        px[i * 4 + 3] = 255;
+      if (panel.grid !== grid) {
+        var range = Math.max(1e-6, hi - lo);
+        var px = panel.image.data;
+        for (var i = 0; i < grid.length; i++) {
+          var t = Math.max(0, Math.min(1, (grid[i] - lo) / range));
+          t = Math.pow(t, DISPLAY_GAMMA);
+          var k = 3 * Math.max(0, Math.min(255, Math.round(t * 255)));
+          px[i * 4] = lut[k];
+          px[i * 4 + 1] = lut[k + 1];
+          px[i * 4 + 2] = lut[k + 2];
+          px[i * 4 + 3] = 255;
+        }
+        panel.offCtx.putImageData(panel.image, 0, 0);
+        panel.grid = grid;
       }
-      panel.offCtx.putImageData(panel.image, 0, 0);
       ctx.imageSmoothingEnabled = true;
       ctx.imageSmoothingQuality = "high";
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(panel.off, 0, 0, canvas.width, canvas.height);
+      paintPoints(panel);
+      paintProbe(panel);
+    }
 
+    function paintPoints(panel) {
+      var ctx = panel.ctx;
+      var canvas = panel.canvas;
       // training points: light fill with dark ring reads on every ramp color
       var r = Math.max(2, canvas.width / 320);
       ctx.lineWidth = Math.max(1, r * 0.55);
@@ -440,6 +527,31 @@
       }
     }
 
+    function paintProbe(panel) {
+      var ctx = panel.ctx;
+      var canvas = panel.canvas;
+      var x = state.probe.x * canvas.width;
+      var y = state.probe.y * canvas.height;
+      var scale = canvas.width / (canvas.getBoundingClientRect().width || canvas.width);
+      var radius = 7 * scale;
+      // Two strokes keep the linked marker legible over every heatmap color.
+      ["#0f172a", "#ffffff"].forEach(function (color, index) {
+        ctx.strokeStyle = color;
+        ctx.lineWidth = (index === 0 ? 4 : 2) * scale;
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, 2 * Math.PI);
+        ctx.moveTo(x - radius - 5 * scale, y);
+        ctx.lineTo(x - radius + 2 * scale, y);
+        ctx.moveTo(x + radius - 2 * scale, y);
+        ctx.lineTo(x + radius + 5 * scale, y);
+        ctx.moveTo(x, y - radius - 5 * scale);
+        ctx.lineTo(x, y - radius + 2 * scale);
+        ctx.moveTo(x, y + radius - 2 * scale);
+        ctx.lineTo(x, y + radius + 5 * scale);
+        ctx.stroke();
+      });
+    }
+
     function paintEmpty(panel) {
       var ctx = panel.ctx;
       var canvas = panel.canvas;
@@ -452,49 +564,78 @@
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillText(
-        "Click or tap to add points",
+        state.xs.length ? "Add one more point to train" : "Choose Add, then tap to place points",
         canvas.width / 2,
-        canvas.height / 2
+        state.xs.length ? canvas.height * 0.9 : canvas.height / 2
       );
+      paintPoints(panel);
+      paintProbe(panel);
+    }
+
+    function updateReadout(range) {
+      var scores = comparison.score(state.probe.x, state.probe.y);
+      var textIf = scores ? scores[0].toFixed(3) : "\u2014";
+      var textEif = scores ? scores[1].toFixed(3) : "\u2014";
+      if (scoreIf) scoreIf.textContent = textIf;
+      if (scoreEif) scoreEif.textContent = textEif;
+      if (scaleLow) scaleLow.textContent = range ? range[0].toFixed(3) : "\u2014";
+      if (scaleHigh) scaleHigh.textContent = range ? range[1].toFixed(3) : "\u2014";
+      var context = !scores ? (state.xs.length === 1 ?
+        "1 point; add one more to train" : "No points; add at least two to train") :
+        state.markedExample ? "Marked point: empty corner beside the clusters" :
+        "Probe x " + state.probe.x.toFixed(2) + ", y " + state.probe.y.toFixed(2);
+      if (probeContext) probeContext.textContent = context;
+      // Announce after movement settles, rather than queuing every pointer frame.
+      window.clearTimeout(announcementTimer);
+      announcementTimer = window.setTimeout(function () {
+        if (announcement) announcement.textContent = context + (scores ?
+          ". Standard IF " + textIf + "; Extended IF " + textEif + "." : ".");
+      }, 180);
     }
 
     function render() {
       state.pending = false;
+      if (trainingTimer !== null) return;
       fitCanvas(ifPanel.canvas);
       fitCanvas(eifPanel.canvas);
       if (state.xs.length < 2) {
         paintEmpty(ifPanel);
         paintEmpty(eifPanel);
+        updateReadout(null);
         return;
       }
-      var ifForest = buildForest(state.xs, state.ys, {
-        trees: state.trees,
-        extended: false,
-        seed: state.forestSeed
-      });
-      var eifForest = buildForest(state.xs, state.ys, {
-        trees: state.trees,
-        extended: true,
-        seed: state.forestSeed + 1
-      });
       // half-resolution while dragging keeps the spray interaction fluid;
       // a full-resolution pass lands on pointer release
       var gw = state.coarse ? GRID_W / 2 : GRID_W;
       var gh = state.coarse ? GRID_H / 2 : GRID_H;
       setPanelGrid(ifPanel, gw, gh);
       setPanelGrid(eifPanel, gw, gh);
-      var gridIf = scoreGrid(ifForest, gw, gh);
-      var gridEif = scoreGrid(eifForest, gw, gh);
-
-      var range = computeColorRange(gridIf, gridEif);
-      paintPanel(ifPanel, gridIf, range[0], range[1]);
-      paintPanel(eifPanel, gridEif, range[0], range[1]);
+      var grid = comparison.grid(gw, gh);
+      paintPanel(ifPanel, grid.ifScores, grid.range[0], grid.range[1]);
+      paintPanel(eifPanel, grid.eifScores, grid.range[0], grid.range[1]);
+      updateReadout(grid.range);
     }
 
     function schedule() {
+      if (trainingTimer !== null) return;
       if (state.pending) return;
       state.pending = true;
       window.requestAnimationFrame(render);
+    }
+
+    function scheduleTraining() {
+      // Collect closely spaced edits into one training pass. A bounded delay
+      // still produces coarse previews during a continuous mouse drag.
+      if (trainingTimer !== null) return;
+      trainingTimer = window.setTimeout(function () {
+        trainingTimer = null;
+        schedule();
+      }, 50);
+    }
+
+    function updateData() {
+      comparison.setData(state.xs, state.ys);
+      scheduleTraining();
     }
 
     /* ---- pointer interaction ---- */
@@ -511,7 +652,8 @@
       if (state.xs.length >= MAX_POINTS) return;
       state.xs.push(clamp01(x, 0, 1));
       state.ys.push(clamp01(y, 0, 1));
-      schedule();
+      clearPresetSelection();
+      updateData();
     }
 
     function erasePoints(x, y) {
@@ -526,50 +668,114 @@
           keptY.push(state.ys[i]);
         }
       }
-      state.xs = keptX;
-      state.ys = keptY;
+      if (keptX.length !== state.xs.length) {
+        state.xs = keptX;
+        state.ys = keptY;
+        clearPresetSelection();
+        updateData();
+      }
+    }
+
+    function setProbe(x, y) {
+      state.probe = { x: clamp01(x, 0, 1), y: clamp01(y, 0, 1) };
+      state.markedExample = false;
       schedule();
     }
 
+    function applyTool() {
+      if (state.tool === "erase") {
+        erasePoints(state.probe.x, state.probe.y);
+      } else if (state.tool === "add") {
+        addPoint(state.probe.x, state.probe.y);
+      }
+    }
+
     function bindPointer(canvas) {
-      var drawing = false;
-      var lastX = -1;
-      var lastY = -1;
+      var gesture = null;
       canvas.addEventListener("pointerdown", function (event) {
+        if (event.button !== 0 || gesture) return;
         var pos = eventCoords(canvas, event);
-        if (event.shiftKey) {
-          erasePoints(pos.x, pos.y);
-          return;
-        }
-        drawing = true;
-        lastX = pos.x;
-        lastY = pos.y;
-        addPoint(pos.x, pos.y);
-        if (event.pointerType !== "touch") {
-          canvas.setPointerCapture(event.pointerId);
-          event.preventDefault();
+        gesture = {
+          id: event.pointerId,
+          touch: event.pointerType === "touch",
+          startX: event.clientX,
+          startY: event.clientY,
+          moved: false,
+          lastX: pos.x,
+          lastY: pos.y
+        };
+        // Touch editing happens only after a completed tap. A page-scroll
+        // gesture or pointercancel never changes the training dataset.
+        if (!gesture.touch) {
+          setProbe(pos.x, pos.y);
+          applyTool();
+          canvas.focus({ preventScroll: true });
+          if (state.tool !== "inspect") {
+            canvas.setPointerCapture(event.pointerId);
+          }
         }
       });
       canvas.addEventListener("pointermove", function (event) {
-        if (!drawing || event.pointerType === "touch") return;
+        if (event.pointerType === "touch") {
+          if (gesture && gesture.id === event.pointerId &&
+              Math.hypot(event.clientX - gesture.startX, event.clientY - gesture.startY) > 8) {
+            gesture.moved = true;
+          }
+          return;
+        }
         var pos = eventCoords(canvas, event);
-        var dx = pos.x - lastX;
-        var dy = pos.y - lastY;
+        setProbe(pos.x, pos.y);
+        if (!gesture || gesture.id !== event.pointerId ||
+            state.tool === "inspect") return;
+        var dx = pos.x - gesture.lastX;
+        var dy = pos.y - gesture.lastY;
         if (dx * dx + dy * dy < 0.0004) return;
-        lastX = pos.x;
-        lastY = pos.y;
+        gesture.lastX = pos.x;
+        gesture.lastY = pos.y;
         state.coarse = true;
-        addPoint(pos.x, pos.y);
+        applyTool();
       });
-      var stop = function () {
-        drawing = false;
+      function stop(event, cancelled) {
+        if (!gesture || gesture.id !== event.pointerId) return;
+        if (gesture.touch && !cancelled && !gesture.moved &&
+            Math.hypot(event.clientX - gesture.startX, event.clientY - gesture.startY) <= 8) {
+          var pos = eventCoords(canvas, event);
+          setProbe(pos.x, pos.y);
+          applyTool();
+        }
+        gesture = null;
         if (state.coarse) {
           state.coarse = false;
           schedule();
         }
-      };
-      canvas.addEventListener("pointerup", stop);
-      canvas.addEventListener("pointercancel", stop);
+      }
+      canvas.addEventListener("pointerup", function (event) { stop(event, false); });
+      canvas.addEventListener("pointercancel", function (event) { stop(event, true); });
+      canvas.addEventListener("lostpointercapture", function (event) { stop(event, true); });
+      canvas.addEventListener("pointerleave", function (event) {
+        if (gesture && state.tool === "inspect") stop(event, true);
+      });
+      function cancelGesture() {
+        if (gesture) stop({ pointerId: gesture.id }, true);
+      }
+      window.addEventListener("blur", cancelGesture);
+      window.addEventListener("pagehide", cancelGesture);
+      canvas.addEventListener("keydown", function (event) {
+        var step = event.shiftKey ? 0.05 : 0.01;
+        var x = state.probe.x;
+        var y = state.probe.y;
+        if (event.key === "ArrowLeft") x -= step;
+        else if (event.key === "ArrowRight") x += step;
+        else if (event.key === "ArrowUp") y -= step;
+        else if (event.key === "ArrowDown") y += step;
+        else if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          applyTool();
+          return;
+        } else return;
+        event.preventDefault();
+        setProbe(x, y);
+      });
     }
 
     bindPointer(ifPanel.canvas);
@@ -578,12 +784,32 @@
     /* ---- controls ---- */
 
     var presetButtons = root.querySelectorAll("button[data-preset]");
+    function clearPresetSelection() {
+      state.preset = null;
+      state.markedExample = false;
+      presetButtons.forEach(function (button) {
+        button.classList.toggle("is-active", false);
+        button.setAttribute("aria-pressed", "false");
+      });
+    }
     presetButtons.forEach(function (button) {
       button.addEventListener("click", function () {
         presetButtons.forEach(function (other) {
           other.classList.toggle("is-active", other === button);
+          other.setAttribute("aria-pressed", String(other === button));
         });
         loadPreset(button.getAttribute("data-preset"), true);
+      });
+    });
+
+    var toolButtons = root.querySelectorAll("button[data-tool]");
+    toolButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        state.tool = button.getAttribute("data-tool");
+        toolButtons.forEach(function (other) {
+          other.classList.toggle("is-active", other === button);
+          other.setAttribute("aria-pressed", String(other === button));
+        });
       });
     });
 
@@ -591,7 +817,8 @@
     if (rerollButton) {
       rerollButton.addEventListener("click", function () {
         state.forestSeed = (state.forestSeed * 1664525 + 1013904223) >>> 0;
-        schedule();
+        comparison.setSeed(state.forestSeed);
+        scheduleTraining();
       });
     }
 
@@ -600,18 +827,20 @@
       clearButton.addEventListener("click", function () {
         state.xs = [];
         state.ys = [];
-        schedule();
+        clearPresetSelection();
+        updateData();
       });
     }
 
     var slider = root.querySelector('input[type="range"]');
-    var sliderOut = root.querySelector("output");
+    var sliderOut = root.querySelector("[data-tree-count]");
     if (slider) {
       slider.addEventListener("input", function () {
         state.trees = parseInt(slider.value, 10) || 100;
+        comparison.setTrees(state.trees);
         if (sliderOut) sliderOut.textContent = String(state.trees);
         state.coarse = true;
-        schedule();
+        scheduleTraining();
       });
       slider.addEventListener("change", function () {
         state.coarse = false;
@@ -636,7 +865,12 @@
     // Repaint after back/forward-cache restores; mobile Safari can evict
     // canvas contents while the page is suspended.
     window.addEventListener("pageshow", function (event) {
-      if (event.persisted) schedule();
+      if (event.persisted) {
+        // Safari may evict offscreen bitmaps as well as the visible canvases.
+        ifPanel.grid = null;
+        eifPanel.grid = null;
+        schedule();
+      }
     });
 
     root.hidden = false;
@@ -649,7 +883,7 @@
           for (var i = 0; i < entries.length; i++) {
             if (entries[i].isIntersecting) {
               io.disconnect();
-              if (!started) loadPreset("blob");
+              if (!started) loadPreset("two-blobs");
               return;
             }
           }
@@ -658,7 +892,7 @@
       );
       io.observe(root);
     } else {
-      loadPreset("blob");
+      loadPreset("two-blobs");
     }
     return true;
   }
@@ -672,6 +906,7 @@
     buildForest: buildForest,
     scoreGrid: scoreGrid,
     computeColorRange: computeColorRange,
+    createComparison: createComparison,
     makePreset: makePreset,
     SUBSAMPLE: SUBSAMPLE
   };
