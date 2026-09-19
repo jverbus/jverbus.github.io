@@ -142,7 +142,7 @@ function check(name, condition, detail) {
     const independentRecoil = lux.EN_KEV - lux.scatteredNeutronEnergy(theta);
     maxEnergyError = Math.max(maxEnergyError, Math.abs(independentRecoil - energy));
   }
-  check("energy presets agree with independent neutron energy loss",
+  check("recoil-energy inversion agrees with independent neutron energy loss",
     maxEnergyError < 1e-9, maxEnergyError.toExponential(2) + " keV");
 }
 

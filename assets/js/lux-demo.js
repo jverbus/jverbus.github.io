@@ -147,7 +147,6 @@
 
     /* ---- readouts ---- */
 
-    var angleEl = root.querySelector("[data-lux-angle-value]");
     var energyEl = root.querySelector("[data-lux-energy-value]");
     var angleInput = root.querySelector("[data-lux-angle]");
     var statusEl = root.querySelector("[data-lux-status]");
@@ -168,7 +167,6 @@
       var theta = scatteringAngle(state.v1, state.v2);
       var er = recoilEnergy(theta);
       var deg = (theta * 180) / Math.PI;
-      if (angleEl) angleEl.textContent = deg.toFixed(1) + "°";
       if (energyEl) energyEl.textContent = energyText(er);
       if (angleInput) {
         angleInput.value = deg.toFixed(1);
@@ -233,16 +231,6 @@
       ctx.strokeStyle = "rgba(253, 224, 71, 0.9)";
       ctx.arc(p1[0], p1[1], arcR, 0, sweep, sweep < 0);
       ctx.stroke();
-      var labelAngle = sweep / 2;
-      ctx.fillStyle = "rgba(253, 224, 71, 0.95)";
-      ctx.font = "600 13px Inter, sans-serif";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillText(
-        "θ",
-        p1[0] + Math.cos(labelAngle) * (arcR + 0.035 * w),
-        p1[1] + Math.sin(labelAngle) * (arcR + 0.035 * w)
-      );
 
       // vertices: scatter flashes with draggable handles
       [p1, p2].forEach(function (p, i) {
@@ -259,11 +247,11 @@
         ctx.stroke();
         ctx.fillStyle = "rgba(232, 240, 255, 0.9)";
         ctx.font = "600 11px Inter, sans-serif";
-        var labelLeft = p[0] > w - 72;
+        var labelLeft = p[0] > w - 28;
         var labelBelow = p[1] < 28;
         ctx.textAlign = labelLeft ? "right" : "left";
         ctx.textBaseline = labelBelow ? "top" : "bottom";
-        ctx.fillText(i === 0 ? "scatter 1" : "scatter 2",
+        ctx.fillText(String(i + 1),
           p[0] + (labelLeft ? -10 : 10), p[1] + (labelBelow ? 10 : -10));
       });
 
@@ -510,20 +498,10 @@
       angleInput.addEventListener("change", function () { announce("Angle selected: "); });
     }
 
-    root.querySelectorAll("[data-lux-preset]").forEach(function (button) {
-      button.addEventListener("click", function () {
-        var name = button.getAttribute("data-lux-preset");
-        var theta = name === "subkev" ? 8 * Math.PI / 180 :
-          name === "maximum" ? Math.PI : angleForRecoil(1);
-        chooseAngle(theta, true);
-        announce(button.textContent + " example: ");
-      });
-    });
-
     var resetButton = root.querySelector('button[data-action="reset"]');
     if (resetButton) {
       resetButton.addEventListener("click", function () {
-        chooseAngle(angleForRecoil(1), false);
+        chooseAngle(angleForRecoil(1), true);
         announce("Reset: ");
       });
     }

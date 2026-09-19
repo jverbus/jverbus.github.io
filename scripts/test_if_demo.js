@@ -292,7 +292,7 @@ for (const extended of [false, true]) {
     "stretched " + (hi - lo).toFixed(3) + " vs raw " + (max - min).toFixed(3));
 }
 
-/* ---- single-tree forest (slider minimum) stays well-behaved ---- */
+/* ---- single-tree forest stays well-behaved ---- */
 
 {
   for (const extended of [false, true]) {
@@ -429,24 +429,17 @@ for (const name of ["blob", "two-blobs", "sinusoid"]) {
   }
   const left = new Canvas();
   const right = new Canvas();
-  const slider = new Element();
-  slider.value = "5";
   const presets = ["blob", "two-blobs", "sinusoid"].map((name) =>
     new Element({ "data-preset": name, "aria-pressed": String(name === "two-blobs") }));
-  const tools = ["inspect", "add", "erase"].map((name) =>
-    new Element({ "data-tool": name, "aria-pressed": String(name === "inspect") }));
   const nodes = {
     'canvas[data-panel="if"]': left, 'canvas[data-panel="eif"]': right,
-    'input[type="range"]': slider,
     'button[data-action="clear"]': new Element(),
-    'button[data-action="reroll"]': new Element()
+    '[data-if-announcement]': new Element()
   };
-  for (const name of ["score-if", "score-eif", "probe-context", "scale-low", "scale-high",
-    "if-announcement", "tree-count"]) nodes["[data-" + name + "]"] = new Element();
   const root = new Element({ "data-seed": "20260318" });
   root.hidden = true;
   root.querySelector = (selector) => nodes[selector] || null;
-  root.querySelectorAll = (selector) => selector === "button[data-preset]" ? presets : tools;
+  root.querySelectorAll = (selector) => selector === "button[data-preset]" ? presets : [];
   const timers = new Map();
   let nextTimer = 0;
   const frames = [];
@@ -471,12 +464,10 @@ for (const name of ["blob", "two-blobs", "sinusoid"]) {
       createElement: () => new Canvas() },
     getComputedStyle: () => ({ getPropertyValue: () => "" })
   });
-  // Exercise the actual slider handlers while keeping UI regression checks fast.
-  slider.emit("input");
-  slider.emit("change");
   flush();
-  check("widget opens with a numeric shared scale", !root.hidden &&
-    Number(nodes["[data-scale-high]"].textContent) > Number(nodes["[data-scale-low]"].textContent));
+  check("widget opens with both heatmaps and the shared training points", !root.hidden &&
+    rasterWrites === 2 && left.context.arcs.filter((arc) => arc.radius === 2).length === 256 &&
+    right.context.arcs.filter((arc) => arc.radius === 2).length === 256);
   const openingWrites = rasterWrites;
   left.emit("pointermove", { clientX: 160, clientY: 120 });
   flush();
@@ -494,10 +485,6 @@ for (const name of ["blob", "two-blobs", "sinusoid"]) {
     rasterWrites === openingWrites + 2);
   nodes['button[data-action="clear"]'].emit("click");
   flush();
-  tools[1].emit("click");
-  check("selected editing tool is exposed to assistive technology",
-    tools[1].getAttribute("aria-pressed") === "true" &&
-    tools[0].getAttribute("aria-pressed") === "false");
   left.emit("pointerdown", { pointerType: "touch" });
   flush();
   check("touch-down alone does not edit data",
@@ -505,53 +492,72 @@ for (const name of ["blob", "two-blobs", "sinusoid"]) {
   left.emit("pointermove", { pointerType: "touch", clientY: 110 });
   left.emit("pointercancel", { pointerType: "touch" });
   flush();
-  check("touch page-scroll cancellation does not add a point",
-    left.context.arcs.filter((arc) => arc.radius === 2).length === 0);
+  check("touch page-scroll cancellation changes neither points nor the linked cursor",
+    left.context.arcs.filter((arc) => arc.radius === 2).length === 0 &&
+    left.context.arcs.some((arc) => arc.radius === 7 && arc.x === 160 && arc.y === 120));
   left.emit("pointerdown", { pointerType: "touch" });
   left.emit("pointerup", { pointerType: "touch" });
   flush();
   check("completed touch tap visibly paints the first point and requests one more",
     left.context.arcs.filter((arc) => arc.radius === 2).length === 1 &&
-    left.context.labels.includes("Add one more point to train") &&
-    nodes["[data-score-if]"].textContent === "\u2014");
+    left.context.labels.includes("Add one more point") &&
+    nodes["[data-if-announcement]"].textContent === "One point. Add one more.");
   left.emit("keydown", { key: "ArrowRight" });
   left.emit("keydown", { key: "Enter" });
   flush();
   check("keyboard can place the second point and start training",
     left.context.arcs.filter((arc) => arc.radius === 2).length === 2 &&
-    Number.isFinite(Number(nodes["[data-score-if]"].textContent)));
-  tools[0].emit("click");
+    /Standard IF 0\.\d+; Extended IF 0\.\d+\./.test(nodes["[data-if-announcement]"].textContent));
   left.emit("pointerdown", { pointerType: "touch", clientX: 240 });
   left.emit("pointerup", { pointerType: "touch", clientX: 240 });
   flush();
-  check("Inspect touch tap does not change training points",
-    left.context.arcs.filter((arc) => arc.radius === 2).length === 2);
-  tools[2].emit("click");
-  left.emit("pointerdown", { pointerType: "touch" });
-  left.emit("pointerup", { pointerType: "touch" });
+  check("completed touch taps add points without choosing an editing mode",
+    left.context.arcs.filter((arc) => arc.radius === 2).length === 3);
+  left.emit("pointerdown", { shiftKey: true });
   flush();
-  check("touch Erase removes points without a modifier key",
+  check("Shift-click erases nearby points",
+    left.context.arcs.filter((arc) => arc.radius === 2).length === 1);
+  left.emit("pointermove", { clientX: 240, shiftKey: true, buttons: 1 });
+  left.emit("pointerup", { clientX: 240, shiftKey: true });
+  flush();
+  check("Shift-drag erases points along its path",
     left.context.arcs.filter((arc) => arc.radius === 2).length === 0 &&
-    nodes["[data-score-if]"].textContent === "\u2014");
+    nodes["[data-if-announcement]"].textContent === "No points. Tap to add.");
   left.emit("keydown", { key: "ArrowRight" });
   flush();
   check("keyboard probe stays visible on an empty map before placing a point",
-    left.context.arcs.some((arc) => arc.radius === 7 && Math.abs(arc.x - 83.2) < 1e-9));
-  tools[1].emit("click");
+    left.context.arcs.some((arc) => arc.radius === 7 && Math.abs(arc.x - 243.2) < 1e-9));
+  left.emit("keydown", { key: "Enter" });
+  left.emit("keydown", { key: " " });
+  flush();
+  check("Enter and Space both add points at the keyboard cursor",
+    left.context.arcs.filter((arc) => arc.radius === 2).length === 2);
+  left.emit("keydown", { key: "Delete" });
+  flush();
+  check("Delete erases nearby points at the keyboard cursor",
+    left.context.arcs.filter((arc) => arc.radius === 2).length === 0);
+  left.emit("keydown", { key: "Enter" });
+  left.emit("keydown", { key: "Backspace" });
+  flush();
+  check("Backspace also erases at the keyboard cursor",
+    left.context.arcs.filter((arc) => arc.radius === 2).length === 0);
   left.emit("pointerdown");
+  left.emit("pointermove", { clientX: 240, clientY: 180, buttons: 1 });
   flush();
+  check("mouse click and drag add points directly",
+    left.context.arcs.filter((arc) => arc.radius === 2).length === 2);
   browser.emit("blur");
-  left.emit("pointermove", { clientX: 240, clientY: 180, buttons: 0 });
-  flush();
-  check("window blur ends Add gesture before an unpressed pointer returns",
-    left.context.arcs.filter((arc) => arc.radius === 2).length === 1);
-  left.emit("pointerdown", { clientX: 240, clientY: 180 });
-  flush();
-  browser.emit("pagehide");
   left.emit("pointermove", { clientX: 160, clientY: 120, buttons: 0 });
   flush();
-  check("pagehide ends Add gesture even without pointerup or pointercancel",
+  check("window blur ends drawing before an unpressed pointer returns",
     left.context.arcs.filter((arc) => arc.radius === 2).length === 2);
+  left.emit("pointerdown", { clientX: 160, clientY: 120 });
+  flush();
+  browser.emit("pagehide");
+  left.emit("pointermove", { clientX: 240, clientY: 60, buttons: 0 });
+  flush();
+  check("pagehide ends drawing even without pointerup or pointercancel",
+    left.context.arcs.filter((arc) => arc.radius === 2).length === 3);
 }
 
 console.log(failures === 0 ? "\nAll checks passed." : "\n" + failures + " FAILURES");

@@ -2154,26 +2154,6 @@ h3:hover .heading-anchor,
   border-radius: 999px;
 }
 
-.if-demo-trees {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  color: var(--text-muted);
-  font-size: var(--type-sm);
-  font-weight: 550;
-  line-height: var(--leading-ui);
-}
-
-.if-demo-trees input[type="range"] {
-  width: 110px;
-  accent-color: var(--accent);
-}
-
-.if-demo-trees output {
-  min-width: 2.1em;
-  font-variant-numeric: tabular-nums;
-}
-
 .if-demo-panels {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2216,15 +2196,6 @@ h3:hover .heading-anchor,
   line-height: var(--leading-ui);
 }
 
-.if-demo-scale-name {
-  letter-spacing: var(--tracking-normal);
-  text-transform: uppercase;
-}
-
-.if-demo-scale-value {
-  font-variant-numeric: tabular-nums;
-}
-
 /* Stop positions bake in the display gamma (t^0.8) used by the heatmaps,
    so the bar reflects the actual score-to-color mapping */
 .if-demo-scale-bar {
@@ -2261,26 +2232,6 @@ h3:hover .heading-anchor,
   padding: var(--space-4) var(--space-4) var(--space-3);
 }
 
-.orbit-demo-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  grid-template-rows: auto 1fr;
-  grid-template-areas:
-    "map charts"
-    "panel charts";
-  gap: var(--space-3);
-}
-
-.orbit-demo-layout > figure {
-  grid-area: map;
-}
-
-.orbit-demo-panel {
-  grid-area: panel;
-  align-self: start;
-  min-width: 0;
-}
-
 .orbit-demo-layout figure {
   margin: 0;
   min-width: 0;
@@ -2293,22 +2244,6 @@ h3:hover .heading-anchor,
   border: 1px solid var(--border);
   border-radius: 8px;
   background: #0c1426;
-}
-
-.orbit-demo-charts {
-  grid-area: charts;
-  display: grid;
-  gap: var(--space-3);
-  align-content: start;
-}
-
-.orbit-demo-chart {
-  display: block;
-  width: 100%;
-  aspect-ratio: 2.1 / 1;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface-muted);
 }
 
 .orbit-demo-controls,
@@ -2330,15 +2265,6 @@ h3:hover .heading-anchor,
   font-size: var(--type-sm);
   line-height: var(--leading-ui);
   font-weight: 550;
-}
-
-.orbit-demo-readout,
-.lux-demo-readout {
-  margin: var(--space-1) 0 0;
-  color: var(--text-muted);
-  font-size: var(--type-sm);
-  line-height: var(--leading-ui);
-  font-variant-numeric: tabular-nums;
 }
 
 /* Interactive LUX kinematics demo */
@@ -2870,7 +2796,7 @@ body.academic {
   border-color: var(--accent);
 }
 
-/* Demo controls and results share the academic UI; plots retain their own scales. */
+/* Simple interactive demos: the visualization leads, controls stay compact. */
 .academic .demo-btn {
   min-height: 2.25rem;
   padding: 0.35rem 0.6rem;
@@ -2912,40 +2838,17 @@ body.academic {
 
 .academic .demo-notes summary:focus-visible,
 .academic .if-demo-canvas:focus-visible,
-.academic .lux-demo-angle input:focus-visible,
-.academic .if-demo-trees input:focus-visible,
-.academic .orbit-demo-results:focus-visible {
+.academic .lux-demo-angle input:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 4px;
 }
 
 .academic .if-demo-toolbar {
-  align-items: flex-start;
+  justify-content: flex-start;
 }
 
-.academic .if-demo-tools,
-.academic .lux-demo-presets {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-}
-
-.academic .if-demo-readout {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-1) var(--space-4);
-  align-items: baseline;
-}
-
-.academic .if-demo-readout strong {
-  font-weight: 600;
-}
-
-.academic .if-demo-scale-note {
-  margin: var(--space-1) 0 0;
-  color: var(--text-muted);
-  font-size: var(--type-xs);
-  line-height: var(--leading-copy);
+.academic .if-demo-scale {
+  justify-content: center;
 }
 
 .academic .lux-demo-layout {
@@ -3010,58 +2913,34 @@ body.academic {
   accent-color: var(--accent);
 }
 
-.academic .orbit-demo-phase {
-  margin: 0 0 var(--space-3);
-  color: var(--accent);
-  font-size: var(--type-sm);
-  font-weight: 550;
-  line-height: var(--leading-copy);
+.academic .orbit-demo-layout {
+  max-width: 34rem;
+  margin: 0 auto;
 }
 
-.academic dl.orbit-demo-readout {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-2) var(--space-3);
-  margin: var(--space-3) 0;
+.academic .orbit-demo-layout > figure {
+  max-width: 28rem;
+  margin: 0 auto;
 }
 
-.academic .orbit-demo-readout dt {
-  color: var(--text-muted);
-  font-size: var(--type-xs);
+.academic .orbit-demo-panel {
+  margin-top: var(--space-3);
 }
 
-.academic .orbit-demo-readout dd {
-  margin: 0;
-  color: var(--text);
-  font-size: var(--type-ui);
-  font-variant-numeric: tabular-nums;
+.academic .orbit-demo-controls {
+  justify-content: center;
 }
 
-.academic .orbit-demo-results {
-  max-width: 100%;
-  margin: var(--space-4) 0 0;
-  overflow-x: auto;
+.academic .orbit-demo-status {
+  text-align: center;
 }
 
-.academic .orbit-demo-results > .orbit-demo-results-table {
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  font-size: var(--type-xs);
-  font-variant-numeric: tabular-nums;
+.academic .orbit-demo .if-demo-hint {
+  text-align: center;
 }
 
-.academic .orbit-demo-results-table caption {
-  padding: var(--space-2);
-  color: var(--text);
-  font-weight: 550;
-  text-align: left;
-}
-
-.academic .orbit-demo-results-table th,
-.academic .orbit-demo-results-table td {
-  padding: 0.5rem;
-  white-space: nowrap;
+.academic .lux-demo-actions {
+  display: flex;
 }
 
 @media (max-width: 760px) {
@@ -3479,27 +3358,6 @@ body.academic {
 
   .academic .lux-demo-angle input {
     min-height: 2.75rem;
-  }
-
-  .academic .if-demo-trees input[type="range"] {
-    width: 5rem;
-  }
-
-  .academic .if-demo-readout {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    padding: var(--space-2) 0;
-    background: var(--surface);
-  }
-
-  .orbit-demo-layout {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    grid-template-areas:
-      "map"
-      "panel"
-      "charts";
   }
 
   .video-list-item {

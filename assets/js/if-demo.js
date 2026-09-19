@@ -421,23 +421,13 @@
     var state = {
       xs: [],
       ys: [],
-      trees: 100,
-      forestSeed: baseSeed,
       pending: false,
       coarse: false,
-      tool: "inspect",
-      preset: "two-blobs",
-      probe: { x: 0.24, y: 0.26 },
-      markedExample: true
+      probe: { x: 0.24, y: 0.26 }
     };
-    var comparison = createComparison({ trees: state.trees, seed: state.forestSeed });
+    var comparison = createComparison({ trees: 100, seed: baseSeed });
     var trainingTimer = null;
     var announcementTimer = null;
-    var scoreIf = root.querySelector("[data-score-if]");
-    var scoreEif = root.querySelector("[data-score-eif]");
-    var probeContext = root.querySelector("[data-probe-context]");
-    var scaleLow = root.querySelector("[data-scale-low]");
-    var scaleHigh = root.querySelector("[data-scale-high]");
     var announcement = root.querySelector("[data-if-announcement]");
 
     var started = false;
@@ -455,9 +445,7 @@
       var data = makePreset(name, dataSeed);
       state.xs = data.xs;
       state.ys = data.ys;
-      state.preset = name;
       state.probe = name === "two-blobs" ? { x: 0.24, y: 0.26 } : { x: 0.5, y: 0.5 };
-      state.markedExample = name === "two-blobs";
       updateData();
     }
 
@@ -564,7 +552,7 @@
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillText(
-        state.xs.length ? "Add one more point to train" : "Choose Add, then tap to place points",
+        state.xs.length ? "Add one more point" : "Tap to add points",
         canvas.width / 2,
         state.xs.length ? canvas.height * 0.9 : canvas.height / 2
       );
@@ -572,24 +560,15 @@
       paintProbe(panel);
     }
 
-    function updateReadout(range) {
+    function announceProbe() {
       var scores = comparison.score(state.probe.x, state.probe.y);
-      var textIf = scores ? scores[0].toFixed(3) : "\u2014";
-      var textEif = scores ? scores[1].toFixed(3) : "\u2014";
-      if (scoreIf) scoreIf.textContent = textIf;
-      if (scoreEif) scoreEif.textContent = textEif;
-      if (scaleLow) scaleLow.textContent = range ? range[0].toFixed(3) : "\u2014";
-      if (scaleHigh) scaleHigh.textContent = range ? range[1].toFixed(3) : "\u2014";
-      var context = !scores ? (state.xs.length === 1 ?
-        "1 point; add one more to train" : "No points; add at least two to train") :
-        state.markedExample ? "Marked point: empty corner beside the clusters" :
-        "Probe x " + state.probe.x.toFixed(2) + ", y " + state.probe.y.toFixed(2);
-      if (probeContext) probeContext.textContent = context;
+      var message = scores ? "Standard IF " + scores[0].toFixed(3) +
+        "; Extended IF " + scores[1].toFixed(3) + "." :
+        state.xs.length ? "One point. Add one more." : "No points. Tap to add.";
       // Announce after movement settles, rather than queuing every pointer frame.
       window.clearTimeout(announcementTimer);
       announcementTimer = window.setTimeout(function () {
-        if (announcement) announcement.textContent = context + (scores ?
-          ". Standard IF " + textIf + "; Extended IF " + textEif + "." : ".");
+        if (announcement) announcement.textContent = message;
       }, 180);
     }
 
@@ -601,7 +580,7 @@
       if (state.xs.length < 2) {
         paintEmpty(ifPanel);
         paintEmpty(eifPanel);
-        updateReadout(null);
+        announceProbe();
         return;
       }
       // half-resolution while dragging keeps the spray interaction fluid;
@@ -613,7 +592,7 @@
       var grid = comparison.grid(gw, gh);
       paintPanel(ifPanel, grid.ifScores, grid.range[0], grid.range[1]);
       paintPanel(eifPanel, grid.eifScores, grid.range[0], grid.range[1]);
-      updateReadout(grid.range);
+      announceProbe();
     }
 
     function schedule() {
@@ -678,14 +657,13 @@
 
     function setProbe(x, y) {
       state.probe = { x: clamp01(x, 0, 1), y: clamp01(y, 0, 1) };
-      state.markedExample = false;
       schedule();
     }
 
-    function applyTool() {
-      if (state.tool === "erase") {
+    function editAtProbe(erase) {
+      if (erase) {
         erasePoints(state.probe.x, state.probe.y);
-      } else if (state.tool === "add") {
+      } else {
         addPoint(state.probe.x, state.probe.y);
       }
     }
@@ -708,11 +686,9 @@
         // gesture or pointercancel never changes the training dataset.
         if (!gesture.touch) {
           setProbe(pos.x, pos.y);
-          applyTool();
+          editAtProbe(event.shiftKey);
           canvas.focus({ preventScroll: true });
-          if (state.tool !== "inspect") {
-            canvas.setPointerCapture(event.pointerId);
-          }
+          canvas.setPointerCapture(event.pointerId);
         }
       });
       canvas.addEventListener("pointermove", function (event) {
@@ -725,15 +701,14 @@
         }
         var pos = eventCoords(canvas, event);
         setProbe(pos.x, pos.y);
-        if (!gesture || gesture.id !== event.pointerId ||
-            state.tool === "inspect") return;
+        if (!gesture || gesture.id !== event.pointerId) return;
         var dx = pos.x - gesture.lastX;
         var dy = pos.y - gesture.lastY;
         if (dx * dx + dy * dy < 0.0004) return;
         gesture.lastX = pos.x;
         gesture.lastY = pos.y;
         state.coarse = true;
-        applyTool();
+        editAtProbe(event.shiftKey);
       });
       function stop(event, cancelled) {
         if (!gesture || gesture.id !== event.pointerId) return;
@@ -741,7 +716,7 @@
             Math.hypot(event.clientX - gesture.startX, event.clientY - gesture.startY) <= 8) {
           var pos = eventCoords(canvas, event);
           setProbe(pos.x, pos.y);
-          applyTool();
+          editAtProbe(false);
         }
         gesture = null;
         if (state.coarse) {
@@ -752,9 +727,6 @@
       canvas.addEventListener("pointerup", function (event) { stop(event, false); });
       canvas.addEventListener("pointercancel", function (event) { stop(event, true); });
       canvas.addEventListener("lostpointercapture", function (event) { stop(event, true); });
-      canvas.addEventListener("pointerleave", function (event) {
-        if (gesture && state.tool === "inspect") stop(event, true);
-      });
       function cancelGesture() {
         if (gesture) stop({ pointerId: gesture.id }, true);
       }
@@ -770,7 +742,11 @@
         else if (event.key === "ArrowDown") y += step;
         else if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
-          applyTool();
+          editAtProbe(false);
+          return;
+        } else if (event.key === "Delete" || event.key === "Backspace") {
+          event.preventDefault();
+          editAtProbe(true);
           return;
         } else return;
         event.preventDefault();
@@ -785,8 +761,6 @@
 
     var presetButtons = root.querySelectorAll("button[data-preset]");
     function clearPresetSelection() {
-      state.preset = null;
-      state.markedExample = false;
       presetButtons.forEach(function (button) {
         button.classList.toggle("is-active", false);
         button.setAttribute("aria-pressed", "false");
@@ -802,26 +776,6 @@
       });
     });
 
-    var toolButtons = root.querySelectorAll("button[data-tool]");
-    toolButtons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        state.tool = button.getAttribute("data-tool");
-        toolButtons.forEach(function (other) {
-          other.classList.toggle("is-active", other === button);
-          other.setAttribute("aria-pressed", String(other === button));
-        });
-      });
-    });
-
-    var rerollButton = root.querySelector('button[data-action="reroll"]');
-    if (rerollButton) {
-      rerollButton.addEventListener("click", function () {
-        state.forestSeed = (state.forestSeed * 1664525 + 1013904223) >>> 0;
-        comparison.setSeed(state.forestSeed);
-        scheduleTraining();
-      });
-    }
-
     var clearButton = root.querySelector('button[data-action="clear"]');
     if (clearButton) {
       clearButton.addEventListener("click", function () {
@@ -829,22 +783,6 @@
         state.ys = [];
         clearPresetSelection();
         updateData();
-      });
-    }
-
-    var slider = root.querySelector('input[type="range"]');
-    var sliderOut = root.querySelector("[data-tree-count]");
-    if (slider) {
-      slider.addEventListener("input", function () {
-        state.trees = parseInt(slider.value, 10) || 100;
-        comparison.setTrees(state.trees);
-        if (sliderOut) sliderOut.textContent = String(state.trees);
-        state.coarse = true;
-        scheduleTraining();
-      });
-      slider.addEventListener("change", function () {
-        state.coarse = false;
-        schedule();
       });
     }
 

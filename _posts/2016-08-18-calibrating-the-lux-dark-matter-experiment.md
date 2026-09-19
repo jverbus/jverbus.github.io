@@ -2,7 +2,7 @@
 layout: post
 title: "Calibrating the LUX Dark Matter Experiment"
 description: "Measuring the charge and light response of liquid xenon to low-energy nuclear recoils using D-D neutron scattering in LUX."
-last_modified_at: 2026-09-18
+last_modified_at: 2026-09-19
 og_image: "/assets/images/social/2016-08-18-calibrating-the-lux-dark-matter-experiment-1200x630.jpg"
 og_image_alt: "Calibrating the LUX Dark Matter Experiment"
 og_image_width: 1200

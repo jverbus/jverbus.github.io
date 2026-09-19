@@ -2,7 +2,7 @@
 layout: post
 title: "Extended Isolation Forest for Distributed Spark/Scala Anomaly Detection"
 description: "Adding Extended Isolation Forest to the Spark/Scala library and comparing it with the reference implementation."
-last_modified_at: 2026-09-18
+last_modified_at: 2026-09-19
 og_image: "/assets/images/social/2026-03-18-announcing-extended-isolation-forest-support-1200x630.jpg"
 og_image_alt: "Extended Isolation Forest for distributed Spark/Scala anomaly detection"
 og_image_width: 1200
